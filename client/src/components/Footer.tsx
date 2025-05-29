@@ -19,11 +19,13 @@ export default function Footer() {
           className="flex flex-col md:flex-row items-center justify-between"
         >
           {/* Logo and Copyright */}
-          <div className="flex items-center space-x-3 mb-4 md:mb-0">
-            <div className="w-8 h-8 bg-white rounded flex items-center justify-center">
-              <span className="text-black font-bold text-lg">V</span>
-            </div>
-            <span className="text-silver-gray">© 2025 Venator Capital LLC. All rights reserved.</span>
+          <div className="flex items-center space-x-4 mb-4 md:mb-0">
+            <img 
+              src="/venator_logo_black.svg" 
+              alt="Venator Capital Logo"
+              className="w-10 h-10 filter invert"
+            />
+            <span className="text-white/70 text-lg">© 2025 Venator Capital LLC. All rights reserved.</span>
           </div>
 
           {/* Footer Navigation */}

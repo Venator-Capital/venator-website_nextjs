@@ -19,9 +19,9 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold mb-8"
+          className="text-4xl md:text-6xl font-bold mb-12"
         >
-          Get in Touch
+          Get in <span className="text-accent-gold">Touch</span>
         </motion.h2>
         
         <motion.p
@@ -29,9 +29,9 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-xl text-silver-gray mb-12"
+          className="text-xl md:text-2xl text-white/90 mb-16 leading-relaxed"
         >
-          We're currently exploring new partnerships, collaborators, and joint ventures.
+          We're currently exploring new <span className="text-accent-blue font-semibold">partnerships, collaborators, and joint ventures</span>.
           <br />
           Feel free to reach out — our operations are always in motion.
         </motion.p>
@@ -48,10 +48,10 @@ export default function ContactSection() {
             onClick={handleEmailClick}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 bg-white text-black rounded-full font-semibold hover:bg-silver-gray transition-all duration-300 flex items-center justify-center"
+            className="px-10 py-4 bg-white text-black rounded-full font-semibold text-lg hover:bg-accent-blue hover:text-white transition-all duration-300 flex items-center justify-center shadow-2xl hover:shadow-white/20"
           >
             <svg
-              className="w-5 h-5 mr-2"
+              className="w-6 h-6 mr-3"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -70,10 +70,10 @@ export default function ContactSection() {
             onClick={handleContactFormClick}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 border border-white text-white rounded-full hover:bg-white hover:text-black transition-all duration-300 flex items-center justify-center"
+            className="px-10 py-4 border-2 border-accent-gold text-accent-gold rounded-full font-semibold text-lg hover:bg-accent-gold hover:text-black transition-all duration-300 flex items-center justify-center shadow-2xl hover:shadow-accent-gold/20"
           >
             <svg
-              className="w-5 h-5 mr-2"
+              className="w-6 h-6 mr-3"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

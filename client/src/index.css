@@ -64,13 +64,13 @@
     backdrop-filter: blur(10px);
     background: linear-gradient(145deg, hsl(var(--deep-charcoal)), hsl(0 0% 4%));
     border: 1px solid hsl(0 0% 100% / 0.1);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
   
   .project-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 20px 40px hsl(0 0% 0% / 0.3);
-    border-color: hsl(var(--accent-blue) / 0.3);
+    transform: scale(1.03) translateY(-5px);
+    box-shadow: 0 25px 50px -12px hsl(0 0% 0% / 0.4), 0 0 0 1px hsl(var(--accent-blue) / 0.2);
+    border-color: hsl(var(--accent-blue) / 0.4);
   }
   
   .navbar-blur {
@@ -134,6 +134,17 @@
   
   .animate-pulse-glow {
     animation: pulseGlow 2s ease-in-out infinite alternate;
+  }
+  
+  .hero-text-shadow {
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  }
+  
+  .glass-effect {
+    backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(17, 25, 40, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
   }
 }
 
