@@ -41,11 +41,13 @@ export default function HeroSection() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="mb-8"
+          className="mb-12"
         >
-          <div className="w-24 h-24 bg-white rounded-lg flex items-center justify-center mx-auto mb-6">
-            <span className="text-black font-bold text-3xl">V</span>
-          </div>
+          <img 
+            src="/venator_logo_black.svg" 
+            alt="Venator Capital Logo"
+            className="w-32 h-32 mx-auto mb-6 filter drop-shadow-2xl"
+          />
         </motion.div>
 
         {/* Main Headline */}
@@ -53,9 +55,9 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-5xl md:text-7xl font-bold mb-6"
+          className="text-5xl md:text-7xl font-bold mb-8 leading-tight"
         >
-          Turning Niche Into <span className="text-accent-gold">Core</span>
+          Turning Niche Into <span className="text-accent-gold animate-pulse-glow">Core</span>
         </motion.h1>
 
         {/* Subheadline */}
@@ -63,11 +65,11 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-xl md:text-2xl text-silver-gray mb-8"
+          className="text-xl md:text-2xl text-white/80 mb-12 leading-relaxed max-w-3xl mx-auto"
         >
           We create intelligent infrastructure for bold ideas.
           <br />
-          From AI workflows to real estate innovation — this is where ideas go operational.
+          <span className="text-accent-blue">From AI workflows to real estate innovation</span> — this is where ideas go operational.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -75,17 +77,17 @@ export default function HeroSection() {
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-6 justify-center"
         >
           <button
             onClick={() => scrollToSection('projects')}
-            className="px-8 py-3 bg-white text-black rounded-full font-semibold hover:bg-silver-gray transition-all duration-300 transform hover:scale-105"
+            className="px-10 py-4 bg-white text-black rounded-full font-semibold text-lg hover:bg-accent-blue hover:text-white transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-accent-blue/20"
           >
             Explore Projects
           </button>
           <button
             onClick={() => scrollToSection('contact')}
-            className="px-8 py-3 border border-white text-white rounded-full hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105"
+            className="px-10 py-4 border-2 border-accent-gold text-accent-gold rounded-full font-semibold text-lg hover:bg-accent-gold hover:text-black transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-accent-gold/20"
           >
             Get in Touch
           </button>

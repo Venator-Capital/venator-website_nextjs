@@ -35,12 +35,14 @@ export default function Navbar() {
         {/* Logo */}
         <button
           onClick={() => scrollToSection('hero')}
-          className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
+          className="flex items-center space-x-3 hover:opacity-80 transition-all duration-300"
         >
-          <div className="w-8 h-8 bg-white rounded flex items-center justify-center">
-            <span className="text-black font-bold text-lg">V</span>
-          </div>
-          <span className="text-xl font-semibold">Venator Capital</span>
+          <img 
+            src="/venator_logo_black.svg" 
+            alt="Venator Capital Logo"
+            className="w-10 h-10 filter invert"
+          />
+          <span className="text-xl font-semibold tracking-tight">Venator Capital</span>
         </button>
 
         {/* Desktop Navigation */}

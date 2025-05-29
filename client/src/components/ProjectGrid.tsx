@@ -33,13 +33,13 @@ export default function ProjectGrid() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Featured Projects
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            Featured <span className="text-accent-gold">Projects</span>
           </h2>
-          <p className="text-xl text-silver-gray">
-            Current ventures across AI, automation, and cross-border commerce
+          <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto">
+            Current ventures across <span className="text-accent-blue">AI, automation, and cross-border commerce</span>
           </p>
         </motion.div>
 

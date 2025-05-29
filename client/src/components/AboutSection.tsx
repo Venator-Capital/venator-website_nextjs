@@ -31,23 +31,23 @@ export default function AboutSection() {
       >
         <motion.h2
           variants={itemVariants}
-          className="text-4xl md:text-5xl font-bold mb-8"
+          className="text-4xl md:text-6xl font-bold mb-12"
         >
-          About Venator Capital
+          About <span className="text-accent-blue">Venator Capital</span>
         </motion.h2>
         
         <motion.p
           variants={itemVariants}
-          className="text-lg md:text-xl text-silver-gray leading-relaxed mb-8"
+          className="text-xl md:text-2xl text-white/90 leading-relaxed mb-10"
         >
-          Venator Capital LLC is a Tokyo-based strategy-driven startup operating at the intersection of real estate, automation, and borderless innovation.
+          Venator Capital LLC is a <span className="text-accent-gold font-semibold">Tokyo-based strategy-driven startup</span> operating at the intersection of real estate, automation, and borderless innovation.
         </motion.p>
         
         <motion.p
           variants={itemVariants}
-          className="text-lg md:text-xl text-silver-gray leading-relaxed"
+          className="text-xl md:text-2xl text-white/80 leading-relaxed"
         >
-          Our approach is lean, experimental, and relentlessly global. We build tools, frameworks, and ventures that turn overlooked niches into operational advantages.
+          Our approach is lean, experimental, and relentlessly global. We build tools, frameworks, and ventures that <span className="text-accent-blue font-semibold">turn overlooked niches into operational advantages</span>.
         </motion.p>
 
         {/* Domain Focus */}
