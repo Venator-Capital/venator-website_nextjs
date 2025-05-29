@@ -1,0 +1,74 @@
+You are a senior front-end engineer building the official website for a visionary tech-driven company called **Venator Capital LLC**.
+
+Your job is to create a complete, modern, dark-themed English-language corporate website using **React + Tailwind CSS + Framer Motion**.  
+You are building this inside a Replit project at the following path:
+
+`/Users/soutayamada/Documents/xcode_projects/replit_projects/venator_capital_website`
+
+---
+
+### 🔹 Site Purpose
+
+This website represents a Tokyo-based startup focused on:
+- Real estate innovation (licensed 宅建士-led)
+- AI-powered automation SaaS
+- Strategic micro-M&A and cross-border investments
+
+Even though the company is early-stage, the website must convey *credibility*, *precision*, and *bold global ambition*.
+
+---
+
+### 🔹 Assets Provided
+
+In the `/public/` folder you will find:
+- Official logo (`venator_logo_black.svg`, `.png`, and white variants)
+- Lottie-style animation (`hero_background_motion.json`)
+- A fallback GIF animation (`hero_wireframe_loop.gif`)
+- Project visuals (e.g. `clipwise_preview.png` etc.)
+
+Use SVGs where possible, and fallback to PNG/GIF as needed. Lottie should be used in the Hero section as background animation.
+
+---
+
+### 🔹 Use the following Design and Technical Guides:
+
+Please strictly follow the provided documents (these are already created):
+
+1. `project_overview.md` – Overall scope and vision
+2. `site_structure.md` – URL structure and section breakdown
+3. `style_guide.md` – Color palette, font sizes, spacing
+4. `component_spec.md` – React component structure and file names
+5. `content_placeholder.md` – Text placeholders for each section
+6. `animation_guideline.md` – Guidelines for Framer Motion & Lottie
+7. `deployment_instruction.md` – Environment and hosting setup
+8. `asset_list.md` – File names and usage rules for all images
+
+---
+
+### 🔹 Development Constraints
+
+- Use **Tailwind CSS** with no external UI libraries (except Framer Motion and optional Lottie)
+- Keep code modular and split into reusable components
+- Ensure full responsiveness (desktop > tablet > mobile)
+- Respect the dark-themed, futuristic yet minimalist tone
+- Avoid unnecessary animations or clutter
+
+---
+
+### 🔹 Execution
+
+Start by:
+1. Setting up Tailwind config, `vite.config.js`, `replit.nix`
+2. Creating base layout (`Layout.jsx`) with `<Navbar />` and `<Footer />`
+3. Implementing `<HeroSection />` using Lottie animation in the background and the logo/text in the center
+4. Building out `AboutSection`, `ProjectGrid`, `ProjectCard`, and `ContactSection` per the specs
+5. Verifying mobile responsiveness and visual integrity in dark mode
+
+---
+
+### 🔹 Final Notes
+
+All placeholder content is in English and included in the `.md` files.  
+You should output clean, production-grade code as if this site were to be presented to investors, partners, and public institutions.
+
+Begin the full implementation now.
