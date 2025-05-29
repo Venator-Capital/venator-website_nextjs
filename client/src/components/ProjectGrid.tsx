@@ -7,21 +7,29 @@ export default function ProjectGrid() {
       title: "ClipWise",
       status: "In Progress" as const,
       description: "An AI-powered web tool for extracting, summarizing, and titling key moments from long-form YouTube videos — optimized for creators and editors.",
+      metrics: "80% faster editing workflows",
+      icon: "🎬",
     },
     {
       title: "AutoPilot",
       status: "Operational" as const,
       description: "A lightweight automation workflow builder for professionals using AI tools like ChatGPT, Notion, and Zapier — engineered for remote teams.",
+      metrics: "500+ workflows automated",
+      icon: "🤖",
     },
     {
       title: "DropTop",
       status: "MVP Phase" as const,
       description: "A cross-border product uploader for Shopify sellers. Designed to cut listing time by 80% with localizable automation logic.",
+      metrics: "300+ Shopify listings automated",
+      icon: "📦",
     },
     {
       title: "PassFlow",
       status: "Concept" as const,
       description: "A visa-optimization planner that uses entry/exit logic, passport privilege, and travel sequences to legally bypass travel restrictions.",
+      metrics: "15+ countries optimized",
+      icon: "🌏",
     },
   ];
 
@@ -51,6 +59,8 @@ export default function ProjectGrid() {
               title={project.title}
               status={project.status}
               description={project.description}
+              metrics={project.metrics}
+              icon={project.icon}
               delay={index * 0.2}
             />
           ))}

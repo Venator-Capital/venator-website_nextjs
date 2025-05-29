@@ -21,7 +21,7 @@ export default function AboutSection() {
   };
 
   return (
-    <section id="about" className="py-24 bg-deep-charcoal">
+    <section id="about" className="py-24 md:py-32 bg-deep-charcoal">
       <motion.div
         variants={containerVariants}
         initial="hidden"

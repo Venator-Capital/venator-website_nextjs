@@ -13,26 +13,101 @@ export default function HeroSection() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center hero-gradient animated-background overflow-hidden"
     >
-      {/* Animated geometric background elements */}
+      {/* Enhanced animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
+        {/* Network lines */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2 }}
+          className="absolute inset-0"
+        >
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <motion.path
+              d="M0,400 Q200,200 400,400 T800,400"
+              stroke="url(#gradient1)"
+              strokeWidth="1"
+              fill="none"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
+            />
+            <motion.path
+              d="M800,200 Q600,400 400,200 T0,200"
+              stroke="url(#gradient2)"
+              strokeWidth="1"
+              fill="none"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", delay: 1 }}
+            />
+            <defs>
+              <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#3B82F6" stopOpacity="0" />
+                <stop offset="50%" stopColor="#3B82F6" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
+              </linearGradient>
+              <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#FFD700" stopOpacity="0" />
+                <stop offset="50%" stopColor="#FFD700" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="#FFD700" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </motion.div>
+
+        {/* Floating orbs with light effects */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 0.6, scale: 1 }}
           transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
           className="absolute top-1/4 left-1/4 w-64 h-64 border border-accent-blue/20 rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%)',
+            boxShadow: '0 0 60px rgba(59, 130, 246, 0.2)',
+          }}
         />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 0.4, y: 0 }}
           transition={{ duration: 3, repeat: Infinity, repeatType: "reverse", delay: 1 }}
           className="absolute bottom-1/4 right-1/4 w-32 h-32 border border-accent-gold/20 rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(255, 215, 0, 0.08) 0%, transparent 70%)',
+            boxShadow: '0 0 40px rgba(255, 215, 0, 0.15)',
+          }}
         />
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 0.3, scale: 1.1 }}
           transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", delay: 2 }}
           className="absolute top-1/2 right-1/3 w-48 h-48 border border-white/10 rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%)',
+            boxShadow: '0 0 50px rgba(255, 255, 255, 0.1)',
+          }}
         />
+
+        {/* Particle effects */}
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-accent-blue/40 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.2, 0.8, 0.2],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
       </div>
 
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
@@ -57,7 +132,7 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-5xl md:text-7xl font-bold mb-8 leading-tight hero-text-shadow"
         >
-          Turning Niche Into <span className="text-accent-gold animate-pulse-glow">Core</span>
+          Turning <span className="text-accent-blue">Niche</span> Into <span className="text-accent-gold animate-pulse-glow">Core</span>
         </motion.h1>
 
         {/* Subheadline */}

@@ -91,27 +91,31 @@
   }
   
   .status-in-progress {
-    background: hsl(var(--accent-blue) / 0.2);
+    background: linear-gradient(135deg, hsl(var(--accent-blue) / 0.2), hsl(var(--accent-blue) / 0.1));
     color: hsl(var(--accent-blue));
-    border: 1px solid hsl(var(--accent-blue) / 0.3);
+    border: 1px solid hsl(var(--accent-blue) / 0.4);
+    box-shadow: 0 0 20px hsl(var(--accent-blue) / 0.2);
   }
   
   .status-operational {
-    background: hsl(142 76% 36% / 0.2);
+    background: linear-gradient(135deg, hsl(142 76% 36% / 0.2), hsl(142 76% 36% / 0.1));
     color: hsl(142 76% 56%);
-    border: 1px solid hsl(142 76% 36% / 0.3);
+    border: 1px solid hsl(142 76% 36% / 0.4);
+    box-shadow: 0 0 20px hsl(142 76% 36% / 0.2);
   }
   
   .status-mvp {
-    background: hsl(var(--accent-gold) / 0.2);
+    background: linear-gradient(135deg, hsl(var(--accent-gold) / 0.2), hsl(var(--accent-gold) / 0.1));
     color: hsl(var(--accent-gold));
-    border: 1px solid hsl(var(--accent-gold) / 0.3);
+    border: 1px solid hsl(var(--accent-gold) / 0.4);
+    box-shadow: 0 0 20px hsl(var(--accent-gold) / 0.2);
   }
   
   .status-concept {
-    background: hsl(var(--silver-gray) / 0.2);
+    background: linear-gradient(135deg, hsl(var(--silver-gray) / 0.2), hsl(var(--silver-gray) / 0.1));
     color: hsl(var(--silver-gray));
-    border: 1px solid hsl(var(--silver-gray) / 0.3);
+    border: 1px solid hsl(var(--silver-gray) / 0.4);
+    box-shadow: 0 0 20px hsl(var(--silver-gray) / 0.1);
   }
 }
 
