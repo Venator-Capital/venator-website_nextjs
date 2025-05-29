@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Venator Capital Custom Variables */
+  --primary-black: 0 0% 0%;
+  --deep-charcoal: 0 0% 6.7%;
+  --silver-gray: 0 0% 80%;
+  --accent-blue: 214 88% 58%;
+  --accent-gold: 50 100% 50%;
+  
+  /* Base colors */
+  --background: var(--primary-black);
+  --foreground: 0 0% 100%;
+  --muted: var(--deep-charcoal);
+  --muted-foreground: var(--silver-gray);
+  --popover: var(--primary-black);
+  --popover-foreground: 0 0% 100%;
+  --card: var(--deep-charcoal);
+  --card-foreground: 0 0% 100%;
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --primary: var(--accent-blue);
+  --primary-foreground: 0 0% 100%;
+  --secondary: var(--deep-charcoal);
+  --secondary-foreground: 0 0% 100%;
+  --accent: var(--deep-charcoal);
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 100%;
+  --ring: var(--accent-blue);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-black text-white;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    background: linear-gradient(135deg, #000000 0%, #111111 50%, #000000 100%);
+  }
+  
+  .animated-background {
+    background-image: 
+      radial-gradient(circle at 20% 50%, hsl(var(--accent-blue) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(var(--accent-gold) / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, hsl(var(--accent-blue) / 0.05) 0%, transparent 50%);
+  }
+  
+  .project-card {
+    backdrop-filter: blur(10px);
+    background: linear-gradient(145deg, hsl(var(--deep-charcoal)), hsl(0 0% 4%));
+    border: 1px solid hsl(0 0% 100% / 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .project-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px hsl(0 0% 0% / 0.3);
+    border-color: hsl(var(--accent-blue) / 0.3);
+  }
+  
+  .navbar-blur {
+    backdrop-filter: blur(20px);
+    background: hsl(0 0% 0% / 0.9);
+    border-bottom: 1px solid hsl(0 0% 100% / 0.1);
+  }
+  
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .status-in-progress {
+    background: hsl(var(--accent-blue) / 0.2);
+    color: hsl(var(--accent-blue));
+    border: 1px solid hsl(var(--accent-blue) / 0.3);
+  }
+  
+  .status-operational {
+    background: hsl(142 76% 36% / 0.2);
+    color: hsl(142 76% 56%);
+    border: 1px solid hsl(142 76% 36% / 0.3);
+  }
+  
+  .status-mvp {
+    background: hsl(var(--accent-gold) / 0.2);
+    color: hsl(var(--accent-gold));
+    border: 1px solid hsl(var(--accent-gold) / 0.3);
+  }
+  
+  .status-concept {
+    background: hsl(var(--silver-gray) / 0.2);
+    color: hsl(var(--silver-gray));
+    border: 1px solid hsl(var(--silver-gray) / 0.3);
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+  
+  .animate-fade-in-right {
+    animation: fadeInRight 0.5s ease-out;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulseGlow {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
