@@ -21,9 +21,9 @@ export default function Footer() {
           {/* Logo and Copyright */}
           <div className="flex items-center space-x-4 mb-4 md:mb-0">
             <img 
-              src="/venator_logo_black.svg" 
+              src="/Cropped_Image.png" 
               alt="Venator Capital Logo"
-              className="w-10 h-10 filter invert"
+              className="w-10 h-10"
             />
             <span className="text-white/70 text-lg">© 2025 Venator Capital LLC. All rights reserved.</span>
           </div>

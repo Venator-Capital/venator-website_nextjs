@@ -119,9 +119,9 @@ export default function HeroSection() {
           className="mb-12"
         >
           <img 
-            src="/venator_logo_black.svg" 
+            src="/Cropped_Image.png" 
             alt="Venator Capital Logo"
-            className="w-32 h-32 mx-auto mb-6 filter drop-shadow-2xl"
+            className="w-32 h-32 mx-auto mb-6 drop-shadow-2xl"
           />
         </motion.div>
 

@@ -38,9 +38,9 @@ export default function Navbar() {
           className="flex items-center space-x-3 hover:opacity-80 transition-all duration-300"
         >
           <img 
-            src="/venator_logo_black.svg" 
+            src="/Cropped_Image.png" 
             alt="Venator Capital Logo"
-            className="w-10 h-10 filter invert"
+            className="w-10 h-10"
           />
           <span className="text-xl font-semibold tracking-tight">Venator Capital</span>
         </button>
