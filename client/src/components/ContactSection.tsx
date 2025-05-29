@@ -12,7 +12,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-deep-charcoal">
+    <section id="contact" className="py-24 md:py-32 bg-deep-charcoal">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
