@@ -28,13 +28,19 @@
 
 > About Venator Capital
 
-**Company Details**
+| Item             | Details                                     |
+|------------------|---------------------------------------------|
+| **Company Name** | Venator Capital LLC                         |
+| **Headquarters** | 66 Bentencho, Shinjuku-ku, Tokyo, Japan     |
+| **Capital**      | ¥1,000,000                                  |
 
-> **Venator Capital LLC**  
-> **Headquarters:** 66 Bentencho, Shinjuku-ku, Tokyo, Japan  
-> **Capital:** ¥1,000,000  
+Venator Capital LLC is an AI-focused strategic startup specializing in:
+- AI & Machine Learning application development  
+- Data Analytics & Automation  
+- Digital Media & Web Platform solutions  
+- Enterprise AI Integration & Consulting  
 
-Venator Capital LLC is a technology-focused strategic startup specializing in advanced software and application development, digital media and web platform solutions, and enterprise information systems. Our lean and global approach turns cutting-edge innovations into operational excellence.
+Our lean and global approach transforms advanced technologies into operational excellence.
 
 ---
 
