@@ -50,18 +50,18 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
           <button
-            onClick={() => scrollToSection('about')}
-            className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105"
-            aria-label="Navigate to About section"
-          >
-            About
-          </button>
-          <button
             onClick={() => scrollToSection('capabilities')}
             className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105"
             aria-label="Navigate to Capabilities section"
           >
             Capabilities
+          </button>
+          <button
+            onClick={() => scrollToSection('about')}
+            className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105"
+            aria-label="Navigate to About section"
+          >
+            About
           </button>
           <button
             onClick={() => scrollToSection('contact')}
@@ -114,16 +114,16 @@ export default function Navbar() {
         >
           <div className="px-6 py-4 space-y-4">
             <button
-              onClick={() => scrollToSection('about')}
-              className="block text-silver-gray hover:text-white transition-colors"
-            >
-              About
-            </button>
-            <button
               onClick={() => scrollToSection('capabilities')}
               className="block text-silver-gray hover:text-white transition-colors"
             >
               Capabilities
+            </button>
+            <button
+              onClick={() => scrollToSection('about')}
+              className="block text-silver-gray hover:text-white transition-colors"
+            >
+              About
             </button>
             <button
               onClick={() => scrollToSection('contact')}

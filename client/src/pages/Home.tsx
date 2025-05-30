@@ -8,8 +8,8 @@ export default function Home() {
   return (
     <Layout>
       <HeroSection />
-      <AboutSection />
       <CapabilitiesSection />
+      <AboutSection />
       <ContactSection />
     </Layout>
   );

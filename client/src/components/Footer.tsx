@@ -31,16 +31,16 @@ export default function Footer() {
           {/* Footer Navigation */}
           <div className="flex items-center space-x-6">
             <button
-              onClick={() => scrollToSection('about')}
-              className="text-silver-gray hover:text-white transition-colors"
-            >
-              About
-            </button>
-            <button
               onClick={() => scrollToSection('capabilities')}
               className="text-silver-gray hover:text-white transition-colors"
             >
               Capabilities
+            </button>
+            <button
+              onClick={() => scrollToSection('about')}
+              className="text-silver-gray hover:text-white transition-colors"
+            >
+              About
             </button>
             <button
               onClick={() => scrollToSection('contact')}
