@@ -65,7 +65,7 @@ export default function AboutSection() {
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-2">Real Estate Innovation</h3>
-            <p className="text-silver-gray">Licensed 宅建士-led strategic property ventures</p>
+            <p className="text-silver-gray">Licensed Real Estate Specialist-led strategic property ventures</p>
           </motion.div>
           
           <motion.div

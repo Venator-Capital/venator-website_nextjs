@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
-import ProjectGrid from "@/components/ProjectGrid";
+import CapabilitiesSection from "@/components/CapabilitiesSection";
 import ContactSection from "@/components/ContactSection";
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
     <Layout>
       <HeroSection />
       <AboutSection />
-      <ProjectGrid />
+      <CapabilitiesSection />
       <ContactSection />
     </Layout>
   );
