@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 export default function HeroSection() {
+  const [rotate, setRotate] = useState(0);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -8,9 +11,15 @@ export default function HeroSection() {
     }
   };
 
+  const handleMouseMove = ({ clientX }: React.MouseEvent) => {
+    const xRatio = clientX / window.innerWidth;
+    setRotate((xRatio - 0.5) * 20); // -10° to +10°
+  };
+
   return (
     <section
       id="hero"
+      onMouseMove={handleMouseMove}
       className="relative min-h-screen flex items-center justify-center hero-gradient animated-background overflow-hidden"
     >
       {/* Enhanced animated background elements */}
@@ -118,10 +127,12 @@ export default function HeroSection() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <img 
+          <motion.img 
             src="/Cropped_black_logo-removebg-preview.png" 
             alt="Venator Capital Logo"
             className="w-32 h-32 mx-auto mb-6 drop-shadow-2xl"
+            style={{ rotate: `${rotate}deg` }}
+            whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
           />
         </motion.div>
 
@@ -155,10 +166,10 @@ export default function HeroSection() {
           className="flex flex-col sm:flex-row gap-6 justify-center"
         >
           <button
-            onClick={() => scrollToSection('projects')}
+            onClick={() => scrollToSection('capabilities')}
             className="px-10 py-4 bg-white text-black rounded-full font-semibold text-lg hover:bg-accent-blue hover:text-white transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-accent-blue/20"
           >
-            Explore Projects
+            Explore Capabilities
           </button>
           <button
             onClick={() => scrollToSection('contact')}

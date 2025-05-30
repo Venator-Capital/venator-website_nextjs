@@ -1,4 +1,5 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
+import SplashScreen from "./SplashScreen";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -7,7 +8,11 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
-  return (
+  const [showSplash, setShowSplash] = useState(true);
+  
+  return showSplash ? (
+    <SplashScreen onFinish={() => setShowSplash(false)} />
+  ) : (
     <div className="min-h-screen bg-primary-black text-white">
       <Navbar />
       <main>{children}</main>

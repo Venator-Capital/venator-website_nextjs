@@ -37,10 +37,10 @@ export default function Footer() {
               About
             </button>
             <button
-              onClick={() => scrollToSection('projects')}
+              onClick={() => scrollToSection('capabilities')}
               className="text-silver-gray hover:text-white transition-colors"
             >
-              Projects
+              Capabilities
             </button>
             <button
               onClick={() => scrollToSection('contact')}

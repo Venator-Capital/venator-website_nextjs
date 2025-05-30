@@ -54,10 +54,10 @@ export default function Navbar() {
             About
           </button>
           <button
-            onClick={() => scrollToSection('projects')}
+            onClick={() => scrollToSection('capabilities')}
             className="text-silver-gray hover:text-white transition-colors duration-200"
           >
-            Projects
+            Capabilities
           </button>
           <button
             onClick={() => scrollToSection('contact')}
@@ -113,10 +113,10 @@ export default function Navbar() {
               About
             </button>
             <button
-              onClick={() => scrollToSection('projects')}
+              onClick={() => scrollToSection('capabilities')}
               className="block text-silver-gray hover:text-white transition-colors"
             >
-              Projects
+              Capabilities
             </button>
             <button
               onClick={() => scrollToSection('contact')}

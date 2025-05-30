@@ -1,0 +1,221 @@
+Combined Update Instructions for Venator Capital LLC Website
+Path: /Users/soutayamada/Documents/xcode_projects/replit_projects/venator_capital_website/
+
+1. Enforce English-Only Content
+Global rule: All user-facing text (headings, labels, descriptions, badges) must be in English.
+
+Audit:
+
+content_placeholder.md – remove any Japanese (e.g. “(宅建士)”) and replace with English: “(Real Estate Licensed Specialist)” or omit parenthetical entirely.
+
+site_structure.md, component_spec.md, style_guide.md – ensure no Japanese snippets remain.
+
+2. Splash Screen with MP4 Logo Animation
+2.1 Transcode & Generate Fallbacks (pre-deploy)
+bash
+コピーする
+編集する
+# 1) Web-optimized MP4 (baseline profile + faststart)
+ffmpeg -i "client/public/VenatorCapitalLogoMoving (online-video-cutter-negate.mp4)" \
+  -c:v libx264 -profile:v baseline -level 3.0 -pix_fmt yuv420p \
+  -vf "scale=960:-2" \
+  -movflags +faststart \
+  client/public/splash.mp4
+
+# 2) WebM fallback
+ffmpeg -i client/public/splash.mp4 \
+  -c:v libvpx-vp9 -b:v 800k -crf 30 \
+  -vf "scale=960:-2" \
+  -an client/public/splash.webm
+
+# 3) Poster image at 1s
+ffmpeg -i client/public/splash.mp4 -ss 00:00:01 -vframes 1 client/public/splash-poster.png
+2.2 SplashScreen.jsx
+Create /src/components/SplashScreen.jsx:
+
+jsx
+コピーする
+編集する
+import { useEffect } from 'react';
+
+export default function SplashScreen({ onFinish }) {
+  useEffect(() => {
+    const t = setTimeout(onFinish, 3000);
+    return () => clearTimeout(t);
+  }, [onFinish]);
+
+  return (
+    <div className="fixed inset-0 bg-black flex items-center justify-center z-[9999]">
+      <video
+        src="/splash.mp4"
+        poster="/splash-poster.png"
+        preload="auto"
+        autoPlay
+        muted
+        playsInline
+        className="
+          max-w-full
+          w-[480px] sm:w-[640px] md:w-[800px] lg:w-[960px]
+          h-auto object-contain
+        "
+        onEnded={onFinish}
+      >
+        <source src="/splash.webm" type="video/webm" />
+        <source src="/splash.mp4" type="video/mp4" />
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
+  );
+}
+2.3 Integrate into Layout.jsx
+jsx
+コピーする
+編集する
+import { useState } from 'react';
+import SplashScreen from './SplashScreen';
+import Navbar from './Navbar';
+import Footer from './Footer';
+
+export default function Layout({ children }) {
+  const [showSplash, setShowSplash] = useState(true);
+  return showSplash ? (
+    <SplashScreen onFinish={() => setShowSplash(false)} />
+  ) : (
+    <>
+      <Navbar />
+      <main>{children}</main>
+      <Footer />
+    </>
+  );
+}
+2.4 Performance & UX
+Cache: Set Cache-Control: public, max-age=31536000 on /splash.*.
+
+Lazy-load non-critical assets until after splash unmount.
+
+Mobile fallback: if autoplay is blocked, display poster + “Tap to Start” button calling onFinish().
+
+3. Hero Section Logo Hover & Cursor-Follow Animation
+Edit /src/components/HeroSection.jsx:
+
+jsx
+コピーする
+編集する
+import { motion } from 'framer-motion';
+import { useState } from 'react';
+
+export default function HeroSection() {
+  const [rotate, setRotate] = useState(0);
+
+  const handleMouseMove = ({ clientX }) => {
+    const xRatio = clientX / window.innerWidth;
+    setRotate((xRatio - 0.5) * 20); // -10° to +10°
+  };
+
+  return (
+    <section
+      onMouseMove={handleMouseMove}
+      className="relative h-screen flex flex-col items-center justify-center bg-black"
+    >
+      <motion.img
+        src="/Cropped_black_logo-removebg-preview.png"
+        alt="Venator Logo"
+        className="w-32"
+        style={{ rotate: `${rotate}deg` }}
+        whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
+      />
+      {/* ...headline, subtext, CTA buttons... */}
+    </section>
+  );
+}
+whileHover: scale up to 1.1
+
+cursor follow: rotate proportionally
+
+Ensure only English alt/text
+
+4. Replace “Featured Projects” with “Core Capabilities”
+4.1 Update site_structure.md
+Remove any mention of /projects and “Featured Projects”.
+
+Insert new section:
+
+markdown
+コピーする
+編集する
+3. Core Capabilities
+   - A concise showcase of 3 pillars: AI Automation, Real Estate Advisory, Cross-border Strategy
+Navbar: remove “Projects” link; keep only Home, About, Contact (or “Capabilities”).
+
+4.2 Create CapabilitiesSection.jsx
+jsx
+コピーする
+編集する
+export default function CapabilitiesSection() {
+  const items = [
+    {
+      title: 'AI Automation',
+      desc: 'Design and implement intelligent workflows using ChatGPT, Notion, Zapier, and more.',
+      icon: '/icons/ai.svg',
+    },
+    {
+      title: 'Real Estate Advisory',
+      desc: 'Professional real estate strategy and brokerage services.',
+      icon: '/icons/house.svg',
+    },
+    {
+      title: 'Cross-border Strategy',
+      desc: 'Structuring micro-M&A and global investment frameworks.',
+      icon: '/icons/globe.svg',
+    },
+  ];
+
+  return (
+    <section className="py-24 bg-neutral-900 text-white">
+      <h2 className="text-3xl font-semibold text-center mb-12">Core Capabilities</h2>
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        {items.map((item) => (
+          <div
+            key={item.title}
+            className="p-6 bg-black rounded-xl shadow-lg flex flex-col items-center"
+          >
+            <img src={item.icon} alt={`${item.title} icon`} className="w-12 mb-4" />
+            <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+            <p className="text-gray-300 text-center">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+4.3 Remove Project Components
+Delete or comment out imports and usage of ProjectGrid.jsx and ProjectCard.jsx.
+
+Remove related CSS/utilities if unused.
+
+5. Final Checklist
+ All text in .md and components is English only.
+
+ Splash video files (splash.mp4, splash.webm, splash-poster.png) live in /public/.
+
+ SplashScreen.jsx loads, plays, and unmounts reliably.
+
+ Hero logo responds to hover and cursor movement.
+
+ “Core Capabilities” section is in place of “Featured Projects.”
+
+ Navbar reflects updated structure.
+
+ Responsive behavior tested at all breakpoints.
+
+ No residual Japanese text remains.
+
+この指示書に沿って実装すれば、初見ユーザーにも分かりやすく、先進性とプロフェッショナル感にあふれるWebサイトに仕上がります。
+
+
+
+
+
+
+
+
