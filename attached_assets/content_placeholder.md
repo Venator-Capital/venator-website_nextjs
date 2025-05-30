@@ -24,15 +24,17 @@
 
 ## 🔹 About Section
 
-**セクションタイトル**
+**Section Title**
 
 > About Venator Capital
 
-**本文プレースホルダー**
+**Company Details**
 
-> Venator Capital LLC is a Tokyo-based strategy-driven startup operating at the intersection of real estate, automation, and borderless innovation.  
->  
-> Our approach is lean, experimental, and relentlessly global. We build tools, frameworks, and ventures that turn overlooked niches into operational advantages.
+> **Venator Capital LLC**  
+> **Headquarters:** 66 Bentencho, Shinjuku-ku, Tokyo, Japan  
+> **Capital:** ¥1,000,000  
+
+Venator Capital LLC is a technology-focused strategic startup specializing in advanced software and application development, digital media and web platform solutions, and enterprise information systems. Our lean and global approach turns cutting-edge innovations into operational excellence.
 
 ---
 

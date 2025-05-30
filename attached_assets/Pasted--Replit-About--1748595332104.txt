@@ -1,0 +1,165 @@
+以下、今必要な２点を含む詳細な修正指示書です。Replit上の各ファイルに貼り付けて、一切の日本語混入がなく、かつスプラッシュ動画が確実に再生される構造にしてください。
+
+修正指示書：Aboutセクション更新 ＋ スプラッシュ動画再生不具合対応
+プロジェクトルート
+/Users/soutayamada/Documents/xcode_projects/replit_projects/venator_capital_website/
+
+1. Aboutセクションの内容更新
+1.1 対象ファイル
+content_placeholder.md
+
+src/components/AboutSection.jsx（または同等のAboutセクション実装ファイル）
+
+1.2 修正内容
+日本語表記の完全削除
+
+「(宅建士)」など日本語読みをすべて取り除く。
+
+会社情報の置換
+下記のMarkdownブロックに完全に置き換えてください。
+
+markdown
+コピーする
+編集する
+## 🔹 About Section
+
+**Section Title**
+
+> About Venator Capital
+
+**Company Details**
+
+> **Venator Capital LLC**  
+> **Headquarters:** 66 Bentencho, Shinjuku-ku, Tokyo, Japan  
+> **Capital:** ¥1,000,000  
+
+Venator Capital LLC is a technology-focused strategic startup specializing in advanced software and application development, digital media and web platform solutions, and enterprise information systems. Our lean and global approach turns cutting-edge innovations into operational excellence.
+コンポーネント内文言の同期
+
+content_placeholder.md を参照している場合は自動反映されますが、直接テキストをベタ書きしている場合は AboutSection.jsx 内の該当文言を上記と同一に置き換えてください。
+
+2. スプラッシュ動画（MP4）再生不具合修正
+2.1 ファイル名の整理と配置
+client/public/VenatorCapitalLogoMoving (online-video-cutter-negate.mp4)
+→ ファイル名を splash.mp4 にリネーム
+
+同ディレクトリに以下2ファイルを追加（または生成済みならリネーム確認）
+
+splash.webm （WebMフォールバック形式）
+
+splash-poster.png （初期表示用ポスター画像）
+
+ポイント：スペースや括弧はURLエンコーディングのミスを招くので廃止。
+
+2.2 フォールバック生成コマンド（参考）
+bash
+コピーする
+編集する
+# MP4最適化
+ffmpeg -i "client/public/VenatorCapitalLogoMoving (online-video-cutter-negate.mp4)" \
+  -c:v libx264 -profile:v baseline -level 3.0 -pix_fmt yuv420p \
+  -movflags +faststart -vf "scale=960:-2" \
+  client/public/splash.mp4
+
+# WebM生成
+ffmpeg -i client/public/splash.mp4 \
+  -c:v libvpx-vp9 -b:v 800k -crf 30 -vf "scale=960:-2" \
+  client/public/splash.webm
+
+# ポスター画像生成（動画1秒目）
+ffmpeg -i client/public/splash.mp4 -ss 00:00:01 -vframes 1 client/public/splash-poster.png
+2.3 SplashScreen.jsx の実装更新
+ファイル: src/components/SplashScreen.jsx
+
+内容: 下記コードをコピペ、既存の実装と差し替え
+
+jsx
+コピーする
+編集する
+import { useEffect } from 'react';
+
+export default function SplashScreen({ onFinish }) {
+  useEffect(() => {
+    const timer = setTimeout(onFinish, 3000);
+    return () => clearTimeout(timer);
+  }, [onFinish]);
+
+  return (
+    <div className="fixed inset-0 bg-black flex items-center justify-center z-50">
+      <video
+        src="/splash.mp4"
+        poster="/splash-poster.png"
+        preload="auto"
+        autoPlay
+        muted
+        playsInline
+        className="
+          max-w-full
+          w-[480px] sm:w-[640px] md:w-[800px] lg:w-[960px]
+          h-auto object-contain
+        "
+        onEnded={onFinish}
+      >
+        <source src="/splash.webm" type="video/webm" />
+        <source src="/splash.mp4" type="video/mp4" />
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
+  );
+}
+ポイント
+
+autoPlay, muted, playsInline, preload="auto" を必須
+
+object-contain でロゴ全体を表示
+
+onEnded と setTimeout 併用で必ず３秒後にメイン表示へ遷移
+
+2.4 Layout.jsx への組み込み確認
+ファイル: src/components/Layout.jsx
+
+jsx
+コピーする
+編集する
+import { useState } from 'react';
+import SplashScreen from './SplashScreen';
+import Navbar from './Navbar';
+import Footer from './Footer';
+
+export default function Layout({ children }) {
+  const [showSplash, setShowSplash] = useState(true);
+  return showSplash ? (
+    <SplashScreen onFinish={() => setShowSplash(false)} />
+  ) : (
+    <>
+      <Navbar />
+      <main>{children}</main>
+      <Footer />
+    </>
+  );
+}
+動作確認:
+
+ページロード直後に SplashScreen が3秒再生
+
+その後、即座にナビバー＋メインコンテンツへ切り替わる
+
+3. 動作検証 & リリースフロー
+ローカル確認
+
+npm run dev → ブラウザで / を開き、スプラッシュ再生を確認
+
+iOS Safari / Chrome / Firefox での自動再生テスト
+
+ビルド & 公開
+
+Replit上で「Run」→「Webview」で同様に動作
+
+カスタムドメイン設定後も問題なし
+
+キャッシュ設定
+
+/public/splash.* に対して Cache-Control: public, max-age=31536000 を設定
+
+以上、About セクションの完全更新とスプラッシュ動画再生構造の再構築の指示です。
+必ずひとつずつコードとMDを修正し、動作・表示崩れがないか厳密にチェックしてください。

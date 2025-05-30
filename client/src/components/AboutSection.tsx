@@ -36,18 +36,28 @@ export default function AboutSection() {
           About <span className="text-accent-blue">Venator Capital</span>
         </motion.h2>
         
-        <motion.p
+        <motion.div
           variants={itemVariants}
-          className="text-xl md:text-2xl text-white/90 leading-relaxed mb-10"
+          className="mb-8"
         >
-          Venator Capital LLC is a <span className="text-accent-gold font-semibold">Tokyo-based strategy-driven startup</span> operating at the intersection of real estate, automation, and borderless innovation.
-        </motion.p>
+          <div className="text-xl md:text-2xl text-accent-blue font-semibold mb-4">
+            Venator Capital LLC
+          </div>
+          <div className="text-lg text-white/90 mb-2">
+            <strong>Headquarters:</strong> 66 Bentencho, Shinjuku-ku, Tokyo, Japan
+          </div>
+          <div className="text-lg text-white/90 mb-8">
+            <strong>Capital:</strong> ¥1,000,000
+          </div>
+        </motion.div>
         
         <motion.p
           variants={itemVariants}
           className="text-xl md:text-2xl text-white/80 leading-relaxed"
         >
-          Our approach is lean, experimental, and relentlessly global. We build tools, frameworks, and ventures that <span className="text-accent-blue font-semibold">turn overlooked niches into operational advantages</span>.
+          Venator Capital LLC is a technology-focused strategic startup specializing in advanced software 
+          and application development, digital media and web platform solutions, and enterprise information systems. 
+          Our lean and global approach turns cutting-edge innovations into operational excellence.
         </motion.p>
 
         {/* Domain Focus */}
@@ -65,7 +75,7 @@ export default function AboutSection() {
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-2">Real Estate Innovation</h3>
-            <p className="text-silver-gray">Licensed Real Estate Specialist-led strategic property ventures</p>
+            <p className="text-silver-gray">Licensed specialist-led strategic property ventures</p>
           </motion.div>
           
           <motion.div
