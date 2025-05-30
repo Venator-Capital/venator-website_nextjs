@@ -20,91 +20,68 @@ export default function AboutSection() {
     },
   };
 
-  return (
-    <section id="about" className="py-24 md:py-32 bg-deep-charcoal">
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="max-w-4xl mx-auto px-6 text-center"
-      >
-        <motion.h2
-          variants={itemVariants}
-          className="text-4xl md:text-6xl font-bold mb-12"
-        >
-          About <span className="text-accent-blue">Venator Capital</span>
-        </motion.h2>
-        
-        <motion.div
-          variants={itemVariants}
-          className="mb-8"
-        >
-          <div className="text-xl md:text-2xl text-accent-blue font-semibold mb-4">
-            Venator Capital LLC
-          </div>
-          <div className="text-lg text-white/90 mb-2">
-            <strong>Headquarters:</strong> 66 Bentencho, Shinjuku-ku, Tokyo, Japan
-          </div>
-          <div className="text-lg text-white/90 mb-8">
-            <strong>Capital:</strong> ¥1,000,000
-          </div>
-        </motion.div>
-        
-        <motion.p
-          variants={itemVariants}
-          className="text-xl md:text-2xl text-white/80 leading-relaxed"
-        >
-          Venator Capital LLC is a technology-focused strategic startup specializing in advanced software 
-          and application development, digital media and web platform solutions, and enterprise information systems. 
-          Our lean and global approach turns cutting-edge innovations into operational excellence.
-        </motion.p>
+  const companyData = [
+    ['Company Name', 'Venator Capital LLC'],
+    ['Headquarters', '66 Bentencho, Shinjuku-ku, Tokyo, Japan'],
+    ['Capital', '¥1,000,000'],
+  ];
 
-        {/* Domain Focus */}
+  return (
+    <section id="about" className="py-24 md:py-32 bg-primary-black">
+      <div className="max-w-4xl mx-auto px-6">
         <motion.div
           variants={containerVariants}
-          className="grid md:grid-cols-3 gap-8 mt-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-center"
         >
+          <motion.h2
+            variants={itemVariants}
+            className="text-4xl md:text-6xl font-bold mb-12"
+          >
+            About <span className="text-accent-gold">Venator Capital</span>
+          </motion.h2>
+          
           <motion.div
             variants={itemVariants}
-            className="p-6 project-card rounded-xl"
+            className="mb-12"
           >
-            <div className="w-12 h-12 bg-accent-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-6 h-6 text-accent-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Real Estate Innovation</h3>
-            <p className="text-silver-gray">Licensed specialist-led strategic property ventures</p>
+            <table className="w-full table-auto border-collapse border border-gray-700 mb-8">
+              <tbody>
+                {companyData.map(([label, value]) => (
+                  <tr key={label} className="border border-gray-700">
+                    <th className="px-6 py-4 text-left font-medium bg-deep-charcoal text-white border-r border-gray-700">
+                      {label}
+                    </th>
+                    <td className="px-6 py-4 bg-primary-black text-white">
+                      {value}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </motion.div>
           
           <motion.div
             variants={itemVariants}
-            className="p-6 project-card rounded-xl"
+            className="text-left"
           >
-            <div className="w-12 h-12 bg-accent-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-6 h-6 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">AI-Powered SaaS</h3>
-            <p className="text-silver-gray">Automation workflows for remote teams</p>
-          </motion.div>
-          
-          <motion.div
-            variants={itemVariants}
-            className="p-6 project-card rounded-xl"
-          >
-            <div className="w-12 h-12 bg-accent-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-6 h-6 text-accent-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Cross-Border Investments</h3>
-            <p className="text-silver-gray">Strategic micro-M&A and partnerships</p>
+            <p className="text-xl text-white/90 mb-6">
+              Venator Capital LLC is an AI-focused strategic startup specializing in:
+            </p>
+            <ul className="list-disc list-inside space-y-3 text-lg text-white/80 mb-8">
+              <li>AI & Machine Learning application development</li>
+              <li>Data Analytics & Automation</li>
+              <li>Digital Media & Web Platform solutions</li>
+              <li>Enterprise AI Integration & Consulting</li>
+            </ul>
+            <p className="text-xl text-white/90">
+              Our lean and global approach transforms advanced technologies into operational excellence.
+            </p>
           </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }

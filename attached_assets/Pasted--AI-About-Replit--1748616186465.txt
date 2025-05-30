@@ -1,0 +1,214 @@
+以下、AI特化サイトへの全面ピボットとAboutセクションに表形式で会社概要を表示する修正指示を１つにまとめた「修正指示書」です。Replit 上のすべての該当ファイルを次のとおり更新してください。
+
+修正指示書：AI特化＆Aboutセクション表形式化
+プロジェクトルート
+
+swift
+コピーする
+編集する
+/Users/soutayamada/Documents/xcode_projects/replit_projects/venator_capital_website/
+1. 不動産関連の完全削除
+全ファイル（.md / .jsx / .html）から以下ワードを検索＆削除または差し替え：
+
+mathematica
+コピーする
+編集する
+Real Estate, Brokerage, M&A, Property, 宅建, 不動産
+代わりに「AI」「Machine Learning」などのキーワードで統一。
+
+2. Hero Section：AIフォーカスに更新
+ファイル
+src/components/HeroSection.jsx
+
+修正内容
+Headline を次のいずれかに更新
+
+jsx
+コピーする
+編集する
+<h1>Turning AI Into Advantage</h1>
+// または
+<h1>Empowering Business Through AI</h1>
+Subtext
+
+jsx
+コピーする
+編集する
+<p>We architect cutting-edge AI solutions — from machine learning applications to automation frameworks.</p>
+CTA Buttons
+
+jsx
+コピーする
+編集する
+<button>Discover Our AI Solutions</button>
+<button>Contact Our Team</button>
+3. About Section：表形式で会社概要を表示
+3.1 content_placeholder.md の置換
+markdown
+コピーする
+編集する
+## 🔹 About Section
+
+**Section Title**
+
+> About Venator Capital
+
+| Item             | Details                                     |
+|------------------|---------------------------------------------|
+| **Company Name** | Venator Capital LLC                         |
+| **Headquarters** | 66 Bentencho, Shinjuku-ku, Tokyo, Japan     |
+| **Capital**      | ¥1,000,000                                  |
+
+Venator Capital LLC is an AI-focused strategic startup specializing in:
+- AI & Machine Learning application development  
+- Data Analytics & Automation  
+- Digital Media & Web Platform solutions  
+- Enterprise AI Integration & Consulting  
+
+Our lean and global approach transforms advanced technologies into operational excellence.
+3.2 AboutSection.jsx の更新
+jsx
+コピーする
+編集する
+export default function AboutSection() {
+  return (
+    <section className="py-24 bg-black text-white">
+      <div className="max-w-3xl mx-auto">
+        <h2 className="text-3xl font-semibold mb-8">About Venator Capital</h2>
+        <table className="w-full table-auto mb-8 border-collapse border border-gray-700">
+          <tbody>
+            {[
+              ['Company Name', 'Venator Capital LLC'],
+              ['Headquarters', '66 Bentencho, Shinjuku-ku, Tokyo, Japan'],
+              ['Capital', '¥1,000,000'],
+            ].map(([label, value]) => (
+              <tr key={label} className="border border-gray-700">
+                <th className="px-4 py-2 text-left font-medium bg-gray-900">{label}</th>
+                <td className="px-4 py-2 bg-black">{value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p className="mb-4">
+          Venator Capital LLC is an AI-focused strategic startup specializing in:
+        </p>
+        <ul className="list-disc list-inside space-y-2 text-gray-300 mb-6">
+          <li>AI &amp; Machine Learning application development</li>
+          <li>Data Analytics &amp; Automation</li>
+          <li>Digital Media &amp; Web Platform solutions</li>
+          <li>Enterprise AI Integration &amp; Consulting</li>
+        </ul>
+        <p>
+          Our lean and global approach transforms advanced technologies into operational excellence.
+        </p>
+      </div>
+    </section>
+  );
+}
+4. Core Capabilities Section：AI用項目に再構築
+4.1 site_structure.md の更新
+markdown
+コピーする
+編集する
+3. Core Capabilities
+   - AI & Machine Learning Solutions
+   - Data Analytics & Automation
+   - Digital Media & Web Platforms
+   - Enterprise AI Integration & Consulting
+4.2 CapabilitiesSection.jsx の更新
+jsx
+コピーする
+編集する
+export default function CapabilitiesSection() {
+  const items = [
+    {
+      title: 'AI & Machine Learning Solutions',
+      desc: 'Design, develop, and deploy custom AI/ML applications tailored to your business needs.',
+      icon: '/icons/ai.svg',
+    },
+    {
+      title: 'Data Analytics & Automation',
+      desc: 'Collect, analyze, and automate data workflows using advanced analytics and AI-driven processes.',
+      icon: '/icons/data-analytics.svg',
+    },
+    {
+      title: 'Digital Media & Web Platforms',
+      desc: 'Create and manage scalable web and media platforms enhanced with AI functionalities.',
+      icon: '/icons/web-platform.svg',
+    },
+    {
+      title: 'Enterprise AI Integration & Consulting',
+      desc: 'Architect and implement enterprise-grade AI systems, and provide strategic consulting.',
+      icon: '/icons/enterprise-ai.svg',
+    },
+  ];
+
+  return (
+    <section className="py-24 bg-neutral-900 text-white">
+      <h2 className="text-3xl font-semibold text-center mb-12">Core Capabilities</h2>
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+        {items.map((item) => (
+          <div
+            key={item.title}
+            className="p-6 bg-black rounded-xl shadow-lg flex flex-col items-center text-center"
+          >
+            <img src={item.icon} alt={`${item.title} icon`} className="w-12 mb-4" />
+            <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+            <p className="text-gray-300">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+5. Services Section：IT／AI関連に更新
+content_placeholder.md から
+markdown
+コピーする
+編集する
+## 🔹 Services Section
+
+**AI & ML Application Development**  
+Planning, development, production, distribution, maintenance, and support of software and applications leveraging machine learning, artificial intelligence, and blockchain.
+
+**Internet & Telecom Data Services**  
+Provision, collection, analysis, and management of data using Internet and telecommunications technologies, including related R&D.
+
+**Digital Media & Web Platforms**  
+Planning, production, deployment, and management of e-commerce sites and web platforms, plus voice/video production.
+
+**Enterprise AI Systems & Consulting**  
+Design, construction, and outsourcing support of enterprise information systems, with strategic AI integration consulting.
+6. Navbar：リンク構成の更新
+Navbar.jsx
+ナビを次の５つに固定：
+
+nginx
+コピーする
+編集する
+Home / About / Services / Capabilities / Contact
+不要な「Projects」「Real Estate」リンクを完全削除。
+
+7. 全文英語化チェック
+grep で以下パターン検索し、日本語や不要ワードを完全削除：
+
+perl
+コピーする
+編集する
+grep -R '不動産\|宅建\|合同会社'
+content_placeholder.md などのすべての.mdも英語のみ。
+
+8. ビルド＆動作確認
+npm run dev でローカル動作確認
+
+Hero 〜 About 〜 Capabilities 〜 Services 〜 Contact の順に
+
+表示崩れ・文字抜けなし
+
+レスポンシブ（sm/md/lg）OK
+
+Lighthouse Mobile 90+/Desktop 95+ 確保
+
+Chrome, Safari, Firefox で動作テスト
+
+この指示書に100%従って実装し、すべての箇所がAI特化サイトとして一貫・高品質に仕上がっていることを確認のうえ、再度ご報告ください。

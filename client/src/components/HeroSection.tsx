@@ -152,7 +152,7 @@ export default function HeroSection() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-5xl md:text-7xl font-bold mb-8 leading-tight hero-text-shadow"
         >
-          Venator Capital LLC – Visionary AI & Real Estate
+          Turning AI Into Advantage
         </motion.h1>
 
         {/* Subheadline */}
@@ -162,9 +162,7 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-xl md:text-2xl text-white/80 mb-12 leading-relaxed max-w-3xl mx-auto"
         >
-          We create intelligent infrastructure for bold ideas.
-          <br />
-          <span className="text-accent-blue">From AI workflows to real estate innovation</span> — this is where ideas go operational.
+          We architect cutting-edge AI solutions — from machine learning applications to automation frameworks.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -178,17 +176,17 @@ export default function HeroSection() {
             onClick={() => scrollToSection('capabilities')}
             className="px-10 py-4 bg-white text-black rounded-full font-semibold text-lg hover:bg-accent-blue hover:text-white transition-all duration-200 transform hover:scale-105 hover:shadow-lg shadow-2xl hover:shadow-accent-blue/20"
             whileTap={{ scale: 0.95 }}
-            aria-label="Discover our capabilities"
+            aria-label="Discover our AI solutions"
           >
-            Discover Our Capabilities
+            Discover Our AI Solutions
           </motion.button>
           <motion.button
             onClick={() => scrollToSection('contact')}
             className="px-10 py-4 border-2 border-accent-gold text-accent-gold rounded-full font-semibold text-lg hover:bg-accent-gold hover:text-black transition-all duration-200 transform hover:scale-105 hover:shadow-lg shadow-2xl hover:shadow-accent-gold/20"
             whileTap={{ scale: 0.95 }}
-            aria-label="Contact us"
+            aria-label="Contact our team"
           >
-            Contact Us
+            Contact Our Team
           </motion.button>
         </motion.div>
       </div>

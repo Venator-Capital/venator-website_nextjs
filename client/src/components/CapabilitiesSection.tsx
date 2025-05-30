@@ -3,19 +3,24 @@ import { motion } from "framer-motion";
 export default function CapabilitiesSection() {
   const capabilities = [
     {
-      title: 'AI Automation',
-      description: 'Design and implement intelligent workflows using ChatGPT, Notion, Zapier, and more.',
+      title: 'AI & Machine Learning Solutions',
+      description: 'Design, develop, and deploy custom AI/ML applications tailored to your business needs.',
       icon: '🤖',
     },
     {
-      title: 'Real Estate Advisory',
-      description: 'Professional real estate strategy and brokerage services with licensed expertise.',
-      icon: '🏢',
+      title: 'Data Analytics & Automation',
+      description: 'Collect, analyze, and automate data workflows using advanced analytics and AI-driven processes.',
+      icon: '📊',
     },
     {
-      title: 'Cross-border Strategy',
-      description: 'Structuring micro-M&A and global investment frameworks for international expansion.',
-      icon: '🌏',
+      title: 'Digital Media & Web Platforms',
+      description: 'Create and manage scalable web and media platforms enhanced with AI functionalities.',
+      icon: '💻',
+    },
+    {
+      title: 'Enterprise AI Integration & Consulting',
+      description: 'Architect and implement enterprise-grade AI systems, and provide strategic consulting.',
+      icon: '🏗️',
     },
   ];
 
@@ -52,7 +57,7 @@ export default function CapabilitiesSection() {
             Core <span className="text-accent-gold">Capabilities</span>
           </h2>
           <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto">
-            Three strategic pillars that drive our <span className="text-accent-blue">operational excellence</span>
+            Four AI-focused domains that drive our <span className="text-accent-blue">technological excellence</span>
           </p>
         </motion.div>
 
@@ -61,7 +66,7 @@ export default function CapabilitiesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {capabilities.map((capability, index) => (
             <motion.div
