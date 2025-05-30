@@ -21,7 +21,7 @@ export default function Footer() {
           {/* Logo and Copyright */}
           <div className="flex items-center space-x-4 mb-4 md:mb-0">
             <img 
-              src="/Cropped_Image.png" 
+              src="/Cropped_black_logo-removebg-preview.png" 
               alt="Venator Capital Logo"
               className="w-10 h-10"
             />

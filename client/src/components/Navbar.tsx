@@ -38,7 +38,7 @@ export default function Navbar() {
           className="flex items-center space-x-3 hover:opacity-80 transition-all duration-300"
         >
           <img 
-            src="/Cropped_Image.png" 
+            src="/Cropped_black_logo-removebg-preview.png" 
             alt="Venator Capital Logo"
             className="w-10 h-10"
           />
