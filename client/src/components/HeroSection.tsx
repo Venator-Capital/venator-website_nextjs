@@ -1,8 +1,7 @@
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion, useAnimation } from "framer-motion";
 
 export default function HeroSection() {
-  const [rotate, setRotate] = useState(0);
+  const controls = useAnimation();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -13,13 +12,18 @@ export default function HeroSection() {
 
   const handleMouseMove = ({ clientX }: React.MouseEvent) => {
     const xRatio = clientX / window.innerWidth;
-    setRotate((xRatio - 0.5) * 20); // -10° to +10°
+    const angle = (xRatio - 0.5) * 10; // -5° to +5°
+    controls.start({ rotate: angle });
+  };
+
+  const handleMouseLeave = () => {
+    controls.start({ rotate: 0 });
   };
 
   return (
     <section
       id="hero"
-      onMouseMove={handleMouseMove}
+      role="banner"
       className="relative min-h-screen flex items-center justify-center hero-gradient animated-background overflow-hidden"
     >
       {/* Enhanced animated background elements */}
@@ -126,13 +130,18 @@ export default function HeroSection() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
           className="mb-12"
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          onHoverStart={() => controls.set({ rotate: 0 })}
         >
           <motion.img 
             src="/Cropped_black_logo-removebg-preview.png" 
             alt="Venator Capital Logo"
-            className="w-32 h-32 mx-auto mb-6 drop-shadow-2xl"
-            style={{ rotate: `${rotate}deg` }}
-            whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
+            className="w-64 h-64 mx-auto mb-6 drop-shadow-2xl"
+            animate={controls}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
           />
         </motion.div>
 
@@ -140,10 +149,10 @@ export default function HeroSection() {
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
           className="text-5xl md:text-7xl font-bold mb-8 leading-tight hero-text-shadow"
         >
-          Turning <span className="text-accent-blue">Niche</span> Into <span className="text-accent-gold animate-pulse-glow">Core</span>
+          Venator Capital LLC – Visionary AI & Real Estate
         </motion.h1>
 
         {/* Subheadline */}

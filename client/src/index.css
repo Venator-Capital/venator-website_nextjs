@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,8 +9,8 @@
   --primary-black: 0 0% 0%;
   --deep-charcoal: 0 0% 6.7%;
   --silver-gray: 0 0% 80%;
-  --accent-blue: 214 88% 58%;
-  --accent-gold: 50 100% 50%;
+  --accent-blue: 214 88% 65%;
+  --accent-gold: 45 93% 65%;
   
   /* Base colors */
   --background: var(--primary-black);
