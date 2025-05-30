@@ -39,7 +39,7 @@ export default function CapabilitiesSection() {
   };
 
   return (
-    <section id="capabilities" className="py-24 md:py-32 bg-deep-charcoal">
+    <section id="capabilities" role="main" className="py-24 md:py-32 bg-deep-charcoal">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

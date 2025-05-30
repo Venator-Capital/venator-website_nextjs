@@ -174,18 +174,22 @@ export default function HeroSection() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-6 justify-center"
         >
-          <button
+          <motion.button
             onClick={() => scrollToSection('capabilities')}
-            className="px-10 py-4 bg-white text-black rounded-full font-semibold text-lg hover:bg-accent-blue hover:text-white transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-accent-blue/20"
+            className="px-10 py-4 bg-white text-black rounded-full font-semibold text-lg hover:bg-accent-blue hover:text-white transition-all duration-200 transform hover:scale-105 hover:shadow-lg shadow-2xl hover:shadow-accent-blue/20"
+            whileTap={{ scale: 0.95 }}
+            aria-label="Discover our capabilities"
           >
-            Explore Capabilities
-          </button>
-          <button
+            Discover Our Capabilities
+          </motion.button>
+          <motion.button
             onClick={() => scrollToSection('contact')}
-            className="px-10 py-4 border-2 border-accent-gold text-accent-gold rounded-full font-semibold text-lg hover:bg-accent-gold hover:text-black transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-accent-gold/20"
+            className="px-10 py-4 border-2 border-accent-gold text-accent-gold rounded-full font-semibold text-lg hover:bg-accent-gold hover:text-black transition-all duration-200 transform hover:scale-105 hover:shadow-lg shadow-2xl hover:shadow-accent-gold/20"
+            whileTap={{ scale: 0.95 }}
+            aria-label="Contact us"
           >
-            Get in Touch
-          </button>
+            Contact Us
+          </motion.button>
         </motion.div>
       </div>
 
