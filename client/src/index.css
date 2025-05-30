@@ -42,7 +42,28 @@
 
   body {
     @apply font-sans antialiased bg-black text-white;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Typography Standards - WCAG AA Compliant */
+  h1 {
+    @apply text-5xl font-bold leading-tight; /* 48px, 700 */
+  }
+  
+  h2 {
+    @apply text-4xl font-semibold leading-tight; /* 36px, 600 */
+  }
+  
+  h3 {
+    @apply text-2xl font-semibold; /* 24px, 600 */
+  }
+  
+  p {
+    @apply text-base font-normal; /* 16px, 400 */
+  }
+  
+  .subtext {
+    @apply text-sm font-light; /* 14px, 300 */
   }
   
   html {

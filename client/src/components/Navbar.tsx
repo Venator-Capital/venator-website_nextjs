@@ -27,7 +27,9 @@ export default function Navbar() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 ${
+      role="navigation"
+      aria-label="Main navigation"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-100 py-4 ${
         isScrolled ? 'navbar-blur' : ''
       }`}
     >
@@ -49,19 +51,22 @@ export default function Navbar() {
         <div className="hidden md:flex items-center space-x-8">
           <button
             onClick={() => scrollToSection('about')}
-            className="text-silver-gray hover:text-white transition-colors duration-200"
+            className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105"
+            aria-label="Navigate to About section"
           >
             About
           </button>
           <button
             onClick={() => scrollToSection('capabilities')}
-            className="text-silver-gray hover:text-white transition-colors duration-200"
+            className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105"
+            aria-label="Navigate to Capabilities section"
           >
             Capabilities
           </button>
           <button
             onClick={() => scrollToSection('contact')}
-            className="text-silver-gray hover:text-white transition-colors duration-200"
+            className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105"
+            aria-label="Navigate to Contact section"
           >
             Contact
           </button>
@@ -71,6 +76,8 @@ export default function Navbar() {
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="md:hidden text-white focus:outline-none"
+          aria-label="Toggle mobile menu"
+          aria-expanded={isMobileMenuOpen}
         >
           <svg
             className="w-6 h-6"
