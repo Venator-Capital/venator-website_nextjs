@@ -24,7 +24,6 @@ export default function AboutSection() {
     { label: "Company Name", value: "Venator Capital LLC" },
     { label: "Head Office", value: "66 Bentencho, Shinjuku-ku, Tokyo, Japan" },
     { label: "Capital", value: "¥1,000,000" },
-    { label: "Founded", value: "2024" },
     { label: "Clients Served", value: "100+ (Corporate & Individual)" },
     { label: "Core Focus", value: "AI & Automation Solutions" }
   ];
