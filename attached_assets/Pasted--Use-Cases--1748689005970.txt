@@ -1,0 +1,599 @@
+以下では、「Use Cases（実績紹介）」を“数を絞って質を高く見せる”ために、以下のような５つの“柱（主要サービス／ユースケース）”に集約することを提案します。
+各柱ごとに、タイトル・簡潔な紹介文・想定されるアウトプット（スクリーンショット例や動画例）をセットで示しますので、この５つにフォーカスしてデータ構造やページのコンテンツを再構成してください。
+
+1. Custom AI System Design（独自AIシステム設計・構築）
+■ 概要
+企業固有の課題（例：在庫最適化、製造ライン不良検知、与信スコアリングなど）を解決するために、
+要件定義 → データ収集 → モデル選定・設計 → プロトタイプ実装 → 本番環境リリース までを一気通貫で行うサービスです。
+
+単なる「PoC（概念実証）」にとどまらず、実際に動く高精度モデルとその周辺インフラ（APIサーバー、ダッシュボード、バッチ処理など）までを設計・開発します。
+
+■ 想定アウトプット例
+ダッシュボード画面のスクリーンショット
+
+例：
+
+「在庫最適化ダッシュボード」（予測結果グラフ + リアルタイム更新）
+
+「不良検知アラート画面」（製品画像のサムネイル × アラートマーク + 検知確度）
+
+Figma で作成した高解像度モックアップを、“あたかも本番稼働中の画面”に見せる。
+
+システムアーキテクチャ図（SVG or PNG）
+
+「データ取得 → 前処理 → モデル推論 → 戻り値配信 → ダッシュボード更新」の流れを一枚で示した図。
+
+AWS ／ GCP ／ Azure など実際に使うクラウドサービスをアイコン付きで配置し、技術選定の根拠がひと目でわかるようにする。
+
+短尺デモ動画（MP4 or WebM）
+
+30～45 秒程度で、下記のような流れを画面収録＋テロップで見せる：
+
+「要件ヒアリング → モデル設計 → プロトタイプ開発」の概要（音声ナレーション or キャプション）
+
+Figmaモックで描いたダッシュボードを操作し、リアルタイムで推論結果が反映される様子
+
+バッチワークフローでモデルを定期再トレーニングし、結果が自動更新されるシーン
+
+「Client: Example Corp.」「Outcome: 予測精度 92% → 97%」「ROI 1.3 倍」などの成果スライド
+
+2. AI Integration into Legacy Systems（既存システムへのAI組み込み）
+■ 概要
+既に運用中の社内システム（ERP, CRM, 在庫管理, 顧客管理など）に対して、後付けでAIモデルを組み込むサービスです。
+
+例えば、
+
+既存の受注システムに「需要予測モデル」を紐づけて自動発注をトリガー
+
+既存の製造管理システムに「不良品検知AI」を連携し、ライン停止・再稼働制御を自動化
+
+既存のCRM に「顧客解約予測モデル (Churn Prediction)」を組み込み、営業部門にSlack通知する
+
+複数のレガシーAPI (SOAP または REST) / DB（オンプレ/PostgreSQL/Oracle）を橋渡ししながら、AIを後付けで“継ぎ足す”アーキテクチャを設計・実装します。
+
+■ 想定アウトプット例
+レガシー連携フロー図（SVG）
+
+左側に「既存 ERP (オンプレ)」「既存 CRM（クラウド）」を配置し、
+
+右側に「AI推論マイクロサービス (FastAPI など)」「メッセージングキュー (Kafka / RabbitMQ)」「Slack 通知」などを配置したシステム図。
+
+矢印で「データ取得 (API or DB 接続) → モデル推論 → 戻り値 REST API 返却 → 既存画面に反映 or 通知」という流れを示す。
+
+UIモックアップのBefore/After スクリーンショット
+
+例：
+
+Before: 既存の販売管理画面（手入力での発注数表示のみ）
+
+After: 新たに追加された「AI推奨発注数」フィールド + 「推奨理由 (グラフ)」ポップアップ
+
+Figma で「既存システムっぽい画面」を再現し、左が旧画面、右がAI機能組み込み後画面という形式で並べる。
+
+n8n または Zapier を使った自動化ワークフロー動画
+
+例：
+
+「定期バッチで Oracle DB から売上データを取得」
+
+取得データを AI モデルに送信し、予測結果を受け取る（Python スクリプト or FastAPI 呼び出し）
+
+予測結果を既存 CRM の “Churn Risk” フィールドに自動登録し、
+
+人事システムに対してSlack通知を行う流れ
+
+これを 30 秒ほどで収録し、「AI 組み込みでレガシーを進化させる方法」を直感的に見せる。
+
+3. AI-Driven Automated Workflows（AI駆動型業務自動化／RPA連携）
+■ 概要
+単純ルールだけではなく、AIによる推論結果に応じて分岐・判断を行う自動化ワークフローを作成し、
+RPA やノーコードツール（n8n / Zapier / Make）を使って「人手が介在していた作業」を一気に半自動化・全自動化します。
+
+代表的なユースケース例：
+
+Web 上のニュース記事をクロール → NLP モデルでトピック分類 → カテゴリごとに Slack 通知 or Google Sheets 連携
+
+顧客からの問い合わせメールを Gmail API で取得 → AI チャットボットに要約＋返信文生成 → 自動ドラフト送信 or 担当者アラート
+
+IoT センサーのアラートデータを取得 → 画像分類モデルで「異常有無」を判定 → しきい値超過で PagerDuty 呼び出し＋メール
+
+■ 想定アウトプット例
+n8n ワークフローダイアグラム（SVG or PNG）
+
+ノード間を結ぶ矢印で「データ取得 → AI推論 → フィルタリング → メール送信 / Slack 通知」を可視化。
+
+各ノードにアイコン＋“What it does” を英語で記載。
+
+ワークフロー実行のデモ動画（MP4）
+
+30 秒程度で、
+
+「トリガー（Webhook or CRON）」が動いている状態をキャプチャ
+
+AI ノードを実行し、モデルが動く様子を録画（モデルの推論確率などが見える）
+
+最終的に「Slack に自動通知が飛ぶ」様子 or 「Google Sheets が更新される」様子を見せる。
+
+Before/After 図解
+
+Before: 手動でニュースサイトをチェックし、手作業でExcelにまとめ、メール送信していたフロー
+
+After: n8n + AI で「完全自動化 → Slack 通知 or Google Sheets アップデート」のフローに進化
+
+矢印とテキストのみで構成したシンプルな一枚図を用意し、サービス概要ページにも掲載。
+
+4. Predictive Analytics & Forecasting（予測分析・需要予測ソリューション）
+■ 概要
+過去のデータ (売上・生産・顧客行動・在庫) をもとに、時系列モデル（LSTM / Prophet / ARIMA / XGBoost など） を構築し、
+将来の数値（売上予測・設備故障予知・人流予測など）を提示することで、企業の意思決定を支援するサービスです。
+
+たとえば、
+
+小売店舗の週次販売量予測 → 最適発注数の自動算出
+
+製造機械のセンサーデータを使った故障予知 → メンテナンスのタイミング通知
+
+Web サイトのユーザー行動データをもとにしたアクセス予測 → 広告配分最適化
+
+■ 想定アウトプット例
+予測モデルアーキテクチャ図（SVG/PNG）
+
+「データ収集 (CSV/DB) → 前処理 (Pandas) → 特徴量エンジニアリング → モデル学習 → 推論 → 可視化 (BI Dashboard)」
+
+使う技術スタック（Python, TensorFlow, Prophet, AWS SageMaker, Tableau など）をアイコン付きで示す。
+
+BI ダッシュボードスクリーンショット or モックアップ
+
+例：Tableau や Power BI 風の折れ線グラフで「過去実績 vs 予測値」を比較表示した画面。
+
+予測結果をマウスオーバーすると「誤差」や「信頼区間」が表示されるモックアップを 1 枚用意。
+
+短尺予測デモ動画（MP4）
+
+30～45 秒程度で、
+
+過去データを読み込む
+
+モデルを実行し、その推論結果がグラフに自動レンダリングされる
+
+BIダッシュボードで「フィルタ (地域/月)」を切り替えると予測グラフが動く
+
+キャプションや吹き出しで「Forecasting accuracy: 95%」「MSE: 0.02」などの数値を動的に追記。
+
+5. MLOps & Model Deployment (AIインフラ構築・MLOps)
+■ 概要
+モデルを「作って終わり」ではなく、本番環境で安全かつスケーラブルに運用する仕組み（MLOps パイプライン）を構築するサービスです。
+
+典型的な流れ：
+
+コード管理 (GitHub/GitLab でモデル & 前処理スクリプトを管理)
+
+CI/CD (GitHub Actions / GitLab CI でテスト → Docker Image ビルド → コンテナレジストリへプッシュ)
+
+コンテナ化 (Docker + Kubernetes / EKS / GKE / AKS)
+
+オーケストレーション (Argo CD / Helm / Terraform などでインフラをコード化)
+
+モニタリング & ロギング (Prometheus / Grafana / ELK Stack でパフォーマンス監視/ログ分析)
+
+モデル再学習 (定期バッチ or イベントドリブンで、最新データを使って再学習 → ベータ検証 → 本番ロールアウト)
+
+■ 想定アウトプット例
+MLOps ストリームライン図（SVG）
+
+上流 (Data Ingestion) → モデル学習 → テスト → イメージビルド → 本番デプロイ → モニタリング → 再学習 の一連のフローを一枚の図に。
+
+「GitHub → GitHub Actions → Docker Hub → EKS → Argo CD → Prometheus → Grafana → Slack 通知」といった技術をアイコンで示すと説得力が増す。
+
+デプロイパイプラインの画面キャプチャ / モックアップ
+
+GitHub Actions のワークフロー画面で「Passed ✅」の緑色バッジが付いている様子。
+
+Kubernetes Dashboard 上で「Pod が稼働中」かつ「ReplicaSet が 3 インスタンスにスケール」している画面イメージ。
+
+Grafana のダッシュボードで、API レイテンシ / CPU 使用率 / メモリ使用率がリアルタイムに可視化されているグラフ。
+
+短尺デモ動画（MP4）
+
+30 秒ほどで、
+
+GitHub へ新しいコードを Push →
+
+GitHub Actions が自動でテスト → Docker Image ビルド →
+
+イメージが EKS にデプロイされる（kubectl logs / kubectl get pods 画面） →
+
+Grafana でトラフィックが増えた瞬間に Pod がオートスケールする様子
+
+テロップや吹き出しで「CI/CD → 自動デプロイ → オートスケーリング → モニタリング」の流れを説明。
+
+「５つの柱」を中心にしたデータ構造の再編成
+先ほど例示した 20 件分の usecasesData.js を 以下のように大きく書き換えてください。
+「それぞれの柱に対応した 1 件ずつのユースケースデータ」を定義し、項目数を ５ に絞ります。実際に運用可能な物量感であれば、「各柱につき 1 ～ 2 件のユースケース」を見せても OK ですが、最低限「柱ごとの代表的なサンプル」を 1 件ずつは用意しましょう。
+
+js
+コピーする
+編集する
+// /client/src/data/usecasesData.js
+
+const useCases = [
+  {
+    id: "custom-ai-system-design",
+    title: "Custom AI System Design",
+    thumbnail: "/images/usecases/uc-design-thumbnail.png",
+    shortDescription:
+      "企業固有の課題を解決する独自AIシステムを要件定義から本番稼働まで設計・開発します。",
+    detailData: {
+      description: `
+        <p><strong>サービスの柱：</strong>Custom AI System Design</p>
+        <p>クライアント: ACME Retail Co.（架空例）</p>
+        <p><strong>背景・課題：</strong>従来の経験則による在庫発注では欠品が頻発し、機会損失が大きい。</p>
+        <p><strong>ソリューション：</strong>Python + TensorFlow (LSTM) を用いて需給予測モデルを構築し、
+        ./public/images/usecases/uc-design-screenshot1.png に示すダッシュボードからリアルタイムに
+        発注数を推奨。Model Training は AWS SageMaker 上でバッチ化し、定期的に最新データで学習を再実行。</p>
+        <p><strong>成果：</strong>導入後 3 ヶ月で在庫回転率が 25% 向上、売上 12% アップ、欠品率 0.8% 化。</p>
+      `,
+      screenshots: [
+        "/images/usecases/uc-design-screenshot1.png",
+        "/images/usecases/uc-design-screenshot2.png"
+      ],
+      videoDemo: "/demo/custom-ai-system-demo.mp4", // 30～45秒のデモ動画を配置
+      techStack: [
+        "Python 3.10",
+        "TensorFlow 2.11",
+        "AWS SageMaker",
+        "Docker",
+        "Kubernetes (EKS)",
+        "React + Tailwind CSS"
+      ],
+      outcome: [
+        "在庫回転率 25% 向上",
+        "売上 12% 増加",
+        "欠品率 0.8% 化"
+      ]
+    }
+  },
+  {
+    id: "ai-integration-legacy",
+    title: "AI Integration into Legacy Systems",
+    thumbnail: "/images/usecases/uc-integration-thumbnail.png",
+    shortDescription:
+      "既存のオンプレ／クラウドシステムにAIモデルを後付けし、業務プロセスを進化させます。",
+    detailData: {
+      description: `
+        <p><strong>サービスの柱：</strong>AI Integration into Legacy Systems</p>
+        <p>クライアント: Omni Manufacturing Inc.（架空例）</p>
+        <p><strong>背景・課題：</strong>製造ラインの既存管理システムでは不良品検知が手動で遅延が発生。</p>
+        <p><strong>ソリューション：</strong>Docker コンテナ化した TensorFlow モデルを AWS EKS 上にデプロイし、
+        既存の製造管理システム（オンプレ Oracle DB）からバッチ抽出した画像をリアルタイム判定。  
+        検知結果は Slack 通知と画面上アラートに連携（./public/images/usecases/uc-integration-screenshot1.png）。</p>
+        <p><strong>成果：</strong>不良検知率 96%（従来 70%）にアップ。検知からライン停止までの時間が 2 分未満に短縮。</p>
+      `,
+      screenshots: [
+        "/images/usecases/uc-integration-screenshot1.png",
+        "/images/usecases/uc-integration-screenshot2.png"
+      ],
+      videoDemo: "/demo/legacy-integration-demo.mp4",
+      techStack: [
+        "TensorFlow 2.10",
+        "Docker",
+        "AWS EKS",
+        "Oracle DB",
+        "Slack API",
+        "n8n Automation"
+      ],
+      outcome: [
+        "不良検知率 96%（旧来 70%）",
+        "アラート応答時間 2 分未満",
+        "目視検査工数 40% 削減"
+      ]
+    }
+  },
+  {
+    id: "ai-driven-workflows",
+    title: "AI-Driven Automated Workflows",
+    thumbnail: "/images/usecases/uc-workflow-thumbnail.png",
+    shortDescription:
+      "n8n や Zapier と連携し、AI推論を組み込んだ自動化ワークフローで業務効率化を実現します。",
+    detailData: {
+      description: `
+        <p><strong>サービスの柱：</strong>AI-Driven Automated Workflows</p>
+        <p>クライアント: Beta Logistics Co.（架空例）</p>
+        <p><strong>背景・課題：</strong>ルーチンで行っていた配送ルート検討が属人的でコスト高。手動レポート作成に時間がかかる。</p>
+        <p><strong>ソリューション：</strong>n8n 上に「配送データ取得 → AIルート最適化モデル (Python) → Google Sheets 更新 → Slack 通知」のワークフローを構築。
+        AIモデルは Google Cloud Functions 上で稼働し、旅行セールスマン問題 (TSP) のヒューリスティック解を提供。  
+        完成図は ./public/images/usecases/uc-workflow-screenshot1.png に示す。</p>
+        <p><strong>成果：</strong>配送コスト 18% 削減。手動レポート作成に要する時間が 5 日 → 30 分に短縮。</p>
+      `,
+      screenshots: [
+        "/images/usecases/uc-workflow-screenshot1.png",
+        "/images/usecases/uc-workflow-screenshot2.png"
+      ],
+      videoDemo: "/demo/ai-workflow-demo.mp4",
+      techStack: [
+        "n8n",
+        "Python 3.9",
+        "Google Cloud Functions",
+        "Google Sheets API",
+        "Slack API",
+        "PostgreSQL"
+      ],
+      outcome: [
+        "配送コスト 18% 削減",
+        "レポート作成時間 5 日 → 30 分",
+        "リアルタイムアラートで現場即時対応"
+      ]
+    }
+  },
+  {
+    id: "predictive-analytics-forecasting",
+    title: "Predictive Analytics & Forecasting",
+    thumbnail: "/images/usecases/uc-forecast-thumbnail.png",
+    shortDescription:
+      "時系列予測モデルを使った需要予測・故障予知で、経営判断をサポートします。",
+    detailData: {
+      description: `
+        <p><strong>サービスの柱：</strong>Predictive Analytics & Forecasting</p>
+        <p>クライアント: Delta Energy Corp.（架空例）</p>
+        <p><strong>背景・課題：</strong>設備故障の事前予兆を見逃し、突発的なダウンタイムによる損失が大きい。</p>
+        <p><strong>ソリューション：</strong>IoT センサーから収集した時系列データを LSTM ベースのモデルで学習し、  
+        固定長ウィンドウ予測を実装。Grafana ダッシュボード (./public/images/usecases/uc-forecast-screenshot1.png) にて
+        「予測故障確率」「設備の稼働率」を可視化。モデルはオンプレサーバー上の Docker で稼働。</p>
+        <p><strong>成果：</strong>故障予測精度 94% を達成。突発ダウンタイムを年間 120 時間 → 20 時間に削減。</p>
+      `,
+      screenshots: [
+        "/images/usecases/uc-forecast-screenshot1.png",
+        "/images/usecases/uc-forecast-screenshot2.png"
+      ],
+      videoDemo: "/demo/predictive-analytics-demo.mp4",
+      techStack: [
+        "Python 3.10",
+        "TensorFlow 2.8",
+        "Docker",
+        "Grafana",
+        "Prometheus",
+        "InfluxDB"
+      ],
+      outcome: [
+        "故障予測精度 94%",
+        "突発ダウンタイム 120h → 20h",
+        "メンテナンスコスト 30% 削減"
+      ]
+    }
+  },
+  {
+    id: "mlops-model-deployment",
+    title: "MLOps & Model Deployment",
+    thumbnail: "/images/usecases/uc-mlops-thumbnail.png",
+    shortDescription:
+      "モデルの継続運用を高速かつ安全に行うための MLOps パイプライン構築を支援します。",
+    detailData: {
+      description: `
+        <p><strong>サービスの柱：</strong>MLOps & Model Deployment</p>
+        <p>クライアント: Gamma Finance Inc.（架空例）</p>
+        <p><strong>背景・課題：</strong>PoC モデルが本番環境へ移行せずに放置されてしまい、結果としてビジネス価値を生まなかった。</p>
+        <p><strong>ソリューション：</strong>GitHub Actions × Docker × AWS EKS × Argo CD を組み合わせた MLOps パイプラインを構築。  
+        コードコミット → 自動テスト → コンテナビルド → EKS へデプロイ → Prometheus/Grafana で監視 → Slack 通知 というフローを一気通貫で実現。  
+        ./public/images/usecases/uc-mlops-screenshot1.png のように「CI/CD 実行画面」「Kubernetes Dashboard」「Grafana ダッシュボード」を揃えて、  
+        “生産環境で動く AI プロダクト” であることを担保。</p>
+        <p><strong>成果：</strong>デプロイ失敗率 0.1% → 0.01%。モデル更新頻度が月 1 回 → 週 2 回に向上し、データ drift に迅速対応可能に。</p>
+      `,
+      screenshots: [
+        "/images/usecases/uc-mlops-screenshot1.png",
+        "/images/usecases/uc-mlops-screenshot2.png"
+      ],
+      videoDemo: "/demo/mlops-pipeline-demo.mp4",
+      techStack: [
+        "GitHub Actions",
+        "Docker",
+        "Kubernetes (EKS)",
+        "Argo CD",
+        "Prometheus",
+        "Grafana",
+        "Terraform"
+      ],
+      outcome: [
+        "デプロイ失敗率 0.1% → 0.01%",
+        "モデル更新頻度 週 2 回化",
+        "監視アラート検知時間 1 分未満"
+      ]
+    }
+  }
+];
+
+export default useCases;
+ポイント解説
+ユースケース（柱）の数を 5 件に絞る
+
+それぞれ「Custom AI System Design」「AI Integration into Legacy Systems」「AI-Driven Automated Workflows」「Predictive Analytics & Forecasting」「MLOps & Model Deployment」という５つの主要サービスを定義。
+
+どれも「企業が実際に投資したくなる分かりやすいテーマ」になっており、ビジネスのフェーズや目的に応じて訴求しやすい。
+
+各柱ごとにサムネイル・スクリーンショット・デモ動画を用意
+
+/public/images/usecases/uc-***-thumbnail.png および /public/images/usecases/uc-***-screenshot*.png：最低各柱につきサムネイル 1 枚 ＋ スクリーンショット 2 枚を用意。
+
+/public/demo/uc-***-demo.mp4：各柱ごとに 30～45 秒程度の短尺デモ動画を設置し、ボタンをクリックすると再生できるようにする。
+
+データ構造上の統一性
+
+id: “英小文字＋ハイフン区切り” で統一。
+
+title: ページ表示用のキャッチーな名前。
+
+thumbnail: 一覧ページで見せる、各柱のイメージがひと目で分かるデザイン。
+
+shortDescription: 一覧ページのカードで表示される 1～2 行の簡単サマリー。
+
+detailData.description: HTML タグを交えた詳細説明。見やすさ重視で <p><strong>... を適度に使う。
+
+screenshots: 詳細ページのギャラリーとして表示する画像パスの配列。
+
+videoDemo: /public/demo/ に置いた動画ファイルの相対パス。空文字列にすると「動画なし」と判断し自動で表示をスキップ。
+
+techStack と outcome: 箇条書きで表示しやすい配列形式に統一。
+
+２．フロントエンド実装の再確認
+先ほどご案内した修正手順とほぼ同じですが、「ユースケースを５つに絞ったこと」に合わせて各コンポーネントを見直します。
+
+2-1. usecasesData.js の配置と中身チェック
+/client/src/data/usecasesData.js に、上記５つのオブジェクトを貼り付け、ファイルを保存。
+
+画像や動画が正しく /public 配下に存在するかを必ず確認する。
+
+例: /public/images/usecases/uc-design-thumbnail.png は実際に配置済みか？
+
+デモ動画 (/public/demo/custom-ai-system-demo.mp4 など) は存在するか？
+
+パスに間違いがあれば、ブラウザ上で必ず画像・動画が読み込まれるかチェックし、404 になっていないかを確認。
+
+2-2. UseCasesList.jsx の調整
+UseCasesList.jsx は特に変更不要ですが、見せたい数が 5 件になったため、グリッド構成は以下のように十分に余裕を持たせてください。
+
+jsx
+コピーする
+編集する
+// 例: グリッド数は 3 列固定でも OK。余った空き枠が気になる場合は justify-center を使う
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+  {useCases.map((uc) => (
+    <Link key={uc.id} href={`/use-cases/${uc.id}`} passHref>
+      <a>
+        <UseCaseCard
+          title={uc.title}
+          thumbnail={uc.thumbnail}
+          shortDescription={uc.shortDescription}
+        />
+      </a>
+    </Link>
+  ))}
+</div>
+ポイント
+
+カード間の余白 (gap-8) は適度に保ちつつ、3 列で表示すれば 5 件でもバランスが良く見える。
+
+もし 2 列＋余白が好みであれば sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 のようにブレークポイントを調整してもOK。
+
+2-3. UseCaseCard.jsx の確認
+「Learn More」ボタンやサムネイルの見え方などは先述のままで問題ありません。
+
+５件に減らしたことで、カードに一切余計な日本語が混在していないかを確認。
+
+alt 属性のテキストが全て英語であることもチェック。
+
+2-4. /pages/use-cases/index.jsx の確認
+useCasesData.js の５件をインポートして表示するだけなので、特に変更不要ですが、SEO 用の <meta> の記述が変更後の内容に合っているかだけ確かめてください。
+
+jsx
+コピーする
+編集する
+<Head>
+  <title>Venator Capital | AI Use Cases</title>
+  <meta
+    name="description"
+    content="Explore our core AI services: Custom AI System Design, Legacy Integration, Automated Workflows, Predictive Analytics, and MLOps."
+  />
+</Head>
+2-5. /pages/use-cases/[id].jsx の確認
+usecasesData.js の中身を 5 件にしたことで、useCases.find((uc) => uc.id === id) が正しく該当するかチェック。
+
+HTML 内に日本語が混じっていないか、細心の注意を払ってください。
+
+パンくずリスト もし日本語を混ぜている場合はすべて英語に統一。
+
+例：<Link href="/use-cases"><a>Use Cases</a></Link>
+
+動画がない場合はコンポーネントがスキップされるように実装されているか、コードを再度確認。
+
+３．実装後のデザイン確認ポイント
+ユースケースが５件であることを直感的に分かるように見せる
+
+ページを開いたときにカードの列数や余白によって「５件だけ並んでいる」構成が適度にスッキリ見えるか。
+
+３列レイアウトであれば、右下に余白（空カード枠なし）が自然に見えるよう、justify-center や mx-auto の調整を行う。
+
+詳細ページ（[id].jsx）のビジュアルチェック
+
+すべての見出し、段落、箇条書き、画像、動画プレーヤーが 背景が黒に対して白文字・グレー文字・黄色アクセント で視認性が高いか。
+
+「Custom AI System Design」などのタイトルだけでなく、成果 (outcome) の箇条書きが読みやすい行間・フォントサイズになっているか確認。
+
+各ユースケースの「柱であること」を強調
+
+各詳細ページの冒頭で <p><strong>サービスの柱：</strong>Custom AI System Design</p> のように、“このページが何を示しているか”が 1～2 行で理解できること。
+
+目次的に <h2>Video Demo</h2> / <h2>Screenshots</h2> / <h2>Tech Stack Used</h2> / <h2>Key Outcomes</h2> の見出しレベルが揃っているか確認。
+
+レスポンシブ対応
+
+ブラウザをモバイル（スマホ）表示にして、カードが 1 列に縦に並ぶか、テキストが潰れないか、ボタンがタップしやすいサイズかをチェック。
+
+タブレット表示（幅 768〜1024px）では 2 列レイアウトが自然か、ボタンや動画のサイズ感が適切かを確認。
+
+デスクトップでは 3 列 → 5 件なので「最後の 2 枚は左右中央寄せで見栄えが良いか」を見て、必要なら justify-center や mx-auto を微調整してギャップを埋める。
+
+アクセシビリティチェック
+
+コントラスト比：テキスト（白 #FFFFFF, グレー #CCCCCC または #AAAAAA など）と背景（#0F0F0F / #1A1A1A）のコントラストが WCAG AA をクリアしているか。
+
+alt 属性：すべての <Image> に alt="..." が適切に設定されているか確認。
+
+キーボード操作：Tab キーでカード → リンク → ボタン → 動画 → 戻るリンク と論理的にフォーカスが移動するかをテスト。
+
+パフォーマンス & SEO チェック
+
+画像最適化：Figma 等からエクスポートした PNG があまりにも重くないか。できれば 200～400KB 以下に抑えるか、JPEG/WEBP に変換して軽量化する。
+
+動画ファイルサイズ：MP4 は 30～50MB 以内に収める。特にモバイルでは画質を落としても 720p で十分。
+
+Lighthouse で Performance・Accessibility・Best Practices・SEO を測定し、
+
+Performance: mobile: 80 点以上／desktop: 90 点以上を目指す
+
+Accessibility: 90 点以上を目指す
+
+SEO: 80 点以上を目指す
+
+構造化データ（Schema.org）：詳細ページに <script type="application/ld+json"> を挿入して、個別ユースケースを Schema.org の WebPage としてマークアップしておくと、検索結果のリッチスニペットで有利になります。
+
+４．まとめ
+Use Cases を 20 件→5 件 に絞り込む
+
+❶ Custom AI System Design
+
+❷ AI Integration into Legacy Systems
+
+❸ AI-Driven Automated Workflows
+
+❹ Predictive Analytics & Forecasting
+
+❺ MLOps & Model Deployment
+
+usecasesData.js を上記５件分のデータオブジェクトだけに差し替える
+
+各オブジェクトは id / title / thumbnail / shortDescription / detailData をキーに持ち、
+
+detailData 内に description / screenshots (2 枚以上) / videoDemo / techStack / outcome を適切に埋める。
+
+一覧ページ（UseCasesList.jsx）と詳細ページ（[id].jsx）を再利用
+
+既存のサンプルコード通りに実装しなおし、ユースケース数が 5 件となっても見栄えが損なわれないようレスポンシブ・スタイルを調整。
+
+すべてのテキストは英語で統一し、日本語混在を完全に排除する。
+
+各ユースケースで使用する画像（サムネイル・スクリーンショット）と動画を適切に準備し、 /public/images/usecases や /public/demo に配置
+
+ファイルパスに誤りがないようにすべて検証し、「404 にならない」よう徹底。
+
+画像はサイズを最適化し、ラグなく読み込めるようにする。
+
+実装完了後、必ず次のチェックを行う
+
+ブラウザ上で 5 件のユースケースが正しく並び、それぞれクリックで詳細ページに遷移できるか。
+
+詳細ページのパンくずリスト / タイトル / 説明 / ギャラリー / 動画 / リスト（techStack, outcome）がすべて崩れずに表示されるか。
+
+モバイル・タブレット・デスクトップでのレスポンシブチェック。
+
+Lighthouse で Performance・Accessibility・Best Practices・SEO を確認し、最低 80～90 点を目指す。
+
+以上の流れで「Use Cases（実績紹介）」を５つの代表的ユースケースに絞り込み、質の高いビジュアル・コンテンツで訴求する構成に改修してください。数を絞ることで一件あたりの説明を充実させ、「大手企業の意思決定者に『ここに○万ドル払ってもいい』と思わせるだけの信頼度」を一挙に高めることができます。

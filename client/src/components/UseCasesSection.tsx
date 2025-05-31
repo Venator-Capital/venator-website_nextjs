@@ -1,24 +1,48 @@
+import React from "react";
 import { motion } from "framer-motion";
+import { Brain, Database, Workflow, TrendingUp, Settings } from "lucide-react";
 
 export default function UseCasesSection() {
   const useCases = [
     {
-      title: "Automated Customer Support",
-      description: "AI-powered chatbots and virtual assistants that provide 24/7 customer service with natural language understanding.",
-      technology: "GPT-4-based Chatbot",
-      icon: "🤖",
+      title: "Custom AI System Design",
+      description: "企業固有の課題を解決する独自AIシステムを要件定義から本番稼働まで設計・開発します。",
+      technology: "Python + TensorFlow + AWS SageMaker",
+      icon: Brain,
+      outcome: "在庫回転率 25% 向上、売上 12% 増加",
+      client: "ACME Retail Co.",
     },
     {
-      title: "Predictive Analytics Platform",
-      description: "Machine learning models that forecast business trends, customer behavior, and market opportunities.",
-      technology: "TensorFlow & PyTorch",
-      icon: "📈",
+      title: "AI Integration into Legacy Systems",
+      description: "既存のオンプレ・クラウドシステムにAIモデルを後付けし、業務プロセスを進化させます。",
+      technology: "Docker + AWS EKS + Oracle DB",
+      icon: Database,
+      outcome: "不良検知率 96%（従来 70%）、アラート応答時間 2分未満",
+      client: "Omni Manufacturing Inc.",
     },
     {
-      title: "Document Processing Automation",
-      description: "Intelligent document analysis and data extraction for streamlined business workflows.",
-      technology: "Computer Vision & NLP",
-      icon: "📄",
+      title: "AI-Driven Automated Workflows",
+      description: "n8nやZapierと連携し、AI推論を組み込んだ自動化ワークフローで業務効率化を実現します。",
+      technology: "n8n + Google Cloud Functions + Python",
+      icon: Workflow,
+      outcome: "配送コスト 18% 削減、レポート作成時間 5日 → 30分",
+      client: "Beta Logistics Co.",
+    },
+    {
+      title: "Predictive Analytics & Forecasting",
+      description: "時系列予測モデルを使った需要予測・故障予知で、経営判断をサポートします。",
+      technology: "LSTM + Grafana + Prometheus",
+      icon: TrendingUp,
+      outcome: "故障予測精度 94%、突発ダウンタイム 120h → 20h",
+      client: "Delta Energy Corp.",
+    },
+    {
+      title: "MLOps & Model Deployment",
+      description: "モデルの継続運用を高速かつ安全に行うためのMLOpsパイプライン構築を支援します。",
+      technology: "GitHub Actions + Kubernetes + Argo CD",
+      icon: Settings,
+      outcome: "デプロイ失敗率 0.1% → 0.01%、モデル更新頻度週2回化",
+      client: "Gamma Finance Inc.",
     },
   ];
 
@@ -64,7 +88,7 @@ export default function UseCasesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8"
         >
           {useCases.map((useCase, index) => (
             <motion.div
@@ -81,15 +105,29 @@ export default function UseCasesSection() {
               <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/5 to-accent-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               
               <div className="relative z-10">
-                <div className="text-4xl mb-4">{useCase.icon}</div>
-                <h3 className="text-2xl md:text-3xl font-medium mb-4 text-white">
+                <div className="mb-6 flex justify-start">
+                  <div className="w-12 h-12 bg-accent-gold/10 rounded-lg flex items-center justify-center">
+                    {React.createElement(useCase.icon, { className: "w-6 h-6 text-accent-gold" })}
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-white">
                   {useCase.title}
                 </h3>
-                <p className="text-gray-300 leading-relaxed mb-4">
+                <p className="text-gray-300 leading-relaxed mb-4 text-sm">
                   {useCase.description}
                 </p>
-                <div className="inline-block px-3 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-sm font-medium">
-                  {useCase.technology}
+                <div className="mb-3">
+                  <div className="inline-block px-3 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-xs font-medium mb-2">
+                    {useCase.technology}
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-xs text-gray-400">
+                    Client: <span className="text-gray-300">{useCase.client}</span>
+                  </div>
+                  <div className="text-xs text-accent-gold font-medium">
+                    {useCase.outcome}
+                  </div>
                 </div>
               </div>
             </motion.div>
