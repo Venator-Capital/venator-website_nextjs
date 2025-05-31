@@ -10,7 +10,6 @@ export default function UseCasesSection() {
       technology: "Python + TensorFlow + AWS SageMaker",
       icon: Brain,
       outcome: "在庫回転率 25% 向上、売上 12% 増加",
-      client: "ACME Retail Co.",
     },
     {
       title: "AI Integration into Legacy Systems",
@@ -18,7 +17,6 @@ export default function UseCasesSection() {
       technology: "Docker + AWS EKS + Oracle DB",
       icon: Database,
       outcome: "不良検知率 96%（従来 70%）、アラート応答時間 2分未満",
-      client: "Omni Manufacturing Inc.",
     },
     {
       title: "AI-Driven Automated Workflows",
@@ -26,7 +24,6 @@ export default function UseCasesSection() {
       technology: "n8n + Google Cloud Functions + Python",
       icon: Workflow,
       outcome: "配送コスト 18% 削減、レポート作成時間 5日 → 30分",
-      client: "Beta Logistics Co.",
     },
     {
       title: "Predictive Analytics & Forecasting",
@@ -34,7 +31,6 @@ export default function UseCasesSection() {
       technology: "LSTM + Grafana + Prometheus",
       icon: TrendingUp,
       outcome: "故障予測精度 94%、突発ダウンタイム 120h → 20h",
-      client: "Delta Energy Corp.",
     },
     {
       title: "MLOps & Model Deployment",
@@ -42,7 +38,6 @@ export default function UseCasesSection() {
       technology: "GitHub Actions + Kubernetes + Argo CD",
       icon: Settings,
       outcome: "デプロイ失敗率 0.1% → 0.01%、モデル更新頻度週2回化",
-      client: "Gamma Finance Inc.",
     },
   ];
 
@@ -100,6 +95,11 @@ export default function UseCasesSection() {
               }}
               whileTap={{ scale: 0.95 }}
               className="bg-deep-charcoal rounded-2xl p-6 cursor-pointer relative overflow-hidden group border border-gray-800"
+              onClick={() => {
+                if (useCase.title === "AI-Driven Automated Workflows") {
+                  window.location.href = "/ai-workflows";
+                }
+              }}
             >
               {/* Animated gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/5 to-accent-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -121,13 +121,8 @@ export default function UseCasesSection() {
                     {useCase.technology}
                   </div>
                 </div>
-                <div className="space-y-2">
-                  <div className="text-xs text-gray-400">
-                    Client: <span className="text-gray-300">{useCase.client}</span>
-                  </div>
-                  <div className="text-xs text-accent-gold font-medium">
-                    {useCase.outcome}
-                  </div>
+                <div className="text-xs text-accent-gold font-medium">
+                  {useCase.outcome}
                 </div>
               </div>
             </motion.div>
