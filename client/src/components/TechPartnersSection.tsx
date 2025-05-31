@@ -155,10 +155,7 @@ export default function TechPartnersSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid gap-6"
-          style={{
-            gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
-          }}
+          className="flex flex-wrap justify-center gap-4 md:gap-6"
         >
           {partners.map(({ href, src, alt, ariaLabel }) => (
             <motion.a
@@ -170,7 +167,12 @@ export default function TechPartnersSection() {
               variants={itemVariants}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="group block bg-white rounded-xl p-4 hover:bg-gray-50 transition-all duration-200 shadow-sm hover:shadow-md aspect-square flex items-center justify-center"
+              className="group block bg-white rounded-xl p-4 hover:bg-gray-50 transition-all duration-200 shadow-sm hover:shadow-md flex items-center justify-center"
+              style={{
+                width: '120px',
+                height: '120px',
+                flexShrink: 0
+              }}
             >
               <img
                 src={src}
