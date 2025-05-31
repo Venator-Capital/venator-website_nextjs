@@ -6,38 +6,33 @@ export default function UseCasesSection() {
   const useCases = [
     {
       title: "Custom AI System Design",
-      description: "企業固有の課題を解決する独自AIシステムを要件定義から本番稼働まで設計・開発します。",
+      description: "Design and develop custom AI systems tailored to solve enterprise-specific challenges from requirements to production deployment.",
       technology: "Python + TensorFlow + AWS SageMaker",
       icon: Brain,
-      outcome: "在庫回転率 25% 向上、売上 12% 増加",
     },
     {
       title: "AI Integration into Legacy Systems",
-      description: "既存のオンプレ・クラウドシステムにAIモデルを後付けし、業務プロセスを進化させます。",
+      description: "Seamlessly integrate AI models into existing on-premise and cloud systems to enhance business processes.",
       technology: "Docker + AWS EKS + Oracle DB",
       icon: Database,
-      outcome: "不良検知率 96%（従来 70%）、アラート応答時間 2分未満",
     },
     {
       title: "AI-Driven Automated Workflows",
-      description: "n8nやZapierと連携し、AI推論を組み込んだ自動化ワークフローで業務効率化を実現します。",
+      description: "Build intelligent automation workflows using n8n and Zapier with AI inference to streamline business operations.",
       technology: "n8n + Google Cloud Functions + Python",
       icon: Workflow,
-      outcome: "配送コスト 18% 削減、レポート作成時間 5日 → 30分",
     },
     {
       title: "Predictive Analytics & Forecasting",
-      description: "時系列予測モデルを使った需要予測・故障予知で、経営判断をサポートします。",
+      description: "Implement time-series forecasting models for demand prediction and failure detection to support strategic decisions.",
       technology: "LSTM + Grafana + Prometheus",
       icon: TrendingUp,
-      outcome: "故障予測精度 94%、突発ダウンタイム 120h → 20h",
     },
     {
       title: "MLOps & Model Deployment",
-      description: "モデルの継続運用を高速かつ安全に行うためのMLOpsパイプライン構築を支援します。",
+      description: "Build robust MLOps pipelines for continuous model deployment, monitoring, and lifecycle management.",
       technology: "GitHub Actions + Kubernetes + Argo CD",
       icon: Settings,
-      outcome: "デプロイ失敗率 0.1% → 0.01%、モデル更新頻度週2回化",
     },
   ];
 
@@ -83,7 +78,7 @@ export default function UseCasesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 place-items-center"
         >
           {useCases.map((useCase, index) => (
             <motion.div
@@ -94,7 +89,7 @@ export default function UseCasesSection() {
                 boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-deep-charcoal rounded-2xl p-6 cursor-pointer relative overflow-hidden group border border-gray-800"
+              className="bg-deep-charcoal rounded-2xl p-6 cursor-pointer relative overflow-hidden group border border-gray-800 w-full max-w-sm"
               onClick={() => {
                 if (useCase.title === "AI-Driven Automated Workflows") {
                   window.location.href = "/ai-workflows";
@@ -116,13 +111,8 @@ export default function UseCasesSection() {
                 <p className="text-gray-300 leading-relaxed mb-4 text-sm">
                   {useCase.description}
                 </p>
-                <div className="mb-3">
-                  <div className="inline-block px-3 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-xs font-medium mb-2">
-                    {useCase.technology}
-                  </div>
-                </div>
-                <div className="text-xs text-accent-gold font-medium">
-                  {useCase.outcome}
+                <div className="inline-block px-3 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-xs font-medium">
+                  {useCase.technology}
                 </div>
               </div>
             </motion.div>
