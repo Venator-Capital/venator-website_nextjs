@@ -44,12 +44,6 @@ export default function Footer() {
             </button>
 
             <button
-              onClick={() => scrollToSection('about')}
-              className="text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
-            >
-              About
-            </button>
-            <button
               onClick={() => scrollToSection('tech-partners')}
               className="text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
             >
@@ -60,6 +54,12 @@ export default function Footer() {
               className="text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
             >
               FAQ
+            </button>
+            <button
+              onClick={() => scrollToSection('about')}
+              className="text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
+            >
+              About
             </button>
             <button
               onClick={() => scrollToSection('contact')}

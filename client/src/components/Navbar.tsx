@@ -65,13 +65,6 @@ export default function Navbar() {
           </button>
 
           <button
-            onClick={() => scrollToSection('about')}
-            className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
-            aria-label="Navigate to About section"
-          >
-            About
-          </button>
-          <button
             onClick={() => scrollToSection('tech-partners')}
             className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
             aria-label="Navigate to Technology Ecosystem section"
@@ -84,6 +77,13 @@ export default function Navbar() {
             aria-label="Navigate to FAQ section"
           >
             FAQ
+          </button>
+          <button
+            onClick={() => scrollToSection('about')}
+            className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
+            aria-label="Navigate to About section"
+          >
+            About
           </button>
           <button
             onClick={() => scrollToSection('contact')}
@@ -149,12 +149,6 @@ export default function Navbar() {
             </button>
 
             <button
-              onClick={() => scrollToSection('about')}
-              className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
-            >
-              About
-            </button>
-            <button
               onClick={() => scrollToSection('tech-partners')}
               className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
             >
@@ -165,6 +159,12 @@ export default function Navbar() {
               className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
             >
               FAQ
+            </button>
+            <button
+              onClick={() => scrollToSection('about')}
+              className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
+            >
+              About
             </button>
             <button
               onClick={() => scrollToSection('contact')}

@@ -129,7 +129,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="mb-12"
+          className="mb-16 mt-16"
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           onHoverStart={() => controls.set({ rotate: 0 })}

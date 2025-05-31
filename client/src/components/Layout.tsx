@@ -8,17 +8,20 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
-  const [showSplash, setShowSplash] = useState(true);
+  // Temporarily disable splash screen
+  // const [showSplash, setShowSplash] = useState(true);
   
-  return showSplash ? (
-    <SplashScreen onFinish={() => setShowSplash(false)} />
-  ) : (
-    <div className="min-h-screen bg-primary-black text-white overflow-x-hidden">
-      <header>
-        <Navbar />
-      </header>
-      <main id="main" role="main">{children}</main>
-      <Footer />
-    </div>
-  );
+  // return showSplash ? (
+  //   <SplashScreen onFinish={() => setShowSplash(false)} />
+  // ) : (
+    return (
+      <div className="min-h-screen bg-primary-black text-white overflow-x-hidden">
+        <header>
+          <Navbar />
+        </header>
+        <main id="main" role="main">{children}</main>
+        <Footer />
+      </div>
+    );
+  // );
 }
