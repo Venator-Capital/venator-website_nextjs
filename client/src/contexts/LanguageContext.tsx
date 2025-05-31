@@ -89,7 +89,7 @@ const translations = {
     'nav.contact': 'お問い合わせ',
 
     // Hero Section
-    'hero.title': 'AIを競争優位に変える',
+    'hero.title': 'AIを武器に',
     'hero.subtitle': '機械学習アプリケーションから自動化フレームワークまで、最先端のAIソリューションを設計します。',
     'hero.description': 'AIの導入段階に関係なく、ロードマップから本番環境まで、お客様をガイドします。AIスペシャリストが24時間以内にご連絡いたします。',
     'hero.cta.capabilities': '機能を詳しく見る',
@@ -184,27 +184,32 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     const currentPath = window.location.pathname;
     let newPath = '';
     
-    // Remove existing language prefix
-    if (currentPath.startsWith('/ja') || currentPath.startsWith('/en')) {
-      newPath = currentPath.substring(3);
+    // Remove existing language prefix if present
+    if (currentPath.startsWith('/ja/') || currentPath.startsWith('/ja')) {
+      newPath = currentPath.replace(/^\/ja\/?/, '/');
+    } else if (currentPath.startsWith('/en/') || currentPath.startsWith('/en')) {
+      newPath = currentPath.replace(/^\/en\/?/, '/');
     } else {
       newPath = currentPath;
     }
     
     // Add new language prefix
     if (lang === 'ja') {
-      newPath = '/ja' + newPath;
+      newPath = '/ja' + (newPath === '/' ? '' : newPath);
     } else {
-      newPath = '/en' + newPath;
+      newPath = '/en' + (newPath === '/' ? '' : newPath);
     }
     
-    // Ensure path starts with /
-    if (!newPath.startsWith('/')) {
-      newPath = '/' + newPath;
+    // Ensure path is valid
+    if (!newPath || newPath === '/ja' || newPath === '/en') {
+      newPath = lang === 'ja' ? '/ja' : '/en';
     }
     
     // Navigate to new URL
     window.history.pushState({}, '', newPath);
+    
+    // Force a re-render by triggering a custom event
+    window.dispatchEvent(new PopStateEvent('popstate'));
   };
 
   const t = (key: string): string => {
