@@ -86,7 +86,9 @@ export default function CapabilitiesSection() {
               
               <div className="relative z-10 text-center">
                 <div className="mb-6 flex justify-center">
-                  {React.createElement(capability.icon, { className: "w-12 h-12 text-accent-gold" })}
+                  <div className="w-16 h-16 bg-accent-gold/10 rounded-lg flex items-center justify-center">
+                    {React.createElement(capability.icon, { className: "w-8 h-8 text-accent-gold" })}
+                  </div>
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-white">
                   {capability.title}
