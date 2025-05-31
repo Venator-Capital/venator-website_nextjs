@@ -167,13 +167,13 @@ export default function TechPartnersSection() {
               variants={itemVariants}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="group block bg-white/10 rounded-xl p-4 hover:bg-white/20 transition-all duration-200"
+              className="group block bg-white rounded-xl p-4 hover:bg-gray-50 transition-all duration-200 shadow-sm hover:shadow-md"
             >
               <img
                 src={src}
                 alt={alt}
                 loading="lazy"
-                className={`w-auto object-contain mx-auto opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-200 ${
+                className={`w-auto object-contain mx-auto opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-200 ${
                   alt === 'Vercel' ? 'h-16 md:h-18' : 'h-12 md:h-14'
                 }`}
               />
