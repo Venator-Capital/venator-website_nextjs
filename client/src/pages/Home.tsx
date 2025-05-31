@@ -1,7 +1,10 @@
 import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
 import CapabilitiesSection from "@/components/CapabilitiesSection";
+import UseCasesSection from "@/components/UseCasesSection";
+import TechStackSection from "@/components/TechStackSection";
+import AboutSection from "@/components/AboutSection";
+import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 
 export default function Home() {
@@ -9,7 +12,10 @@ export default function Home() {
     <Layout>
       <HeroSection />
       <CapabilitiesSection />
+      <UseCasesSection />
+      <TechStackSection />
       <AboutSection />
+      <FAQSection />
       <ContactSection />
     </Layout>
   );

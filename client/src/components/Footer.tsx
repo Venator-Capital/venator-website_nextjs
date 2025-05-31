@@ -29,22 +29,22 @@ export default function Footer() {
           </div>
 
           {/* Footer Navigation */}
-          <div className="flex items-center space-x-6">
+          <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
             <button
               onClick={() => scrollToSection('capabilities')}
-              className="text-silver-gray hover:text-white transition-colors"
+              className="text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
             >
               Capabilities
             </button>
             <button
               onClick={() => scrollToSection('about')}
-              className="text-silver-gray hover:text-white transition-colors"
+              className="text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
             >
               About
             </button>
             <button
               onClick={() => scrollToSection('contact')}
-              className="text-silver-gray hover:text-white transition-colors"
+              className="text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
             >
               Contact
             </button>

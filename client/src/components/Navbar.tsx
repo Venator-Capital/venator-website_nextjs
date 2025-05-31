@@ -48,24 +48,45 @@ export default function Navbar() {
         </button>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden lg:flex items-center space-x-6">
           <button
             onClick={() => scrollToSection('capabilities')}
-            className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105"
+            className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
             aria-label="Navigate to Capabilities section"
           >
             Capabilities
           </button>
           <button
+            onClick={() => scrollToSection('use-cases')}
+            className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
+            aria-label="Navigate to Use Cases section"
+          >
+            Use Cases
+          </button>
+          <button
+            onClick={() => scrollToSection('tech-stack')}
+            className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
+            aria-label="Navigate to Tech Stack section"
+          >
+            Tech Stack
+          </button>
+          <button
             onClick={() => scrollToSection('about')}
-            className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105"
+            className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
             aria-label="Navigate to About section"
           >
             About
           </button>
           <button
+            onClick={() => scrollToSection('faq')}
+            className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
+            aria-label="Navigate to FAQ section"
+          >
+            FAQ
+          </button>
+          <button
             onClick={() => scrollToSection('contact')}
-            className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105"
+            className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
             aria-label="Navigate to Contact section"
           >
             Contact
