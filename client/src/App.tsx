@@ -1,6 +1,7 @@
 import { Switch, Route } from "wouter";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 import Home from "@/pages/Home";
 import AIWorkflows from "@/pages/AIWorkflows";
 
@@ -23,9 +24,11 @@ function Router() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Router />
-    </QueryClientProvider>
+    <LanguageProvider>
+      <QueryClientProvider client={queryClient}>
+        <Router />
+      </QueryClientProvider>
+    </LanguageProvider>
   );
 }
 
