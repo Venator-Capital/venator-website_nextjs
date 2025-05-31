@@ -78,7 +78,7 @@ export default function UseCasesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 place-items-center"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8 justify-items-center"
         >
           {useCases.map((useCase, index) => (
             <motion.div
@@ -89,7 +89,7 @@ export default function UseCasesSection() {
                 boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-deep-charcoal rounded-2xl p-6 cursor-pointer relative overflow-hidden group border border-gray-800 w-full max-w-sm"
+              className="bg-deep-charcoal rounded-2xl p-6 cursor-pointer relative overflow-hidden group border border-gray-800 w-full max-w-xs"
               onClick={() => {
                 if (useCase.title === "AI-Driven Automated Workflows") {
                   window.location.href = "/ai-workflows";

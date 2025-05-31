@@ -129,7 +129,7 @@ export default function AIWorkflows() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-center"
+            className="mb-20"
           >
             <h2 className="text-3xl font-bold text-white mb-12 text-center">
               Implementation Examples
@@ -143,6 +143,33 @@ export default function AIWorkflows() {
                   </div>
                 ))}
               </div>
+            </div>
+          </motion.div>
+
+          {/* Contact CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="text-center"
+          >
+            <div className="bg-gradient-to-r from-accent-blue/10 to-accent-gold/10 rounded-2xl p-12 border border-gray-800">
+              <h2 className="text-3xl font-bold text-white mb-4">
+                Ready to Automate Your Workflows?
+              </h2>
+              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                Let's discuss how AI-driven automation can transform your business operations. 
+                Contact us to explore the possibilities.
+              </p>
+              <Link href="/#contact">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-block px-8 py-4 bg-accent-gold text-primary-black font-bold rounded-lg hover:bg-[#e6c600] hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-gold focus:ring-offset-2 focus:ring-offset-black"
+                >
+                  Get in Touch
+                </motion.button>
+              </Link>
             </div>
           </motion.div>
         </div>
