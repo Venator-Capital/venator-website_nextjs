@@ -155,7 +155,10 @@ export default function TechPartnersSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-6"
+          className="grid gap-6"
+          style={{
+            gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
+          }}
         >
           {partners.map(({ href, src, alt, ariaLabel }) => (
             <motion.a
@@ -167,15 +170,14 @@ export default function TechPartnersSection() {
               variants={itemVariants}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="group block bg-white rounded-xl p-4 hover:bg-gray-50 transition-all duration-200 shadow-sm hover:shadow-md"
+              className="group block bg-white rounded-xl p-4 hover:bg-gray-50 transition-all duration-200 shadow-sm hover:shadow-md aspect-square flex items-center justify-center"
             >
               <img
                 src={src}
                 alt={alt}
                 loading="lazy"
-                className={`w-auto object-contain mx-auto opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-200 ${
-                  alt === 'Vercel' ? 'h-16 md:h-18' : 'h-12 md:h-14'
-                }`}
+                className="max-w-full max-h-full object-contain opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-200"
+                style={{ maxHeight: '60px', maxWidth: '80px' }}
               />
             </motion.a>
           ))}
