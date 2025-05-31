@@ -99,6 +99,18 @@ export default function TechPartnersSection() {
       alt: 'Slack',
       ariaLabel: 'Communicate via Slack',
     },
+    {
+      href: 'https://stripe.com/',
+      src: '/logos/brand_logo_svg/stripe-svgrepo-com.svg',
+      alt: 'Stripe',
+      ariaLabel: 'Payments by Stripe',
+    },
+    {
+      href: 'https://zoom.us/',
+      src: '/logos/brand_logo_svg/zoom-svgrepo-com.svg',
+      alt: 'Zoom',
+      ariaLabel: 'Meetings with Zoom',
+    },
   ];
 
   const containerVariants = {
@@ -155,13 +167,15 @@ export default function TechPartnersSection() {
               variants={itemVariants}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="group block bg-gray-800/50 rounded-xl p-4 hover:bg-gray-700/50 transition-all duration-200"
+              className="group block bg-white/10 rounded-xl p-4 hover:bg-white/20 transition-all duration-200"
             >
               <img
                 src={src}
                 alt={alt}
                 loading="lazy"
-                className="h-12 md:h-14 w-auto object-contain mx-auto opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-200"
+                className={`w-auto object-contain mx-auto opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-200 ${
+                  alt === 'Vercel' ? 'h-16 md:h-18' : 'h-12 md:h-14'
+                }`}
               />
             </motion.a>
           ))}
