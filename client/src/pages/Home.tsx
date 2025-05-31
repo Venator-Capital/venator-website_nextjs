@@ -2,7 +2,6 @@ import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
 import CapabilitiesSection from "@/components/CapabilitiesSection";
 import UseCasesSection from "@/components/UseCasesSection";
-import TechStackSection from "@/components/TechStackSection";
 import AboutSection from "@/components/AboutSection";
 import TechPartnersSection from "@/components/TechPartnersSection";
 import FAQSection from "@/components/FAQSection";
@@ -14,7 +13,6 @@ export default function Home() {
       <HeroSection />
       <CapabilitiesSection />
       <UseCasesSection />
-      <TechStackSection />
       <AboutSection />
       <TechPartnersSection />
       <FAQSection />

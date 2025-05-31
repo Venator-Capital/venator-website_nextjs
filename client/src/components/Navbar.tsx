@@ -63,13 +63,7 @@ export default function Navbar() {
           >
             Use Cases
           </button>
-          <button
-            onClick={() => scrollToSection('tech-stack')}
-            className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
-            aria-label="Navigate to Tech Stack section"
-          >
-            Tech Stack
-          </button>
+
           <button
             onClick={() => scrollToSection('about')}
             className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
@@ -80,9 +74,9 @@ export default function Navbar() {
           <button
             onClick={() => scrollToSection('tech-partners')}
             className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
-            aria-label="Navigate to Tech Partners section"
+            aria-label="Navigate to Technology Ecosystem section"
           >
-            Partners
+            Technology
           </button>
           <button
             onClick={() => scrollToSection('faq')}
@@ -153,12 +147,7 @@ export default function Navbar() {
             >
               Use Cases
             </button>
-            <button
-              onClick={() => scrollToSection('tech-stack')}
-              className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
-            >
-              Tech Stack
-            </button>
+
             <button
               onClick={() => scrollToSection('about')}
               className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
@@ -169,7 +158,7 @@ export default function Navbar() {
               onClick={() => scrollToSection('tech-partners')}
               className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
             >
-              Partners
+              Technology
             </button>
             <button
               onClick={() => scrollToSection('faq')}

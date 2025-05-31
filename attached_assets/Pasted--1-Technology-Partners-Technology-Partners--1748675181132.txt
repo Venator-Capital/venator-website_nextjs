@@ -1,0 +1,304 @@
+以下の２点について、最も詳細かつ的確な修正指示をまとめました。
+
+1. 「Technology Partners」ロゴの視認性改善
+■ 背景・問題点
+現状の「Technology Partners」セクションでは、各社ロゴに filter: grayscale(100%) をかけ、さらに暗いグレー (opacity: 0.2～0.3 程度) で配置しているため、背景が真っ暗な黒 (#0F0F0F または近似色) の上ではほとんど見えず、視認性が非常に低い。
+
+さらに、ホバーしてもフィルター解除が弱く、クリック可能／非クリック可能の判別がつきづらい。
+
+■ 修正方針
+ロゴ本来のカラーバージョン を使い、暗い背景とのコントラストを十分に確保する。
+
+ホバー時のエフェクト をより明確にし、「今このロゴを選択可能」という状態を視覚的に判別しやすいインタラクションにする。
+
+背景色・ロゴ配置のバランス を見直し、単調な「黒背景＋グレー化ロゴ」から脱却する。
+
+■ 具体的修正指示
+1. カラーロゴの適用
+各パートナーロゴについて、まず 可能であれば背景透過のカラー版 SVG を取得し直すこと（例：OpenAI、Anthropic、TensorFlow、PyTorch、AWS、Google Cloud、Azure、Docker、Kubernetes、Vercel、Figma、Notion、Slack など）。
+
+すでにpublic/logos/brand_logo_svg/フォルダ下に置いてあるファイルの中にカラー版が混在している場合は、コード側で filter: grayscale(0%) を当ててフルカラーで表示できるようにパスを見直す。
+
+もしカラー版が手元にない場合は、各ブランドの公式サイトから「SVG ロゴ」のダウンロードリンクをチェックし、client/public/logos/brand_logo_svg/ に配置する。
+
+コンポーネント修正例（Next.js で TechPartnersSection.jsx を想定）：
+
+jsx
+コピーする
+編集する
+import Image from 'next/image';
+
+const partners = [
+  { name: 'OpenAI', src: '/logos/brand_logo_svg/openai-svgrepo-com.svg' },
+  { name: 'Anthropic', src: '/logos/brand_logo_svg/anthropic-Logo.svg' },
+  { name: 'Hugging Face', src: '/logos/brand_logo_svg/huggingfacelogo.svg' },
+  { name: 'TensorFlow', src: '/logos/brand_logo_svg/tensorflow-svgrepo-com.svg' },
+  { name: 'PyTorch', src: '/logos/brand_logo_svg/pytorch-svgrepo-com.svg' },
+  { name: 'AWS', src: '/logos/brand_logo_svg/aws-svgrepo-com.svg' },
+  { name: 'Google Cloud', src: '/logos/brand_logo_svg/google-cloud-svgrepo-com.svg' },
+  { name: 'Azure', src: '/logos/brand_logo_svg/azure-icon-svgrepo-com.svg' },
+  { name: 'Docker', src: '/logos/brand_logo_svg/docker-svgrepo-com.svg' },
+  { name: 'Kubernetes', src: '/logos/brand_logo_svg/kubernetes-svgrepo-com.svg' },
+  { name: 'Vercel', src: '/logos/brand_logo_svg/vercel-svgrepo-com.svg' },
+  { name: 'Figma', src: '/logos/brand_logo_svg/figma-svgrepo-com.svg' },
+  { name: 'Notion', src: '/logos/brand_logo_svg/notion.svg' },
+  { name: 'Slack', src: '/logos/brand_logo_svg/slack.svg' },
+  // 他に追加したいブランドがあれば同様に列挙
+];
+
+export default function TechPartnersSection() {
+  return (
+    <section id="tech-partners" className="py-24 bg-[#0F0F0F]">
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 md:px-12">
+        <h2 className="text-3xl md:text-4xl font-semibold text-white text-center mb-4">Technology <span className="text-[#FFD600]">Partners</span></h2>
+        <p className="text-gray-400 text-center mb-12">
+          Leveraging industry-leading platforms and frameworks to deliver robust AI solutions
+        </p>
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-8">
+          {partners.map((partner) => (
+            <div key={partner.name} className="flex items-center justify-center">
+              <a
+                href={`https://www.${partner.name.toLowerCase().replace(/\s/g, '')}.com`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block p-2 bg-[#1A1A1A] rounded-lg transition-all duration-200 hover:bg-[#262626]"
+                aria-label={partner.name}
+              >
+                <Image
+                  src={partner.src}
+                  alt={partner.name}
+                  width={160}
+                  height={80}
+                  className="object-contain filter grayscale-0 opacity-70 group-hover:opacity-100 transition-opacity duration-200"
+                  unoptimized={true}
+                />
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+ポイント
+
+filter: grayscale-0 によって最初からカラー表示（グレースケールではない）。
+
+opacity-70 （70% 不透明）を初期状態とし、group-hover:opacity-100 でホバー時はフルカラーに近い鮮明度で表示。
+
+背景色を bg-[#1A1A1A]（やや明るいダークグレー）に変更し、ロゴのコントラストを高める。全体セクションの背景は #0F0F0F のままでもよいが、ロゴを載せる「パネル」部分は少し明るい色にすることで視認性が飛躍的に上がる。
+
+2. ホバー／フォーカス時のインタラクション強化
+次のようなクラスを追加し、ホバー時に「明るくなる」「わずかに拡大する」ことで、クリック可能であることを直感的に示す。
+
+css
+コピーする
+編集する
+.partner-logo {
+  @apply filter grayscale-0 opacity-70 transition-opacity duration-200;
+}
+.partner-logo:hover,
+.partner-logo:focus {
+  @apply opacity-100 transform scale-105;
+}
+具体的に Tailwind の className で書くと：
+
+jsx
+コピーする
+編集する
+<Image
+  src={partner.src}
+  alt={partner.name}
+  width={160}
+  height={80}
+  className="object-contain opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-200"
+  unoptimized={true}
+/>
+group-hover:scale-105 によってホバー時にロゴが 1.05 倍に拡大され、視線誘導が強まる。
+
+フォーカス（キーボード／スクリーンリーダー利用時）でも同じ効果が得られるので、アクセシビリティも担保される。
+
+3. ロゴパネルの背景色・余白
+各ロゴを囲む <a> 要素自体に bg-[#1A1A1A] rounded-lg p-2 といった“カード型”背景を付与し、「ロゴだけが浮いたように」見えるようにする。
+
+カードの余白（p-2 や p-4）を調整し、ロゴ周囲に適度なホワイトスペースを確保する。
+
+もし“縦横比が異なる”ロゴが混在している場合は、aspect-[3/1] などを使って強制的に比率を揃え、中央寄せする方法もある。例えば：
+
+jsx
+コピーする
+編集する
+<div className="flex items-center justify-center">
+  <a className="group block bg-[#1A1A1A] rounded-lg p-4 w-full aspect-[3/1] flex items-center justify-center">
+    <Image
+      src={partner.src}
+      alt={partner.name}
+      fill
+      className="object-contain opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-200"
+      unoptimized={true}
+    />
+  </a>
+</div>
+aspect-[3/1] により横 : 縦 = 3:1 の固定比率を設定し、どのブランドロゴも同じスペース内に収まる。
+
+fill と object-contain で、ロゴがカード内に最大限表示される。
+
+2. 「Our Technology Stack」セクションの削除または統合
+■ 背景・問題点
+現状、サイト内に「Our Technology Stack」というセクションと「Technology Partners（技術パートナー）」というセクションが並列で存在するため、内容が重複・冗長になっている。
+
+どちらも「利用している主要技術」を一覧で示すものだが、スタック（自社技術スタック）とパートナー（外部サービス）は意味合いが近く、ユーザーにとって区別がつきにくい。
+
+UX 的に「同じ情報を別枠で 2 回見せられている」という印象になり、コンテンツの整理・階層化が必要。
+
+■ 修正方針
+「Our Technology Stack」を完全に削除 し、「Technology Partners」セクションに一本化するか、
+
+必要に応じて統合 し、一つのセクション内で「自社がコアで使っている技術」と「連携パートナー企業・サービス」を切り分けて表示する。
+
+■ 具体的修正指示
+1. 「Our Technology Stack」セクションを削除する方法
+Next.js / React の場合、src/components/TechStackSection.jsx（あるいは該当ファイル名）をまるごと削除し、src/pages/index.jsx（トップページ）からそのセクションを呼び出している箇所をすべてコメントアウト／削除する。
+
+diff
+コピーする
+編集する
+// index.jsx（抜粋）
+  {/* --- 削除対象 start --- */}
+- <TechStackSection />
+  {/* --- 削除対象 end --- */}
+  <AboutSection />
+なお、関連する CSS クラスやスタイルガイドも消しておくこと。たとえば、src/styles/techstack.css のようなファイルがあれば削除、tailwind.config.js で screens に追加している場合は不要なブレークポイントも取り除く。
+
+2. 統合して一つにまとめる方法
+「Technology Partners」セクションを “大見出し” にし、その下に「Tech Stack」と「Partners」の２つのサブカテゴリーを作成する。
+
+サブカテゴリーごとに見出しを入れ、ビジュアル的に区切る。例えば、以下のようにマークアップを変更：
+
+jsx
+コピーする
+編集する
+export default function TechPartnersSection() {
+  return (
+    <section id="tech-ecosystem" className="py-24 bg-[#0F0F0F]">
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 md:px-12">
+        {/* 大見出し */}
+        <h2 className="text-3xl md:text-4xl font-semibold text-white text-center mb-4">
+          Technology <span className="text-[#FFD600]">Ecosystem</span>
+        </h2>
+        <p className="text-gray-400 text-center mb-12">
+          Our Core Tech Stack & Industry Partners
+        </p>
+
+        {/* サブカテゴリー：Tech Stack */}
+        <div className="mb-16">
+          <h3 className="text-2xl font-semibold text-white mb-6">Core Tech Stack</h3>
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-8">
+            {coreTechStack.map((tech) => (
+              <div key={tech.name} className="flex items-center justify-center bg-[#1A1A1A] rounded-lg p-4">
+                <Image
+                  src={tech.src}
+                  alt={tech.name}
+                  width={120}
+                  height={60}
+                  className="object-contain opacity-80"
+                  unoptimized={true}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* サブカテゴリー：Tech Partners */}
+        <div>
+          <h3 className="text-2xl font-semibold text-white mb-6">Technology Partners</h3>
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-8">
+            {partners.map((partner) => (
+              <div key={partner.name} className="flex items-center justify-center">
+                <a
+                  href={partner.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block bg-[#1A1A1A] rounded-lg p-4 flex items-center justify-center transition-all duration-200 hover:bg-[#262626]"
+                  aria-label={partner.name}
+                >
+                  <Image
+                    src={partner.src}
+                    alt={partner.name}
+                    width={120}
+                    height={60}
+                    className="object-contain opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-200"
+                    unoptimized={true}
+                  />
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+ポイント
+
+見出しを <h2> → <h3> の階層で整え、「Technology Ecosystem」という大見出しを付与。
+
+サブカテゴリー「Core Tech Stack」では自社でコアに使っている技術（TensorFlow、PyTorch、AWS、GCP、Azure、Docker、Kubernetes、Figma、Notion など）を一覧化。
+
+「Technology Partners」では、外部連携しているプラットフォーム／サービス (OpenAI、Anthropic、Hugging Face、Slack、Supabase、Stripe、Vercel など) を表示。
+
+グリッドレイアウトを共通化し、両方とも同じ grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-8 を使うことでビジュアルの統一感を確保。
+
+ロゴカードの背景色 (bg-[#1A1A1A]) やホバー挙動 (hover:scale-105, hover:opacity-100) は両サブセクションで共通化し、CSS クラスを partner-logo などにまとめるとより保守性が高まる。
+
+上記に合わせて、coreTechStack と partners のデータは src/data/techEcosystem.js のように一元管理するのが理想。
+
+js
+コピーする
+編集する
+// src/data/techEcosystem.js
+export const coreTechStack = [
+  { name: 'TensorFlow', src: '/logos/brand_logo_svg/tensorflow-svgrepo-com.svg' },
+  { name: 'PyTorch', src: '/logos/brand_logo_svg/pytorch-svgrepo-com.svg' },
+  { name: 'AWS', src: '/logos/brand_logo_svg/aws-svgrepo-com.svg' },
+  { name: 'Google Cloud', src: '/logos/brand_logo_svg/google-cloud-svgrepo-com.svg' },
+  { name: 'Azure', src: '/logos/brand_logo_svg/azure-icon-svgrepo-com.svg' },
+  { name: 'Docker', src: '/logos/brand_logo_svg/docker-svgrepo-com.svg' },
+  { name: 'Kubernetes', src: '/logos/brand_logo_svg/kubernetes-svgrepo-com.svg' },
+  { name: 'Figma', src: '/logos/brand_logo_svg/figma-svgrepo-com.svg' },
+  { name: 'Notion', src: '/logos/brand_logo_svg/notion.svg' },
+  // 必要に応じて追加可
+];
+
+export const partners = [
+  { name: 'OpenAI', src: '/logos/brand_logo_svg/openai-svgrepo-com.svg', url: 'https://openai.com' },
+  { name: 'Anthropic', src: '/logos/brand_logo_svg/anthropic-Logo.svg', url: 'https://www.anthropic.com' },
+  { name: 'Hugging Face', src: '/logos/brand_logo_svg/huggingfacelogo.svg', url: 'https://huggingface.co' },
+  { name: 'Stripe', src: '/logos/brand_logo_svg/stripe-svgrepo-com.svg', url: 'https://stripe.com' },
+  { name: 'Supabase', src: '/logos/brand_logo_svg/supabase-logo-icon.svg', url: 'https://supabase.com' },
+  { name: 'Vercel', src: '/logos/brand_logo_svg/vercel-svgrepo-com.svg', url: 'https://vercel.com' },
+  { name: 'Slack', src: '/logos/brand_logo_svg/slack.svg', url: 'https://slack.com' },
+  // 他追加分も同様に
+];
+まとめ
+「Technology Partners」ロゴの視認性
+
+カラーバージョンの SVG を使い、filter: grayscale(0)＋opacity-70 で初期表示し、 group-hover:opacity-100＋group-hover:scale-105 のクラスを当ててホバーで鮮明化。
+
+ロゴを囲むカード背景を bg-[#1A1A1A] rounded-lg p-4 にして、暗い背景 (#0F0F0F) とのコントラストを改善。
+
+ロゴサイズ（width / height）とグリッド列数（grid-cols-3 sm:grid-cols-4 md:grid-cols-6）を統一してバラつきを排除。
+
+「Our Technology Stack」セクションの整理
+
+完全削除か、「Tech Stack」＋「Partners」を統合した一つの「Technology Ecosystem」セクションへの再編成のいずれかを採用。
+
+統合する場合は、大セクションの中に <h3>Core Tech Stack</h3> と <h3>Technology Partners</h3> の２つを並べ、グリッド配置とスタイルを揃えて見せる。
+
+この両点を必ず反映し、「黒バック＋ロゴ」の組み合わせが視認性高く、かつ情報が整理されたシンプルな１セクションになるように実装してください。
+
+
+
+
+
+
