@@ -5,12 +5,15 @@
 @tailwind utilities;
 
 :root {
-  /* Venator Capital Custom Variables */
+  /* Venator Capital Custom Variables - Enhanced for Visual Impact */
   --primary-black: 0 0% 6%; /* #0F0F0F - softer than pure black */
-  --deep-charcoal: 0 0% 10%;
+  --deep-charcoal: 0 0% 10%; /* #1A1A1A - for alternating sections */
+  --darker-charcoal: 0 0% 8%; /* #141414 - for depth variation */
   --silver-gray: 0 0% 70%;
   --accent-blue: 214 88% 65%;
   --accent-gold: 45 93% 65%;
+  --tech-blue: 204 100% 59%; /* #0EA5E9 - for tech elements */
+  --ai-purple: 262 83% 58%; /* #8B5CF6 - for AI-focused elements */
   
   /* Base colors */
   --background: var(--primary-black);
@@ -139,6 +142,39 @@
     color: hsl(var(--silver-gray));
     border: 1px solid hsl(var(--silver-gray) / 0.4);
     box-shadow: 0 0 20px hsl(var(--silver-gray) / 0.1);
+  }
+
+  /* Section alternating backgrounds for visual separation */
+  .section-primary {
+    background: linear-gradient(135deg, hsl(var(--primary-black)) 0%, hsl(var(--darker-charcoal)) 100%);
+  }
+
+  .section-alternate {
+    background: linear-gradient(135deg, hsl(var(--deep-charcoal)) 0%, hsl(var(--primary-black)) 100%);
+  }
+
+  /* Enhanced focus styles for accessibility */
+  .focus-enhanced:focus {
+    outline: 2px solid hsl(var(--tech-blue));
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px hsl(var(--tech-blue) / 0.2);
+  }
+
+  /* Tech-focused gradient backgrounds */
+  .tech-gradient {
+    background: linear-gradient(135deg, hsl(var(--tech-blue) / 0.1) 0%, hsl(var(--ai-purple) / 0.1) 100%);
+  }
+
+  /* Card hover effects with better visual feedback */
+  .card-enhanced {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid hsl(var(--deep-charcoal));
+  }
+
+  .card-enhanced:hover {
+    border-color: hsl(var(--tech-blue) / 0.5);
+    box-shadow: 0 8px 25px -8px hsl(var(--tech-blue) / 0.2);
+    transform: translateY(-2px);
   }
 }
 

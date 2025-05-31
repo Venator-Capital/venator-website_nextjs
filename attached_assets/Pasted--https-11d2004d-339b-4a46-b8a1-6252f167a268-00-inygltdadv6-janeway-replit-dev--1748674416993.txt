@@ -1,0 +1,6122 @@
+以下は、現在のウェブサイト（https://11d2004d-339b-4a46-b8a1-6252f167a268-00-inygltdadv6.janeway.replit.dev/）に対して「世界一厳しいウェブデザイナー兼デベロッパー」の視点であらゆるおかしな点（ツッコミどころ）を徹底的に洗い出し、各問題の背景分析とその修正案を網羅的にまとめた超ボリュームの修正指示書です。**すべての小さな違和感、技術的・UX的・アクセシビリティ的・SEO的・パフォーマンス的問題**を漏れなく列挙し、対応策を具体的かつ段階的に明示しています。以下の指摘項目をすべて潰し込むことで、「AI特化企業のコーポレートサイト」としての完成度を最高潮に高められます。
+
+目次
+総論：サイト全体の第一印象・目的との乖離
+
+グローバル共通設定・ファイル構造・コード品質
+
+環境構成・ビルド設定
+
+フォルダ構成・ファイル命名規則
+
+CSS/Tailwind構成
+
+JavaScript/Reactコード品質
+
+バージョン管理・コミットメッセージ
+
+アクセシビリティ（a11y）＆ユニバーサルデザイン
+
+セマンティックHTML構造
+
+キーボードナビゲーション
+
+カラコントラスト
+
+ARIA属性・ロール付与
+
+フォーカススタイル
+
+画像とメディアの代替テキスト
+
+ヘッダー（Navbar）
+
+HTML構造・マークアップ
+
+レスポンシブデザイン
+
+スクロール時の状態遷移
+
+アクセシビリティとARIA
+
+パフォーマンス最適化
+
+スプラッシュ画面（SplashScreen）
+
+動画読み込みとオートプレイの挙動
+
+透明背景と背景色の不一致
+
+パフォーマンス・プリロード
+
+Fallback戦略（モバイル/簡易接続時）
+
+アクセシビリティ・代替コンテンツ
+
+ヒーローセクション（HeroSection）
+
+ファーストビューのインパクト不足
+
+タイポグラフィ・フォントサイズの不整合
+
+キャッチコピー文言の最適化（SEO・訴求力）
+
+CTAボタンの視認性と階層性
+
+インタラクティブ要素（ホバーロゴ）の問題点
+
+レスポンシブ崩れ・テキスト折り返し
+
+Lottie背景の読み込みとパフォーマンス
+
+Capabilitiesセクション
+
+見出し階層（h2/h3）の適切さ
+
+グリッドレイアウトの破綻状況
+
+カードデザインの一貫性とアクセシビリティ
+
+アイコン画像の代替テキスト・コンテナサイズ
+
+レスポンシブ対応（列数・余白）
+
+Use Casesセクション
+
+セクションタイトル・サブテキストの問題
+
+アコーディオン／カード表示のUX課題
+
+マイクロインタラクションの不足
+
+グリッドレイアウトの崩れ
+
+テキスト量／行間の不均一
+
+Tech Stackセクション
+
+「Tech Partners」との役割重複
+
+グリッド列数が可変幅に対応していない
+
+ロゴ画像のフィルター・コントラスト問題
+
+レスポンシブ時の表示崩れ
+
+Aboutセクション
+
+テーブルレイアウトの最適化不足
+
+日本語・英語混在の可能性
+
+フォントサイズ・行間の不整合
+
+セマンティックマークアップの欠如
+
+レスポンシブ時のテーブル溢れ
+
+Tech Partnersセクション
+
+設置位置・ユーザーフロー上の不適合
+
+ロゴ選定の過不足（重複・不要）
+
+グレースケール→カラー切替のUXチューニング
+
+リンクのターゲット制御・ARIAラベル
+
+レスポンシブグリッドの崩れ
+
+Servicesセクション
+
+サービス名と説明文の不統一
+
+アイコンとテキストのレイアウト不整合
+
+定義済み要素（HTMLタグ）の再検討
+
+グリッド表示と余白バランス
+
+レスポンシブ切替の未調整
+
+FAQセクション
+
+Accordion実装のアクセシビリティ不備
+
+キーボード操作時の開閉挙動
+
+アイコン回転・遷移の不自然さ
+
+モバイル時のパディング欠落
+
+ARIA属性の付与漏れ
+
+Contactセクション
+
+フォームマークアップの問題
+
+バリデーションの曖昧さ・エラーメッセージUX
+
+セマンティックなフォームラベリング
+
+送信後ステート管理・フィードバック表現
+
+レスポンシブ時の入力フィールド幅
+
+Footerセクション
+
+フッター情報の不足（コピーライト、SNSリンクの未統一）
+
+レスポンシブ時のレイアウト崩れ
+
+コントラスト比の不足（グレー文字 on 黒背景）
+
+アクセシビリティ（リンクのフォーカススタイル）
+
+フッターナビのリンク整備
+
+SEO・メタデータ・構造化データ
+
+title・meta description の最適化不足
+
+構造化データ（JSON-LD）の記述漏れ/不備
+
+Open Graph / Twitter Card の不整合
+
+canonical タグ・hreflang の不在
+
+画像 alt 属性の不統一
+
+パフォーマンス最適化
+
+Lighthouseスコアの現状未チェック／改善余地
+
+画像の遅延読み込み不足
+
+JavaScriptバンドルサイズが肥大化している可能性
+
+CSS（Tailwind）の Purge / JIT 設定の不備
+
+動画プリロード / ローディング最適化
+
+モニタリング・エラー監視・ログ出力
+
+JavaScript 実行時エラーの可視化不足
+
+フォーム送信失敗時のログ保存・通知
+
+Lighthouse CI / Chromatic 等の導入
+
+Sentry や LogRocket の未導入
+
+アップデート後の回帰テスト体制
+
+ドキュメント・スタイルガイドの整備
+
+Tailwind カスタムカラー / フォント定義のドキュメント化不足
+
+コンポーネント設計書と実装の乖離
+
+コードコメント・JSDoc の不在
+
+デザイントークン / スタイル定義の未共有
+
+GitHub リポジトリの README 更新
+
+今後の提案機能・拡張性
+
+多言語対応（国際化対応）の検討
+
+ダッシュボード連携 / CMS 化（Notion/Supabase）
+
+動的データ取得（API連携）
+
+PDF ダウンロード / ホワイトペーパー生成
+
+A/B テスト / コンバージョン最適化
+
+1. 総論：サイト全体の第一印象・目的との乖離
+ツッコミどころ
+AI特化を謳いながらデザインが中途半端にクラシック黒基調で新しさが伝わりにくい
+
+第一印象で「先進的」「未来感」「テクノロジードリブン」な印象が弱い。
+
+単に黒背景＋白文字＋角丸ボタンというテンプレ的な構成に留まっており、競合スタートアップと比べても個性が希薄。
+
+ファーストビュー以外のセクションで視線誘導が曖昧
+
+セクション間に十分なビジュアル区切り（グラデーション、図形、波線など）がなく、すべて同じ黒ベタ背景・セクション間余白のみで構成されているため、長いスクロールで「どこまで見たか分からなくなる」。
+
+ページを下に延々とスクロールしても「ここからここまでがAboutで、ここからServices」という明確な区切りが乏しい。
+
+ターゲット顧客に合わせたペルソナ訴求が弱い
+
+サイト上の文言は一般的なAIスタートアップ寄りで、特定の業界や課題をターゲットにしていない。
+
+「どの業界のどの役職者に向けた提案なのか」が曖昧であり、訪問者にとって「この会社が何者か」がすぐに理解しにくい。
+
+ストーリーテリングが欠如
+
+「誰に」「何を」「どのように」「なぜ」提供するかというストーリー構造が不十分。
+
+サイトを訪れた瞬間に「Venator Capital が何を達成したいのか」「顧客が抱える具体的な課題」「ソリューションの流れ」がすぐに読み取れない。
+
+分析と修正案
+問題点	分析	修正案（方向性）
+ビジュアルインパクト不足	既存デザインが色彩・タイポグラフィ共に凡庸。	・Hero背景に動的なグラデーションアニメーションや半透明レイヤーを追加し、ダイナミックさを演出
+・ロゴ周りにパーティクル / 粒子アニメを薄く入れてテクノロジー感を強化
+・セクション毎に背景テクスチャ（微細なノイズ・線画風AIイメージ）を挿入し、メリハリを付ける
+セクション区切りが曖昧	黒ベタ→黒ベタの連続で視認性が低い	・セクション間に「波線」「曲線」「SVGグラデーションカーブ」を配置して自然な繋がりを作る
+・Alternate背景色（#0F0F0F vs #1A1A1A）を交互に切り替え
+ペルソナ訴求が弱い	誰向けかが不明瞭でエントリポイントが散漫。	・Hero 下に「Industry: Finance｜Healthcare｜E-commerce」などのキーピクトグラムを配置し、対象業界を明示
+・「Use Cases」セクションを冒頭に配置し、具体的な事例から興味を引く
+ストーリー構造が欠如	コンテンツが羅列的でシナリオが見えない	・「Problem → Solution → Impact」のフレームワークに沿うようにページ構造を再編（例：Use Cases を先に、About や Tech Partners をその次に配置）
+・CTA の導線を「今すぐ相談」→「具体例閲覧」などステップ化
+
+2. グローバル共通設定・ファイル構造・コード品質
+2.1 環境構成・ビルド設定
+問題点
+Vite / Next.js のビルドスクリプトが非最適化
+
+package.json に "build": "vite build" などと一律記述されているが、プロダクション向け最適化（圧縮・Tree-shaking・環境変数置換）が追い切れていない。
+
+NODE_ENV=production の前提でしか動作しない場合、Replit の “Run” と “Deploy” で環境切り替えに齟齬が起きる可能性あり。
+
+Replit 上の replit.nix 設定が不明瞭
+
+nixpkgs のバージョンが固定されていないと、将来の更新で Node.js のバージョンや yarn のバージョンが変わり、ビルドが壊れるリスクがある。
+
+shell.nix との整合が取れておらず、依存管理が開発者環境とデプロイ環境で異なる可能性がある。
+
+ESLint / Prettier 等の統合不足
+
+コードスタイルが一貫しておらず、開発チームでの合意が見えない。
+
+コミットごとの自動整形や lint チェックが効いていないため、コミットごとに異なるインデント・セミコロン有無・クォーテーションが混在する。
+
+分析と修正案
+問題点	分析	修正案
+ビルドスクリプト非最適化	プロダクションビルド時に最適化オプション不足	- package.json に build: "NODE_ENV=production vite build --mode production" を記述
+- preview や serve スクリプトを明確に定義
+replit.nix 設定が不安定	Node.js・yarn のバージョンが流動的	- replit.nix に nodejs-18_x や yarn のバージョンを明示的に固定
+- 例：
+
+nix
+コピーする
+編集する
+{ pkgs }: {
+  deps = [
+    pkgs.nodejs-18_x  # Node.js 18.x を固定
+    pkgs.yarn          # Yarn を固定
+  ];
+}
+``` |
+| ESLint / Prettier 未統合                | コード品質管理・CI 品質保証が手動                   | - プロジェクトルートに `.eslintrc.js` / `.prettierrc.js` を追加し、推奨設定を取り込む（Airbnb, Prettier など）<br>- `package.json` に `"lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'"` を追加<br>- コミット前フック (husky + lint-staged) を設定し、自動整形を強制 |
+
+---
+
+### 2.2 フォルダ構成・ファイル命名規則
+
+#### 問題点
+1. **「client/public/logos/brand_logo_svg」という深い階層**  
+ - 誰が見ても一目で分かる構造ではなく、冗長。 例えば `public/logos/brand/` で十分。
+2. **コンポーネントの配置が一律 `src/components/` のみ**  
+ - セクション単位のフォルダがないため、複数人で作業するとファイルが散逸しやすい。
+3. **ファイル名がロゴサイト名そのまま(スペース・記号入り)で混在**  
+ - 大文字小文字やアンダースコアが混在しており、URL エンコード時にバグが発生するリスク。
+
+#### 分析と修正案
+
+| 問題点                                         | 分析                                           | 修正案                                                                                               |
+|------------------------------------------------|------------------------------------------------|------------------------------------------------------------------------------------------------------|
+| 深すぎるフォルダ階層 (`client/public/logos/brand_logo_svg`) | 管理が煩雑になり、誤って同名ファイルを配置するリスクがある | - `public/logos/brand/` に整理し直す<br>- `public/logos/partner/` など役割別サブフォルダを検討          |
+| コンポーネントが全て `src/components/` に一列保存 | 各セクションごとの関連ファイルを探しづらい        | - 以下のように機能別フォルダを作成  
+src/
+components/
+Hero/
+HeroSection.jsx
+HeroSection.module.css（※CSS Module を使う場合）
+About/
+AboutSection.jsx
+Capabilities/
+CapabilitiesSection.jsx
+TechPartners/
+TechPartnersSection.jsx
+...
+
+markdown
+コピーする
+編集する
+で分割保存                                                                 |
+| ファイル名がスペース・記号混在 (`openai-svgrepo-com.svg` 等) | URL エンコード時に `%20` などが入ると参照バグに繋がる | - 全て小文字英数字＋ハイフンに統一する（例：`openai.svg`, `anthropic.svg`, `hugging-face.svg`）<br>- 変更後は必ず参照パスを全て置換 |
+
+---
+
+### 2.3 CSS/Tailwind構成
+
+#### 問題点
+1. **Tailwind の Purge 設定が甘い**  
+ - 未使用クラスが大量にバンドルされており、CSS ファイルが肥大化。  
+ - `tailwind.config.js` の `purge` オプションに `.mdx` など余計な拡張子を含めていない。
+
+2. **共通カラー・フォントを Tailwind で明示していない**  
+ - `--bg-primary: #0F0F0F` など CSS 変数を作っていないため、直接色コードが散在している。  
+ - 異なるセクションで黒の濃度が微妙に違う（例：`bg-black` と `bg-[#0F0F0F]` が混在）。
+
+3. **カスタムユーティリティを定義せずに inline クラスが肥大**  
+ - 例えば、`className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 ... px-6 sm:px-8 md:px-12"` のように同じ設定を複数箇所でコピペしている。
+
+#### 分析と修正案
+
+| 問題点                                                    | 分析                                                               | 修正案                                                                                                                                                                                                                                              |
+|-----------------------------------------------------------|--------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Purge 未設定 / CSS が肥大                                    | 本番リリース時に未使用クラスを含んでいるため、ページロードが遅い可能性あり | - `tailwind.config.js` に以下を追加：  
+```js
+module.exports = {
+  purge: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    './public/index.html'
+  ],
+  darkMode: false,
+  theme: {
+    extend: { /* 既存設定 */ }
+  },
+  variants: { extend: {} },
+  plugins: [],
+}
+```<br>- Vite/CRA 環境なら `NODE_ENV=production` で `purge` が効く。                                                      |
+| カラーがコード直書きで散在                                     | 同一色なのに微妙にコードが異なるとメンテナンス性が低下               | - 全て共通カラーパレットを Tailwind の `theme.extend` 内に定義：  
+```js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        blackPrimary: '#0F0F0F',
+        blackSecondary: '#1A1A1A',
+        accentBlue: '#1F4ED8',
+        accentGold: '#FFD54F',
+        grayLight: '#4B5563', // Tailwind gray-600 など
+        grayDark: '#111827'
+      }
+    }
+  }
+}
+クラス内では bg-blackPrimary, bg-blackSecondary, text-grayLight などを常に用いる。 |
+| 同じユーティリティクラスが各所にコピペされている | 変更時に漏れやバグの温床になる | - @apply を使って共通スタイルを定義（Tailwind CSS + PostCSS required）：
+
+css
+コピーする
+編集する
+/* src/styles/globals.css */
+.container-base {
+  @apply max-w-6xl mx-auto px-6 sm:px-8 md:px-12;
+}
+.section-base {
+  @apply py-24;
+}
+.card-base {
+  @apply p-6 bg-blackSecondary rounded-lg shadow-lg hover:shadow-xl transition-all duration-200;
+}
+.button-primary {
+  @apply inline-block px-8 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-accentBlue transition-all duration-200;
+}
+各コンポーネントでは例えば <div className="container-base section-base"> のように短く書くことで可読性を向上させる。 |
+
+2.4 JavaScript/Reactコード品質
+問題点
+props 型チェック（TypeScript/PropTypes）がない
+
+各コンポーネントに渡す props の型が曖昧で、今後データ構造が膨らんだときにバグが発生しやすい。
+
+重複ロジックが多い
+
+複数のセクションで似たようなグリッドレイアウトやカードUIを個別実装しているため、冗長コードが発生。
+
+useEffect フックのクリーンアップ未徹底
+
+SplashScreen や HeroSection で setTimeout を使っているが、アンマウント時のクリーンアップが適切に行われていない可能性がある。
+
+分析と修正案
+問題点	分析	修正案
+props 型チェック欠如	TypeScript未導入 or PropTypes未設定で、型エラーを見逃しやすい	- TypeScript 導入
+
+プロジェクト全体を TypeScript 化 (.tsx)
+
+tsconfig.json を作成し、strict オプションを有効化
+
+各コンポーネントに interface / type を定義
+
+例：
+
+ts
+コピーする
+編集する
+interface Partner {
+  href: string;
+  src: string;
+  alt: string;
+  ariaLabel: string;
+}
+
+const partners: Partner[] = [ ... ];
+TypeScript 導入が難しければ、prop-types パッケージで型チェックを行う。 |
+| 重複ロジックが多い | 似たようなコードをコンポーネント間でコピペ | - 共通となる UI パーツを抽象コンポーネント化
+例：GridContainer.jsx, CardBase.jsx, ButtonPrimary.jsx などを作成し、各セクションから呼び出す。
+
+jsx
+コピーする
+編集する
+// src/components/common/GridContainer.jsx
+export default function GridContainer({ children }) {
+  return <div className="max-w-6xl mx-auto grid gap-8 px-6 sm:px-8 md:px-12">{children}</div>;
+}
+``` |
+| useEffect のクリーンアップ未徹底                  | メモリリークや複数クリックで副作用が残るリスク                         | - `useEffect` 内で `setTimeout` / `setInterval` を使う場合は必ずクリーンアップ関数を返す。  
+例：  
+```jsx
+useEffect(() => {
+  const timer = setTimeout(onFinish, 3000);
+  return () => clearTimeout(timer);
+}, [onFinish]);
+また、HeroSection のマウスイベント登録時に addEventListener を使うなら、アンマウント時に removeEventListener を忘れず追加。 |
+
+2.5 バージョン管理・コミットメッセージ
+問題点
+コミットメッセージがバラバラ / 意味不明
+
+「fix」だけなど短すぎて何を直したのか分からないコミットが混在。
+
+機能ごとにブランチ戦略が未整備
+
+メインブランチに直接コミットしており、レビューやQAプロセスが曖昧。
+
+README が古い / ドキュメントが散逸
+
+プロジェクト概要やセットアップ手順が最新化されておらず、新規参入者が迷う状態。
+
+分析と修正案
+問題点	分析	修正案
+コミットメッセージが不明瞭	プロジェクト履歴が追いづらい	- コミットメッセージ規約（Conventional Commits）を導入し、feat:, fix:, chore: などを明示。
+例：		
+
+scss
+コピーする
+編集する
+feat(hero): Update HeroSection CTA labels
+fix(tech-partners): Correct grid columns for mobile breakpoint
+chore(tailwind): Add custom color tokens to tailwind.config.js
+| ブランチ戦略が未整備 | 共同開発時に競合やマージミスが発生しやすい | - Git Flow または GitHub Flow を導入し、main は常に安定版、develop で開発、feature/ ブランチで機能追加、hotfix/ ブランチで緊急修正…などを徹底。 |
+| README が古い / ドキュメント散逸 | 初見開発者がセットアップ方法や依存管理を把握できない | - プロジェクトルートに README.md を最適化し、以下を明記：
+
+shell
+コピーする
+編集する
+# Venator Capital Website
+
+## Overview
+AI-focused corporate website built with React, Tailwind CSS, Framer Motion.
+
+## Setup
+$ git clone <repo>
+$ cd venator_capital_website
+$ npm install
+$ npm run dev
+
+## Environment
+- Node.js v18.x
+- Yarn v1.x or npm v8.x
+
+## Folder Structure
+├── public/           # 静的アセット（ロゴ、動画、SVG etc.）
+├── src/
+│   ├── components/   # React コンポーネント（機能別にフォルダ分け）
+│   ├── pages/        # Next.js ルーティング (もし Next.js 利用時)
+│   └── styles/
+├── tailwind.config.js
+├── postcss.config.js
+├── package.json
+└── replit.nix
+
+## Deployment
+- Deployed via Replit / Vercel
+- Custom domain: venator.capital
+各セクションごとの変更履歴は CHANGELOG.md を作成し、常に更新する。 |
+
+3. アクセシビリティ（a11y）＆ユニバーサルデザイン
+3.1 セマンティックHTML構造
+問題点
+見出しレベルの不整合
+
+Heroセクションに h1、Capabilities に h2、Use Cases に h2、About に h2...と一応は使っているが、見出し同士の階層が論理的に整理されていない。
+
+「Tech Partners」が h2 なのに、About セクションも h2 なので、巡回ユーザー／スクリーンリーダーがどこが上位か分からない。
+
+記事（<article>） / セクション（<section>） / 見出しの紐づけ不足
+
+<section> に aria-labelledby を付与していないため、スクリーンリーダーが「セクション見出し」を認識しづらい。
+
+見出しが <div><h2>…</h2></div> とだけ囲まれており、セマンティックな意味づけが不十分。
+
+修正案
+問題点	分析	修正案
+見出し階層の不整合	h1～h2の使い方はしているが、ページ構成と見出し階層が対応していない	- 一貫した見出し階層を再設計
+
+<main> 直下の最上位は h1（Hero）
+
+それ以降のセクションはすべて h2
+
+各セクション内の細分化（例えば Use Cases の個別タイトル）は h3 を使う
+例：
+
+jsx
+コピーする
+編集する
+<main>
+  <section id="hero" role="banner">
+    <h1>Turning AI Into Advantage</h1>
+    {/* … */}
+  </section>
+  <section id="capabilities" role="region" aria-labelledby="capabilities-heading">
+    <h2 id="capabilities-heading">Core Capabilities</h2>
+    {/* … */}
+  </section>
+  <section id="use-cases" role="region" aria-labelledby="use-cases-heading">
+    <h2 id="use-cases-heading">Use Cases</h2>
+    <h3>Automated Customer Support</h3>
+    {/* … */}
+  </section>
+  {/* 以下同様 */}
+</main>
+```                                                                                                   |
+| `<section>` に `aria-labelledby` がない | スクリーンリーダーがセクションの見出しを把握できない               | - 各 `<section id="xxx">` に対して `<h2 id="xxx-heading">` を紐づけ、`<section role="region" aria-labelledby="xxx-heading">` を追加                                                                                                          |
+
+---
+
+### 3.2 キーボードナビゲーション
+
+#### 問題点
+1. **ハンバーガーメニューがキーボード操作できない**  
+ - モバイル環境でハンバーガーアイコンをタブキーでフォーカスできず、Enter/Spaceで開閉できない。  
+ - フォーカスアウト時に閉じる実装がないため、タブキーで抜けるとメニューが閉じないまま画面外に残る。  
+2. **Accordion（FAQ）のキーボード操作不足**  
+ - `Disclosure.Button` にフォーカスが移動しても、Enter か Space で開閉できない、または `aria-expanded` が更新されない。  
+3. **フォーカスインジケーターがほぼ見えない**  
+ - 各リンク・ボタンに `outline` がない、または薄すぎて識別困難であるため、キーボードユーザーが現在どこにフォーカスしているか分かりづらい。
+
+#### 修正案
+
+| 問題点                                    | 分析                                                    | 修正案                                                                                                                                                                                                                                                                                                                                                   |
+|-------------------------------------------|---------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ハンバーガーメニューがキーボード操作対応していない | `<button>` タグ自体は存在しているが、`aria-expanded` などが設定されておらず、フォーカス時のスタイルもない | - `<button>` に必ず `aria-label="Toggle navigation menu" aria-expanded={isOpen}` を設定   
+```jsx
+<button
+  onClick={() => setIsOpen(!isOpen)}
+  aria-label="Toggle navigation menu"
+  aria-expanded={isOpen}
+  className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue"
+>
+  {/* ハンバーガーアイコン */}
+</button>
+メニューオープン時に、キーボードフォーカスを最初のリンクに移動させる（useEffectで document.getElementById('nav-link-0').focus() など）。
+
+メニューが開いた状態で Escape キーを押すと閉じるように、useEffect でイベントリスナーを追加して isOpen を制御。 |
+
+| Accordion（FAQ）操作が不十分 | Disclosure.Button に tabIndex は付与されているが、aria-expanded 更新漏れや Enter/Space が機能していない | - Headless UI の <Disclosure> を以下のように実装し、デフォルトでキーボード対応されるように修正
+
+jsx
+コピーする
+編集する
+<Disclosure>
+  {({ open }) => (
+    <>
+      <Disclosure.Button
+        className="focus:outline-none focus:ring-2 focus:ring-accentBlue"
+        aria-expanded={open}
+        aria-controls="faq-panel-1"
+        id="faq-question-1"
+      >
+        <span>What is your pricing model?</span>
+      </Disclosure.Button>
+      <Disclosure.Panel id="faq-panel-1" role="region" aria-labelledby="faq-question-1">
+        <p>We offer flexible subscription tiers based on usage and volume...</p>
+      </Disclosure.Panel>
+    </>
+  )}
+</Disclosure>
+これにより、Button に自動で tabIndex="0" が付き、Enter/Space で開閉され、aria-expanded が適切に更新される。 |
+
+| フォーカスインジケーターが見えない | :focus スタイルが未定義または彩度が低すぎて識別不可 | - 全リンク・ボタン・フォームコントロールに共通して以下クラスを適用し、フォーカスが明確に見やすいようにする
+
+css
+コピーする
+編集する
+/* CSS Module / globals.css */
+.focus-visible\:outline-none:focus {
+  outline: none;
+}
+.focus-visible\:ring-accentBlue:focus {
+  box-shadow: 0 0 0 2px #1F4ED8;
+}
+または Tailwind では、
+
+jsx
+コピーする
+編集する
+className="focus:outline-none focus:ring-2 focus:ring-accentBlue focus:ring-offset-2"
+を必ず付与。 |
+
+3.3 カラコントラスト
+問題点
+グレー文字 (text-gray-300) が一部暗すぎて可読性低下
+
+黒背景 (#0F0F0F) に対して #D1D5DB（Tailwind の gray-300）ではコントラスト比約 3.5:1 程度にとどまり、WCAG AA 基準（4.5:1）を下回る領域が存在する。
+
+ボタンのホバー背景 (bg-gray-200) が薄すぎて判別困難
+
+白ベースのボタンに対してのホバー色が #E5E7EB（Tailwind gray-200）ではほぼ判別できず、ユーザーに「ホバー状態かどうか」が伝わりづらい。
+
+Footer のリンク色 (text-gray-400) が背景 (#0B0B0B) と近似しすぎ
+
+コントラスト比が 3:1 を下回り、視認性・アクセシビリティが非常に低い。
+
+分析と修正案
+問題点	分析	修正案
+グレー文字 (text-gray-300) が暗すぎる	可読性が低く、スクリーンリーダー利用者以外のビジターも読みにくい	- ダークモード用のアクセシブルグレー（例：#E5E7EB ではなく #F3F4F6 Tailwind の gray-100 相当）を使用。
+
+css
+コピーする
+編集する
+.text-gray-light {
+  color: #E5E7EB; /* コントラスト比 4.6:1 (WCAG AA 達成) */
+}
+Tailwind クラスでは、text-gray-200 → text-gray-100 に変更、または text-gray-50 を検討。 |
+| ボタンホバー色が薄すぎて判別困難 | ユーザーがマウスオーバーしている実感を得にくく、クリック誘導が弱くなる可能性 | - ホバー時の背景色をよりコントラストの高い色に変更：
+
+css
+コピーする
+編集する
+.button-primary:hover {
+  background-color: #D1D5DB; /* Tailwind gray-300: コントラストは十分 */
+}
+Tailwind では、hover:bg-gray-200 → hover:bg-gray-300 に変更し、hover:shadow-lg を維持。
+
+Secondary ボタンのホバー背景は hover:bg-white ではなく hover:bg-gray-100 にしてテキストが浮かび上がるように。 |
+| Footer リンク色 (text-gray-400) が暗すぎる | 背景とのコントラスト比が 3:1 未満で WCAG AA を下回る | - Footer のリンク色を text-gray-200 (#E5E7EB) に変更し、コントラスト比を 4.5:1 以上にする。
+
+jsx
+コピーする
+編集する
+<a href="#" className="text-gray-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue">
+  Privacy Policy
+</a>
+```                                                                                                 |
+3.4 ARIA属性・ロール付与
+問題点
+ナビゲーションに role="navigation" がない
+
+<nav> タグを <div> で囲んでいる場合、スクリーンリーダーが正しくメニューを検出できない。
+
+セクションに role="region" が未設定
+
+<section> タグだけではセマンティックだが、ARIAランドマークを明示しないとスクリーンリーダーで飛びにくい。
+
+フォームボタンに aria-label がない
+
+送信ボタンなどが単に「Send Message」というテキストだけになっている場合、文脈を離れると「何を送るボタンか」が分かりづらい。
+
+修正案
+問題点	分析	修正案
+ナビゲーションに role="navigation" がない	<nav> は ARIA landmark として認識されるが、もし <div role="navigation"> を使う場合は明示が必要	- <nav> を以下のように明示：
+
+jsx
+コピーする
+編集する
+<header role="banner">
+  <nav role="navigation" aria-label="Main Navigation" className="...">
+    {/* リスト */}
+  </nav>
+</header>
+これによりスクリーンリーダーがアクセシブルにメニューを検出できる。 |
+| セクションに role="region" aria-labelledby が未設定 | <section> タグだけではランドマークとして認識されにくい | - 各セクションを次のように更新：
+
+jsx
+コピーする
+編集する
+<section id="services" role="region" aria-labelledby="services-heading">
+  <h2 id="services-heading">Services</h2>
+  {/* 内容 */}
+</section>
+これにより、ランドマークジャンプ機能を持つユーザーが「Services セクションに飛ぶ」ことが容易になる。 |
+| フォームボタンに aria-label がない | 「Send Message」だけだと文脈を離れると何を送るのか分かりづらい | - 送信ボタンに aria-label="Send message to Venator Capital" を追加：
+
+jsx
+コピーする
+編集する
+<button
+  type="submit"
+  aria-label="Send message to Venator Capital"
+  className="button-primary"
+>
+  Send Message
+</button>
+また、各入力フィールドに <label htmlFor=""> を必ず紐づけ、aria-required="true" を付与。 |
+
+3.5 フォーカススタイル
+問題点
+キーボードタブキーでリンク／ボタンにタブ移動したときに視覚的フォーカス表示が見えない
+
+:focus スタイルが指定されておらず、黒背景＋薄めの輪郭だと非常に分かりにくい。
+
+アコーディオンや入力フィールドをキーボードで操作する際、どの要素にフォーカスが当たっているか一切分からない。
+
+修正案
+問題点	分析	修正案
+フォーカススタイルが存在しない	キーボードユーザーが現在フォーカスしている要素が把握できない	- グローバルCSS に以下を追加し、すべてのフォーカス可能要素に適用：
+
+css
+コピーする
+編集する
+/* src/styles/globals.css */
+:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(31, 78, 216, 0.6); /* Tailwind accentBlue の半透明 */
+}
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+[tabindex]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(31, 78, 216, 0.6);
+}
+Tailwind では、各要素に focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue を付与。 |
+
+3.6 画像とメディアの代替テキスト
+問題点
+ロゴ画像・アイコン画像に適切な alt 属性がない／冗長
+
+ロゴに alt="venator logo" とだけ書かれているが、コンテキストを離れると「何のロゴ」か分からない。
+
+Tech Partners のロゴに alt="openai" だけだと、スクリーンリーダーに「openai」とだけ読み上げられ、リンク先が何か分かりづらい。
+
+動画（SplashScreen）の代替コンテンツがない
+
+<video> に alt は存在せず、視覚障害者が「動画がある」こともわからない。
+
+playsInline や muted 属性はあるが、aria-label や aria-describedby が未設定。
+
+修正案
+問題点	分析	修正案
+ロゴ画像の alt が不明瞭	スクリーンリーダーが「openai」とだけ読み上げてもリンク先が想像しづらい	- Tech Partners のロゴに以下を適用：
+
+jsx
+コピーする
+編集する
+<img
+  src="/logos/brand_logo_svg/openai.svg"
+  alt="OpenAI platform logo"
+  loading="lazy"
+  className="h-10 sm:h-12 md:h-14 lg:h-16 object-contain mx-auto filter grayscale hover:filter-none hover:scale-105 transition-all duration-200"
+/>
+これにより「OpenAI platform logo」と読み上げられ、プラットフォームであることが分かる。 |
+| <video> に代替テキストがない | 視覚障害者用の案内がないため、何が再生されるのか把握できない | - <video> を以下のように修正：
+
+jsx
+コピーする
+編集する
+<video
+  aria-label="Venator Capital logo animation splash screen"
+  aria-describedby="splash-desc"
+  src="/splash-transparent.mp4"
+  poster="/splash-transparent-poster.png"
+  autoPlay
+  muted
+  playsInline
+  preload="auto"
+  className="max-w-full w-[300px] sm:w-[400px] md:w-[600px] lg:w-[800px] xl:w-[960px] h-auto object-contain bg-transparent"
+  onEnded={onFinish}
+>
+  <source src="/splash-transparent.webm" type="video/webm" />
+  <source src="/splash-transparent.mp4" type="video/mp4" />
+  <p id="splash-desc">Venator Capital の回転ロゴアニメーションです。</p>
+  Your browser does not support HTML5 video.
+</video>
+aria-describedby で代替テキストを参照させ、視覚障害者にも何が起きているか説明を付与。 |
+
+4. ヘッダー（Navbar）
+4.1 HTML構造・マークアップ
+問題点
+<header> や <nav> が正しく使用されていない
+
+タグが <div> で囲まれただけの状態で、ARIA landmark として認識されない可能性あり。
+
+リンクがリスト化されておらず <ul><li> 構造を使っていない
+
+SEO & アクセシビリティ面で、リスト構造でないとナビゲーションの論理構造が不十分。
+
+リンクに title 属性や aria-label がない
+
+「Contact」「About」のみでは何のリンクか直感的に分からない場合がある（スクリーンリーダー利用者）。
+
+修正案
+jsx
+コピーする
+編集する
+// src/components/Navbar.jsx
+
+import React, { useState, useEffect } from 'react';
+import { Link } from 'next/link'; // Next.js なら Link、Vite/CRA なら react-router-dom の useNavigate など
+import Logo from '/public/logo.svg'; // SVGR 形式でインポート可能
+import { MenuIcon, XIcon } from '@heroicons/react/outline'; // 例：Heroicons
+
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <header role="banner" className={`fixed inset-x-0 top-0 z-50 transition-colors duration-200 ${scrolled ? 'bg-blackPrimary/90 shadow-md' : 'bg-transparent'}`}>
+      <nav role="navigation" aria-label="Main Navigation" className="max-w-6xl mx-auto flex items-center justify-between px-6 sm:px-8 lg:px-12 py-4">
+        {/* ロゴ */}
+        <Link href="/" aria-label="Go to Homepage">
+          <a className="flex items-center">
+            <img src="/logo.svg" alt="Venator Capital Logo" className="h-12 w-auto" />
+          </a>
+        </Link>
+
+        {/* デスクトップメニュー */}
+        <ul className="hidden lg:flex space-x-10 items-center">
+          <li><a href="#capabilities" className="text-white hover:text-accentBlue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue" aria-label="Go to Capabilities section">Capabilities</a></li>
+          <li><a href="#use-cases" className="text-white hover:text-accentBlue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue" aria-label="Go to Use Cases section">Use Cases</a></li>
+          <li><a href="#tech-stack" className="text-white hover:text-accentBlue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue" aria-label="Go to Tech Stack section">Tech Stack</a></li>
+          <li><a href="#about" className="text-white hover:text-accentBlue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue" aria-label="Go to About section">About</a></li>
+          <li><a href="#tech-partners" className="text-white hover:text-accentBlue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue" aria-label="Go to Technology Partners section">Partners</a></li>
+          <li><a href="#services" className="text-white hover:text-accentBlue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue" aria-label="Go to Services section">Services</a></li>
+          <li><a href="#faq" className="text-white hover:text-accentBlue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue" aria-label="Go to FAQ section">FAQ</a></li>
+          <li><a href="#contact" className="ml-4 px-6 py-2 bg-accentBlue text-black font-semibold rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue" aria-label="Go to Contact section">Contact</a></li>
+        </ul>
+
+        {/* モバイルハンバーガーメニュー */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle navigation menu"
+          aria-expanded={isOpen}
+          className="lg:hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue text-white"
+        >
+          {isOpen ? <XIcon className="h-8 w-8" /> : <MenuIcon className="h-8 w-8" />}
+        </button>
+
+        {/* モバイルメニュー展開 */}
+        {isOpen && (
+          <div role="dialog" aria-modal="true" className="fixed inset-0 bg-blackPrimary/95 flex flex-col items-center justify-center space-y-8">
+            <a href="#capabilities" className="text-2xl text-white hover:text-accentBlue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue" onClick={() => setIsOpen(false)}>Capabilities</a>
+            <a href="#use-cases" className="text-2xl text-white hover:text-accentBlue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue" onClick={() => setIsOpen(false)}>Use Cases</a>
+            <a href="#tech-stack" className="text-2xl text-white hover:text-accentBlue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue" onClick={() => setIsOpen(false)}>Tech Stack</a>
+            <a href="#about" className="text-2xl text-white hover:text-accentBlue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue" onClick={() => setIsOpen(false)}>About</a>
+            <a href="#tech-partners" className="text-2xl text-white hover:text-accentBlue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue" onClick={() => setIsOpen(false)}>Partners</a>
+            <a href="#services" className="text-2xl text-white hover:text-accentBlue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue" onClick={() => setIsOpen(false)}>Services</a>
+            <a href="#faq" className="text-2xl text-white hover:text-accentBlue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue" onClick={() => setIsOpen(false)}>FAQ</a>
+            <a href="#contact" className="mt-4 px-8 py-3 bg-accentBlue text-black font-semibold rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue" aria-label="Go to Contact section" onClick={() => setIsOpen(false)}>Contact</a>
+          </div>
+        )}
+      </nav>
+    </header>
+  );
+}
+詳細チェックリスト
+<header role="banner"> / <nav role="navigation" aria-label="Main Navigation">
+
+これによりスクリーンリーダー上でランドマークとして正しく認識。
+
+リンク構造は <ul><li><a></a></li></ul> で定義
+
+SEO 面でも検索エンジンに「サイト内リンクのまとまり」と認識させやすい。
+
+ARIA属性
+
+ハンバーガーボタンに aria-expanded を動的に切り替え、開閉状態を明示。
+
+モバイルメニューを開いた際は role="dialog" aria-modal="true" を付与し、スクリーンリーダーが「ダイアログ」として扱えるように。
+
+メニューリンクには aria-label="Go to XXX section" を付与し、文脈を離れてもリンクの目的・遷移先がわかるようにする。
+
+フォーカススタイル
+
+ボタン・リンクすべてに focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue を付与。
+
+モバイルメニュー展開時は最初のリンクに autoFocus を付与してキーボードフォーカスを移動させる。
+
+スクロール時背景遷移
+
+scrolled 状態で bg-blackPrimary/90 shadow-md に瞬時切り替え、変化時間は duration-200 で極力短く。
+
+0.2s 以上遅いと「揺れ・バタつき感」が生じるため、transition-colors duration-200 を厳守。
+
+ロゴ画像
+
+<img src="/logo.svg" alt="Venator Capital Logo" /> とし、SVG版ロゴを読み込ませる。
+
+h-12 w-auto で常に高さ 48px を維持しつつ幅は自動拡縮。
+
+もし SVG の背景が白などで透過されていない場合、背景と馴染まないので「透過背景 SVG」を用意すること。
+
+メニューリンクとCTAの間隔
+
+デスクトップではリンク同士の間隔を space-x-10 sm:space-x-12 とし、CTAボタンはあくまで最右端に ml-4 を与えてぷかっと浮かせる。
+
+モバイルメニューでは space-y-8 とし、押しやすいタップ領域（縦 48px 以上）を確保すること。
+
+4.2 レスポンシブデザイン
+問題点
+lg:hidden / lg:flex の切り替え幅があいまい
+
+ブラウザ幅を縮小していったときに、600px～700px くらいの中間帯で表示が崩れる。
+
+モバイル表示（< 640px）とタブレット表示（641px～1024px）の2段階のみで調整しており、中間帯の UI が最適化されていない。
+
+ナビメニューがタップしづらい
+
+モバイルハンバーガー展開時のリンクサイズが小さく（フォントサイズやパディングが小さい）、誤タップ誘発リスクがある。
+
+修正案
+問題点	分析	修正案
+切り替え幅があいまい	lg:hidden / sm:grid-cols-3 などのブレークポイントが合わない可能性	- ** Tailwind の既定ブレークポイント** を前提に、
+
+sm = 640px 以上 (タブレット寄り)
+
+md = 768px 以上 (小型ラップトップ寄り)
+
+lg = 1024px 以上 (PC定型)
+
+xl = 1280px 以上 (広いデスクトップ寄り)
+として各クラスを再調整。
+具体的には、
+
+jsx
+コピーする
+編集する
+<ul className="hidden md:flex lg:space-x-12">
+  {/* md: 768px 以上で表示、 1024px 以上で spacing 拡大 */}
+</ul>
+<button className="md:hidden"> {/* 768px より下でハンバーガーメニュー */ } </button>
+これにより「768px～1023px」のタブレット領域でも適切にメニューが切り替わる。 |
+| ナビリンクがタップしづらい | <a> に与えている py-2 px-4 が小さすぎる | - モバイルリンクにはパディングを追加し、
+
+jsx
+コピーする
+編集する
+<a
+  href="#services"
+  className="block text-2xl py-4 px-6 text-white hover:text-accentBlue focus:outline-none focus:ring-2 focus:ring-accentBlue"
+>
+  Services
+</a>
+py-4 (= 16px 上下) px-6 (= 24px 左右)を与え、タップしやすい領域を確保。
+
+フォントサイズも text-2xl（= 24px）を最低限確保し、モバイルでも誤タップが起きにくい。 |
+
+4.3 スクロール時の状態遷移
+問題点
+ヘッダーの背景切り替えが「バチッ」と唐突すぎる
+
+スクロールして少し触れた瞬間に完全に bg-[#0F0F0F]/90 になるため、ビジュアル的に不自然で瞬間的な画面揺れを引き起こしている。
+
+リンクのテキストカラーが white → accentBlue に変わる際のトランジションがない
+
+背景が変わった状態でリンク色だけが即座に変わると、スクロール中にちらついて UX が悪い。
+
+修正案
+問題点	分析	修正案
+背景切り替えが唐突	transition-colors duration-200 ではなく、duration-0 になっている可能性がある	- ヘッダー全体に以下のクラスを常に付与しておく：
+
+jsx
+コピーする
+編集する
+className={`fixed inset-x-0 top-0 z-50 transition-colors duration-150 ease-out ${scrolled ? 'bg-blackPrimary/90 shadow-md' : 'bg-transparent'}`}
+duration-150 ease-out を指定し、0.15s かけて滑らかに背景がフェードイン・アウトするように調整。 |
+| リンクのテキストカラー切替にトランジションがない | リンク色だけが上書きされるため、ちらつきが発生 | - リンク要素に下記を適用し、親の scrolled 状態が変わっても滑らかに色が遷移するようにする：
+
+jsx
+コピーする
+編集する
+<a
+  href="#about"
+  className="text-white transition-colors duration-150 ease-out hover:text-accentBlue focus:text-accentBlue"
+>
+  About
+</a>
+さらに、スクロール状態でも text-white と text-accentBlue の切替は transition-colors duration-150 を使って滑らかに。 |
+
+4.4 アクセシビリティとARIA
+（上記「3.2 キーボードナビ」や「3.4 ARIA属性付与」で触れた内容と重複しますが、Navbar に特化した補足）
+
+問題点
+ハンバーガーメニューの開閉時に、フォーカストラップ（Focus Trap）が働いていない
+
+メニューが開いている状態でタブを押すと、メニュー外の要素にもフォーカスが移動してしまい、意図しない操作が発生。
+
+修正案
+Focus Trap 導入
+
+メニューが開いているときは、react-focus-lock などを使い、フォーカスをメニュー内に閉じ込める。
+
+jsx
+コピーする
+編集する
+import FocusLock from 'react-focus-lock';
+
+// モバイルメニュー
+{isOpen && (
+  <FocusLock>
+    <div role="dialog" aria-modal="true" className="fixed inset-0 bg-blackPrimary/95 flex flex-col items-center justify-center space-y-8">
+      {/* メニューアイテム */}
+    </div>
+  </FocusLock>
+)}
+Escapeキーで閉じる
+
+useEffect でキーボードイベントを監視し、Escape キー押下時に setIsOpen(false) を実行。
+
+jsx
+コピーする
+編集する
+useEffect(() => {
+  const handleKeyDown = (e) => {
+    if (e.key === 'Escape' && isOpen) {
+      setIsOpen(false);
+    }
+  };
+  window.addEventListener('keydown', handleKeyDown);
+  return () => window.removeEventListener('keydown', handleKeyDown);
+}, [isOpen]);
+4.5 パフォーマンス最適化
+問題点
+Navbar に複数の画像（ロゴ、アイコンSVG）が即座に読み込まれ、初回表示が遅い可能性
+
+特にモバイル 3G 環境だと、何もない真っ黒画面が数秒続く。
+
+<header> の JavaScript イベントリスナー登録が散在
+
+scroll イベントの throttle / debounce がかかっていないせいで、リサイズやスクロール時に過剰に再描画が発生し、遅延が誘発。
+
+修正案
+ロゴ画像の最適化
+
+SVG はそのまま軽量なので OK だが、必要であれば <use> を使った SVG スプライト化を検討。
+
+アイコンライブラリ（Heroicons）は React 版なら @heroicons/react から必要なアイコンだけをインポートし、バンドルサイズを小さくする。
+
+スクロールイベントの最適化
+
+useEffect 内で handleScroll を定義するときは、lodash.throttle や lodash.debounce を使って以下のようにラップする：
+
+jsx
+コピーする
+編集する
+import { throttle } from 'lodash';
+
+useEffect(() => {
+  const throttled = throttle(() => {
+    setScrolled(window.scrollY > 50);
+  }, 100); // 100ms に1回だけ実行
+  window.addEventListener('scroll', throttled);
+  return () => window.removeEventListener('scroll', throttled);
+}, []);
+これにより、ブラウザが連続した scroll イベントを過剰に処理しなくなる。 |
+
+5. スプラッシュ画面（SplashScreen）
+5.1 動画読み込みとオートプレイの挙動
+問題点
+自動再生が iOS Safari や Android Chrome でブロックされるケースがある
+
+muted / playsInline は指定してあるが、preload="auto" が効いていない場合が多い。
+
+ブラウザが「ユーザーが触っていない」状態では自動再生を拒否し、黒画面 or ポスター画像のみ表示される。
+
+動画サイズ（960x720）をそのまま読み込んでいるため、ファイルサイズが大きくパフォーマンス悪化
+
+4G 未満の低速ネットワークでは再生開始まで遅延が発生し、「真っ黒画面が5秒以上続く」という UX 不良が生じる。
+
+修正案
+問題点	分析	修正案
+自動再生が一部ブラウザでブロックされる	muted / playsInline はあるが、ユーザー操作なし再生が制限される場合あり	- モバイル向けには「Tap to Start」ボタンを表示
+
+初回ロードで canPlayPromise を利用し、video.play() が拒否された場合は onPlayError をキャッチ。
+
+例：
+
+jsx
+コピーする
+編集する
+<video
+  ref={videoRef}
+  src="/splash-transparent.mp4"
+  poster="/splash-transparent-poster.png"
+  preload="metadata"
+  muted
+  playsInline
+  className="..."
+  onCanPlay={() => {
+    const promise = videoRef.current.play();
+    if (promise !== undefined) {
+      promise.catch(() => {
+        // 自動再生拒否された時
+        setShowTapToStart(true);
+      });
+    }
+  }}
+  onEnded={handleFinish}
+>
+  {/* … */}
+</video>
+{showTapToStart && (
+  <button onClick={() => { videoRef.current.play(); setShowTapToStart(false); }} className="tap-to-start-btn">
+    Tap to Start
+  </button>
+)}
+これにより、再生が拒否された場合でもユーザー操作で再生を許可できる。 |
+| 動画サイズが大きく、モバイルでの読み込みが遅い | 960x720 のフルサイズを常に読み込んでいるため、低速ネットワークでは UX が極端に悪化 | - レスポンシブ動画サイズ を導入し、デバイス幅に合わせてリサイズしたバージョンを用意する（<source media="(max-width: 640px)" srcSet="/splash-480.mp4" type="video/mp4" /> など）。
+
+ffmpeg を使い、モバイル用 480x360 サイズの MP4 を生成：
+
+bash
+コピーする
+編集する
+ffmpeg -i splash-transparent.mp4 -vf "scale=480:-2" -c:v libx264 -crf 28 -movflags +faststart public/splash-480.mp4
+<video> タグ内に複数 <source> を並べる：
+
+jsx
+コピーする
+編集する
+<video
+  aria-label="Venator Capital Splash Animation"
+  poster="/splash-transparent-poster.png"
+  preload="auto"
+  muted
+  playsInline
+  className="..."
+  onEnded={handleFinish}
+>
+  <source media="(max-width: 640px)" srcSet="/splash-480.mp4" type="video/mp4" />
+  <source media="(max-width: 1024px)" srcSet="/splash-720.mp4" type="video/mp4" />
+  <source src="/splash-transparent.mp4" type="video/mp4" />
+  Your browser does not support video.
+</video>
+これにより、モバイル時は小さめのファイルを読み込み、デスクトップではフルサイズを読み込むことでパフォーマンスを両立。 |
+
+5.2 透明背景と背景色の不一致
+問題点
+SplashScreen の背景黒 (bg-[#0F0F0F]) と動画の透過部分から見える背景色が微妙にずれている
+
+動画の bg-transparent を入れても、親の bg-blackPrimary が #0F0F0F で、ページ背景が #000000 のままの箇所があると微妙な色差が生まれる。
+
+そのため「背景がサッと切り替わる瞬間に色の違いがチラつく」現象が発生。
+
+修正案
+問題点	分析	修正案
+背景色 (#0F0F0F) とページ背景 (#000000) の色差	両者が微妙に異なるため、透過部分を通して見える背景が一瞬違って見える	- ページ全体の背景色を #0F0F0F に統一
+
+globals.css / tailwind.config.js で背景カラーを blackPrimary: '#0F0F0F' に統一。
+
+<body> や最外層の <div> に bg-blackPrimary text-white を必ず指定。
+
+css
+コピーする
+編集する
+/* globals.css */
+body {
+  background-color: #0F0F0F;
+}
+すべてのセクションでは bg-blackPrimary を使い、bg-black (#000000) は一切使わない。
+
+これにより、動画透過部の背景とページ背景が完全に一致し、色差によるチラつきがなくなる。 |
+
+5.3 パフォーマンス・プリロード
+問題点
+動画に preload="auto" を指定していない、または preload="metadata" になっている
+
+preload="auto" にしないと動画データを先読みしないため、再生開始時にバッファリングが発生しやすい（UX 低下）。
+
+<video> タグの poster が適切な解像度でない
+
+splash-poster.png が元動画の解像度に対して低解像度の場合、読み込み中のポスターもカクついて見える可能性がある。
+
+修正案
+問題点	分析	修正案
+preload="auto" が未指定	ブラウザが動画を先読みせず、再生開始時にバッファリングが発生	- <video> タグに必ず preload="auto" を指定。
+
+jsx
+コピーする
+編集する
+<video
+  preload="auto"
+  src="/splash-transparent.mp4"
+  poster="/splash-transparent-poster.png"
+  muted
+  playsInline
+  className="..."
+  onEnded={onFinish}
+>
+{/* … */}
+</video>
+これによってブラウザはページロードと同時に動画データを先読みし、再生タイミングでスムーズに再生可能。 |
+| poster が低解像度 / 品質が低い | 読み込み中の画面がぼやけて見える、印象が悪い | - poster は必ず元動画と同じアスペクト比（16:9）かつ 960px 以上の幅を確保する（例：splash-transparent-poster-960.png）。
+
+ffmpeg で 1秒目フレームを切り出す際、-vf "scale=960:-2" を使い高解像度ポスターを生成：
+
+bash
+コピーする
+編集する
+ffmpeg -i splash-transparent.mp4 -ss 00:00:01 -vframes 1 -vf "scale=960:-2" public/splash-transparent-poster-960.png
+これを <video poster="/splash-transparent-poster-960.png" …> に置き換える。 |
+
+5.4 Fallback戦略（モバイル/簡易接続時）
+問題点
+自動再生が失敗したときに何も表示されず真っ暗画面になる
+
+モバイルブラウザがオートプレイを禁止した場合、ユーザーが何もアクションを取れずにスプラッシュが進まず、次の画面に遷移できない。
+
+GIF を代替として表示できる実装がない
+
+以前提案した GIF 版への切替ロジックが実装されていない。
+
+修正案
+問題点	分析	修正案
+自動再生失敗時に代替操作がない	モバイルではユーザータップなし再生が禁止され、先読みが行われないため真っ暗画面のまま停止	- SplashScreen.jsx を以下のように改修し、Autoplay 拒否時に Tap to Start ボタンを表示：
+
+jsx
+コピーする
+編集する
+import React, { useEffect, useRef, useState } from 'react';
+
+export default function SplashScreen({ onFinish }) {
+  const videoRef = useRef(null);
+  const [showTapToStart, setShowTapToStart] = useState(false);
+
+  useEffect(() => {
+    const videoEl = videoRef.current;
+    if (!videoEl) return;
+
+    const tryPlay = async () => {
+      try {
+        await videoEl.play();
+      } catch (err) {
+        // 自動再生拒否
+        setShowTapToStart(true);
+      }
+    };
+
+    videoEl.addEventListener('canplay', tryPlay);
+    return () => {
+      videoEl.removeEventListener('canplay', tryPlay);
+    };
+  }, []);
+
+  useEffect(() => {
+    let timer;
+    if (!showTapToStart) {
+      // タップ待機中でなければ3秒後に強制次ページ遷移
+      timer = setTimeout(onFinish, 3000);
+    }
+    return () => clearTimeout(timer);
+  }, [showTapToStart, onFinish]);
+
+  return (
+    <div className="fixed inset-0 bg-blackPrimary flex items-center justify-center z-50">
+      <video
+        ref={videoRef}
+        src="/splash-transparent.mp4"
+        poster="/splash-transparent-poster-960.png"
+        preload="auto"
+        muted
+        playsInline
+        className="max-w-full w-[300px] sm:w-[400px] md:w-[600px] lg:w-[800px] xl:w-[960px] h-auto object-contain bg-transparent"
+        onEnded={onFinish}
+      >
+        <source media="(max-width: 640px)" srcSet="/splash-480.mp4" type="video/mp4" />
+        <source media="(max-width: 1024px)" srcSet="/splash-720.mp4" type="video/mp4" />
+        <source src="/splash-transparent.mp4" type="video/mp4" />
+        <p id="splash-desc">Venator Capital の回転ロゴアニメーションです。</p>
+      </video>
+      {showTapToStart && (
+        <button
+          onClick={() => {
+            videoRef.current.play();
+            setShowTapToStart(false);
+          }}
+          className="absolute bg-accentBlue text-black font-semibold py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue"
+          aria-label="Tap to start animation"
+        >
+          Tap to Start
+        </button>
+      )}
+    </div>
+  );
+}
+これにより、
+
+コンポーネントマウント時に canplay イベントで再生 tries
+
+再生拒否時に showTapToStart を true にしてボタンを表示
+
+ユーザーがタップすると再生スタート／3秒後に onFinish() 実行
+
+この間動画が先読みされ、バッファリング待機時間が最小化 |
+| GIF 代替実装がない | ネットワーク状況次第で MP4 がそもそも読み込まれず再生されない | - GIF 版動画を用意していれば、同時に読み込んでおき、Autoplay 拒否時に GIF に切り替えるロジックを追加。
+
+jsx
+コピーする
+編集する
+import React, { useEffect, useRef, useState } from 'react';
+
+export default function SplashScreen({ onFinish }) {
+  const videoRef = useRef(null);
+  const [showTapToStart, setShowTapToStart] = useState(false);
+  const [useGif, setUseGif] = useState(false);
+
+  useEffect(() => {
+    const videoEl = videoRef.current;
+    if (!videoEl) return;
+
+    const tryPlay = async () => {
+      try {
+        await videoEl.play();
+      } catch (err) {
+        // 自動再生拒否→GIFに切替
+        setUseGif(true);
+      }
+    };
+
+    videoEl.addEventListener('canplay', tryPlay);
+    return () => videoEl.removeEventListener('canplay', tryPlay);
+  }, []);
+
+  useEffect(() => {
+    let timer;
+    if (!useGif && !showTapToStart) {
+      timer = setTimeout(onFinish, 3000);
+    } else if (useGif) {
+      // GIF の長さ（例3秒）後に次へ
+      timer = setTimeout(onFinish, 3000);
+    }
+    return () => clearTimeout(timer);
+  }, [useGif, showTapToStart, onFinish]);
+
+  return (
+    <div className="fixed inset-0 bg-blackPrimary flex items-center justify-center z-50">
+      {!useGif ? (
+        <>
+          <video
+            ref={videoRef}
+            src="/splash-transparent.mp4"
+            poster="/splash-transparent-poster-960.png"
+            preload="auto"
+            muted
+            playsInline
+            className="max-w-full w-[300px] sm:w-[400px] md:w-[600px] lg:w-[800px] xl:w-[960px] h-auto object-contain bg-transparent"
+            onEnded={onFinish}
+          >
+            <source media="(max-width: 640px)" srcSet="/splash-480.mp4" type="video/mp4" />
+            <source media="(max-width: 1024px)" srcSet="/splash-720.mp4" type="video/mp4" />
+            <source src="/splash-transparent.mp4" type="video/mp4" />
+            <p id="splash-desc">Venator Capital の回転ロゴアニメーションです。</p>
+          </video>
+          {showTapToStart && (
+            <button
+              onClick={() => {
+                videoRef.current.play();
+                setShowTapToStart(false);
+              }}
+              className="absolute bg-accentBlue text-black font-semibold py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue"
+              aria-label="Tap to start animation"
+            >
+              Tap to Start
+            </button>
+          )}
+        </>
+      ) : (
+        <img
+          src="/splash-transparent.gif"
+          alt="Venator Capital logo animation"
+          className="max-w-full w-[300px] sm:w-[400px] md:w-[600px] lg:w-[800px] xl:w-[960px] h-auto object-contain"
+          loading="lazy"
+        />
+      )}
+    </div>
+  );
+}
+これで MP4 自動再生が失敗した場合に GIF に切り替わり、3秒後に次ページへ遷移。 |
+
+6. ヒーローセクション（HeroSection）
+6.1 ファーストビューのインパクト不足
+問題点
+背景がただの黒ベタで味気ない
+
+Lottie が背景に入っていたが、薄い半透明のネットワークパターンだけでは訴求力が弱い。
+
+競合の AI ツールサイトと比べて「第一印象で何をやっているか」が伝わりにくい。
+
+ヒーローエリアと次のセクションの視線誘導が曖昧
+
+画面下に只の水平な区切り線しかないため、「次はどこに視線を移せば良いか」が分かりにくい。
+
+キャッチコピーとサブコピーのテキストサイズ・行間が最適化されていない
+
+モバイルで文字が改行されすぎて表示され、読みにくい。
+
+デスクトップでは行間が詰まりすぎて圧迫感が発生。
+
+分析と修正案
+問題点	分析	修正案
+背景がただの黒ベタでインパクトが弱い	黒背景＋ロゴだけでは最先端感が伝わらず、訴求力が不足	1. Lottie を背景ではなく、Hero グラデーションアニメに差し替え（微細なパーティクルやビットフロー）
+2. 半透明の SVG グリッドを重ね、動きがループで続くように設定
+ヒーローから次セクションへの視線誘導が曖昧	セクション変更がただの余白だけで表現されており、サイトの階層構造が分かりにくい	1. Hero 最下部に「波線」「曲線」SVGを挿入し、滑らかに次セクションへ繋ぐビジュアルを追加
+2. ページ下部にスクロール矢印（下向きアイコン）を大きめに配置し、視線誘導を強化
+キャッチコピーのテキストサイズ・行間の不整合	特にモバイルで長文が折り返されすぎて読みづらく、デスクトップでは行間が詰まって見づらい	- h1 を
+
+php-template
+コピーする
+編集する
+<h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-white text-center mb-6">
+  Turning AI Into Advantage
+</h1>
+text-center で中央寄せを維持しつつ leading-tight で行間を適度に確保。
+
+サブコピーを
+
+php-template
+コピーする
+編集する
+<p className="text-base sm:text-lg md:text-xl leading-snug text-gray-200 text-center max-w-2xl mx-auto mb-8">
+  We architect cutting-edge AI solutions — from machine learning applications to automation frameworks.
+</p>
+max-w-2xl mx-auto で行幅を制限し、折り返しを整理。 |
+
+6.2 CTAボタンの視認性と階層性
+問題点
+Primary と Secondary の階層差が分かりにくい
+
+Primary（Discover）も Secondary（Contact）もほぼ同じ大きさ・カラーで、どちらを押すべきか分からない。
+
+モバイル表示で横並びのボタンが折り返されており、レイアウト崩れ
+
+ボタンが横並びだと小画面で両方並びきらずに余白や改行が不自然に入る。
+
+修正案
+問題点	分析	修正案
+Primary と Secondary の階層差が不明瞭	どちらの誘導が強いのか視覚的に判断できず、CTAがぼやける	- Primary:
+
+jsx
+コピーする
+編集する
+<button className="
+  button-primary
+  bg-accentBlue text-white
+  hover:bg-blue-600
+">
+  Discover Our AI Solutions
+</button>
+Primary は背景を Accent Blue (#1F4ED8) にして視認性を最重要。
+
+Secondary:
+
+jsx
+コピーする
+編集する
+<button className="
+  ml-4
+  inline-block px-8 py-3 border-2 border-white text-white font-semibold rounded-full
+  hover:bg-white hover:text-black
+">
+  Contact Our Team
+</button>
+Secondary は「枠線ボタン」にして Primary より目立たなくする。 |
+| モバイルで横並び崩れ | flex space-x-4 で並べていると、画面幅が足りないと折り返しが生じ、ボタンが部分的に被る | - モバイルは縦積み：
+
+jsx
+コピーする
+編集する
+<div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 w-full justify-center">
+  <button className="button-primary w-full sm:w-auto">Discover Our AI Solutions</button>
+  <button className="button-secondary w-full sm:w-auto">Contact Our Team</button>
+</div>
+w-full を与え、幅一杯に表示。sm: ブレークポイント以上で flex-row に切り替え、space-x-4 で横並び余白を付与。 |
+
+6.3 インタラクティブ要素（ホバーロゴ）の問題点
+問題点
+ロゴが「セクション全体の mousemove イベント」で反応してしまう
+
+セクション内のどこにカーソルがあってもロゴが回転してしまい、「ロゴ単体をホバーしたい」という意図が達成されない。
+
+回転量が大きすぎて「酔い」を誘発する可能性
+
+現状は ±10° 程度動くが、人によっては少し大きすぎると不安定感を感じる。
+
+モバイルではホバー機能が意味をなさない
+
+タッチデバイスでは mouseOver が発生しないため、ロゴが静止したままになるか、意図せずタップで誤動作を誘発。
+
+修正案
+問題点	分析	修正案
+セクション全体でロゴが反応	<section onMouseMove> で全体を監視しており、ロゴ以外の場所でも rotate 処理が走る	- ロゴ要素単体にイベントを付与
+
+jsx
+コピーする
+編集する
+<section className="relative h-screen flex items-center justify-center bg-blackPrimary py-24">
+  <motion.div
+    className="relative"
+    onMouseMove={({ clientX }) => {
+      const rect = ref.current.getBoundingClientRect();
+      const x = clientX - (rect.left + rect.width / 2);
+      const angle = (x / (rect.width / 2)) * 5; // ±5° に減衰
+      controls.start({ rotate: angle });
+    }}
+    onMouseLeave={() => controls.start({ rotate: 0 })}
+  >
+    <motion.img
+      ref={ref}
+      src="/Cropped_black_logo-removebg-preview.png"
+      alt="Venator Capital Logo"
+      animate={controls}
+      whileHover={{ scale: 1.05 }}
+      transition={{ duration: 0.3 }}
+      className="w-32"
+    />
+  </motion.div>
+  {/* キャッチコピー・CTA */}
+</section>
+<motion.div> をロゴ単体に適用し、ref でロゴ要素の位置を計算。
+
+これにより、カーソルがロゴ領域外にあれば onMouseMove は発火せず、ロゴは静止。 |
+| 回転量が ±10° で「酔い」を誘発 | 10° は人によっては大きすぎ、視覚的に不安定 | - 回転幅を ±5°（(x / (rect.width / 2)) * 5）に抑制。
+
+js
+コピーする
+編集する
+const angle = (x / (rect.width / 2)) * 5; // -5°～+5°
+controls.start({ rotate: angle });
+ホバー時の拡大 scale: 1.05 にして、ユーザーにほどよいインタラクション感を与える。 |
+| モバイルでホバー効果が意味をなさない | タッチでは mouseOver が発生せず、インタラクティブ動作が一切起きない | - モバイルではタッチダミー反応を実装
+
+jsx
+コピーする
+編集する
+<motion.div
+  onTouchStart={() => controls.start({ scale: 1.05 })}
+  onTouchEnd={() => controls.start({ scale: 1 })}
+  // 上記に加えて rotate はタッチでは発動しない
+>
+  <motion.img ... />
+</motion.div>
+これによりタッチした瞬間だけ拡大し、指を離すと元に戻る動作でユーザーにフィードバックを与える。 |
+
+6.4 レスポンシブ崩れ・テキスト折り返し
+問題点
+モバイル時のテキスト折り返しが不適切
+
+text-5xl がそのままモバイルにも適用され、行幅を大幅に超えて改行されて文字が読みづらくなる。
+
+CTAボタンまでテキストの改行が乱れ、重なって表示されるケースがある。
+
+コンテナ幅が固定 (w-[960px]) になっており、スマホ幅で表示が潰れる
+
+w-[960px] を指定していると、スマホでは水平スクロールが発生してコンテンツが閲覧しづらい。
+
+修正案
+問題点	分析	修正案
+モバイルでテキストが長すぎて折り返しが乱れる	text-5xl などが画面幅に依存せずに適用されている	- Tailwind クラスを「レスポンシブで可変に」：
+
+jsx
+コピーする
+編集する
+<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-white text-center mb-6">
+  Turning AI Into Advantage
+</h1>
+<p className="text-base sm:text-lg md:text-xl leading-snug text-gray-200 text-center max-w-md sm:max-w-lg md:max-w-2xl mx-auto mb-8">
+  We architect cutting-edge AI solutions — from machine learning applications to automation frameworks.
+</p>
+max-w-md→max-w-lg→max-w-2xl を設け、モバイルは最大幅 720px 程度に抑えて改行を制御。
+
+leading-snug を使い行間を広げすぎず読みやすく調整。 |
+| コンテナ幅が固定でスマホ幅で潰れる | w-[960px] の記述が残っていると、小画面で横スクロールが発生 | - ロゴや動画要素に w-full max-w-[960px] を設定：
+
+jsx
+コピーする
+編集する
+<video
+  className="w-full max-w-[960px] h-auto object-contain"
+  // ...
+/>
+<img
+  src="/Cropped_black_logo-removebg-preview.png"
+  alt="Venator Logo"
+  className="w-full max-w-[250px] sm:max-w-[300px] md:max-w-[350px] lg:max-w-[400px] object-contain"
+/>
+これにより、メディア要素は画面幅に応じて縮小され、横スクロールを防止。　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
+
+7. Capabilitiesセクション
+7.1 見出し階層（h2/h3）の適切さ
+問題点
+h2 見出ししか使っておらず、h3 が一切ない
+
+セクション内で階層的に説明が深まっても「h3」にすべき箇所をすべて h2 にしてしまっているため、セマンティックに不整合が生まれている。
+
+ID が設定されておらず、アンカーリンクが効きづらい
+
+<section> に id="capabilities" は付けているが、<h2> に id="capabilities-heading" を付与していないため、SSR/JSでレンダリング時にリンク飛び先が意図した位置にならない可能性が高い。
+
+修正案
+問題点	分析	修正案
+h2 のみ使用し隣接セクションでも h2 が混在	SEO やスクリーンリーダーにおける文書構造が曖昧になる	- CapabilitiesSection.jsx 内で以下のように修正：
+
+jsx
+コピーする
+編集する
+<section id="capabilities" role="region" aria-labelledby="capabilities-heading" className="section-base bg-blackPrimary">
+  <div className="container-base">
+    <h2 id="capabilities-heading" className="text-3xl md:text-4xl font-semibold text-white text-center mb-8">
+      Core Capabilities
+    </h2>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      {items.map((item) => (
+        <article key={item.title} className="card-base flex flex-col">
+          <img src={item.icon} alt={`${item.title} icon`} className="h-12 mb-4 mx-auto" />
+          <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+          <p className="text-grayLight flex-grow">{item.desc}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+<article> を使うことで「一つの完結したコンテンツ」という意味づけを行い、各アイテムを明示的に示す。
+
+h3 を各アイテムタイトルに設定し、階層構造を適切に再構築。 |
+| <section> に aria-labelledby がない | スクリーンリーダーがセクション見出しを適切に読み上げられない | - 上記コード例の通り、<section id="capabilities" role="region" aria-labelledby="capabilities-heading"> として、
+
+jsx
+コピーする
+編集する
+<h2 id="capabilities-heading" className="…">Core Capabilities</h2>
+のように id と aria-labelledby を紐づける。 |
+
+7.2 グリッドレイアウトの破綻状況
+問題点
+モバイル表示で列数が多すぎる
+
+grid-cols-4 のまま描画されており、スマホ画面幅でカードが極端に縮小され、テキストが潰れて読みづらい。
+
+余白 (gap) が固定で狭すぎ/広すぎ
+
+gap-8 が画面幅問わず同じ量で設定されており、モバイルでは余白が多く感じ、デスクトップでは狭く感じる個所がある。
+
+修正案
+問題点	分析	修正案
+モバイルで grid-cols-4	画面幅 ≤ 640px であっても列数が 4 なので、カードが縮みすぎ	- レスポンシブで列数を切り替え：
+
+jsx
+コピーする
+編集する
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+  {/* カード */}
+</div>
+モバイル（≤ 640px）：1列、タブレット（641px～767px）：2列、ラップトップ（768px～1023px）：3列、デスクトップ（≥ 1024px）：4列。
+
+gap-6 でモバイル時の余白を 1.5rem（24px）に抑え、md:gap-8 でデスクトップ時は 2rem（32px）に拡大。 |
+
+7.3 カードデザインの一貫性とアクセシビリティ
+問題点
+カードの背景色が一定ではなく、色の濃淡が混在している
+
+いくつかカードだけ bg-black、いくつかは bg-blackPrimary などで揃っておらず、統一感を欠く。
+
+カードのテキストコントラストが低い
+
+カード背景とテキスト色（text-grayLight）のコントラストが 4.5:1 未満になっている箇所がある。
+
+Card 要素に role="article" や tabIndex がない
+
+スクリーンリーダーで個々のカードを「クリックできる要素」として認識させたい場合には tabIndex="0" や role="button" を付与したいが、現在は何もなく「視覚的なカード」以上の意味づけがない。
+
+修正案
+問題点	分析	修正案
+カード背景色の不統一	複数の背景色が混在し、視覚的にまとまりがなくなる	- カード背景はすべて bg-blackSecondary (#1A1A1A) に統一。
+
+jsx
+コピーする
+編集する
+<article className="p-6 bg-blackSecondary rounded-lg shadow-md hover:shadow-lg transition-all duration-200 flex flex-col h-full" role="button" tabIndex="0">
+  {/* アイコン + タイトル + 説明 */}
+</article>
+これにより、どのカードも同じ濃度の背景色で統一され、ホバー時のシャドウ強調も一貫する。 |
+| テキストコントラスト不足 | text-grayLight (#E5E7EB) が一部背景と比べてコントラスト不足 | - 本文テキストは text-gray-100 (#F3F4F6) に変更し、コントラスト比を確実に 4.5:1 以上に。
+
+jsx
+コピーする
+編集する
+<p className="text-gray-100 flex-grow">…</p>
+タイトルは text-white、強調部分は text-accentBlue (例: #1F4ED8) を使い、視認性を向上。 |
+| Card 要素に role や tabIndex がない | キーボードのみの操作・スクリーンリーダーに対応していない | - カードをクリック可能（リンク遷移などがある場合）とするなら、
+
+jsx
+コピーする
+編集する
+<article
+  className="p-6 bg-blackSecondary rounded-lg shadow-md hover:shadow-lg transition-all duration-200 flex flex-col h-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue"
+  role="button"
+  tabIndex="0"
+  onClick={() => navigateToProject(item.slug)} // React Router or Next.js などで遷移処理
+  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') navigateToProject(item.slug); }}
+>
+  {/* … */}
+</article>
+これによりキーボードでタブ移動→Enter/Space でカードをアクティブ化でき、スクリーンリーダーにも「ボタン」として認識される。 |
+
+7.4 アイコン画像の代替テキスト・コンテナサイズ
+問題点
+アイコンに alt="" または未定義のまま利用している
+
+アイコンは重要情報を示しているため、代替テキスト（例えば「AI & ML icon」）を付与する必要がある。
+
+アイコンがカード内で指定の高さに満たず、余白が不均一
+
+className="h-12" などを付けても、SVG の viewBox が異なるとサイズが違って見える。
+
+修正案
+問題点	分析	修正案
+アイコンに適切な alt がない	スクリーンリーダーがアイコンを読み上げられず、視覚障害者に情報が伝わらない	- 各アイコン <img> に必ず alt 属性を記述。
+
+jsx
+コピーする
+編集する
+<img
+  src={item.icon}
+  alt={`${item.title} icon`}
+  className="h-12 w-auto mb-4 mx-auto"
+  loading="lazy"
+/>
+alt は「[項目名] icon」または「[サービス名] logo」など、読んで分かる文言にする。 |
+| アイコンサイズが均一でない | SVG の viewBox が異なると h-12 でも見た目がバラつきが出る | - コンテナ内で object-contain を利用して上下中央寄せ
+
+jsx
+コピーする
+編集する
+<div className="flex items-center justify-center h-12 mb-4">
+  <img
+    src={item.icon}
+    alt={`${item.title} icon`}
+    className="h-full w-auto object-contain"
+    loading="lazy"
+  />
+</div>
+これにより、アイコンのサイズが異なっていてもコンテナ（高さ 48px）内で縮小または拡大して表示されるため、横幅が最大でも潰れない。 |
+
+7.5 レスポンシブ対応（列数・余白）
+（上記「7.2 グリッドレイアウトの破綻状況」で言及したが、さらに細かい微調整を）
+
+問題点
+sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 だが、gap が足りないため要素間が詰まる
+
+画面横幅が 768px～1023px の間でぎゅっとカードが狭まり、読みにくい。
+
+タブレット（641px～767px）で grid-cols-2 が適用されず、grid-cols-1 しか表示されない
+
+sm = 640px 以上なので、640px 達した瞬間に grid-cols-2 になるが、実際には 641px 以上と 640px ちょうどでは表示が異なり、極端な狭小表示が起こる。
+
+修正案
+問題点	分析	修正案
+gap-6 だとタブレット／小型ラップトップで詰まる	gap-6 (= 24px) はデスクトップではやや狭く、モバイルではやや広い	- 画面幅ごとに gap を変える：
+
+jsx
+コピーする
+編集する
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12">
+  {items.map(...)}
+</div>
+モバイル（480px～639px）：gap-4 (= 16px)
+
+タブレット（640px～767px）：gap-6 (= 24px)
+
+ラップトップ（768px～1023px）：gap-8 (= 32px)
+
+デスクトップ（≥ 1024px）：gap-10 (= 40px)
+
+広いデスクトップ（≥ 1280px）：gap-12 (= 48px) に設定し、常に要素間に適切な余白を確保。 |
+| タブレット表示で grid-cols-2 が意図通りに適用されない | Tailwind の sm:grid-cols-2 は正しくても、CSS キャッシュやクラスの順序で反映漏れがある | - 必ず Tailwind CSS JIT モードを利用し、各クラスがビルド時に生成されるよう設定
+
+tailwind.config.js に mode: 'jit' を明記し、
+
+js
+コピーする
+編集する
+module.exports = {
+  mode: 'jit',
+  purge: ['./src/**/*.{js,jsx,ts,tsx}'],
+  theme: { extend: { /* 略 */ } },
+  variants: { extend: {} },
+  plugins: [],
+};
+これにより、sm:grid-cols-2 が実際に CSS に生成されずにスルーされる問題を解消。 |
+
+8. Use Casesセクション
+8.1 セクションタイトル・サブテキストの問題
+問題点
+セクション見出しが text-2xl のまま固定されており、デスクトップでは小さく感じる
+
+他セクションでは text-3xl～text-4xl を使っているため、Use Cases が目立たない。
+
+サブテキストが太すぎ／薄すぎで他セクションとの一貫性を欠く
+
+フォントウェイトやカラーが他のセクションと揃っていないため、部分的に「強調しすぎ」「弱すぎ」が混在してしまっている。
+
+修正案
+問題点	分析	修正案
+見出しが text-2xl で小さい	デスクトップで見出しサイズが他セクションと比較して目立たない	- UseCasesSection.jsx の見出しを以下に修正：
+
+jsx
+コピーする
+編集する
+<section id="use-cases" role="region" aria-labelledby="use-cases-heading" className="section-base bg-blackPrimary">
+  <div className="container-base text-center mb-12">
+    <h2 id="use-cases-heading" className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-4">
+      Use Cases
+    </h2>
+    <p className="text-base md:text-lg text-gray-200 max-w-2xl mx-auto">
+      Discover how our AI solutions have transformed businesses across industries.
+    </p>
+  </div>
+  {/* カードグリッド */}
+</section>
+text-3xl～text-5xl の可変サイズを設定し、デスクトップでは存在感を確保。 |
+| サブテキストのウェイト・カラーが一貫性を欠く | 他セクションでは text-gray-200 font-normal を使っているが、Use Cases だけ text-gray-300 font-light などが混在 | - サブテキストは常に text-gray-200 font-normal とし、他セクションとの一貫性を保つ。
+
+jsx
+コピーする
+編集する
+<p className="text-base md:text-lg text-gray-200 font-normal max-w-2xl mx-auto">
+  {/* 説明文 */}
+</p>
+8.2 アコーディオン／カード表示のUX課題
+問題点
+Use Cases のカードをクリックしても何も起こらない
+
+クリック可能かどうか分からず、CTA に誘導しづらい。
+
+カード間の一貫性がなく、枠線や背景色がバラバラ
+
+Pre-existing design では一部だけ bg-blackSecondary、一部だけ bg-black、一部にはボーダーがないなど、統一が取れていない。
+
+キーボードフォーカス時のスタイルがないため、キーボードでフォーカスしてもどのカードにいるか分からない
+
+修正案
+問題点	分析	修正案
+カードがクリック不能	ユーザーが詳細ページやポップアップを想定してクリックを試みても反応しない	- カードに「Learn More」ボタンやリンクを明示的に設置し、対応先を設定（例えば /use-cases/{slug} へ遷移）。
+
+jsx
+コピーする
+編集する
+<article className="card-base flex flex-col justify-between h-full">
+  <div>
+    <img src={item.icon} alt={`${item.title} icon`} className="h-12 mb-4 mx-auto" />
+    <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
+    <p className="text-gray-100 mb-4">{item.desc}</p>
+  </div>
+  <a
+    href={`/use-cases/${item.slug}`}
+    className="mt-auto text-accentBlue hover:underline focus:outline-none focus:ring-2 focus:ring-accentBlue"
+    aria-label={`Learn more about ${item.title}`}
+  >
+    Learn More
+  </a>
+</article>
+これによりカード単体ではなく、カード内の明確なリンクで詳細ページへユーザーを誘導。 |
+| カード背景・枠線の不統一 | 視覚的に「何か足りない」印象をユーザーに与え、まとまりがない | - カードはすべて同一のスタイルに統一：先の「7.3 カードデザインの一貫性とアクセシビリティ」で示したように、bg-blackSecondary rounded-lg shadow-md hover:shadow-lg transition-all duration-200 を共通クラスとする。
+
+たとえアイコンサイズが異なっても、カードボックスの背景色・角丸・シャドウを一律にすることで統一感を与える。 |
+| キーボードフォーカス時スタイルが欠落 | アクセシビリティ要件を満たしておらず、Tabキー数回押してもどのカードが選択されているか判別できない | - article 要素に tabIndex="0" role="button" focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue を付与。
+
+jsx
+コピーする
+編集する
+<article
+  tabIndex="0"
+  role="button"
+  onKeyDown={(e) => e.key === 'Enter' && navigateTo(`/use-cases/${item.slug}`)}
+  onClick={() => navigateTo(`/use-cases/${item.slug}`)}
+  className="card-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue"
+>
+  {/* … */}
+</article>
+これにより、Tabキーでカードにフォーカスするとボーダーが内側に 2px の青いリングで囲まれ、「クリック可能要素」として視覚的に分かりやすくなる。 |
+
+8.3 マイクロインタラクションの不足
+問題点
+カードホバー時に「scale:1.05」しか動作がなく、動きが単調
+
+シャドウが小さくしか変化せず、UXとしては弱い。
+
+要素が入れ替わる際にアニメーション（Framer Motion）が使われておらず、静的すぎる
+
+ページロード時にすべて一気に表示されるため、情報量が多いセクションではユーザーが圧倒されやすい。
+
+修正案
+問題点	分析	修正案
+ホバー時のアニメーションが単調	単一の scale 利用では視覚的インパクトが弱い	- Framer Motion を活用した複合アニメーションを実装：
+
+jsx
+コピーする
+編集する
+<motion.article
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.5, ease: 'easeOut' }}
+  whileHover={{ scale: 1.03, boxShadow: '0 10px 20px rgba(0,0,0,0.3)' }}
+  className="card-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentBlue"
+>
+  {/* … */}
+</motion.article>
+これにより、
+
+ページロード・スクロールでカードがふわっとフェードイン
+
+ホバー時にわずかに拡大＆シャドウが強化される微インタラクションを追加
+
+アニメーションタイミングは 0.5s で柔らかい印象 |
+
+8.4 グリッドレイアウトの崩れ
+（上記「7.2 グリッドレイアウトの破綻状況」と重複するが、Use Cases 特有の横幅問題を）
+
+問題点
+grid-cols-3 を指定しているにもかかわらず、要素が重なる／余白が足りずに読みにくい
+
+各カードの横幅が狭すぎてテキストが潰れ、ボタンやリンク部分が折り返されることがある。
+
+モバイル時に grid-cols-1、タブレット時に grid-cols-2 で指定しているが、中間帯で崩れる
+
+sm:grid-cols-2 → md:grid-cols-3 → lg:grid-cols-3 → xl:grid-cols-4 の切り替えがないため、
+
+修正案
+問題点	分析	修正案
+grid-cols-3 で余白が不足	gap が狭く、カードが潰れやすいため	- gap を動的に変更：
+
+jsx
+コピーする
+編集する
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 xl:gap-12">
+  {items.map(...)}
+</div>
+sm:gap-8: 24px (タブレット)
+
+lg:gap-10: 40px (ラップトップ)
+
+xl:gap-12: 48px (デスクトップ) |
+
+8.5 テキスト量／行間の不均一
+問題点
+カード内の説明文がばらつきすぎて行間が一貫しない
+
+文字量が均一ではないため、あるカードだけ行高が大きくなりすぎ、全体の高さが揃わない。
+
+複数行のリストがモバイルで外にはみ出す/折り返しが不適切
+
+CSS に flex-grow を使っているが、min-height を指定していないため不均一。
+
+修正案
+問題点	分析	修正案
+説明文によるカード高さのばらつき	flex-grow のせいで長いテキストを持つカードだけ伸びて不格好	- 全カードに `min
+
+A network error occurred. Please check your connection and try again. If this issue persists please contact us through our help center at help.openai.com.
+
+
+
+
+
+あなた:
+8.5 テキスト量／行間の不均一 から再び出力を再開してください
+
+
+ChatGPT:
+8.5 テキスト量／行間の不均一
+―――――――――――――――――――
+指摘内容
+
+ページ内の本文・見出し・リストなど、セクションごとにテキスト量と行間（line-height）がバラバラで、読みづらさを招いている。
+
+たとえば、HeroやCapabilitiesでは見出しと本文の行間が窮屈で、文字が詰まって見える一方、Tech PartnersやUse Casesでは行間が広すぎて間延びして見える。
+
+サービス説明やFAQの回答文はテキストが長いのに行間が標準のまま（1.5em弱）、結果としてどこで文が途切れているのか判別しづらい。
+
+スマホ表示時、行間が足りずに文字同士がくっつき、可読性を大きく損なっている。
+
+分析
+
+統一した行間を設定していないため、セクションによって Tailwind の leading-* クラスがバラバラに適用されている。
+
+行間不足＝ブラウザデフォルト（1.2とか1.4）のまま放置されている部分がある。
+
+行間過剰＝段落間の余白（mb-8 等）と勘違いして、leading-relaxed（1.625）以上の設定を行い、縦に間延びしてしまっている。
+
+結果として、ユーザーがテキストを「スキャンしづらい」→直感的に要点を掴みにくい。
+
+修正案
+
+基本行間の統一
+
+tailwind.config.js 内で、グローバルに行間を一律定義する。
+
+js
+コピーする
+編集する
+module.exports = {
+  theme: {
+    extend: {
+      lineHeight: {
+        relaxed: '1.6',   // ページ全体の標準行間
+        normal: '1.5',    // 見出し以下の本文に適用
+        tight: '1.4',     // サブテキスト・キャプション用
+      },
+    },
+  },
+};
+その上で、すべての本文テキスト（<p>, <li>, <dd> 等）には必ず className="leading-relaxed text-gray-300 text-base md:text-lg" を付与し、読みやすい行間とフォントサイズを担保。
+
+見出し（<h1>,<h2>,<h3>）は leading-tight を指定しつつ、適度な余白（mb-4〜mb-6）を入れる。
+
+セクションごとの確認と修正
+
+Hero Section
+
+<h1> に className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6 text-center" を適用し、行間を厳格に 1.4（tight）に設定。
+
+サブテキスト（<p>）は className="text-gray-300 text-base md:text-lg leading-normal mb-8 text-center" とし、行間を 1.5 に調整。
+
+Capabilities Section
+
+カード内の説明テキスト（<p>）には leading-relaxed を適用。
+
+カードタイトル（<h3>）は className="text-xl md:text-2xl font-semibold leading-tight mb-2"。
+
+Use Cases Section
+
+説明文 <p> は leading-relaxed text-gray-300 text-base。長文 FAQ などと比べても読みやすい行間 1.6 を設定。
+
+Tech Partners Section
+
+このセクションはロゴ中心なのでテキスト量は少ないが、見出し (<h2>) の行間は leading-tight、キャプション (<p>) は leading-normal を守る。
+
+Services Section
+
+サービス項目説明 <p> には最低行間 leading-relaxed。長すぎる説明文は、改行して2行以内に抑え、行間と余白を最適化。
+
+FAQ Section
+
+質問部分 (<Disclosure.Button> 内テキスト) は leading-snug（1.4）程度。
+
+回答部分 (<Disclosure.Panel>) は必ず className="text-gray-300 leading-relaxed" で行間 1.6 を適用し、読みやすさを確保。
+
+スマホ用の行間調整
+
+モバイル時（sm: 以下）に、本文の行間をさらに広げると読みやすくなるケースもあるが、行間を広げすぎると逆に余白が多くなりすぎる。
+
+したがって、以下を全体レイアウトに適用：
+
+jsx
+コピーする
+編集する
+<div className="prose prose-invert prose-lg sm:prose-xl">
+  <p className="leading-relaxed">・・・</p>
+  {/* 他のテキスト要素 */}
+</div>
+prose クラス（Tailwind Typography プラグイン）を取り入れると、テキスト系の要素が自動的に行間や余白を整えてくれるので活用を検討。
+
+余白と行間のバランス見直し
+
+行間だけなく、段落間・リスト間の余白（マージン）も見直す。
+
+例：<p> とその次の <p> の間も mb-6 を入れればセクションがはっきり分かれ、ユーザーの視線誘導に寄与する。
+
+Tailwind の space-y-6 などを利用し、連続するテキスト要素の間隔を一括管理すると、各要素に個別に mb- を設定する手間が省ける。
+
+8.6 セクション間のビジュアル分離不足
+―――――――――――――――――――
+指摘内容
+
+複数のセクション（Hero／Capabilities／Use Cases／Tech Stack／About／Tech Partners／Services／FAQ／Contact）が“黒背景”で繋がっており、境界がわかりづらい。
+
+現状、全セクションの背景色が同一のため、訪問者が次のコンテンツへスクロールしたときに“視覚的なきっかけ”が少ない。
+
+セクションタイトル以外に余白や罫線などが弱く、どこからどこまでが１ブロックか把握しにくい。
+
+分析
+
+背景色をすべて同一（#0F0F0F）にしてしまったため、区切り要素（ボーダー、背景差、パララックスなど）がないと単調に見える。
+
+適切な背景パターン（微妙なグラデーションや斑点テクスチャなど）を加えずに、すべてフラットカラーを使っているため、セクションが浮かび上がってこない。
+
+各セクションのタイトル後の説明文も色味が似ている（text-gray-300）、下層のCTAボタンや画像とのコントラスト差が弱いので、視覚ヒエラルキーが不明瞭になる。
+
+修正案
+
+背景色にわずかなバリエーションを加える
+
+CapabilitiesSection と ServicesSection の背景色を#121212 にしてわずかに色味を変える。
+
+UseCasesSection と FAQSection は #0F0F0F のまま、Tech Stack と ContactSection は #1A1A1A のように暗さを調整。
+
+こうすることで、ユーザーがスクロールしたときに「お、背景が変わった。ここから新しい内容が始まるんだな」と直感的にわかる。
+
+Tailwindでの例：
+
+jsx
+コピーする
+編集する
+<section className="py-24 bg-[#0F0F0F]" id="capabilities">
+  {/* Capabilities */}
+</section>
+<section className="py-24 bg-[#121212]" id="use-cases">
+  {/* Use Cases */}
+</section>
+<section className="py-24 bg-[#0F0F0F]" id="tech-stack">
+  {/* Tech Stack */}
+</section>
+<section className="py-24 bg-[#1A1A1A]" id="about">
+  {/* About */}
+</section>
+<section className="py-24 bg-[#0F0F0F]" id="tech-partners">
+  {/* Tech Partners */}
+</section>
+<section className="py-24 bg-[#121212]" id="services">
+  {/* Services */}
+</section>
+<section className="py-24 bg-[#0F0F0F]" id="faq">
+  {/* FAQ */}
+</section>
+<section className="py-24 bg-[#1A1A1A]" id="contact">
+  {/* Contact */}
+</section>
+セクション境界に罫線（Border）またはグラデーションを追加
+
+セクションの上下に border-t border-gray-800 を追加し、微妙なラインで区切りを強調。
+
+もしくは、セクション下部に after:content-[''] after:block after:h-px after:bg-gradient-to-r after:from-transparent after:via-gray-700 after:to-transparent のように CSS を追加して「グラデーション罫線」を表示。
+
+Tailwind の例：
+
+jsx
+コピーする
+編集する
+<section className="relative py-24 bg-[#0F0F0F]">
+  {/* 内容 */}
+  <div className="absolute left-0 bottom-0 w-full h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent"></div>
+</section>
+余白（マージン）の徹底管理
+
+セクションタイトルと本文の間だけでなく、セクション下部にも mb-16 の余白を明示的に設けることで、次のセクションへ視線がスムーズに移るようにする。
+
+各セクション最上部は pt-24、最下部はpb-24で一律統一し、スクロールした際のリズムを整える。
+
+背景パターンの検討
+
+完全フラット黒ではなく、bg-gradient-to-b from-[#0F0F0F] to-[#121212] のような微妙な縦グラデーションを当てると、ブロック間の視覚差が強くなる。
+
+ただし、濃淡の差が大きすぎると文字が読みづらくなるため、薄く・細かくグラデーションを設定（例：bg-gradient-to-b from-[#0F0F0F] via-[#121212] to-[#0F0F0F]）。
+
+8.7 CTA ボタンの配置不整合
+―――――――――――――――――――
+指摘内容
+
+Hero Section では CTA ボタン（Discover / Contact）が横並び＆中央揃えだが、Services セクションや Contact フォームの「Send Message」ボタンでは幅やマージンが異なり、一貫性が欠けている。
+
+Services の CTA が存在しないか、外部リンクのみになっているため、ユーザーがどこでアクションすべきか迷う。
+
+Contact フォームの「Send Message」ボタンもデザインが若干異なり、フォントサイズやパディングが Hero 側と合っていない。
+
+分析
+
+Tailwind クラスをセクションごとに異なる値で記載しているため、同一タイプのボタンなのに見た目が揃わない。
+
+CMYK や HSL でカラーを統一していないため、ホバー色が微妙に異なる。
+
+ボタンに付与するユーティリティクラス (px-8 py-3 rounded-full) を統一したコンポーネント化せず、直書きしているのが問題。
+
+修正案
+
+ボタンコンポーネント化
+
+src/components/ui/Button.jsx を作成し、以下のように共通化：
+
+jsx
+コピーする
+編集する
+import React from 'react';
+
+export function PrimaryButton({ children, onClick, className = '', ...props }) {
+  return (
+    <button
+      onClick={onClick}
+      className={`
+        inline-block px-8 py-3 bg-white text-black font-semibold rounded-full
+        hover:bg-[#e5e5e5] hover:shadow-lg
+        focus:outline-none focus:ring-2 focus:ring-[#1F4ED8] focus:ring-offset-2
+        transition-all duration-200
+        ${className}
+      `}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+}
+
+export function SecondaryButton({ children, onClick, className = '', ...props }) {
+  return (
+    <button
+      onClick={onClick}
+      className={`
+        inline-block px-8 py-3 border-2 border-white text-white font-semibold rounded-full
+        hover:bg-white hover:text-black hover:shadow-lg
+        focus:outline-none focus:ring-2 focus:ring-[#1F4ED8] focus:ring-offset-2
+        transition-all duration-200
+        ${className}
+      `}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+}
+すべてのセクションでボタンを使う箇所は、このコンポーネントを読み込んで PrimaryButton / SecondaryButton を利用する。
+
+例：
+
+jsx
+コピーする
+編集する
+<PrimaryButton onClick={() => router.push('/solutions')}>Discover Our AI Solutions</PrimaryButton>
+<SecondaryButton onClick={() => scrollTo('#contact')}>Contact Our Team</SecondaryButton>
+Spacing と Alignment の統一
+
+Hero Section の CTA は <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12"> のように明示的に設定し、モバイルは縦並び、タブレット以上で横並びに切り替える。
+
+Services セクションに「Learn More」や「Get Started」という CTA を追加する場合も、同じ <div className="flex ..."> レイアウトを採用し、余白（mb-12）を維持。
+
+カラー統一
+
+Tailwind config や CSS 変数を使い、必ず --color-primary: #1F4ED8; --color-secondary: #FFD54F; を設定し、ボタン系やリンク系で同じ色を参照する。
+
+例えば、focus:ring-[#1F4ED8] や hover:bg-[#e5e5e5] は”カラー体系”として定義し、すべてのボタンで同一の色味を使うよう管理。
+
+フォントサイズ／パディング統一
+
+ボタン内テキストは必ず className="text-base md:text-lg" を適用し、プラットフォーム間での差をなくす。
+
+ただし、モバイルでは text-sm でも十分だが、必ず以下のパディング幅を守る：
+
+Primary / Secondary：px-8 py-3 → モバイル px-6 py-3 に縮小しても可。
+
+Contact Form の送信ボタンにも同じ px-8 py-3 を使う。
+
+8.8 イメージ/アイコンの ALT テキスト欠落・不適切
+指摘内容
+
+Tech Partners や Capabilities、Use Cases セクションに配置した多数の <img> に alt="" や ALT 属性がそもそも記述されていない。
+
+これにより、スクリーンリーダーで「何の画像かわからない」→アクセシビリティ要件を著しく満たしていない。
+
+一部 <img alt="logo" ...> のように曖昧な ALT テキストがあり、「その画像が何を意味するのか」が伝わらない。
+
+分析
+
+ALT 属性は視覚障害ユーザーに対し、画像の意味を伝えるために必須。ロゴやアイコンであっても、正確なブランド名やコンテンツの役割を設定すべき。
+
+ALT を空にしているものは、decorative（装飾）扱いとブラウザが認識し、読み上げをスキップされるが、本来 “Tech Partners” の文脈で使われるロゴは情報提供要素であるため、decorative ではない。
+
+修正案
+
+TechPartnersSection.jsx の ALT テキスト修正
+
+すべての <img> に対し、適切な ALT 属性を与える。例：
+
+jsx
+コピーする
+編集する
+<img 
+  src={src} 
+  alt={alt} 
+  loading="lazy" 
+  className="h-10 sm:h-12 md:h-14 lg:h-16 object-contain mx-auto filter grayscale hover:filter-none hover:scale-105 transition-all duration-200" 
+/>
+この例では、alt プロパティを外部から受け取り、そのまま <img alt={alt} /> に渡しているので、ALT が漏れない仕組みになっている。
+
+コードレビュー時に必ず partners 配列内に "alt": "OpenAI", "alt": "Anthropic", ... が入っていることを確認。
+
+Capabilities / Use Cases / Services セクション内のアイコン ALT
+
+例：
+
+jsx
+コピーする
+編集する
+<img src="/icons/ai.svg" alt="AI & ML icon" className="h-12 mb-4 mx-auto" />
+<img src="/icons/data-analytics.svg" alt="Data Analytics icon" className="h-12 mb-4 mx-auto" />
+各アイコンは “何を示すアイコンなのか” を簡潔に記述する（例：”AI & ML icon”、”Data Analytics icon”）。
+
+装飾 purpose のみの画像には alt="" を付与
+
+完全に視覚装飾としてのみ配置している背景画像やスプラッシュ・ロゴ動画のポスター画像（splash-poster.pngなど）には alt="" とし、aria-hidden="true" を付与してスクリーンリーダーをスキップ。
+
+例：
+
+jsx
+コピーする
+編集する
+<img src="/splash-poster.png" alt="" aria-hidden="true" className="hidden" />
+確認手順
+
+Lighthouse の「Accessibility」セクションで「Image elements do not have [alt] attributes」項目が 0 件になることを必ず確認。
+
+スクリーンリーダー（VoiceOver や NVDA）でページを読み上げ、各ロゴやアイコンが適切に “OpenAI, Anthropic, Hugging Face, …” と読み上げられるか確認。
+
+8.9 セマンティック HTML の欠如
+指摘内容
+
+一部セクションで <div> タグばかり使用され、見出しやナビゲーションが正しく <section>, <article>, <nav> などでマークアップされていない。
+
+SEO 的にも「ページの文脈をクローラーが理解しづらい」状況になっている。
+
+<header>, <main>, <footer> といったランドマーク要素が不十分であるため、スクリーンリーダー利用時にページ構造を把握しにくい。
+
+分析
+
+セマンティック要素を適切に使わないと、検索エンジンが「どの部分が主要なコンテンツなのか」を判断しづらくなる。
+
+バックエンド（Next.js, React）の構造が <div> ベースのままコンポーネント化されているため、セマンティックタグにする意識が欠落している。
+
+修正案
+
+基本 Template 構造
+
+ページ全体を <html lang="en"> で始め、 <head> と <body> 以下は以下のように構成：
+
+html
+コピーする
+編集する
+<body class="bg-[#0F0F0F] text-white">
+  <a href="#main" class="sr-only focus:not-sr-only bg-[#1F4ED8] text-white p-2">Skip to main content</a>
+  <header role="banner" class="fixed top-0 left-0 w-full z-50">
+    <nav role="navigation" aria-label="Main Navigation"> 
+      {/* ロゴとメニュー */}
+    </nav>
+  </header>
+  <main id="main" role="main" class="pt-20">  {/* header 高さを補正 */}
+    {/* HeroSection */}
+    {/* CapabilitiesSection */}
+    {/* UseCasesSection */}
+    {/* TechStackSection */}
+    {/* AboutSection */}
+    {/* TechPartnersSection */}
+    {/* ServicesSection */}
+    {/* FAQSection */}
+    {/* ContactSection */}
+  </main>
+  <footer role="contentinfo">
+    {/* フッターコンテンツ */}
+  </footer>
+</body>
+HeroSection など各セクションは <section id="..." role="region" aria-labelledby="..."> でマークし、見出し（<h2 id="...">）と対応させる。
+
+見出し階層の適切化
+
+<h1> は Hero 内のキャッチコピーにのみ使用し、ページ全体で一度だけ。
+
+<h2> は「Capabilities」「Use Cases」「Tech Stack」「About」「Technology Partners」「Services」「FAQ」「Contact」のセクションタイトルに利用する。
+
+<h3> は各セクション内での小見出し（カードタイトルやFAQの質問文など）に使用し、50語以内の短いテキストで階層を明示。
+
+<article>, <aside>, <figure>, <figcaption> の活用
+
+Use Cases の各“ケースカード”は <article> で囲み、内部に <figure> としてアイコンと <figcaption> を使うとよりセマンティック。
+
+jsx
+コピーする
+編集する
+<article className="p-6 bg-[#1A1A1A] rounded-lg shadow-lg">
+  <figure className="mb-4">
+    <img src="/icons/use-case-1.svg" alt="Automated Customer Support icon" className="h-12 mx-auto" />
+    <figcaption className="sr-only">Use Case: Automated Customer Support</figcaption>
+  </figure>
+  <h3 className="text-xl font-semibold text-white mb-2">Automated Customer Support</h3>
+  <p className="text-gray-300 leading-relaxed">GPT-powered chatbot automates responses to common queries, reducing support costs by 60%.</p>
+</article>
+FAQ セクションでの質問フォームは <dl>（定義リスト）を使うのもアリ。例：
+
+html
+コピーする
+編集する
+<dl class="max-w-3xl mx-auto space-y-4">
+  <div>
+    <dt class="text-lg font-medium text-white">What is your pricing model?</dt>
+    <dd class="mt-2 text-gray-300">We offer flexible subscription tiers based on usage and volume. Contact us for a custom quote.</dd>
+  </div>
+  {/* 他のQAペア */}
+</dl>
+フォームのセマンティックス
+
+<form> 内に <fieldset> と <legend> を組み込む。
+
+jsx
+コピーする
+編集する
+<form onSubmit={handleSubmit} className="grid gap-6 max-w-2xl mx-auto">
+  <fieldset className="border border-gray-700 p-4 rounded-md">
+    <legend className="text-xl font-semibold text-white">Contact Us</legend>
+    {/* 入力フィールド、ラベル */}
+  </fieldset>
+  {/* 送信ボタン */}
+</form>
+これによって、スクリーンリーダーが「このフォームは Contact Us フォームです」と正しく読み上げる。
+
+2.11 画像と動画のレスポンシブ制御不足
+指摘内容
+
+Hero のロゴ動画がデスクトップでは良いが、タブレットやスマホで見ると動画サイズが大きすぎたり小さすぎたりして、端末ごとに適切なレスポンシブ制御が不足している。
+
+Tech Partners や Use Cases のアイコンが、スマホだと過剰に縮小され、視認性が低下している。
+
+分析
+
+<img> や <video> に className="max-w-full" はあるが、幅指定が固定ピクセル（例：w-[960px]）のまま残っているため、デバイスの幅に合わせた伸縮が適切に行われていない。
+
+Tailwind の sm:w-[...] md:w-[...] ブレークポイント指定はあるが、異なるデバイスで最適なサイズに切り替わっていない箇所がある。
+
+修正案
+
+動画（SplashScreen / Hero ロゴ）
+
+<video> 要素に以下のようなクラスを付与し、フルレスポンシブ化する：
+
+jsx
+コピーする
+編集する
+<video
+  src="/splash-transparent.mp4"
+  poster="/splash-transparent-poster.png"
+  className="
+    w-[60vw] max-w-[960px] min-w-[240px]
+    h-auto object-contain
+  "
+  ...
+/>
+w-[60vw]：常に画面幅の 60% で表示し、最大幅は 960px、最小幅は 240px に制限。
+
+これにより、スマホ（画面幅約 375px）では w-[60vw]=225px、タブレット 768px では 460px、デスクトップ 1920px では 960px とリスポンシブに調整される。
+
+Tech Partners の <img>
+
+現状 className="h-10 sm:h-12 md:h-14 lg:h-16" としているが、さらに以下を付与して横幅上限・下限も設定：
+
+jsx
+コピーする
+編集する
+className="
+  h-10 sm:h-12 md:h-14 lg:h-16
+  max-w-[120px] sm:max-w-[140px] md:max-w-[160px]
+  min-w-[60px] 
+  object-contain mx-auto
+  filter grayscale hover:filter-none hover:scale-105 transition-all duration-200
+"
+max-w-[120px] sm:max-w-[140px] md:max-w-[160px]：ロゴ画像の幅をデバイス幅に応じて最大値を設定。
+
+min-w-[60px]：最小でも 60px の横幅を維持し、潰れすぎを防止。
+
+<img> に sizes 属性を付与し、Next.js の <Image> コンポーネントを使う場合は layout="responsive" を検討：
+
+jsx
+コピーする
+編集する
+<Image
+  src={src}
+  alt={alt}
+  width={160}
+  height={80}
+  className="object-contain"
+  sizes="(max-width: 640px) 60px, (max-width: 768px) 100px, (max-width: 1024px) 120px, 160px"
+  loading="lazy"
+/>
+Use Cases / Services のアイコン
+
+<img> に className="h-10 sm:h-12 md:h-16 lg:h-20 max-w-full object-contain mx-auto" を適用。
+
+これにより、アイコンサイズはデバイス幅に応じて自動的に伸縮し、常に解像度を損なわず視認性を確保できる。
+
+2.12 カラーユニバーサルデザイン (CUD) 対応不足
+指摘内容
+
+現在、テキスト色は大半が text-gray-300、見出しが text-white、ボタンが白黒反転。
+
+しかし、赤緑弱視や色覚多様性を持つユーザーにとって、例えば「リンクの hover 色が青 (#1F4ED8) かどうか」が判別しづらい箇所がある。
+
+サービスやリンクの強調部分で、「色でしか差をつけていない」パターンがいくつか存在し、CUDの観点で不十分。
+
+分析
+
+色の対比（コントラスト比）が嚙み合わず、リンクテキストやホバー時文字色などの変化が認識されにくい。
+
+ボタンのアウトライン（白文字 on 黒背景）とボタンホバー（白背景 on 黒文字）のコントラストは OK だが、リンクテキスト一部の強調（例：<span className="text-[#1F4ED8]">AI Solutions</span>）が弱視環境でほとんど区別つかない。
+
+修正案
+
+コントラスト比を常に 4.5:1 以上に保つ
+
+text-gray-300 (#D1D5DB) on #0F0F0F はコントラスト比約 7.9:1 で OK。
+
+リンクテキスト（#1F4ED8）は #0F0F0F に対してコントラスト比約 7.0:1。こちらも OK だが、背景が #121212 の場合は約 6.3:1 なのでギリギリ。
+
+したがって、#1F4ED8 よりも少し明るめの青（例：#2563EB）に変更し、コントラスト比を 7.5:1 以上に確保。
+
+リンクの強調を色だけに頼らない
+
+重要なリンクには必ず下線（underline）と hover 時の背景色変化を追加。
+
+例：
+
+jsx
+コピーする
+編集する
+<a href="#services" className="text-[#2563EB] underline hover:bg-[#1A1A1A] focus:bg-[#1A1A1A] transition-all duration-200">
+  Explore Services
+</a>
+これにより、色覚多様性を持つユーザーにも「ここが押せるボタンだ」と判別しやすくなる。
+
+アクセントカラーのペアを検討
+
+カラーユニバーサルを意識し、リンク強調色のほかに「ボタン枠線」「アイコンのフィルター」などでも反映できるように、--color-accent: #2563EB; --color-accent-dark: #1E40AF;（2色使い）を定義し、hover 状態で 1 色目から 2 色目に移行するようにしてバリエーションを持たせる。
+
+Tailwind 設定：
+
+js
+コピーする
+編集する
+extend: {
+  colors: {
+    accent: '#2563EB',
+    'accent-dark': '#1E40AF',
+  },
+}
+2.13 モバイル用ハンバーガーメニューの UX 不整合
+指摘内容
+
+現状、md:hidden → ハンバーガーメニュー表示になっているが、以下の問題がある：
+
+メニューアイコンをタップしたときに、開閉アニメーションがスムーズでない（瞬間で展開／縮小しており、視認的に不自然）。
+
+メニューが展開された際、ページ全体がスクロール可能なままで、メニュー背後のコンテンツがスクロールしてしまう。
+
+メニュー内のリンクタップ時、closeMenu() が遅延して呼ばれるため、一瞬メニューが見切れたままページ遷移し、視覚的な乱れを引き起こす。
+
+分析
+
+ハンバーガーメニュー開閉に Framer Motion を導入していないため、UX が跳ねて見える。
+
+メニュー開状態で body に overflow-hidden を付与していないため、スクロールが後ろ側に透過している。
+
+リンククリック時に onClick={() => { closeMenu(); router.push(...) }} のように処理すると、closeMenu() の完了を待たずにルーターが先行して反応し、スムーズなクローズアニメーションが見えない。
+
+修正案
+
+Framer Motion を使ったスムースな開閉
+
+Navbar.jsx のハンバーガーメニュー部分を次のように書き換え：
+
+jsx
+コピーする
+編集する
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
+
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  // メニュー開時にスクロール禁止
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+  }, [isOpen]);
+
+  const toggleMenu = () => setIsOpen((prev) => !prev);
+
+  return (
+    <header className="fixed top-0 left-0 w-full z-50">
+      <nav className="flex items-center justify-between px-6 py-4 bg-transparent transition-colors duration-200">
+        {/* ロゴ */}
+        <Link href="/">
+          <a aria-label="Go to Homepage">
+            <img src="/logo.svg" alt="Venator Capital Logo" className="h-8" />
+          </a>
+        </Link>
+        {/* デスクトップメニュー */}
+        <ul className="hidden md:flex space-x-8">
+          <li><a href="#capabilities" className="hover:text-accent">Capabilities</a></li>
+          {/* ...他リンク */}
+        </ul>
+        {/* ハンバーガーアイコン */}
+        <button
+          type="button"
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          onClick={toggleMenu}
+          className="md:hidden focus:outline-none"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className="w-6 h-6 text-white"
+          >
+            {isOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+      </nav>
+      {/* モバイルメニュー */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden bg-[#0F0F0F] px-6 py-4 space-y-4"
+          >
+            <Link href="#capabilities">
+              <a onClick={() => setIsOpen(false)} className="block text-white text-lg hover:text-accent">Capabilities</a>
+            </Link>
+            {/* ...他リンク */}
+            <Link href="#contact">
+              <a onClick={() => setIsOpen(false)} className="block text-white text-lg hover:text-accent">Contact</a>
+            </Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+}
+ポイント
+
+AnimatePresence と motion.div で開閉アニメーションを追加。
+
+document.body.style.overflow を hidden にすることで、メニュー展開中は背後コンテンツのスクロールを禁止し、メニューに集中させる。
+
+リンククリック時の遅延解除問題
+
+現在、リンククリックで setIsOpen(false) と同時に router.push していると、アニメーションが完了する前に画面遷移してしまう。
+
+対応策として：リンククリック時はアニメーション終了後に遷移するように Promise を活用する。
+
+jsx
+コピーする
+編集する
+const handleNavClick = (href) => {
+  setIsOpen(false);
+  setTimeout(() => {
+    router.push(href);
+  }, 200); // アニメーション時間と同一
+};
+
+{/* 呼び出し例 */}
+<a onClick={() => handleNavClick('#contact')} className="block text-white text-lg hover:text-accent">Contact</a>
+これで UI がジャンプせずにスムースに閉じた後、リンク先へ遷移する。
+
+アクセシビリティ
+
+aria-expanded={isOpen} をハンバーガーボタンに付与し、スクリーンリーダーにメニューの開閉状態を伝える。
+
+メニューリストには role="menu" 、各リンクには role="menuitem" を付与し、正しいナビゲーション構造を担保。例：
+
+jsx
+コピーする
+編集する
+<motion.div role="menu" ...>
+  <a role="menuitem" onClick={() => handleNavClick('#capabilities')}>Capabilities</a>
+  {/* ... */}
+</motion.div>
+8.14 ブラウザ互換性（CSS Grid フォールバック）
+指摘内容
+
+Tech Partners やその他のグリッドレイアウトは CSS Grid を多用しているが、旧ブラウザ（IE11 など）では表示崩れが発生する。
+
+企業サイトとして法人顧客・自治体・大学など幅広いユーザー層を想定すると、CSS Grid 非対応環境でも最低限のコンテンツが表示されるように配慮が必要。
+
+分析
+
+Tailwind はデフォルトで CSS Grid を生成するが、Flexbox を使ったフォールバックがないと旧ブラウザでは完全に崩れる。
+
+ただし、現代の法人利用者は Edge や Chrome, Safari を使うケースが大半なため、IE11 対応を厳格に求めるかは判断が難しい。
+
+修正案
+
+Progressive Enhancement（漸進的強化）
+
+HTML は Flexbox ベースで最小限のレイアウトを組み、CSS Grid はあくまで強化用として設定。
+
+例：
+
+jsx
+コピーする
+編集する
+<div className="flex flex-wrap justify-center gap-8 md:grid md:grid-cols-4 md:gap-8">
+  {/* アイテム */}
+</div>
+こうすると、Grid をサポートしないブラウザでは Flexbox の flex-wrap が適用され、2列3列と適度に折り返して表示される。
+
+Tech Partners であれば：
+
+jsx
+コピーする
+編集する
+<div className="flex flex-wrap justify-center gap-6 sm:gap-8 md:grid md:grid-cols-4 lg:grid-cols-6 md:gap-8">
+  {/* パートナーアイテム */}
+</div>
+Flexbox でまず並べ、ブレークポイント以降に Grid を適用することで、互換性を確保する。
+
+重要情報のモバイルフレンドリーな fallback
+
+もし IE11 で表示崩れが発生し、コンテンツが読めないほど壊れる場合、 <noscript> と同様に IE 用の簡易版メッセージを表示することも考慮。
+
+ただし、IE11 の市場シェアは非常に低いため、サポートポリシーを明示し、例「当サイトは最新ブラウザでの利用を推奨します」と告知しておくことで十分でもよい。
+
+8.15 フォームバリデーションの脆弱性
+指摘内容
+
+Contact フォームには HTML の required 属性があるものの、フロントエンド検証のみでバリデーション実装が甘い。
+
+悪意あるユーザーが直接 API エンドポイントに不正なデータを送信すると、バックエンドでの検証が想定されていない場合にシステムがクラッシュするリスクがある。
+
+現状、送信処理はフロントエンドで fetch → Formspree（仮） という想定のみで、エラーハンドリングが不十分。
+
+分析
+
+フロントエンドだけのバリデーションは UX 向上に役立つが、セキュリティ対策としては不十分。
+
+バックエンド（あるいはサードパーティサービス） による再検証が必要。
+
+サニタイズ（HTMLタグの除去）や、XSS/Cross-Site Scripting 対策を行わずに直接送信すると、サイトを踏み台にして他サイトを攻撃される恐れがある。
+
+修正案
+
+フロントエンド強化
+
+既存の required / minLength に加え、以下を追加する。
+
+名前フィールド：pattern="^[A-Za-z0-9\s]{2,50}$"（2～50文字の半角英数字と空白のみ）
+
+メールアドレス：type="email" に加え、pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" を設定。
+
+メッセージ：minLength="20" maxLength="500"を指定し、長過ぎるテキストを防ぐ。
+
+バリデーションエラー時は、該当フィールドの下に <p role="alert" className="text-red-500 mt-2 text-sm">Please enter a valid email address.</p> を表示し、即時フィードバックする。
+
+バックエンド（サードパーティ）連携時の検証
+
+Formspree や Formcarry を利用している場合は、これらのサービス側で「入力文字数」「必須項目」「形式チェック」が行われるよう設定。
+
+独自のバックエンドを構築する場合は、以下の処理を行う：
+
+受信した JSON をサーバー側でパースし、各フィールドをサニタイズ（validator.js や DOMPurify を使ってタグを除去）。
+
+name と email を正規表現で再チェック。
+
+メッセージ本文を 500 文字以下に制限し、SQL インジェクションや NoSQL インジェクションを防ぐ。
+
+問い合わせ内容をデータベースに保存する場合、prepared statements（SQL）や ORM のバインド機能を必ず活用。
+
+エラーハンドリング
+
+フォーム送信後、HTTP ステータスコードを必ず確認し、200 以外の場合は
+
+jsx
+コピーする
+編集する
+setError('An unexpected error occurred. Please try again later.');
+を表示。
+
+サーバーエラー (500)、バリデーションエラー (400) などステータスに応じて異なるメッセージを出し分ける。
+
+フォーム送信ボタンは送信中に disabled となり、スピナーアイコン（例：<svg className="animate-spin h-5 w-5 text-white" .../>）を表示して「処理中」をユーザーに可視化する。
+
+8.16 外部リンク開閉ポリシーの不統一
+指摘内容
+
+Tech Partners や Navbar のリンクはすべて target="_blank" rel="noopener noreferrer" で外部サイトに飛ばしているが、About 内にある「ブログリンク」や Contact の「送信先リンク」では target 属性を明示せずにリンクしている。
+
+このままだと、ユーザーが外部サイトに移動したとき、元のタブを閉じずに開きたいのか、新しいタブが混在して UX がバラバラになる。
+
+分析
+
+外部リンクは原則 target="_blank" rel="noopener noreferrer" を付与すべきだが、内部アンカーリンク（同一ページスクロールなど）は付与不要。
+
+現状、同一ページスクロール用のアンカーと外部の Knowledge Base への遷移が混在しており、「外部なのか内部なのか」がリンクの見た目から判断しにくい。
+
+修正案
+
+外部リンク vs 内部リンクの区別
+
+<a href="https://external.com" target="_blank" rel="noopener noreferrer" className="hover:underline">External Site</a>
+
+内部リンク（ページ内移動）には target を付与せず、href="#capabilities" のみ。
+
+内部リンクと外部リンクでスタイルを微妙に変える：
+
+css
+コピーする
+編集する
+.external-link {
+  @apply inline-flex items-center text-[#2563EB] hover:underline;
+}
+.external-link svg {
+  @apply ml-1 w-4 h-4 text-[#2563EB];
+}
+とし、
+
+jsx
+コピーする
+編集する
+<a href="https://openai.com" target="_blank" rel="noopener noreferrer" className="external-link">
+  OpenAI
+  <ExternalLinkIcon />
+</a>
+のようにアイコンを付けておけば「外部リンクで新しいタブが開く」ことが直感的にわかる。
+
+Anchor Link 用の role="link" 付与
+
+ページ内移動リンクには aria-label="Scroll to Capabilities section" のように役割を明示し、アクセシビリティを担保。
+
+Link コンポーネント化
+
+src/components/ui/Link.jsx を作成し、外部か内部かを判定して属性を自動付与：
+
+jsx
+コピーする
+編集する
+import React from 'react';
+
+export function Link({ href, children, className = '', ...props }) {
+  const isExternal = href.startsWith('http');
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`External link to ${href}`}
+        className={`inline-flex items-center text-[#2563EB] hover:underline ${className}`}
+        {...props}
+      >
+        {children}
+        <ExternalLinkIcon className="ml-1 w-4 h-4 text-[#2563EB]" />
+      </a>
+    );
+  }
+  return (
+    <a href={href} className={`hover:text-accent ${className}`} {...props}>
+      {children}
+    </a>
+  );
+}
+これをすべての <a> 要素に置き換え、属性・スタイルの揺れを根絶。
+
+8.17 パフォーマンス指標（Lighthouse）の不合格要素
+指摘内容
+
+Lighthouse を実行すると、以下のカテゴリで 100 点に届かず改善余地ありと判定される。
+
+Performance：FCP（First Contentful Paint）、LCP（Largest Contentful Paint）が遅い。
+
+Accessibility：ボタンのコントラスト、ARIAラベル、フォームラベルなど、a11y 関連の警告が残る。
+
+Best Practices：HTTP/2 や SRI（Subresource Integrity）など、外部ライブラリの読み込みで警告が出る。
+
+SEO：構造化データのミス、<meta name="viewport"> 欠落、リンクテキストの曖昧さ。
+
+分析
+
+LCP：Hero セクションの背景動画や大きなロゴ画像が最初に読み込まれるため、巨大なリソースが初期ロードを阻害している。
+
+FCP：大量の Tailwind クラスや Framer Motion のスクリプトが先に読み込まれ、CSS/JS のバンドルが肥大化している。
+
+Accessibility：前述した ALT/ARIA の欠如や、コントラスト比が若干不足しているテキストがある。
+
+Best Practices：外部スクリプト（Google Analytics, Chat widgetなど）を同期的に読み込んでいる場合があるが、該当なしなら該当箇所を確認。
+
+SEO：<meta name="viewport" content="width=device-width, initial-scale=1"> が存在するものの、一部ページ（例えばエラーページやプレビュー）で漏れている可能性。
+
+修正案
+
+画像・動画のプリロードとプレフェッチ
+
+LCP 対策として、Hero セクションのロゴは <link rel="preload" as="image" href="/logo.svg"> を <head> に配置。
+
+背景動画は preload="metadata" に変更し、ショートサムネイル（poster）だけ先に読み込んでおく。
+
+jsx
+コピーする
+編集する
+<video
+  src="/splash-transparent.mp4"
+  poster="/splash-transparent-poster.png"
+  preload="metadata"
+  ...
+/>
+CSS／JS バンドルの軽量化
+
+Tailwind の Purge オプションを厳密に設定し、未使用クラスを削除。
+
+Framer Motion などのアニメーションライブラリは必要な部分のみ動的インポートし、import('framer-motion').then(...) のように遅延読み込み。
+
+ルートレベルの CSS は最小限にし、重いグローバルスタイルは分割して必要なセクションだけで読み込む。
+
+サードパーティスクリプトの遅延読み込み
+
+ChatGPT 埋め込みや Analytics スクリプトがあれば、<script async defer src="..."> を使い、ページレンダリングをブロックしないようにする。
+
+もしくは、next/script の strategy="lazyOnload" を設定。
+
+<meta> タグの最適化
+
+すべてのページ（_app.js, _document.js, index.jsx）に共通で <meta name="viewport" content="width=device-width, initial-scale=1"> が存在するか確認。
+
+追加で <meta http-equiv="X-UA-Compatible" content="IE=edge"> を入れ、互換性モードを排除。
+
+構造化データのエラー修正
+
+先述の JSON-LD が正しくパースされるか、Rich Results テスト（Google Search Console）で検証し、エラーがあれば修正。
+
+特に @context / @type / URL の整合性をチェック。
+
+CSS でのリソース使用最適化
+
+アイコンフォント（Font Awesome など）を使わず、SVG スプライトやインライン SVG を用いて「不要なフォント読み込み」を排除。
+
+Tailwind を JIT モードにし、生成 CSS ファイルを <50KB に抑える。
+
+8.18 サイトマップ & robots.txt の未設定
+指摘内容
+
+法人向けコーポレートサイトにも関わらず、/sitemap.xml や robots.txt が構成・設置されていない。
+
+SEO の観点からクローラーに「どのページをクロールしてほしいか／してほしくないか」を指示できず、将来スケールしたときに問題となる。
+
+分析
+
+Next.js であれば next-sitemap パッケージを使い自動生成できるが、現在のコードベースにはその設定が見当たらない。
+
+サブページ（現在は単一ページだが、将来的に複数ページになる可能性あり）を想定すると、サイトマップは必須。
+
+修正案
+
+next-sitemap の導入と設定
+
+npm install next-sitemap を実行。
+
+プロジェクトルートに next-sitemap.config.js を作成：
+
+js
+コピーする
+編集する
+module.exports = {
+  siteUrl: 'https://venator.capital',
+  generateRobotsTxt: true,
+  changefreq: 'daily',
+  priority: 0.7,
+  sitemapSize: 5000,
+  // Exclude certain routes if必要
+  exclude: ['/drafts/*', '/private/*'],
+};
+package.json に以下を追加：
+
+json
+コピーする
+編集する
+"scripts": {
+  "postbuild": "next-sitemap"
+}
+npm run build を実行すると、自動的に public/sitemap.xml と public/robots.txt が生成される。
+
+robots.txt の内容確認
+
+生成された /public/robots.txt の中身を確認し、問題ないかチェック。例：
+
+makefile
+コピーする
+編集する
+User-agent: *
+Allow: /
+Sitemap: https://venator.capital/sitemap.xml
+将来的に管理画面や限定ページを .well-known/robots.txt から除外したい場合は exclude: ['/admin/*'] を next-sitemap.config.js に追加しておく。
+
+Google Search Console への登録
+
+サイトマップ送信後、Google Search Console に登録し、sitemap.xml を送信してインデックス状況を確認。
+
+8.19 モバイルにおけるフォームのキーボード被り
+指摘内容
+
+Contact フォーム入力中、スマホキーボードが表示されると「送信ボタン」がキーボードに隠れてしまい、ユーザーが「送信ボタンがどこにあるのか」わからない。
+
+キーボードが閉じたあとでようやくボタンが見えるが、UX を大きく損ねる。
+
+分析
+
+モバイルでフォームの最下部に Send Message ボタンがある場合、ソフトウェアキーボードが表示されると要素のスクロールが動的に追従せず、ボタンが「画面外」に隠れてしまう。
+
+Next.js / React に標準実装されているわけではないため、JavaScript で window.innerHeight を監視して要素をスクロールする処理が必要。
+
+修正案
+
+フォームコンテナにスクロール Padding を追加
+
+<form> の直下に className="pb-24" を追加して、キーボードが表示されても「余白分でボタンが少し上に押し上げられる」形にする。
+
+例：
+
+jsx
+コピーする
+編集する
+<form className="grid gap-6 max-w-2xl mx-auto pb-24">
+  {/* 入力フィールド */}
+  <button type="submit" ...>Send Message</button>
+</form>
+フォーカス時のスクロール制御
+
+フォーム内の <input>, <textarea> に onFocus イベントハンドラを付与し、タップ時に自動的に該当フィールドをスクロールして表示させる。
+
+例：
+
+jsx
+コピーする
+編集する
+const handleFocus = (e) => {
+  setTimeout(() => {
+    e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 300); // ソフトキーボード起動まで待機
+};
+
+<input 
+  id="message" 
+  name="message" 
+  onFocus={handleFocus}
+  ...
+/>
+これにより、フォーカスしたフィールドを中央寄せし、キーボードによって隠れないよう制御できる。
+
+ボタンの固定化検討
+
+キーボード起動時に「送信ボタン」を常に見える状態にするため、モバイルでは以下のように「フッターバー」形式でボタンを固定表示してもよい。
+
+例：
+
+jsx
+コピーする
+編集する
+<div className="fixed bottom-0 left-0 w-full bg-[#1A1A1A] p-4">
+  <button type="submit" className="w-full px-8 py-3 bg-[#1F4ED8] text-white font-semibold rounded-full">Send Message</button>
+</div>
+ただし、フッターバーを表示するかどうかは UX の好みが分かれるため、クライアントと確認後に実装。
+
+8.20 グローバルステート管理が不十分な箇所
+指摘内容
+
+モバイルメニューの開閉 (isOpen) 以外にも、スクロール位置によるナビバー背景色変更や、FAQ アコーディオンの開閉状態など、各コンポーネント間で状態を共有すべき箇所が散在。
+
+しかし、現状は「各コンポーネントでそれぞれ独立した useState を使っているだけ」で、共通の状態や Context を使えていない。
+
+その結果、メニュー展開中でも FAQ のアコーディオン状態が複数開いたままになるなど、UX が不統一。
+
+分析
+
+小～中規模サイトでは Redux などを導入するまでもないが、React Context や Zustand など軽量なグローバルステート管理を導入して、状態を一元化すべき。
+
+これにより、たとえば「モバイルメニューを開いているときはページ全体のスクロール位置を top に固定する」といった挙動を一か所で管理できる。
+
+修正案
+
+React Context の導入
+
+プロジェクトルートに src/context/AppContext.jsx を作成し、以下のようにグローバルステートを定義：
+
+jsx
+コピーする
+編集する
+import React, { createContext, useContext, useState } from 'react';
+
+const AppContext = createContext();
+
+export function AppProvider({ children }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [activeFAQ, setActiveFAQ] = useState(null);
+
+  return (
+    <AppContext.Provider
+      value={{
+        isMenuOpen,
+        setIsMenuOpen,
+        scrollPosition,
+        setScrollPosition,
+        activeFAQ,
+        setActiveFAQ,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
+}
+
+export function useAppContext() {
+  return useContext(AppContext);
+}
+src/pages/_app.jsx を以下のように編集し、全体を AppProvider で囲む：
+
+jsx
+コピーする
+編集する
+import { AppProvider } from '../context/AppContext';
+import '../styles/globals.css';
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <AppProvider>
+      <Component {...pageProps} />
+    </AppProvider>
+  );
+}
+
+export default MyApp;
+Navbar での状態管理の統合
+
+Navbar.jsx 内の isOpen と setIsOpen は useAppContext() から取得する形に変更：
+
+jsx
+コピーする
+編集する
+import { useAppContext } from '../context/AppContext';
+
+export default function Navbar() {
+  const { isMenuOpen, setIsMenuOpen } = useAppContext();
+  // ...残り同様
+}
+FAQ Accordion の状態共有
+
+FAQSection.jsx の各 <Disclosure> ではなく、activeFAQ ステートを使って一つずつ開閉を管理。例：
+
+jsx
+コピーする
+編集する
+import { useAppContext } from '../context/AppContext';
+
+export default function FAQSection() {
+  const { activeFAQ, setActiveFAQ } = useAppContext();
+  const faqs = [
+    { id: 1, question: 'What is your pricing model?', answer: '...' },
+    // 他QA
+  ];
+
+  return (
+    <section id="faq" role="region" aria-labelledby="faq-heading" className="py-24">
+      <h2 id="faq-heading" className="text-3xl font-semibold mb-8 text-center">Frequently Asked Questions</h2>
+      <div className="max-w-3xl mx-auto space-y-4">
+        {faqs.map(({ id, question, answer }) => (
+          <div key={id}>
+            <button
+              onClick={() => setActiveFAQ(activeFAQ === id ? null : id)}
+              aria-expanded={activeFAQ === id}
+              aria-controls={`faq-panel-${id}`}
+              className="w-full flex justify-between items-center p-4 bg-[#1A1A1A] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1F4ED8] transition-all duration-200"
+            >
+              <span className="text-lg font-medium text-white">{question}</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className={`w-6 h-6 text-gray-400 transform ${activeFAQ === id ? 'rotate-180' : 'rotate-0'} transition-transform duration-200`}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            {activeFAQ === id && (
+              <div id={`faq-panel-${id}`} role="region" className="p-4 bg-[#0F0F0F] text-gray-300 leading-relaxed">
+                {answer}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+こうすることで、「FAQ を開いたまま別のセクションへ移動したときに全 FAQ が閉じたままだったり、別の QA が勝手に閉じる」問題が解消される。
+
+画面スクロール位置の監視
+
+AppProvider で window.onscroll を監視し、scrollPosition に格納。ナビバーや Back-to-Top ボタンなどで利用する。
+
+jsx
+コピーする
+編集する
+useEffect(() => {
+  const handleScroll = () => {
+    setScrollPosition(window.scrollY);
+  };
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+Navbar では const { scrollPosition } = useAppContext() で取得し、scrollPosition > 50 のときに背景を不透明にする実装に一貫性を持たせる。
+
+8.21 ルーティング設計の曖昧さ
+指摘内容
+
+現状、サイトはシングルページ (SPA) 構成だが、各セクションに対応したルーティング（例：/about, /services）がなく、クエリパラメータやハッシュリンク（#about）だけに頼っている。
+
+これでは「直接 /about に飛びたい」「SEO 対策で有利なインデックスエントリを複数作りたい」といった要件を満たせない。
+
+分析
+
+シングルページであるがゆえに、Google や SNS 上で「About ページ」だけをシェアしたい場合、URL にハッシュが含まれると集客効果が下がる。
+
+SSR/SSG（Next.js）の機能を活かして、主要セクションごとに静的ページを生成し、それぞれに独自の <head> を持たせるべき。
+
+修正案
+
+Next.js のファイルベースルーティングを活用
+
+src/pages/about.jsx を作成し、AboutSection 部分だけをレンダーするページを追加（SSR/SSG 対応）。
+
+同様に、/services.jsx, /capabilities.jsx, /use-cases.jsx, /tech-stack.jsx, /tech-partners.jsx, /faq.jsx, /contact.jsx をそれぞれ作成。
+
+各ページは共通のレイアウトを使うため、components/Layout.jsx を挟む：
+
+jsx
+コピーする
+編集する
+// src/pages/about.jsx
+import Layout from '../components/Layout';
+import AboutSection from '../components/AboutSection';
+import TechPartnersSection from '../components/TechPartnersSection';
+// 必要に応じて他セクションへリンク
+
+export default function AboutPage() {
+  return (
+    <Layout>
+      <AboutSection />
+      <TechPartnersSection />
+    </Layout>
+  );
+}
+これにより、https://venator.capital/about という URL で About セクションだけを表示できる。
+
+ハッシュリンクの併用
+
+トップページ（index.jsx）では従来どおりハッシュリンクでスクロールするが、SEO用・直リンク用の固定ページを用意することでハイブリッド運用。
+
+例：Hero → “Learn More” ボタンを押すと /about#about-content へ遷移するなど、router.push('/about#about-content') のように内部リンクと外部リンク兼用を実現。
+
+SEO 用メタデータ設定
+
+各静的ページ（about.jsx など）には <Head> を用いて固有の <title> と <meta description> を設定。
+
+jsx
+コピーする
+編集する
+<Head>
+  <title>About | Venator Capital LLC</title>
+  <meta name="description" content="Learn about Venator Capital, an AI-focused strategic startup specialized in machine learning, data analytics, and enterprise integration." />
+</Head>
+これにより、Google にインデックスされる際に各ページが独立のエントリとして扱われる。
+
+リンク切れチェック
+
+サイトマップ生成後、Broken Link Checker などのツールを使って、/about, /services, /capabilities などの URL が 404 ではないか確認。
+
+8.22 フッターにおける社会的証明要素の不足
+指摘内容
+
+現状の Footer には会社名・リンク・コピーライトのみで、SNS / Trustmark / セキュリティバッジなど、社会的証明を担保する要素が一切ない。
+
+法人顧客や投資家を惹きつけるには、以下のような「信頼の印」を表示することで安心感を与える必要がある：
+
+クレジットカード会社のロゴ（Visa, Mastercard）
+
+セキュリティバッジ（SSL 証明書、Trustpilot 評価など）
+
+SNS リンク（LinkedIn, Twitter, GitHub）
+
+法人登録番号やプライバシーポリシーへのリンク
+
+分析
+
+Web サイトを初見で訪れた法人担当者は、「どれだけ日本国内外で信頼を得ているのか」「プライバシーやセキュリティは適切か」を厳しく見る。
+
+信頼構築のためには「デザイン」だけでなく、社会的証明となる要素を Footer にまとめて表示しておく必須。
+
+修正案
+
+SNS リンクの追加
+
+Footer 左側（ロゴの下、会社名の下）に小さく Follow Us: とし、以下のアイコンリンクを設置：
+
+jsx
+コピーする
+編集する
+<div className="flex space-x-4">
+  <a href="https://twitter.com/venatorcapital" target="_blank" rel="noopener noreferrer" aria-label="Venator Capital on Twitter">
+    <img src="/logos/twitter.svg" alt="Twitter" className="h-6 w-6 hover:opacity-80 transition-opacity duration-200" />
+  </a>
+  <a href="https://www.linkedin.com/company/venator-capital" target="_blank" rel="noopener noreferrer" aria-label="Venator Capital on LinkedIn">
+    <img src="/logos/linkedin.svg" alt="LinkedIn" className="h-6 w-6 hover:opacity-80 transition-opacity duration-200" />
+  </a>
+  <a href="https://github.com/venatorcapital" target="_blank" rel="noopener noreferrer" aria-label="Venator Capital on GitHub">
+    <img src="/logos/github-svgrepo-com.svg" alt="GitHub" className="h-6 w-6 hover:opacity-80 transition-opacity duration-200" />
+  </a>
+</div>
+セキュリティ／Trust バッジ
+
+会社の独自ドメインに SSL 証明書を導入済みであれば、Footer に「HTTPS 安全性」を示す SSL バッジを追加。
+
+jsx
+コピーする
+編集する
+<div className="mt-4">
+  <img src="/icons/ssl-secure.svg" alt="Secure SSL Encryption" className="h-8 inline-block mr-2" />
+  <span className="text-gray-400 text-sm">256-bit SSL Encryption</span>
+</div>
+もし Trustpilot や G2 Crowd など第三者レビューサイトに登録している場合は、「Rated 4.8/5 on Trustpilot」などのバッジを表示。
+
+クレジットカードロゴ
+
+Footer の最下部に We accept: という文言とともに、Visa, Mastercard のロゴを小さく並べる。
+
+jsx
+コピーする
+編集する
+<div className="mt-6 flex items-center space-x-4">
+  <span className="text-gray-400 text-sm">We accept:</span>
+  <img src="/logos/visa.svg" alt="Visa" className="h-6" />
+  <img src="/logos/mastercard.svg" alt="Mastercard" className="h-6" />
+</div>
+ただし、現時点で課金サービスがない場合は「将来実装予定」として別途コメントを残しておく。
+
+プライバシーポリシー・利用規約へのリンク
+
+Privacy Policy, Terms of Service へのリンクを Footer に追加し、社外ステークホルダーが簡単にアクセスできるように。
+
+jsx
+コピーする
+編集する
+<div className="mt-8 space-x-4 text-gray-500 text-xs">
+  <Link href="/privacy-policy"><a className="hover:underline">Privacy Policy</a></Link>
+  <Link href="/terms-of-service"><a className="hover:underline">Terms of Service</a></Link>
+</div>
+会社情報の再掲
+
+Footer 最下部に「© 2025 Venator Capital LLC. All rights reserved.」とともに、法人番号や本社所在地を小さい文字で表記。
+
+jsx
+コピーする
+編集する
+<p className="text-gray-600 text-xs mt-8">
+  © 2025 Venator Capital LLC. All rights reserved.  
+  Registered Company in Tokyo, Japan. Company No. 0123456789
+</p>
+8.23 404 ページ／エラーハンドリング欠如
+指摘内容
+
+存在しないルート（例：/nonexistent）にアクセスすると、Next.js のデフォルト 404 ページが表示されるが、ブランド統一されたカスタム 404 ページが用意されていない。
+
+カスタム 404 を設置しないと、ユーザーが「当サイトはまだ開発中なのか？」と誤解する恐れがある。
+
+分析
+
+コーポレートサイトとしてフルスペックを提供するなら、カスタム 404 ページを用意しつつ、ユーザーをすぐメインコンテンツへ誘導した方が UX が良い。
+
+さらに、サーバーエラー（500、503）にもカスタムエラーページを用意しておくことで、ユーザーエラー時に混乱を防げる。
+
+修正案
+
+カスタム 404 ページ作成
+
+src/pages/404.jsx を追加：
+
+jsx
+コピーする
+編集する
+import Link from 'next/link';
+
+export default function Custom404() {
+  return (
+    <div className="flex flex-col items-center justify-center h-screen bg-[#0F0F0F] text-white px-6">
+      <h1 className="text-6xl font-extrabold mb-4">404</h1>
+      <p className="text-xl mb-8">Oops! The page you’re looking for cannot be found.</p>
+      <Link href="/">
+        <a className="
+          inline-block px-8 py-3 bg-white text-black font-semibold rounded-full
+          hover:bg-[#e5e5e5] hover:shadow-lg
+          focus:outline-none focus:ring-2 focus:ring-[#1F4ED8] focus:ring-offset-2
+          transition-all duration-200
+        ">
+          Back to Home
+        </a>
+      </Link>
+    </div>
+  );
+}
+このページはブランドカラー（黒背景、白文字、CTAボタン）とフォントスタイルを踏襲する。
+
+カスタム 500 ページ作成
+
+src/pages/500.jsx を追加：
+
+jsx
+コピーする
+編集する
+import Link from 'next/link';
+
+export default function Custom500() {
+  return (
+    <div className="flex flex-col items-center justify-center h-screen bg-[#0F0F0F] text-white px-6">
+      <h1 className="text-6xl font-extrabold mb-4">500</h1>
+      <p className="text-xl mb-8">Server Error. Please try again later.</p>
+      <Link href="/">
+        <a className="
+          inline-block px-8 py-3 bg-white text-black font-semibold rounded-full
+          hover:bg-[#e5e5e5] hover:shadow-lg
+          focus:outline-none focus:ring-2 focus:ring-[#1F4ED8] focus:ring-offset-2
+          transition-all duration-200
+        ">
+          Back to Home
+        </a>
+      </Link>
+    </div>
+  );
+}
+これで、ビルド済みサイトでサーバーエラーが起きた場合でもカスタムデザインが表示される。
+
+404リンクのテスト
+
+/random-nonexistent-url へアクセスし、カスタム404が正常表示されるか確認。
+
+/500 など意図的に不正処理を行い、カスタム500が表示されるか確認。
+
+8.24 アニメーションの「動きすぎ」によるパフォーマンス懸念
+指摘内容
+
+各セクションで Framer Motion を多用しており、スクロールアニメーション（whileInView）やホバーエフェクト（scale, shadow）が多数重複して呼び出されている。
+
+その結果、特にモバイル端末でスクロール時にカクつきが発生し、UX が低下している。
+
+分析
+
+Framer Motion は美しいアニメーションを提供するが、大量に重ねるとリソースを消費しすぎてパフォーマンス低下を招く。
+
+レンダリング時に requestAnimationFrame が多重で実行され、GPU を酷使している可能性がある。
+
+修正案
+
+アニメーショントリガーを一部削減
+
+「重要なセクション入口のみ」 に絞ってアニメーションを適用。例：
+
+Hero → フェードイン
+
+Capabilities → 3枚のカードだけ Staggered Animation
+
+Tech Partners → アニメーションなし、CSS の hover:scale のみ
+
+Use Cases → モバイル時はアニメーション無し
+
+こうすることで、アニメーションが「点在」ではなく「要所に集中」し、GPU 負荷を軽減する。
+
+CSS だけで実現できるマイクロインタラクションに置き換え
+
+ボタンホバー scale は CSS の transform: scale(1.05); transition: transform 0.2s; に置き換え、Framer Motion を使わない。
+
+例：
+
+css
+コピーする
+編集する
+.hover-scale {
+  @apply transform transition-transform duration-200;
+}
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+Tailwind のユーティリティクラス hover:scale-105 transition-all duration-200 を使えば十分な場面が多い。
+
+whileInView を IntersectionObserver + CSSアニメーションに置き換え
+
+例えば、セクションエントリー時のフェードインは以下のように CSS で行う：
+
+css
+コピーする
+編集する
+.fade-in-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.fade-in-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+React コンポーネントで useEffect と IntersectionObserver を使って is-visible クラスを付与：
+
+jsx
+コピーする
+編集する
+import { useRef, useEffect, useState } from 'react';
+
+export default function Section({ children }) {
+  const ref = useRef();
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref} className={`fade-in-on-scroll ${visible ? 'is-visible' : ''}`}>
+      {children}
+    </div>
+  );
+}
+これにより、アニメーションは JavaScript 実装の重さを抑えつつ、スムースに発火する。
+
+8.25 アクセシビリティ（ARIA）誤用ケース
+指摘内容
+
+いくつかのコンポーネントが ARIA 属性を独自に付与しているが、誤用が複数見られる。
+
+<button> に role="navigation" を付与しているケースがあり、スクリーンリーダーが誤ったランドマークとして認識。
+
+<a> に role="button" を付与しているものがあり、リンクなのかボタンなのかが曖昧。
+
+ARIA ラベル（aria-label）がテキストと重複しており、スクリーンリーダーが同じ文言を二重に読み上げる。
+
+分析
+
+ARIA 属性は「視覚的に隠されている要素」に対して付与すべきであり、元から <button> や <nav> として役割が決まっている要素には不要。
+
+不適切な role や aria-label は逆にアクセシビリティを損なう。
+
+修正案
+
+role 属性の適正化
+
+<header> は role="banner"、<nav> は role="navigation"、<main> は role="main"、<footer> は role="contentinfo" を付与する。
+
+<button> 要素に role="navigation" を付与してはいけない。
+
+<a> に role="button" を付与するとスクリーンリーダーが「リンクです」と「ボタンです」を混在して読み上げ、混乱を招く。
+
+ボタンとして機能する要素は必ず <button>、リンク要素として機能するものは <a> にする。
+
+aria-label の最適化
+
+視覚的にテキストがない（アイコンだけの場合など）要素にのみ aria-label を付与。
+
+アイコンテキストと同一のテキストが画面上に表示されている場合、その aria-label は不要。
+
+例：
+
+jsx
+コピーする
+編集する
+{/* 良い例：アイコンのみリンク */}
+<a href="https://twitter.com" aria-label="Venator Capital on Twitter">
+  <img src="/logos/twitter.svg" alt="" />
+</a>
+
+{/* NG例：テキストリンク＋ aria-label が同一 */}
+<a href="https://venator.capital/contact" aria-label="Contact Us">Contact Us</a>
+もし両方必要なら、aria-labelledby を活用して重複読み上げを防ぐ。
+
+ARIA 属性不一致の検出
+
+axe-core の自動テストを CI に組み込み、ARIA 誤用を検出したらエラーにする。
+
+例えば、.github/workflows/axe.yml に以下のように追加：
+
+yml
+コピーする
+編集する
+name: Accessibility Check
+
+on: [pull_request]
+
+jobs:
+  axe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Accessibility Tests
+        run: npm run test:accessibility
+test:accessibility スクリプトを package.json に追加：
+
+json
+コピーする
+編集する
+"scripts": {
+  "test:accessibility": "jest --config=jest.a11y.config.js"
+}
+jest.a11y.config.js には axe / jest の設定を記述し、エラーを検出次第 CI を失敗とする。
+
+2.26 コンテンツの冗長性と情報過多
+指摘内容
+
+サイトに掲載されているテキスト（特に About、Use Cases、Services）の説明が冗長かつ、似たような内容が重複している。
+
+たとえば、Use Cases で “AI streamlines your workflow” と書いた直後、Services でも “We build AI workflows” という非常に近い説明がある。
+
+これにより、訪問者が「何が違うのか分かりづらい」という混乱を招いている。
+
+分析
+
+同じことを違う言葉で繰り返しているため、「情報の鮮度」が低下し、結果としてサイト全体のプロフェッショナル感が損なわれる。
+
+ユーザーは１度読んだ内容を再度目にすると飽きてしまい、スクロールを止める動機がなくなる。
+
+修正案
+
+情報重複の排除
+
+About の「AI の応用分野」部分と Use Cases の「ユースケース例」は必ず内容を分割。
+
+About では「会社概要→得意領域の網羅的紹介」を行い、Use Cases では「具体的事例や成果指標」を示す。
+
+Services セクションは「提供サービス一覧」をシンプルに箇条書きで示し、詳細説明は各リンク先（アーカイブページなど）へ誘導する形式を取り、「冗長にならないように見出し＋100文字程度」でコンパクトにまとめる。
+
+テキストのブラッシュアップ
+
+すべての英文をネイティブチェックし、冗長なフレーズを排除。具体的かつ簡潔な言葉に書き換える。
+
+例：
+
+△ Before: “Venator Capital LLC is an AI-focused strategic startup specializing in advanced software and application development, digital media and web platform solutions, and enterprise AI integration and consulting. Our lean and global approach transforms advanced technologies into operational excellence.”
+
+○ After: “Venator Capital LLC harnesses cutting-edge AI to deliver streamlined software solutions and enterprise-grade integrations. Our lean, global methodology turns innovation into real-world impact.”
+
+セクションごとのキャッチコピー最適化
+
+各セクション冒頭には一行のキャッチコピーを入れ、その下に短文のサブテキストを追加する構造にする。
+
+例：
+
+jsx
+コピーする
+編集する
+<section id="services" className="py-24 bg-[#121212]">
+  <h2 className="text-3xl md:text-4xl font-semibold text-white text-center mb-4">Our Services</h2>
+  <p className="text-gray-300 text-center mb-12 max-w-2xl mx-auto">From AI-powered applications to data-driven automation, we deliver tailored solutions that accelerate growth.</p>
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+    {/* サービスカード */}
+  </div>
+</section>
+これにより、ユーザーはセクションの要点を一目で把握できるようになる。
+
+2.27 タッチターゲットのサイズ不足
+指摘内容
+
+ボタンやリンク、ハンバーガーメニューアイコンなど、タッチ可能要素のクリック／タップ領域が狭く、モバイルユーザーが誤タップしやすい。
+
+CTAボタンは幅広くデザインされているが、リンクテキストやカードアイコンのタップ領域に十分な余白がない箇所が複数ある。
+
+分析
+
+WCAG のタッチターゲット最小サイズは 44×44px を推奨しているが、多くのリンクやアイコンは 24×24px 程度のまま配置されている。
+
+結果として、指が太いユーザーで誤タップが頻発し、ユーザー体験が著しく低下。
+
+修正案
+
+タッチターゲットの最小サイズ確保
+
+すべてのタップ可能要素（<button>, <a>, <input>）に少なくとも p-3（48×48px）を付与。
+
+例：
+
+jsx
+コピーする
+編集する
+<button className="p-3 bg-white rounded-full"> {/* 48px のタップ領域 */}
+  <svg className="w-6 h-6 text-black" ... />
+</button>
+ハンバーガーメニューアイコンも以下のように修正：
+
+jsx
+コピーする
+編集する
+<button
+  type="button"
+  aria-label={isOpen ? 'Close menu' : 'Open menu'}
+  onClick={toggleMenu}
+  className="p-3 md:hidden focus:outline-none"
+>
+  <svg className="w-6 h-6 text-white" ... />
+</button>
+リンクテキストやアイコンリンクの余白
+
+テキストリンクであっても、タップ領域を拡張するためにインライン要素ではなくブロック要素にし、py-2 px-2 を追加。
+
+例：
+
+jsx
+コピーする
+編集する
+<Link href="#services">
+  <a className="inline-block py-2 px-2 hover:underline">Services</a>
+</Link>
+アイコンリンクも同様に p-2 を付与し、アイコン 24×24 ではなく 48×48 の領域を確保する。
+
+2.28 スクロールアンカー挙動が不安定
+指摘内容
+
+ページ内リンク（ハッシュリンク）をクリックすると、スクロール位置が若干ずれてセクションが画面上部に隠れてしまうケースがある。
+
+ナビバー（header）が固定されているため、“目的の見出し” が隠れた状態で表示され、ユーザーが「どのセクションなのか分からない」状況が発生。
+
+分析
+
+固定ヘッダー（高さ約 80px 前後）を無視して、ブラウザは単純に対象要素を画面最上部までスクロールしてしまう。
+
+結果として、ヘッダーに隠れて下部のセクションタイトルが見えず、混乱を招く。
+
+修正案
+
+CSS で anchor offset を設定
+
+各セクション見出し（<h2 id="capabilities-heading"> など）の前にダミー要素を挿入し、ヘッダーの高さ分だけオフセットさせる。
+
+例：
+
+jsx
+コピーする
+編集する
+<div id="capabilities" className="relative -mt-[80px] pt-[80px]"></div>
+<h2 id="capabilities-heading" className="text-3xl font-semibold mb-8 text-white">Core Capabilities</h2>
+これにより、ハッシュリンクで #capabilities にジャンプすると、必ずヘッダー下にぴったり見出しが表示される。
+
+alternatively, JavaScript でスムーズスクロール
+
+<a href="#capabilities"> のクリックイベントをフックし、scrollIntoView に offset を指定してスクロール位置を補正。
+
+例：
+
+jsx
+コピーする
+編集する
+const handleAnchorClick = (e, id) => {
+  e.preventDefault();
+  const el = document.querySelector(id);
+  const yOffset = -80; // ヘッダー高さ
+  const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+  window.scrollTo({ top: y, behavior: 'smooth' });
+};
+すべてのハッシュリンクに対し、以下のように onClick をバインド：
+
+jsx
+コピーする
+編集する
+<a href="#about" onClick={(e) => handleAnchorClick(e, '#about')}>About</a>
+2.29 グリッドと Flexbox の混在による不整合
+指摘内容
+
+一部セクションで「Flexbox で要素を並べつつ、子要素は Grid でレイアウト」という設計が混在しており、
+
+たとえば、「Use Cases Section」は .flex flex-wrap を親にしているが、内部のカードだけを md:grid で再定義している。
+
+これが原因で、異なるブラウザや異なる解像度で微妙に横並びがずれるケースが発生している。
+
+分析
+
+Flexbox と Grid を無秩序に混合すると、要素間の隙間（gap）や配置ルールが競合しやすい。
+
+また、Flexbox の flex-wrap で要素が折り返されているのに、Grid の子要素で再度列指定（grid-cols-3 など）を行うと、思いどおりに並ばず「1列目に 2つ、2列目に 1つ、3列目に 2つ」というようなアンバランスなレイアウトが起きる。
+
+修正案
+
+親子関係を明確化
+
+基本的に「同じディープ階層内では Flexbox と Grid を混在させない」。
+
+たとえば Use Cases セクションは以下のどちらかに統一：
+
+Grid ベース：
+
+jsx
+コピーする
+編集する
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto px-6 sm:px-8">
+  {/* Use Case Card */}
+</div>
+Flexbox ベース：
+
+jsx
+コピーする
+編集する
+<div className="flex flex-wrap justify-center gap-8 max-w-5xl mx-auto px-6 sm:px-8">
+  <div className="w-full sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-16px)]">
+    {/* Use Case Card */}
+  </div>
+  {/* 他カード */}
+</div>
+どちらかの方法を選び、すべての子要素が同じコンテナで一貫して並ぶようにする。
+
+Gap（隙間）の統一
+
+Grid であれば gap-8、Flexbox であれば space-x-8 と space-y-8 の組み合わせで、どちらを採用しても隙間は同じ 2rem（Tailwind の gap-8）を厳密に守る。
+
+もし Flexbox で横並び→折り返し（wrap）を行う場合：
+
+jsx
+コピーする
+編集する
+<div className="flex flex-wrap justify-center -mx-4">
+  <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
+    {/* カード */}
+  </div>
+  {/* 他カード */}
+</div>
+このように親に -mx-4、子に px-4 を設定し、統一した水平方向の余白（16px）を確保する。
+
+Columns の計算式を明示
+
+もし Flexbox で「3カラム」レイアウトを行いたい場合は % 計算を明示的に使う。
+
+jsx
+コピーする
+編集する
+<div className="flex flex-wrap justify-center -m-4">
+  <div className="w-[calc(100%/1-1rem)] sm:w-[calc(100%/2-1rem)] lg:w-[calc(100%/3-1rem)] p-4">
+    {/* カード */}
+  </div>
+  {/* 他カード */}
+</div>
+こうすることで、gap（-m-4 と p-4）を含めて「1カラム／2カラム／3カラム」が厳密に適用され、折り返し時の計算ミスを防げる。
+
+2.30 コード重複と保守性の低さ
+指摘内容
+
+Capabilities, Use Cases, Services, FAQ, Tech Partners など、多くのセクションで「カード」や「アイコン＋テキスト」を手動で列挙しており、コードが非常に冗長。
+
+たとえば、Capabilities で 4 つのカードを items.map で書いているが、Use Cases や Services でも同じような構造を使っているにもかかわらず、別々に map として定義されている。
+
+これにより、同じレイアウト変更時にコードを複数箇所直さなければならず、保守性が著しく低い。
+
+分析
+
+DRY（Don’t Repeat Yourself）の原則が順守されておらず、同じロジック／スタイルが繰り返し記載されている。
+
+一方で、コンポーネントの粒度が荒すぎるため、「小さな UI パーツ」を共通化できていない。
+
+修正案
+
+共通カードコンポーネントの作成
+
+src/components/ui/Card.jsx を作成し、以下のように汎用化する。
+
+jsx
+コピーする
+編集する
+import React from 'react';
+
+export default function Card({ iconSrc, iconAlt, title, description, children, className = '' }) {
+  return (
+    <article className={`p-6 bg-[#1A1A1A] rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 flex flex-col ${className}`}>
+      {iconSrc && (
+        <img src={iconSrc} alt={iconAlt || ''} className="h-12 mb-4 mx-auto object-contain" />
+      )}
+      {title && <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>}
+      {description && <p className="text-gray-300 leading-relaxed flex-grow">{description}</p>}
+      {children /* CTA ボタンやタグなど */}
+    </article>
+  );
+}
+これを各セクション内で呼び出す際は、それぞれの配列データを渡すだけで済む。
+
+例（UseCasesSection.jsx）：
+
+jsx
+コピーする
+編集する
+import Card from '../components/ui/Card';
+
+const useCases = [
+  {
+    iconSrc: '/icons/use-case-1.svg',
+    iconAlt: 'Automated Customer Support icon',
+    title: 'Automated Customer Support',
+    description: 'GPT-powered chatbot automates responses to common queries, reducing support costs by 60%.',
+    tech: 'GPT-4',
+  },
+  // 他ケース
+];
+
+export default function UseCasesSection() {
+  return (
+    <section id="use-cases" className="py-24 bg-[#121212]">
+      <h2 className="text-3xl md:text-4xl font-semibold text-white text-center mb-8">Use Cases</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto px-6 sm:px-8">
+        {useCases.map((item) => (
+          <Card
+            key={item.title}
+            iconSrc={item.iconSrc}
+            iconAlt={item.iconAlt}
+            title={item.title}
+            description={item.description}
+          >
+            <span className="mt-4 text-sm font-medium text-primary">{`Key Technology: ${item.tech}`}</span>
+          </Card>
+        ))}
+      </div>
+    </section>
+  );
+}
+データ駆動型設計
+
+src/data/ フォルダを作成し、各種データを JSON 形式で管理。
+
+capabilities.js, useCases.js, techStack.js, services.js, faq.js など。
+
+capabilities.js の例：
+
+js
+コピーする
+編集する
+export const capabilities = [
+  {
+    iconSrc: '/icons/ai.svg',
+    iconAlt: 'AI & ML icon',
+    title: 'AI & Machine Learning Solutions',
+    description: 'Design, develop, and deploy custom AI/ML applications tailored to your business needs.',
+  },
+  // 他アイテム
+];
+React コンポーネント側では、この capabilities 配列をインポートして .map し、<Card> にデータを渡すだけにする。
+
+こうすることで、将来「Capabilities に項目を追加したい」「Use Cases 文言を更新したい」など変更が発生した際に、JSX を変更せずにデータファイルだけ編集すれば済むようになる。
+
+共通レイアウトの抽象化
+
+各セクション（Capabilities, Use Cases, Services, Tech Partners, FAQ）で共通して使われるレイアウトコンテナ（<section> → <div class="max-w-5xl mx-auto px-6 sm:px-8"> → <h2> → <p> → グリッド）を、汎用の SectionContainer コンポーネントとして抽象化：
+
+jsx
+コピーする
+編集する
+// src/components/ui/SectionContainer.jsx
+import React from 'react';
+
+export default function SectionContainer({
+  id,
+  title,
+  subtitle,
+  children,
+  className = '',
+}) {
+  return (
+    <section id={id} className={`py-24 ${className}`}>
+      <div className="max-w-3xl mx-auto text-center mb-12 px-6 sm:px-8">
+        <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">{title}</h2>
+        {subtitle && (
+          <p className="text-gray-400 text-base md:text-lg">{subtitle}</p>
+        )}
+      </div>
+      <div className="max-w-5xl mx-auto px-6 sm:px-8">{children}</div>
+    </section>
+  );
+}
+各セクションでは以下のように使用：
+
+jsx
+コピーする
+編集する
+import SectionContainer from '../components/ui/SectionContainer';
+import Card from '../components/ui/Card';
+import { capabilities } from '../data/capabilities';
+
+export default function CapabilitiesSection() {
+  return (
+    <SectionContainer
+      id="capabilities"
+      title="Core Capabilities"
+      subtitle="AI & Machine Learning Solutions, Data Analytics & Automation, and more."
+      className="bg-[#0F0F0F]"
+    >
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        {capabilities.map((item) => (
+          <Card
+            key={item.title}
+            iconSrc={item.iconSrc}
+            iconAlt={item.iconAlt}
+            title={item.title}
+            description={item.description}
+          />
+        ))}
+      </div>
+    </SectionContainer>
+  );
+}
+8.28 CSS ファイル分割の不在
+指摘内容
+
+全 CSS（Tailwind ユーティリティクラス）はコンポーネントに直接埋め込まれており、独自に定義したスタイルを一切持っていない。
+
+特定の要素（グラデーション罫線、背景グラデーション、メディアクエリなど）を追加したい場合、CSS の上書きや @apply での対応が難しくなっている。
+
+結果として、「CSS が JS と強く結合」しており、プロジェクト全体の可読性と拡張性が低下している。
+
+分析
+
+Tailwind のユーティリティクラスは強力だが、「すべてをクラス名だけで書こうとすると」「特定の条件でスタイルをまとめて変更する」際に過度に煩雑になる。
+
+たとえば、メディアクエリごとに複数のクラス名を付与すると、デザイン系微調整時に JSX が肥大化し、可読性が落ちる。
+
+修正案
+
+グローバルスタイルファイルの導入
+
+src/styles/ ディレクトリを作成し、以下のファイルを用意：
+
+globals.css：プロジェクト全体に適用するスタイル（@tailwind base; @tailwind components; @tailwind utilities; を記述）。
+
+components.css：カスタムコンポーネント（SectionContainer や Button など）で使う共通クラスを定義。
+
+css
+コピーする
+編集する
+/* src/styles/components.css */
+.btn-primary {
+  @apply inline-block px-8 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 transition-all duration-200;
+}
+.btn-secondary {
+  @apply inline-block px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-black hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 transition-all duration-200;
+}
+/* フォントサイズや行間など */
+.text-heading-1 {
+  @apply text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight;
+}
+.text-heading-2 {
+  @apply text-3xl md:text-4xl font-semibold text-white leading-snug;
+}
+.text-body {
+  @apply text-gray-300 text-base md:text-lg leading-relaxed;
+}
+globals.css に @import 'components.css'; を追記して強制的に読み込み。
+
+Next.js では _app.jsx の最上部で import '../styles/globals.css' を行うことで、すべてのコンポーネントでこれらのクラスが使えるようになる。
+
+既存の JSX からクラス名を置き換え
+
+例えば HeroSection の <h1 className="text-heading-1 mb-6 text-center">、サブテキストは <p className="text-body text-center mb-8"> のようにクラス名を整理する。
+
+ボタンは <button className="btn-primary">Discover Our AI Solutions</button> のように変更。
+
+これにより、スタイルをまとめて変更したいときは components.css だけ手を入れれば済む。
+
+メディアクエリやカスタムブレークポイントの定義
+
+tailwind.config.js で独自ブレークポイントを導入：
+
+js
+コピーする
+編集する
+module.exports = {
+  theme: {
+    screens: {
+      'xs': '480px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
+  },
+};
+これにより、CSS では @apply md:text-6xl lg:text-7xl; のように一貫した命名ルールでメディアクエリを書ける。
+
+コンポーネント固有のスタイルを分割
+
+例：TechPartnersSection に固有のカスタム背景や罫線スタイルがあれば techpartners.css にまとめる。
+
+css
+コピーする
+編集する
+/* src/styles/techpartners.css */
+#tech-partners {
+  background: linear-gradient(180deg, #0F0F0F 0%, #121212 100%);
+}
+#tech-partners .logo-item {
+  @apply filter grayscale hover:filter-none hover:scale-105 transition-all duration-200;
+}
+JS 側では <section id="tech-partners" className="py-24"> とし、必要なクラス（例：logo-item）を className に直書きして利用。
+
+2.29 訪問者分析・イベントトラッキングが皆無
+指摘内容
+
+サイトに Google Analytics や Plausible、Hotjar などの訪問者解析ツールが導入されておらず、ユーザー行動を把握できない状態になっている。
+
+どのセクションで離脱が起きているのか、どの CTA がクリックされているのかを一切把握できないため、PDCA サイクルを回せない。
+
+分析
+
+法人顧客や投資家候補の行動を定量的に測定しないままでは、どこに UX の課題があるのかデータで判断できない。
+
+導入自体は簡単だが、プライバシー規制（GDPR, CCPA）への配慮も必要。
+
+修正案
+
+Google Analytics 4 (GA4) の導入
+
+npm install next/script を確認し、pages/_app.jsx の <Head> 内に以下を追加：
+
+jsx
+コピーする
+編集する
+import Script from 'next/script';
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      {/* Google Analytics 4 */}
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+      />
+      <Script id="ga4-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XXXXXXXXXX', {
+            page_path: window.location.pathname,
+          });
+        `}
+      </Script>
+      <Component {...pageProps} />
+    </>
+  );
+}
+
+export default MyApp;
+GA4 の Measurement ID (G-XXXXXXXXXX) は実際の値に置き換える。
+
+ページビューの計測が自動で行われ、必要に応じてカスタムイベント（CTA クリックなど）を gtag('event', 'discover_click') のように実装していく。
+
+Plausible Analytics の導入（オプション）
+
+GA4 を使いたくない場合は、軽量でプライバシー重視の Plausible を導入。
+
+next/script で以下を追加：
+
+jsx
+コピーする
+編集する
+<Script
+  async
+  defer
+  data-domain="venator.capital"
+  src="https://plausible.io/js/plausible.js"
+/>
+CTA クリック時に window.plausible('Discover CTA Click') と呼び出し、イベントを計測。
+
+Hotjar / FullStory / VWO etc. の導入（必要に応じて）
+
+ユーザーヒートマップやセッション録画が必要な場合は Hotjar を Script strategy="afterInteractive" で読み込み、
+
+jsx
+コピーする
+編集する
+<Script id="hotjar-init" strategy="afterInteractive">
+  {`
+    (function(h,o,t,j,a,r){
+      h.hj = h.hj || function(){(h.hj.q = h.hj.q ||[]).push(arguments)};
+      h._hjSettings={hjid:XXXXXXXX,hjsv:6};
+      a = o.getElementsByTagName('head')[0];
+      r = o.createElement('script');r.async=1;
+      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window, document, 'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  `}
+</Script>
+これにより、ユーザー行動を可視化し、どこで離脱が起きているか、どのリンクがクリックされているかを定量的に把握できる。
+
+GDPR / CCPA 対応
+
+初回アクセス時に「Cookie Consent」バナーを表示し、グーグルアナリティクス等のトラッキングを明示的に同意後にのみ読み込むようにする（react-cookie-consent 等のライブラリを活用）。
+
+同意しない場合は計測スクリプトを実行しない仕組みに必ずする。
+
+8.30 サイトパフォーマンス監視が未実装
+指摘内容
+
+現在、Lighthouse をローカルで実行しているだけであって、プロダクション環境で継続的にパフォーマンスを監視する仕組みがない。
+
+サイトを公開したあと、アップデートやトラフィック増加によってパフォーマンスが低下した場合に即時検知できず、ユーザー体験が悪化し続けるリスクがある。
+
+分析
+
+継続的パフォーマンス監視には、Lighthouse CI や Google PageSpeed Insights API、SpeedCurve、Calibre などを CI/CD パイプラインに組み込み、本番 URL を定期的に測定する仕組みが必要。
+
+それにより、サイトの FCP, LCP, CLS のスコアが基準を下回った場合にアラートを飛ばし、早急に対処できる。
+
+修正案
+
+Lighthouse CI の導入
+
+GitHub リポジトリを利用している場合、.github/workflows/lighthouse.yml を作成：
+
+yml
+コピーする
+編集する
+name: Lighthouse CI
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 毎日深夜 0:00 に実行
+  workflow_dispatch:
+
+jobs:
+  lhci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Build
+        run: npm run build
+
+      - name: Start Server
+        run: npm run start &
+      
+      - name: Wait for Server
+        run: |
+          npx wait-on http://localhost:3000
+      
+      - name: Run LHCI
+        uses: goabstract/lhci-action@v2
+        with:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          configPath: "./lighthouserc.json"
+          urls: "http://localhost:3000"
+プロジェクトルートに lighthouserc.json を作成し、閾値を定義：
+
+json
+コピーする
+編集する
+{
+  "ci": {
+    "collect": {
+      "numberOfRuns": 3,
+      "staticDistDir": "out",          // Next.js static exportの場合など
+      "url": ["http://localhost:3000"]
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["error", { "minScore": 0.9 }],
+        "categories:accessibility": ["error", { "minScore": 1 }],
+        "categories:best-practices": ["error", { "minScore": 1 }],
+        "categories:seo": ["error", { "minScore": 0.9 }]
+      }
+    }
+  }
+}
+これにより、毎日サイトパフォーマンスをチェックし、基準以下であれば CI が失敗してアラートが飛ぶ。
+
+PageSpeed Insights API を使ったテスト
+
+Next.js の Custom Script に、デプロイ時に PageSpeed Insights API を叩き、結果を Slack やメール通知する仕組みを組み込んでもよい。
+
+パフォーマンス監視サービス
+
+SpeedCurve や Calibre などの SaaS サービスを活用し、ビジュアルエクスペリエンステスト（RUM）を行うことで、リアルユーザーデータを収集・分析し、サイト改善につなげる。
+
+8.31 イベントチケットやトライアル申込機能の欠如
+指摘内容
+
+AI 特化企業として、「無料トライアルに申し込む」「デモを予約する」「ウェビナー参加登録」など、訪問者がさらに深いアクションを起こせる手段がまったく用意されていない。
+
+現状は「Contact Us」 しかなく、それもテキストベースの問い合わせのみで、具体的な「サービス体験」や「イベント参加」の導線がない。
+
+分析
+
+B2B SaaS / AI ソリューションを提供する場合、リードジェネレーション が非常に重要。「デモ申し込みボタン」「トライアルフォーム」などの CTA がないと、訪問者は「興味はあるが次に何をしたらよいかわからない」状態に陥りやすい。
+
+導線の有無で問い合わせ率・契約率が大きく変わるため、具体的な「アクションの選択肢」を提示する必要がある。
+
+修正案
+
+Hero Section に「無料トライアル」 CTA を追加
+
+Hero の CTA ボタンをさらに２つに拡張する：
+
+「Discover Our AI Solutions」（既存のもの）
+
+「Start Free Trial」
+
+例：
+
+jsx
+コピーする
+編集する
+<div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+  <PrimaryButton onClick={() => router.push('/signup')}>
+    Start Free Trial
+  </PrimaryButton>
+  <SecondaryButton onClick={() => scrollTo('#contact')}>
+    Contact Our Team
+  </SecondaryButton>
+</div>
+/signup ページを実装し、名前・メール・パスワードなどのサインアップフォームを用意。
+
+Services セクションにデモ予約リンクを設置
+
+各サービスカードの下部に「Schedule a Demo」ボタンを配置し、クリックすると予約フォーム（Calendly 埋め込みなど）をモーダル表示。
+
+例：
+
+jsx
+コピーする
+編集する
+<Card ...>
+  <PrimaryButton onClick={() => openModal('demo', service.name)}>
+    Schedule a Demo
+  </PrimaryButton>
+</Card>
+openModal(type, label) 関数を実装し、背景を暗くした上で <DemoModal> コンポーネントを表示。
+
+ウェビナー・イベントページの追加
+
+pages/events.jsx を作成し、今後主催予定のウェビナーやオンラインセミナー、カンファレンス出展情報を掲載。
+
+イベントごとに「Register Now」ボタンを設置し、フォーム送信 or Google Calendar 予約を実装する。
+
+Contact Section のリメイク
+
+既存の単純な「お問い合わせフォーム」から、フォーム内に「トライアル申込」や「パートナー登録」など複数選択肢のラジオボタンを追加。
+
+例：
+
+jsx
+コピーする
+編集する
+<fieldset>
+  <legend className="text-lg font-semibold text-white">Inquiry Type</legend>
+  <div className="mt-2 space-y-2">
+    <label className="flex items-center">
+      <input type="radio" name="inquiryType" value="general" checked />
+      <span className="ml-2 text-gray-300">General Inquiry</span>
+    </label>
+    <label className="flex items-center">
+      <input type="radio" name="inquiryType" value="trial" />
+      <span className="ml-2 text-gray-300">Free Trial Request</span>
+    </label>
+    <label className="flex items-center">
+      <input type="radio" name="inquiryType" value="demo" />
+      <span className="ml-2 text-gray-300">Schedule a Demo</span>
+    </label>
+  </div>
+</fieldset>
+handleSubmit で選択項目に応じて送信先を分岐させる（例：/api/form?type=trial など）。
+
+8.32 ドキュメントリンク／リソースの欠如
+指摘内容
+
+企業サイトを訪問したユーザーは「ドキュメント」「チュートリアル」「API リファレンス」「GitHub リポジトリ」などの開発者向けリソースをすぐ探せる状態を期待する。
+
+現状、そういったリソースへのリンクが全く設置されておらず、「どこで SDK をダウンロードできるのか」「サンプルコードは？」といった疑問に答えられない。
+
+分析
+
+「AIスタートアップ」というコアメッセージを打ち出しているにもかかわらず、デベロッパー向け情報を何も提示していないのはミスマッチ。
+
+Tech Partners 部分で「Hugging Face」「TensorFlow」などを紹介しているのに、具体的なサンプルや API 利用例がないと説得力に欠け、オープンソースコミュニティからの信用も得られない。
+
+修正案
+
+「Resources」メニューの追加
+
+ナビバーに「Resources」を追加し、以下のサブページへリンク：
+
+Docs（ドキュメント）→ /docs
+
+Tutorials（チュートリアル）→ /tutorials
+
+API Reference → /api
+
+GitHub → https://github.com/venatorcapital など外部リンク
+
+/docs ページの実装
+
+src/pages/docs.jsx を作成し、<Layout> 内に Markdown ベースのドキュメントを表示できるようにする。
+
+例：Docusaurus を導入しなくても、next-mdx-remote を使って .mdx ファイルをレンダリング。
+
+/tutorials ページの実装
+
+src/pages/tutorials.jsx を作成し、チュートリアル一覧（リスト）を表示。
+
+各チュートリアルは /tutorials/[slug].jsx で動的ルーティングし、src/content/tutorials/ フォルダに Markdown を置く。
+
+/api ページの実装（もしくは外部 API リファレンスへリンク）
+
+もし自社 API を公開しているなら、Swagger UI や Redoc を組み込み、API エンドポイントをドキュメント化。
+
+Next.js なら pages/api-docs.jsx を作成し、<RedocStandalone specUrl="/openapi.json" /> のようにレンダリング。
+
+GitHub リンクの強調表示
+
+Footer や Tech Partners セクションに GitHub リンクがあるが、トップナビの「Resources」→「GitHub」も加えて「OSS で開発進行中」という印象を醸成。
+
+8.33 国際化（i18n）対応が皆無
+指摘内容
+
+サイトは完全に英語のみで構築されているが、会社の本社が日本東京であることを考えると、日本語対応ページや多言語対応の仕組みがない。
+
+現状、英語が読めない日本人ユーザーはコンテンツを全く理解できず、販路を海外に限定してしまう。
+
+分析
+
+国際化（Internationalization, i18n）対応は必須ではないものの、日本国外に進出を狙うスタートアップでは、英語＋日本語の二言語対応が最低限求められる。
+
+Next.js の i18n 機能や next-i18next、React の react-intl などを使って、静的生成時に多言語化できるようにすべき。
+
+修正案
+
+Next.js i18n 機能の導入
+
+next.config.js に以下を追記：
+
+js
+コピーする
+編集する
+module.exports = {
+  i18n: {
+    locales: ['en', 'ja'],
+    defaultLocale: 'en',
+    localeDetection: true,
+  },
+};
+各ページ（pages/index.jsx など）を pages/index.js → pages/[locale]/index.jsx に移動し、言語別フォルダ構成に切り替え。
+
+例：
+
+bash
+コピーする
+編集する
+src/pages/
+  en/index.jsx
+  en/about.jsx
+  ja/index.jsx
+  ja/about.jsx
+ヘッダーに言語切替ドロップダウンを追加し、ユーザーが EN / JA を選択すると URL を /ja/ にリダイレクトするように実装。
+
+翻訳キーの管理
+
+src/locales/en/common.json、src/locales/ja/common.json のように JSON ファイルを用意し、
+
+json
+コピーする
+編集する
+{
+  "hero.title": "Turning AI Into Advantage",
+  "hero.subtitle": "We architect cutting-edge AI solutions — from machine learning applications to automation frameworks.",
+  "cta.discover": "Discover Our AI Solutions",
+  "cta.contact": "Contact Our Team",
+  // 他の文言...
+}
+en と ja でそれぞれ翻訳文を用意し、react-intl の <FormattedMessage> や next-i18next の t('hero.title') を使ってレンダー。
+
+日本語翻訳の例
+
+ja/common.json:
+
+json
+コピーする
+編集する
+{
+  "hero.title": "AIを活用したビジネス変革",
+  "hero.subtitle": "機械学習アプリケーションから自動化フレームワークまで、最先端のAIソリューションを提供します。",
+  "cta.discover": "AIソリューションを見る",
+  "cta.contact": "お問い合わせはこちら",
+  // 他の文言...
+}
+翻訳漏れチェック
+
+ESLint のプラグイン eslint-plugin-next-i18next などを導入し、コード中にハードコーディングされた英文がないか自動検出。
+
+npm run lint:translations のようなスクリプトを用意し、CI で翻訳漏れを確認。
+
+8.34 ソーシャルメディアシェア機能の欠如
+指摘内容
+
+企業サイトでは、ページごとに SNS で共有できる機能（シェアボタン）があると拡散効果が高まるが、現在その仕組みが一切ない。
+
+分析
+
+Hero Section や Blog（もし将来追加される場合）に、Twitter や LinkedIn で「このページをシェア」ボタンを設置しておくことで、ユーザーが自発的にサイトを広めやすくなる。
+
+Open Graph（og:） や Twitter Card（twitter:）のメタデータは既に設定しているが、ユーザーアクションとしてのシェアリンクがないと意味が半減。
+
+修正案
+
+シェアボタンコンポーネントの作成
+
+src/components/ui/SocialShare.jsx を作成し、以下のように実装：
+
+jsx
+コピーする
+編集する
+import React from 'react';
+
+export default function SocialShare({ url, title }) {
+  const encodedURL = encodeURIComponent(url);
+  const encodedTitle = encodeURIComponent(title);
+
+  return (
+    <div className="flex space-x-4">
+      <a
+        href={`https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedURL}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Share on Twitter"
+        className="hover:opacity-80"
+      >
+        <img src="/logos/twitter.svg" alt="Twitter" className="h-6 w-6" />
+      </a>
+      <a
+        href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedURL}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Share on LinkedIn"
+        className="hover:opacity-80"
+      >
+        <img src="/logos/linkedin.svg" alt="LinkedIn" className="h-6 w-6" />
+      </a>
+      <a
+        href={`https://github.com/venatorcapital`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Visit our GitHub"
+        className="hover:opacity-80"
+      >
+        <img src="/logos/github-svgrepo-com.svg" alt="GitHub" className="h-6 w-6" />
+      </a>
+    </div>
+  );
+}
+url と title は各ページごとに渡し分ける。
+
+シェアボタンはページ右下に固定表示してもよいし、Blog 記事が将来的にあるなら記事下に設置する。
+
+Footer への常設シェアリンク
+
+Footer の最下部に「Share this page:」として上記コンポーネントを埋め込む：
+
+jsx
+コピーする
+編集する
+<div className="mt-8 flex justify-center space-x-4">
+  <SocialShare url={typeof window !== 'undefined' ? window.location.href : 'https://venator.capital'} title="Venator Capital LLC - AI & Machine Learning Solutions" />
+</div>
+OG/Twitter Card の検証
+
+シェア時にプレビューが適切に表示されるか「Sharing Debugger」（Facebook）や「Twitter Card Validator」でテストし、メタタグが正しく読み込まれるか確認する。
+
+8.35 セキュリティヘッダー不足
+指摘内容
+
+サイトを Replit や Vercel などでホスティングしているが、デフォルトでは Content-Security-Policy, X-Frame-Options, X-Content-Type-Options, Referrer-Policy などのセキュリティヘッダーが設定されていない。
+
+これにより、クリックジャッキングや MIMEタイプのスニッフィング、情報漏洩、リファラートラッキングなどの脆弱性が残る可能性がある。
+
+分析
+
+静的ホスティング環境ではサーバー側の設定が限定されるが、Next.js の next.config.js や Replit の .replit 設定で対応可能。
+
+セキュリティヘッダーを適切に設定しないと、外部スクリプト経由での攻撃やデータ漏洩リスクが増大。
+
+修正案
+
+Next.js でのセキュリティヘッダー設定
+
+next.config.js に以下を追加：
+
+js
+コピーする
+編集する
+module.exports = {
+  async headers() {
+    return [
+      {
+        // すべてのページに適用
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://analytics.example.com; frame-ancestors 'none';",
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'no-referrer-when-downgrade',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'geolocation=(), microphone=(), camera=()',
+          },
+        ],
+      },
+    ];
+  },
+};
+これにより、全ページに安全なデフォルトポリシーが適用される。
+
+Replit/.replit ファイル設定
+
+もし Replit 固有の設定でヘッダーを制御できない場合、フロントエンド側で meta タグを追加し、一部ヘッダーを模倣。例：
+
+jsx
+コピーする
+編集する
+<Head>
+  <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
+  <meta httpEquiv="X-Frame-Options" content="DENY" />
+  <meta name="referrer" content="no-referrer-when-downgrade" />
+  {/* CSP は meta タグでは一部機能しないが fallback として記載 */}
+  <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com;" />
+</Head>
+ただし、CSP を meta タグで定義すると外部スクリプトの制限が Chrome v57 以降厳格になるため、サーバーレベルでのヘッダー付与が望ましい。
+
+8.36 サイトローディング中のスケルトンスクリーン欠如
+指摘内容
+
+ページをリロードすると、特にモバイル環境で各セクションの表示が「一枚絵のまま一気に描画」されるため、読込み中にユーザーは「画面が白くなった」「何も起きない」と感じてしまい、離脱率が上がる可能性がある。
+
+分析
+
+Next.js の SSR/SSG であれば最初に HTML が返るが、Vite を使った CRA 構成の場合は JavaScript バンドルのダウンロード完了まで何も表示されない。
+
+SPA だと、ユーザーは「真っ白な画面」を見て離脱することがあるため、スケルトンスクリーンや プログレッシブローディング を用意して UX を改善すべき。
+
+修正案
+
+プリロードコンポーネントの追加
+
+src/components/SkeletonScreen.jsx を作成し、簡易的なスケルトンレイアウトを実装：
+
+jsx
+コピーする
+編集する
+import React from 'react';
+
+export default function SkeletonScreen() {
+  return (
+    <div className="animate-pulse bg-[#0F0F0F] min-h-screen flex flex-col items-center justify-center">
+      <div className="w-32 h-32 bg-gray-800 rounded-full mb-8"></div>
+      <div className="w-64 h-8 bg-gray-800 rounded mb-4"></div>
+      <div className="w-48 h-6 bg-gray-800 rounded"></div>
+    </div>
+  );
+}
+これは、ロゴ＋タイトル＋サブテキストの枠組みをスケルトン表示する例。
+
+初期ロード時のスケルトン適用
+
+Layout.jsx を以下のように更新し、初回ロード時に <SkeletonScreen /> を表示し、アプリケーションの JavaScript バンドルが完了したら本体をレンダーする。
+
+jsx
+コピーする
+編集する
+import React, { useState, useEffect } from 'react';
+import SkeletonScreen from './SkeletonScreen';
+
+export default function Layout({ children }) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // マウント直後にローディングを少しだけ待つ
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500); // 0.5秒待機して最低限スケルトンを見せる
+    return () => clearTimeout(timer);
+  }, []);
+
+  return isLoading ? <SkeletonScreen /> : <>{children}</>;
+}
+Next.js を使っている場合は _app.jsx で同様の処理を行い、SSG/SSR とは別にクライアントサイドでのバンドル読み込み完了時にスケルトンを隠す。
+
+部分的なスケルトンスクリーン
+
+もし UseCasesSection が API からデータをフェッチする場合、その間に以下のようなスケルトンスクリーンを表示：
+
+jsx
+コピーする
+編集する
+export default function UseCasesSection() {
+  const [useCases, setUseCases] = useState(null);
+
+  useEffect(() => {
+    fetch('/api/usecases')
+      .then((res) => res.json())
+      .then((data) => setUseCases(data));
+  }, []);
+
+  if (!useCases) {
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto px-6 sm:px-8">
+        {[...Array(3)].map((_, i) => (
+          <div key={i} className="p-6 bg-[#1A1A1A] rounded-lg animate-pulse">
+            <div className="h-12 bg-gray-800 rounded mb-4"></div>
+            <div className="h-6 bg-gray-800 rounded mb-2"></div>
+            <div className="h-4 bg-gray-800 rounded mb-1"></div>
+            <div className="h-4 bg-gray-800 rounded"></div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto px-6 sm:px-8">
+      {useCases.map((item) => (
+        /* 実データカード */
+      ))}
+    </div>
+  );
+}
+このように、API 依存部分は読み込み中でもスケルトンを表示し、コンテンツフェードインタイミングを最適化する。
+
+8.37 フォント読み込み遅延と FOUT／FOIT
+指摘内容
+
+Tailwind config では fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] } と定義しているが、Google Fonts など外部フォントの読み込み処理がされていない。
+
+その結果、ブラウザはまず「システムフォント」でレンダリングを行い、その後に Google Fonts から Inter をダウンロードして再レンダリング（FOIT/FOUT）が発生し、ページ表示がチラつく。
+
+分析
+
+Inter フォントを最適に読み込むには、next/font/google（Next.js）や <link rel="preconnect"> / <link rel="preload"> を活用し、FOIT を最小化すべき。
+
+修正案
+
+Next.js の next/font/google 導入
+
+Next.js 13+ であれば、app/layout.jsx や _app.jsx の最上部に以下を追加：
+
+jsx
+コピーする
+編集する
+import { Inter } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+});
+
+export default function MyApp({ Component, pageProps }) {
+  return (
+    <main className={inter.className}>
+      <Component {...pageProps} />
+    </main>
+  );
+}
+こうすると、Google Fonts の読み込みが自動で最適化され、display: swap によって「システムフォント→Inter」への切り替えがスムースに行われ、文字のチラつきが緩和する。
+
+Preconnect & Preload の追加（Next.js 以外／Vite など）
+
+HTML <Head> 内に以下を追加し、フォント読み込みを高速化：
+
+html
+コピーする
+編集する
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+/>
+また、必要に応じて <link rel="preload" as="font" href="https://fonts.gstatic.com/s/inter/v3/..." type="font/woff2" crossorigin /> を追加すると、先読みしておきたいフォントを明示的にプリロードできる。
+
+フォントサイズ切り替えの最適化
+
+ページの初回レンダリング時に、イニシャル CSS だけを先に適用し、フォント読み込み後に swap で Inter に切り替わるようにする。
+
+これにより、FOUT（Flash Of Unstyled Text） ではなく FOIT（Flash Of Invisible Text） を最小限に抑え、UX を向上させる。
+
+8.38 セキュリティ脆弱性：依存パッケージの更新未実施
+指摘内容
+
+package.json を確認すると、主要ライブラリ（React, Tailwind, Framer Motion, Next.js など）のバージョンが数か月前のもので、複数のセキュリティアラートが出ている。
+
+脆弱性が放置されたまま本番環境にデプロイすると、クロスサイトスクリプティングや依存ライブラリの脆弱性を突かれる危険性がある。
+
+分析
+
+たとえば、フレームワークのバグで任意の JavaScript が挿入されるケースや、古いパッケージで既知の脆弱性(CVE)がある場合、マルウェア感染やユーザーデータ漏洩などの重大インシデントにつながる。
+
+GitHub の Dependabot を活用しているか確認し、セキュリティパッチを自動提示してもらう体制を整える必要がある。
+
+修正案
+
+パッケージのバージョンアップ
+
+まず npm outdated を実行し、更新可能なパッケージの一覧を取得。
+
+次に、以下の順番でライブラリを更新していく：
+
+Next.js 最新の安定版（13.x+）
+
+React / React-DOM 最新の安定版（18.x+）
+
+Tailwind CSS 最新の安定版（3.x）
+
+Framer Motion 最新の安定版（7.x）
+
+その他ユーティリティ系ライブラリ（axios, lodash, date-fns など）
+
+具体的には npm install next@latest react@latest react-dom@latest tailwindcss@latest framer-motion@latest を実行し、package.json のバージョン番号を更新。
+
+更新後、必ずビルドと動作テストを行い、API 仕様変更やクラス名変更によるレイアウト崩れを検証。
+
+Dependabot の設定
+
+GitHub を使っている場合は、.github/dependabot.yml を作成し、以下を追加：
+
+yml
+コピーする
+編集する
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    rebase-strategy: "auto"
+これにより、週に一度自動で依存ライブラリの更新提案が行われ、セキュリティアラートに素早く対応できる。
+
+Laravel などの他フレームワークを利用している場合は別途対策
+
+もしバックエンドで Laravel や Ruby on Rails を使っている場合は、そのエコシステムに合わせた Dependabot 設定を追加しておく。
+
+8.39 ユーザープライバシー対応不足（Cookie / GDPR / CCPA）
+指摘内容
+
+前述のように Analytics を導入しているが、ユーザーにトラッキングへの同意を求める UI が全く用意されていない。
+
+プライバシーポリシーがあるだけでなく、Cookie バナーなどで「このサイトは Cookie を使用しています」旨を明示し、同意を取得する必要がある。
+
+さらに、EU／英国／カリフォルニア州のユーザーから組織的に苦情が来ないよう、ユーザーのトラッキング許諾／拒否を反映した実装が必要。
+
+分析
+
+GDPR / ePrivacy Directive（EU）では、Cookie Consent を明示しないと 5 桁ユーロの罰金リスクがある。
+
+CCPA（カリフォルニア州）では「オプトアウト」の仕組みを提供しないと違反となる可能性が高い。
+
+ただし、「cookie を使わない簡易サイト」 であれば Consent は不要だが、本サイトは Analytics・Hotjar を使っているため必須。
+
+修正案
+
+Cookie Consent バナーの導入
+
+react-cookie-consent ライブラリなどを用いて、以下のように最上部にバナーを表示：
+
+jsx
+コピーする
+編集する
+import CookieConsent from 'react-cookie-consent';
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <CookieConsent
+        location="bottom"
+        buttonText="Accept"
+        declineButtonText="Decline"
+        cookieName="venator_cookies_consent"
+        style={{ background: "#2b2b2b", color: "#fff" }}
+        buttonStyle={{ backgroundColor: "#1F4ED8", color: "#ffffff", fontSize: "14px", borderRadius: "4px" }}
+        declineButtonStyle={{ backgroundColor: "#555555", color: "#ffffff", fontSize: "14px", borderRadius: "4px" }}
+        expires={365}
+        enableDeclineButton
+        onAccept={() => {
+          // Analytics や Hotjar のスクリプトをロード
+          if (window.gtag) window.gtag('consent', 'update', { 'analytics_storage': 'granted' });
+        }}
+        onDecline={() => {
+          // トラッキングを拒否
+          if (window.gtag) window.gtag('consent', 'update', { 'analytics_storage': 'denied' });
+        }}
+      >
+        This website uses cookies to enhance the user experience.{" "}
+        <a href="/privacy-policy" className="underline text-accent">
+          Learn more
+        </a>
+      </CookieConsent>
+      <Component {...pageProps} />
+    </>
+  );
+}
+これにより、ユーザーが「Accept」または「Decline」を選択すると、それに応じてトラッキングスクリプトがロード／ブロックされる。
+
+トラッキングスクリプトのコンディショナルロード
+
+GA4 や Hotjar、Plausible のスクリプトタグは、Cookie Consent の同意状態をチェックしてから動的に挿入するように変更。
+
+例（GA4）：
+
+jsx
+コピーする
+編集する
+useEffect(() => {
+  const hasConsent = Cookies.get('venator_cookies_consent') === 'true';
+  if (hasConsent) {
+    const script1 = document.createElement('script');
+    script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+    script1.async = true;
+    document.head.appendChild(script1);
+
+    const script2 = document.createElement('script');
+    script2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });
+    `;
+    document.head.appendChild(script2);
+  }
+}, []);
+これにより、ユーザーが同意しない限りトラッキングスクリプトを読み込まない仕組みを確立。
+
+プライバシーポリシーの強化
+
+privacy-policy.jsx ページに以下情報を必ず記載：
+
+収集するデータの種類（Cookie、IPアドレス、ブラウザ情報など）
+
+第三者サービス（Google Analytics, Hotjar, Plausible など）の利用とその目的
+
+ユーザーの権利（データ削除依頼、アクセス権、訂正権など）
+
+担当窓口（メールアドレスなど）
+
+また、robots.txt や sitemap.xml へのリンクをフッターに配置し、データポリシーへのアクセスを容易にする。
+
+8.40 ローカライズ／カレンダー等の地域設定不足
+指摘内容
+
+ContactSection の日付入力欄や「オフィス所在地表示（東京）」など、ローカライズに配慮されていない。
+
+たとえば、カレンダーウィジェットを将来導入する場合、フォーマットが米国式（MM/DD/YYYY）になってしまう可能性がある。
+
+分析
+
+日本国内向けには YYYY年MM月DD日 を標準とする場合も多いが、英語ページでも YYYY-MM-DD フォーマットを推奨し、一貫した表記を提供すべき。
+
+カレンダーウィジェット（例：React Datepicker）を導入する場合、locale="ja" を指定しなければ月名・曜日が英語固定になる。
+
+修正案
+
+Datepicker のローカライズ
+
+連絡フォームに「ご希望日程」などの入力欄が必要な場合、React Datepicker を導入し、
+
+jsx
+コピーする
+編集する
+import DatePicker, { registerLocale } from 'react-datepicker';
+import ja from 'date-fns/locale/ja';
+
+registerLocale('ja', ja);
+
+<DatePicker
+  selected={selectedDate}
+  onChange={(date) => setSelectedDate(date)}
+  locale="ja"
+  dateFormat="yyyy/MM/dd"
+  placeholderText="YYYY/MM/DD"
+  className="w-full p-3 bg-[#1A1A1A] text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1F4ED8]"
+/>
+これにより、カレンダー月や曜日が日本語になり、日付フォーマットも YYYY/MM/DD で表示される。
+
+会社住所の表記形式
+
+About セクションでは「Headquarters: 66 Bentencho, Shinjuku-ku, Tokyo, Japan」 と米国式英文表記しているが、
+
+日本語ページを追加する場合は「本社所在地：〒160-0000 東京都新宿区弁天町66番地」 のように日本語表記を用意し、英語ページとは別に差し替える。
+
+具体的には、locales/ja/common.json に住所日本語版を載せ、 <FormattedMessage id="about.address" /> で表示を切り替える。
+
+数値／通貨のフォーマット
+
+Capital（資本金）の値は「¥1,000,000」。
+
+翻訳対応時に英語ページでは ¥1,000,000、日本語ページでは 資本金：1,000,000円 のように文脈に合わせて記載。
+
+React Intl の FormattedNumber コンポーネントを使用し、ロケールに応じた表記を自動化。例：
+
+jsx
+コピーする
+編集する
+import { FormattedNumber } from 'react-intl';
+
+<p>
+  <FormattedMessage id="about.capital" defaultMessage="Capital" />: 
+  <FormattedNumber
+    value={1000000}
+    style="currency"
+    currency="JPY"
+    minimumFractionDigits={0}
+  />
+</p>
+これにより、日本語ページは 資本金: ￥1,000,000、英語ページは Capital: ¥1,000,000 のようにそれぞれ適切にレンダリングされる。
+
+2.41 フォーム送信後のフィードバックUXが浅い
+指摘内容
+
+Contact フォームを送信すると、ただ単に「Thank you! Your message has been sent.」というテキストが表示されるだけで、
+
+送信完了後のアニメーションや視覚エフェクトがなく、「本当に送信されたのか」を一瞬迷ってしまう。
+
+「送信後に 3 秒後に自動でトップにスクロール」「次にするべきこと」を案内する仕組みがない。
+
+分析
+
+ユーザーがフォームを送信した後、「本当に完了したのか」「次に何をすれば良いのか」が分からないと不安になる。
+
+直感的なフィードバック（SVG アニメーション、モーダル表示、送信済みステータスバーなど）があると、信頼感が大きく高まる。
+
+修正案
+
+送信アニメーションの追加
+
+Success メッセージをテキストだけでなく、チェックマークアイコンがモーションで表示されるモーダル に変更。
+
+例：
+
+jsx
+コピーする
+編集する
+import { motion, AnimatePresence } from 'framer-motion';
+
+export default function ContactSection() {
+  // 省略…
+  return (
+    <section id="contact" className="py-24 bg-[#1A1A1A] text-white">
+      {/* フォーム */}
+      {success && (
+        <AnimatePresence>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
+          >
+            <motion.div className="bg-[#0F0F0F] p-8 rounded-lg text-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-12 w-12 mx-auto mb-4 text-green-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <h3 className="text-2xl font-semibold mb-2">Message Sent!</h3>
+              <p className="text-gray-300 mb-4">Thank you for reaching out. We will get back to you soon.</p>
+              <button
+                onClick={() => {
+                  setSuccess(false);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="btn-primary"
+              >
+                Back to Top
+              </button>
+            </motion.div>
+          </motion.div>
+        </AnimatePresence>
+      )}
+    </section>
+  );
+}
+これにより、送信成功時に「チェックマークアイコン＋アニメーション＋モーダル」が表示され、ユーザーに明確な完了体験を提供する。
+
+自動スクロール機能
+
+モーダルクローズ後、window.scrollTo({ top: 0, behavior: 'smooth' }) を呼び出すことで、自動的にHeroまで戻す。
+
+さらに、1秒後に自動でスクロールさせたい場合は setTimeout(() => window.scrollTo(...), 1000) とする。
+
+送信中の UI フィードバック
+
+送信ボタンをクリックした直後に、ボタン内にスピナー（<svg className="animate-spin h-5 w-5 ..."/>）を表示し、送信完了までの時間を可視化する。
+
+ボタンを disabled にして重複送信を防ぎつつ、className="opacity-50 cursor-not-allowed" を付加し、視覚的に「送信中」であることを示す。
+
+8.42 ブラウザ履歴・ページタイトルの動的更新不足
+指摘内容
+
+Next.js や React Router などを利用していない場合、SPA（Single Page Application のように）動いているが、スクロールやハッシュリンクでセクションを移動してもブラウザの URL が変化しない。
+
+結果として、ユーザーが特定セクションをブックマークできず、後から「そのセクションに戻る」ことができない。
+
+分析
+
+React Router や Next.js の useRouter を使えば、スクロールと同時に URL のハッシュを動的に書き換えることができる。
+
+こうすることで、#services → URL が https://venator.capital/#services に更新され、ブラウザ履歴にも追加される。
+
+修正案
+
+Next.js 環境での useRouter を使った動的ハッシュ更新
+
+HeroSection, CapabilitiesSection, TechPartnersSection などで、スクロール時に router.replace() を使ってハッシュを更新。
+
+例：
+
+jsx
+コピーする
+編集する
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+
+export default function UseCasesSection() {
+  const router = useRouter();
+  const ref = useRef();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const top = ref.current.getBoundingClientRect().top;
+      if (top < window.innerHeight / 2 && top > -window.innerHeight / 2) {
+        router.replace('/#use-cases', undefined, { shallow: true });
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [router]);
+
+  return (
+    <section id="use-cases" ref={ref} className="py-24 bg-[#121212]">
+      {/* 見出し・内容 */}
+    </section>
+  );
+}
+この例では、セクションが画面の中央あたりに到達したら URL が /#use-cases に変わる。
+
+React Router 環境の場合
+
+react-router-dom の useHistory を利用して同様に history.replaceState(null, '', '/#use-cases') を行う。
+
+SEO & UX の両立
+
+router.replace ではなく router.push だとブラウザ履歴が増えるため、戻るボタンが煩雑になる。
+
+したがって、replace を使って「ユーザーがセクションを移動しても直前の履歴に戻らない」ほうが UX がスムース。
+
+ページタイトルの動的更新
+
+セクションごとに <Head> を差し替えるのはコストが高いが、以下のように useEffect でタイトルを動的変更してもよい。
+
+jsx
+コピーする
+編集する
+import { useRouter } from 'next/router';
+useEffect(() => {
+  const handleHashChange = () => {
+    const hash = window.location.hash;
+    let title = 'Venator Capital LLC';
+    if (hash === '#use-cases') title = 'Venator Capital - Use Cases';
+    else if (hash === '#capabilities') title = 'Venator Capital - Core Capabilities';
+    // 他セクション
+    document.title = title;
+  };
+  window.addEventListener('hashchange', handleHashChange);
+  return () => window.removeEventListener('hashchange', handleHashChange);
+}, []);
+これにより、ユーザーがスクロールしてセクションが切り替わるとブラウザタブのタイトルも「Venator Capital - Core Capabilities」などに変わり、SEO も若干向上。
+
+8.43 ダークモード非対応
+指摘内容
+
+サイト全体が「常にダークテーマ」になっているが、一部のユーザーはライトテーマを好む場合がある。
+
+同時に、OSのダーク／ライトモード設定を検知し、それに連動する仕組みがないため、プリセットダーク一択でユーザーの好みを無視している。
+
+分析
+
+Tailwind CSS v3 では dark: プレフィックスがサポートされているため、モード切り替え対応は比較的容易。
+
+企業サイトの場合、デザインポリシーとして常にダークを指定することもあり得るが、明示的に「ユーザーが好みに応じて切り替えられる」ならよりフレンドリー。
+
+修正案
+
+Tailwind のダークモード設定
+
+tailwind.config.js に以下を追加：
+
+js
+コピーする
+編集する
+module.exports = {
+  darkMode: 'class', // もしくは 'media'（OS設定に合わせる）
+  // ...
+};
+HTML <html> 要素に class="dark" を初期付与することでダークテーマをデフォルトにでき、ユーザー側で light クラスを付与すればライトテーマへ。
+
+例：
+
+jsx
+コピーする
+編集する
+function MyApp({ Component, pageProps }) {
+  const [theme, setTheme] = useState('dark');
+  useEffect(() => {
+    // OS設定を優先
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(prefersDark ? 'dark' : 'light');
+  }, []);
+  useEffect(() => {
+    document.documentElement.className = theme;
+  }, [theme]);
+
+  return (
+    <>
+      {/* テーマ切り替えトグル */}
+      <button
+        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        className="fixed top-4 right-4 p-2 bg-[#1A1A1A] rounded-full"
+      >
+        {theme === 'dark' ? '🌞' : '🌙'}
+      </button>
+      <Component {...pageProps} />
+    </>
+  );
+}
+そして、コンポーネント内では以下のように dark: プレフィックスを追加：
+
+jsx
+コピーする
+編集する
+<section className="py-24 bg-white dark:bg-[#0F0F0F] text-black dark:text-white">
+  <h2 className="text-3xl md:text-4xl font-semibold mb-4">Heading</h2>
+  <p className="text-gray-700 dark:text-gray-300">本文テキスト</p>
+</section>
+これにより、ライトモードでは「白背景＋黒文字」、ダークモードでは「黒背景＋白文字」という自動切り替えが可能。
+
+ダーク/ライト切り替えの保存
+
+ユーザーがトグルで切り替えたら、localStorage.setItem('theme', theme); に保存し、次回訪問時にその値を優先的に読み込む。
+
+例：
+
+jsx
+コピーする
+編集する
+useEffect(() => {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    setTheme(savedTheme);
+  } else {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(prefersDark ? 'dark' : 'light');
+  }
+}, []);
+こうすることで、ユーザーの嗜好を維持し、UXを向上させる。
+
+8.44 フォント読み込み時の FOUT/FOIT 再評価
+指摘内容
+
+先ほど「フォントの読み込み最適化」を指摘したが、モバイル環境で Inter フォントが読み込まれるまでの間、クラッシュやジャンプが発生しているという報告がある。
+
+ユーザーによっては、最初に「システムフォント(Arial とか Roboto)」→ 2秒後に「Inter」に切り替わるという挙動が不自然に感じる。
+
+分析
+
+display: swap による FOUT は不可避だが、できるだけ FOIT（Flash of Invisible Text）も起こさないように、「最初からフォントを埋め込む」「ローカルフォントを活用して、切り替えを最小化する」工夫が必要。
+
+修正案
+
+ローカルフォントとして Inter を埋め込む
+
+Inter の WOFF2 フォントファイルを直接 public/fonts/Inter.woff2 に配置し、CSS で @font-face を設定する。
+
+css
+コピーする
+編集する
+/* src/styles/fonts.css */
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter.woff2') format('woff2');
+  font-weight: 400 800;
+  font-display: swap;
+}
+globals.css の最上部に @import './fonts.css'; を追加し、Inter をローカルから読み込むようにすると、Google Fonts からのリクエストが不要になり、初回表示が速くなる。
+
+Tailwind のフォント設定を修正
+
+tailwind.config.js に
+
+js
+コピーする
+編集する
+module.exports = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+      },
+    },
+  },
+};
+これにより、フォントの事前読み込みを確実に行い、swap でも遅延を最小化できる。
+
+Critical CSS の抽出
+
+ページの最初に表示される Hero セクション部分だけでも、Critical CSS を抽出して <style> タグでインライン配置。
+
+具体的には、HeroSection のスタイルだけをピックアップし、_document.js の <Head> 内に直接 CSS を書き込む（Tailwind の @apply を用いて最小限の CSS を生成）。
+
+jsx
+コピーする
+編集する
+<Head>
+  <style>{`
+    .hero-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 3rem; /* 等 */
+      line-height: 1.2;
+      font-weight: 700;
+    }
+    .hero-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.25rem;
+      line-height: 1.6;
+    }
+    /* 他のクリティカルスタイル */
+  `}</style>
+</Head>
+これで、初回ロード時に CSS が即座に適用され、フォント読み込み後もジャンプしづらくなる。
+
+2.45 ホワイトスペース（余白）全体最適化不足
+指摘内容
+
+各セクションの上下余白は統一されているが（py-24）、左右余白（px-）が不統一で、特にモバイル時の横余白が狭い／広い箇所があり、テキストとコンテンツが画面端にくっついて見えるセクションがある。
+
+たとえば、Tech Partners セクションでは px-6 sm:px-8 md:px-12 となっているのに、FAQ セクションや Use Cases セクションが px-4 sm:px-6 md:px-8 のまま残っており、デザインに一貫性がない。
+
+分析
+
+Tailwind の px-* が混在しているため、各セクションごとに水平マージン量が異なる。
+
+結果として、スマホ～タブレットで見ると、あるセクションでは左右に 16px の余白しかなく、別のセクションでは 24px あるという不均一性が発生。
+
+修正案
+
+グローバルなコンテナ余白変数を定義
+
+Tailwind の tailwind.config.js に以下を追加：
+
+js
+コピーする
+編集する
+module.exports = {
+  theme: {
+    extend: {
+      spacing: {
+        'container-pad': '24px', // デフォルト左右余白
+      },
+    },
+  },
+};
+すべてのセクションで <div className="px-container-pad sm:px-[32px] md:px-[48px] lg:px-[64px]"> のように、共通クラスで余白を統一。
+
+例：
+
+jsx
+コピーする
+編集する
+<section className="py-24 bg-[#121212]">
+  <div className="max-w-6xl mx-auto px-container-pad sm:px-[32px] md:px-[48px] lg:px-[64px]">
+    {/* セクション内容 */}
+  </div>
+</section>
+セクションごとの余白置き換え
+
+既存のすべての <div className="max-w-5xl mx-auto px-6 sm:px-8 md:px-12 ..."> を、上記の共通クラスに置き換える。
+
+これにより、スマホ（px-24px）、タブレット（px-32px）、デスクトップ（px-48px）といった一貫した余白が得られる。
+
+Grid 内の余白も調整
+
+グリッド要素間の余白は常に gap-8（32px）または gap-6（24px）など、事前定義済みの値を使う。
+
+gap- と px- のバランスを合わせ、UI コピー＆ペースト時のクラス名誤記を防ぐ。
+
+プロダクト画像や動画の余白
+
+メインコンテンツ内の画像や動画にも左右余白を確保し、className="mx-auto w-full max-w-[...] px-container-pad sm:px-[32px]" を設定。
+
+これにより、メディア要素が画面端にくっつく問題を解消し、常に適切なマージンが確保される。
+
+2.46 スクロールスパイ機能の未実装
+指摘内容
+
+ナビゲーションリンクをクリックしてセクション移動しても、「今ユーザーはどのセクションを見ているのか」がナビメニュー上でハイライトされない。
+
+結果として、ユーザーは自分がサイトをスクロールしている最中に「現在地」を見失い、コンテンツの全体像を把握しにくい。
+
+分析
+
+UX を高めるため、スクロールスパイ（Scroll Spy）機能を導入し、現在表示中のセクションに対応するナビ項目に text-accent や font-bold を付与すべき。
+
+React では react-scrollspy やカスタムの IntersectionObserver で実装できるが、Next.js の場合は useRouter & useEffect でも実現可能。
+
+修正案
+
+IntersectionObserver を用いたカスタム Scroll Spy
+
+Navbar.jsx で IntersectionObserver を使って各セクションの可視領域を監視し、ビューポートの中央に近いセクション ID を検出して activeSection ステートを更新。
+
+例：
+
+jsx
+コピーする
+編集する
+import { useState, useEffect } from 'react';
+import { useAppContext } from '../context/AppContext';
+
+export default function Navbar() {
+  const [activeSection, setActiveSection] = useState('');
+  const sections = ['capabilities', 'use-cases', 'tech-stack', 'about', 'tech-partners', 'services', 'faq', 'contact'];
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.6, // 60% 以上表示されたらアクティブとみなす
+    };
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <nav role="navigation" aria-label="Main Navigation" className="flex items-center justify-between py-4 px-container-pad sm:px-[32px]">
+      <Link href="/"><a aria-label="Home"><img src="/logo.svg" alt="Venator Capital Logo" className="h-8" /></a></Link>
+      <ul className="hidden md:flex space-x-8">
+        {sections.map((sectionId) => (
+          <li key={sectionId}>
+            <a
+              href={`#${sectionId}`}
+              className={`hover:text-accent ${activeSection === sectionId ? 'text-accent font-bold' : 'text-gray-300'}`}
+            >
+              {sectionId.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())}
+            </a>
+          </li>
+        ))}
+      </ul>
+      {/* ハンバーガーメニューは前述 */}
+    </nav>
+  );
+}
+これにより、ユーザーがスクロールして「Tech Partners セクション」に到達すると、ナビメニューの「Tech Partners」が text-accent font-bold になり、現在地が一目でわかる。
+
+ナビメニュー表示の同期
+
+ナビ項目の表示テキストは常に「Capabilites」「Use Cases」「Tech Stack」「About」「Tech Partners」「Services」「FAQ」「Contact」のように一定にする。
+
+クリック時にはハッシュリンクと同時に smooth scroll を行い、activeSection をセットしやすいようにする。
+
+ユーザーがクイックジャンプしたときの動作検証
+
+URL に直接 #services を付けてアクセスした場合、ページ読み込み完了後に「Services セクション」が画面上部に表示されるようにし、同時に activeSection が services になるよう工夫。
+
+Next.js では、useEffect(() => { /* 初回ロード時のハッシュチェック */ }, []) によって window.location.hash を見て setActiveSection を更新。
+
+2.47 スケールしたときのデザイン整合性未検証
+指摘内容
+
+4K ディスプレイや大画面モニタ（解像度 4K, 5K）で表示したとき、Hero セクションのロゴや背景が大きすぎて「白い余白が多くなる」「ロゴが浮いて見える」などのデザイン崩れが発生する。
+
+Container の最大幅 (max-w-6xl など) を適切に設定していないため、余白が十分に確保されず、コンテンツが横に広がりすぎて読みにくい。
+
+分析
+
+Tailwind の max-w-6xl は画面が 6xl 以上の解像度になると幅制限を解除してくれない（ただし 6xl は 72rem=1152px なので、4K 画面では横幅が中心に寄ってしまう）。
+
+企業レベルのサイトでは、最大幅 1280px 〜 1440px 程度までをコンテナ幅として制限し、左右にしっかり余白を確保するのが一般的。
+
+修正案
+
+Container 幅の再定義
+
+tailwind.config.js に以下を追加し、container を再定義：
+
+js
+コピーする
+編集する
+module.exports = {
+  theme: {
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '6rem',
+      },
+      screens: {
+        DEFAULT: '100%',
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1440px',
+      },
+    },
+  },
+  plugins: [require('@tailwindcss/typography')],
+};
+以降、各セクションでは
+
+jsx
+コピーする
+編集する
+<section className="py-24 bg-[#0F0F0F]">
+  <div className="container">
+    {/* セクション内容 */}
+  </div>
+</section>
+と書くだけで、画面幅 ≥ 2xl（1440px） 以上では横幅 1440px に制限され、左右に十分な余白が確保される。
+
+Hero Section の背景イメージ制御
+
+Hero 背景に置いている Lottie/動画/線画イメージは、object-cover ではなく object-contain を使って全体が画面幅に収まるようにする。
+
+大画面時に動画が「引き伸ばされすぎてぼやけて見える」問題が起きるなら、<video> や <div> の max-w-[1920px] を設定し、それ以上は拡大しないよう制限。例：
+
+jsx
+コピーする
+編集する
+<div className="relative w-full h-[60vh] max-w-[1920px] mx-auto overflow-hidden">
+  <video
+    src="/splash-transparent.mp4"
+    poster="/splash-transparent-poster.png"
+    className="w-full h-full object-contain"
+    ...
+  />
+  {/* キャッチコピー・CTA */}
+</div>
+これにより、4K ディスプレイでも Hero は中央 1920px 幅で表示され、左右に余白が生じて破綻しない。
+
+2.48 テストコードの欠如
+指摘内容
+
+プロダクション向けコーポレートサイトにも関わらず、ユニットテスト、統合テスト、E2E テスト のいずれも存在しない。
+
+デザイン・機能追加時にリグレッション（既存機能が壊れる）を検知できず、サイト改修の際に重大なバグを見逃す可能性が高い。
+
+分析
+
+CI/CD パイプラインを前提に、テストカバレッジ を一定割合確保する運用がないと、コード品質の担保が不十分。
+
+Next.js 環境であれば、jest + @testing-library/react + cypress などを導入し、主要コンポーネントのスナップショットテストや E2E テストを実装する必要がある。
+
+修正案
+
+ユニットテスト（Jest + React Testing Library）
+
+npm install --save-dev jest @testing-library/react @testing-library/jest-dom を実行。
+
+プロジェクトルートに jest.config.js を作成：
+
+js
+コピーする
+編集する
+module.exports = {
+  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  moduleNameMapper: {
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+    '^@/(.*)$': '<rootDir>/src/$1',
+  },
+};
+jest.setup.js に
+
+js
+コピーする
+編集する
+import '@testing-library/jest-dom/extend-expect';
+各コンポーネント（TechPartnersSection, NavBar, Footer, ContactForm など）の単体テストを作成。例：
+
+jsx
+コピーする
+編集する
+// src/components/__tests__/TechPartnersSection.test.jsx
+import { render, screen } from '@testing-library/react';
+import TechPartnersSection from '../TechPartnersSection';
+
+describe('TechPartnersSection', () => {
+  it('renders section heading', () => {
+    render(<TechPartnersSection />);
+    const heading = screen.getByText(/Technology Partners/i);
+    expect(heading).toBeInTheDocument();
+  });
+
+  it('renders at least one partner logo', () => {
+    render(<TechPartnersSection />);
+    const logo = screen.getByAltText(/OpenAI/i);
+    expect(logo).toBeInTheDocument();
+  });
+});
+E2E テスト（Cypress）
+
+npm install --save-dev cypress を実行し、cypress/ フォルダをセットアップ。
+
+cypress/integration/home.spec.js に以下を記述：
+
+js
+コピーする
+編集する
+describe('Home Page', () => {
+  beforeEach(() => {
+    cy.visit('http://localhost:3000');
+  });
+
+  it('should display header and hero section', () => {
+    cy.get('nav').should('be.visible');
+    cy.get('h1').contains('Turning AI Into Advantage');
+  });
+
+  it('should navigate to About section when About link clicked', () => {
+    cy.get('nav').contains('About').click();
+    cy.location('hash').should('eq', '#about');
+    cy.get('#about').should('be.visible');
+  });
+
+  it('should display Technology Partners logos', () => {
+    cy.get('#tech-partners img[alt="OpenAI"]').should('be.visible');
+  });
+
+  it('should submit contact form', () => {
+    cy.get('nav').contains('Contact').click();
+    cy.location('hash').should('eq', '#contact');
+    cy.get('#name').type('Test User');
+    cy.get('#email').type('test@example.com');
+    cy.get('#message').type('This is a test message with more than 20 characters.');
+    cy.get('button[type="submit"]').click();
+    cy.get('[role="region"] h3').contains('Message Sent!').should('be.visible');
+  });
+});
+CI 連携
+
+GitHub Actions に Cypress テストを組み込むワークフローを作成：
+
+yml
+コピーする
+編集する
+name: Cypress Tests
+
+on: [pull_request]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      - name: Install Dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Start Server
+        run: npm run start &
+      - name: Wait for Server
+        run: npx wait-on http://localhost:3000
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v3
+        with:
+          browser: chrome
+これにより、プルリクエストごとに E2E テストが自動実行され、重大なバグを早期に検出できる。
+
+8.49 ドキュメントコメント・コード品質の不統一
+指摘内容
+
+React コンポーネントやユーティリティ関数に関して、JSDoc やコメントがほとんどない。
+
+チーム開発や将来的な外部委託を考えたとき、「この関数は何をするのか」「props は何を期待しているのか」が読み取れず、可読性が低い。
+
+分析
+
+コードベースにコメントや型注釈 (TypeScript) がないため、メンテナンス性が著しく低下している。
+
+2 か月後、開発者本人がコードを忘れたときに「なぜこのロジックを書いたのか」を読み解くのに相当時間を要する。
+
+修正案
+
+JSDoc の導入
+
+すべてのコンポーネント /ui/Button.jsx、TechPartnersSection.jsx、FAQSection.jsx、ContactSection.jsx などに対して、以下のような JSDoc コメントを追加：
+
+jsx
+コピーする
+編集する
+/**
+ * PrimaryButton component
+ *
+ * @param {Object} props
+ * @param {React.ReactNode} props.children - Button label
+ * @param {Function} props.onClick - Click handler
+ * @param {string} [props.className] - Additional class names
+ * @returns {JSX.Element}
+ */
+export function PrimaryButton({ children, onClick, className = '', ...props }) {
+  // ...
+}
+これによって、IDE のオートコンプリートや IntelliSense が効き、関数の意図が一目でわかる。
+
+TypeScript への移行検討
+
+プロジェクトを TypeScript 化し、型安全性を確保。
+
+まず npm install --save-dev typescript @types/react @types/node を実行し、tsconfig.json を生成：
+
+json
+コピーする
+編集する
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve"
+  },
+  "include": ["next-env.d.ts", "**/*.js", "**/*.jsx"],
+  "exclude": ["node_modules"]
+}
+ファイル拡張子を .jsx → .tsx にリネームし、Props の型定義を必ず行う。例：
+
+tsx
+コピーする
+編集する
+import React from 'react';
+
+interface ButtonProps {
+  children: React.ReactNode;
+  onClick?: () => void;
+  className?: string;
+}
+
+export function PrimaryButton({ children, onClick, className = '', ...props }: ButtonProps): JSX.Element {
+  return (
+    <button onClick={onClick} className={`... ${className}`} {...props}>
+      {children}
+    </button>
+  );
+}
+このようにすれば、「expected type string, but got number」などの型エラーをコンパイル時に検出できる。
+
+ESLint と Prettier によるコード整形
+
+npm install --save-dev eslint eslint-config-next prettier eslint-plugin-prettier eslint-config-prettier を実行し、.eslintrc.js と .prettierrc を設定：
+
+js
+コピーする
+編集する
+// .eslintrc.js
+module.exports = {
+  extends: ['next/core-web-vitals', 'plugin:prettier/recommended'],
+  rules: {
+    'react/jsx-key': 'error',
+    // その他ルール
+  },
+};
+json
+コピーする
+編集する
+// .prettierrc
+{
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "printWidth": 100,
+  "tabWidth": 2
+}
+これにより、Pull Request 時に自動でコード整形が走り、チーム開発におけるスタイルの不一致を防ぐ。
+
+9. まとめと次のアクションプラン
+以上、現状サイトのすべてのおかしな点を日本語および技術的観点で網羅的に挙げ、分析と修正案を提示した「世界一厳しい修正指示書」です。以下の順序で対応を進め、各ステップ終了後に必ず動作確認とコードレビューを実施してください。
+
+9.1 実施ステップ（推奨順序）
+8.5 テキスト量／行間の統一
+
+8.6 セクション間のビジュアル分離強化
+
+8.7 CTA ボタンの共通化＆コンポーネント化
+
+8.8 ALT テキストの適切化
+
+8.9 セマンティック HTML の適用
+
+8.10 （前出）記載済：画像/動画のレスポンシブ制御
+
+8.12 カラーユニバーサルデザイン対応
+
+8.13 モバイルメニュー UX 改善
+
+8.14 Old Browser フォールバック
+
+8.15 フォームバリデーション強化
+
+8.16 リンク属性統一／Link コンポーネント化
+
+8.17 パフォーマンス最適化（Lighthouse 視点）
+
+8.18 サイトマップ／robots.txt の導入
+
+8.19 モバイルフォーム UX 改善（キーボード被り対策）
+
+8.20 グローバルステート管理の一元化
+
+8.21 静的ルーティング設定（Next.js）
+
+8.22 Footer 社会的証明要素追加
+
+8.23 カスタム 404 / 500 ページ作成
+
+8.24 アニメーション削減＆ CSS ベースへの置換
+
+8.25 ARIA 誤用修正
+
+8.26 コンテンツ冗長性の排除
+
+8.27 タッチターゲット最適化
+
+8.28 スクロールアンカーのオフセット修正
+
+8.29 Flexbox/Grid 混在問題の解消
+
+8.30 共通コンポーネント化＆データ駆動化
+
+8.31 CSS ファイル分割＆ @apply 適用
+
+8.32 Analytics & トラッキング導入
+
+8.33 i18n 多言語対応着手
+
+8.34 ソーシャルシェア機能追加
+
+8.35 セキュリティヘッダー追加
+
+8.36 スケルトンスクリーン導入
+
+8.37 フォント読み込み最適化
+
+8.38 依存パッケージ更新 & Dependabot 設定
+
+8.39 Cookie Consent & プライバシー強化
+
+8.40 Datepicker ローカライズ
+
+8.41 フォーム送信後のフィードバック強化
+
+8.42 URL / ページタイトルの動的更新
+
+8.43 ダーク/ライトモード対応
+
+8.44 スケルトン／ロード画面の実装再評価
+
+8.45 ホワイトスペース・余白最適化
+
+8.46 Scroll Spy 機能実装
+
+8.47 大画面対応（Container 幅制限）
+
+8.48 ユニットテスト & E2E テスト導入
+
+8.49 ドキュメントコメント & TypeScript 化検討
+
+9.2 各フェーズ完了後のチェックリスト
+デザイン統一
+
+行間・余白・タイポグラフィ・カラーパレットがすべて統一されたか？
+
+セクション背景が適切に変化し、視覚リズムが確保されたか？
+
+アクセシビリティ
+
+Lighthouse の Accessibility セクションが 100 点になったか？
+
+全ての画像に適切な ALT が付与されているか？
+
+ARIA 属性の誤用がないか？
+
+フォーカスリング（focus:ring）がすべてのインタラクティブ要素に適用されているか？
+
+パフォーマンス
+
+Lighthouse の Performance スコアが 90 以上になったか？
+
+ページロード時の LCP が 2.5 秒以内／FCP が 1.8 秒以内に改善されたか？
+
+バンドルサイズが最小化され、不要な CSS/JS がビルドから除去されているか？
+
+SEO
+
+<title>, <meta> が各ページ（About, Services, etc.）で独自設定されているか？
+
+JSON-LD が構造化データテストでエラーなしと判定されたか？
+
+sitemap.xml / robots.txt が正しく生成・配置されているか？
+
+機能性
+
+SplashScreen → Hero の遷移がスムースに行われるか？
+
+Tech Partners のロゴグリッドが各デバイスで潰れず表示されるか？
+
+ハンバーガーメニューが適切に開閉し、背後のスクロールが遮断されるか？
+
+Contact フォームのバリデーション・送信エフェクト・エラーハンドリングが正常動作するか？
+
+Scroll Spy が動作し、現在のセクションがナビでハイライトされるか？
+
+保守性
+
+コードに冗長な重複がなく、共通化できる部分がすべてコンポーネント化されているか？
+
+JSDoc / TypeScript による型定義が追加されており、コード可読性が向上しているか？
+
+ESLint / Prettier が設定され、自動整形が行われているか？
+
+CI（GitHub Actions）でユニットテスト・E2E テスト・Lighthouse CI が通過する状態か？
+
+セキュリティ & プライバシー
+
+Content-Security-Policy などのセキュリティヘッダーが適切に設定されているか？
+
+Cookie Consent バナーが動作し、トラッキングスクリプトの読み込みが同意制御されているか？
+
+個人情報送信フォームに XSS / SQLi 対策が施されているか？
+
+10. 最後に：開発 & デプロイフロー
+ブランチ戦略
+
+main ブランチは常に本番環境と同等のコードを保持。
+
+新機能や修正は feature/<機能名> ブランチで開発し、プルリクエスト (PR) を作成。
+
+PR には必ず「変更内容」「対応タスク」「確認箇所」「スクリーンショット」を含めること。
+
+コミットメッセージ規約
+
+「feat: Tech Partners セクション追加」「fix: Contact フォームバリデーション強化」など、先頭にタイプ（feat, fix, refactor, chore）を付与し、目的を明確に。
+
+内部トピックチケット（例：JIRA、GitHub Issue）の番号をコミットメッセージに含めると、トラッキングが容易になる。
+
+CI / CD パイプライン
+
+プルリクエスト作成時に以下が自動実行されるよう設定：
+
+Lint & Format Check（ESLint, Prettier）
+
+Unit Tests (Jest)
+
+E2E Tests (Cypress)
+
+Lighthouse CI
+
+すべてのチェックがパスした場合のみマージを許可し、main にマージされたら自動的に Vercel/Replit へデプロイ が走るように連携。
+
+公開後モニタリング
+
+Lighthouse CI は毎日実行され、Performance やアクセシビリティの劣化を検知。
+
+Google Analytics / Plausible を通じてユーザー行動を日次集計し、前日比で大きな変動があればメールや Slack 通知が発生するようアラート設定。
+
+Hotjar を使って UX ヒートマップを週次で確認し、UI ボトルネックを洗い出す。
+
+以上、8.5 から 8.49 までのすべての指摘と分析、修正案を含む、世界一詳細かつ網羅的な修正指示書です。この指示書にあるすべての項目を一つずつ完全に実装し、動作・デザイン・アクセシビリティ・パフォーマンス・セキュリティ・SEO のすべての観点で抜け・漏れがないことを確認したうえで、本番リリースに進んでください。
