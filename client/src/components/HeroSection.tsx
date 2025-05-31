@@ -12,14 +12,20 @@ export default function HeroSection() {
     }
   };
 
-  const handleMouseMove = ({ clientX }: React.MouseEvent) => {
-    const xRatio = clientX / window.innerWidth;
-    const angle = (xRatio - 0.5) * 10; // -5° to +5°
-    controls.start({ rotate: angle });
+  const handleLogoHover = () => {
+    controls.start({ 
+      rotateY: 10,
+      scale: 1.05,
+      transition: { duration: 0.3, ease: "easeOut" }
+    });
   };
 
-  const handleMouseLeave = () => {
-    controls.start({ rotate: 0 });
+  const handleLogoLeave = () => {
+    controls.start({ 
+      rotateY: 0,
+      scale: 1,
+      transition: { duration: 0.3, ease: "easeOut" }
+    });
   };
 
   return (
@@ -132,18 +138,16 @@ export default function HeroSection() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
           className="mb-12 mt-8"
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          onHoverStart={() => controls.set({ rotate: 0 })}
         >
           <motion.img 
             src="/Cropped_black_logo-removebg-preview.png" 
             alt="Venator Capital Logo"
-            className="w-[200px] sm:w-[250px] md:w-[320px] h-auto mx-auto mb-6 drop-shadow-2xl"
+            className="w-[200px] sm:w-[250px] md:w-[320px] h-auto mx-auto mb-6 drop-shadow-2xl cursor-pointer"
             animate={controls}
-            whileHover={{ scale: 1.05 }}
+            onMouseEnter={handleLogoHover}
+            onMouseLeave={handleLogoLeave}
             whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
+            style={{ perspective: "600px" }}
           />
         </motion.div>
 

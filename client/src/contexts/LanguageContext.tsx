@@ -153,15 +153,58 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<Language>('en');
 
   useEffect(() => {
+    // Check URL path first for language preference
+    const path = window.location.pathname;
+    if (path.startsWith('/ja')) {
+      setLanguage('ja');
+      return;
+    } else if (path.startsWith('/en')) {
+      setLanguage('en');
+      return;
+    }
+
+    // Fall back to localStorage
     const savedLanguage = localStorage.getItem('language') as Language;
     if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ja')) {
       setLanguage(savedLanguage);
+    } else {
+      // Auto-detect browser language
+      const browserLang = navigator.language.toLowerCase();
+      if (browserLang.startsWith('ja')) {
+        setLanguage('ja');
+      }
     }
   }, []);
 
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);
     localStorage.setItem('language', lang);
+    
+    // Update URL path to reflect language change
+    const currentPath = window.location.pathname;
+    let newPath = '';
+    
+    // Remove existing language prefix
+    if (currentPath.startsWith('/ja') || currentPath.startsWith('/en')) {
+      newPath = currentPath.substring(3);
+    } else {
+      newPath = currentPath;
+    }
+    
+    // Add new language prefix
+    if (lang === 'ja') {
+      newPath = '/ja' + newPath;
+    } else {
+      newPath = '/en' + newPath;
+    }
+    
+    // Ensure path starts with /
+    if (!newPath.startsWith('/')) {
+      newPath = '/' + newPath;
+    }
+    
+    // Navigate to new URL
+    window.history.pushState({}, '', newPath);
   };
 
   const t = (key: string): string => {

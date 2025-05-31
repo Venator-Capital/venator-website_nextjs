@@ -6,30 +6,30 @@ export default function LanguageToggle() {
   const { language, setLanguage } = useLanguage();
 
   return (
-    <div className="flex items-center space-x-2">
+    <div className="flex items-center space-x-1 bg-gray-800/50 rounded-lg p-1 border border-gray-700">
       <motion.button
         onClick={() => setLanguage('en')}
-        className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${
+        className={`px-4 py-2 rounded-md font-medium transition-all duration-200 ${
           language === 'en' 
-            ? 'bg-accent-gold text-primary-black' 
-            : 'bg-transparent text-gray-300 hover:text-white'
+            ? 'bg-accent-gold text-primary-black shadow-sm' 
+            : 'text-gray-300 hover:text-white hover:bg-gray-700/50'
         }`}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
       >
-        EN
+        English
       </motion.button>
       <motion.button
         onClick={() => setLanguage('ja')}
-        className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${
+        className={`px-4 py-2 rounded-md font-medium transition-all duration-200 ${
           language === 'ja' 
-            ? 'bg-accent-gold text-primary-black' 
-            : 'bg-transparent text-gray-300 hover:text-white'
+            ? 'bg-accent-gold text-primary-black shadow-sm' 
+            : 'text-gray-300 hover:text-white hover:bg-gray-700/50'
         }`}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
       >
-        JP
+        日本語
       </motion.button>
     </div>
   );

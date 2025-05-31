@@ -104,84 +104,76 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden text-white focus:outline-none"
+          className="lg:hidden text-white focus:outline-none p-2 rounded-md hover:bg-white/10 transition-colors"
           aria-label="Toggle mobile menu"
           aria-expanded={isMobileMenuOpen}
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            {isMobileMenuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
+          {isMobileMenuOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
         </button>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          className="md:hidden navbar-blur border-t border-white/10"
+          initial={{ x: '100%' }}
+          animate={{ x: 0 }}
+          exit={{ x: '100%' }}
+          transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
+          className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-primary-black border-l border-gray-800 z-50 lg:hidden"
         >
-          <div className="px-6 py-4 space-y-4">
-            <button
-              onClick={() => scrollToSection('capabilities')}
-              className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
-            >
-              {t('nav.capabilities')}
-            </button>
-            <button
-              onClick={() => scrollToSection('use-cases')}
-              className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
-            >
-              {t('nav.useCases')}
-            </button>
+          <div className="flex flex-col h-full">
+            {/* Mobile Menu Header */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-800">
+              <span className="text-lg font-semibold text-white">Menu</span>
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-white hover:bg-gray-800 p-2 rounded-md transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
 
-            <button
-              onClick={() => scrollToSection('tech-partners')}
-              className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
-            >
-              {t('nav.technology')}
-            </button>
-            <button
-              onClick={() => scrollToSection('faq')}
-              className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
-            >
-              {t('nav.faq')}
-            </button>
-            <button
-              onClick={() => scrollToSection('about')}
-              className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
-            >
-              {t('nav.about')}
-            </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
-            >
-              {t('nav.contact')}
-            </button>
+            {/* Mobile Menu Items */}
+            <div className="flex-1 px-6 py-4 space-y-2">
+              {[
+                { key: 'nav.capabilities', section: 'capabilities' },
+                { key: 'nav.useCases', section: 'use-cases' },
+                { key: 'nav.technology', section: 'tech-partners' },
+                { key: 'nav.faq', section: 'faq' },
+                { key: 'nav.about', section: 'about' },
+                { key: 'nav.contact', section: 'contact' }
+              ].map((item) => (
+                <button
+                  key={item.key}
+                  onClick={() => {
+                    scrollToSection(item.section);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full text-left px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-gold"
+                >
+                  {t(item.key)}
+                </button>
+              ))}
+            </div>
             
             {/* Mobile Language Toggle */}
-            <div className="pt-4 border-t border-white/10">
+            <div className="p-6 border-t border-gray-800">
+              <div className="mb-2 text-sm text-gray-400">Language</div>
               <LanguageToggle />
             </div>
           </div>
