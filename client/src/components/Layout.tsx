@@ -13,8 +13,10 @@ export default function Layout({ children }: LayoutProps) {
   return showSplash ? (
     <SplashScreen onFinish={() => setShowSplash(false)} />
   ) : (
-    <div className="min-h-screen bg-primary-black text-white">
-      <Navbar />
+    <div className="min-h-screen bg-primary-black text-white overflow-x-hidden">
+      <header>
+        <Navbar />
+      </header>
       <main id="main" role="main">{children}</main>
       <Footer />
     </div>

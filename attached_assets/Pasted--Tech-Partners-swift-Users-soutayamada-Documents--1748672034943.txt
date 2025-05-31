@@ -1,0 +1,914 @@
+修正指示書：Tech Partners 完全統合＋サイト全体の徹底ブラッシュアップ
+対象プロジェクトパス
+
+swift
+コピーする
+編集する
+/Users/soutayamada/Documents/xcode_projects/replit_projects/venator_capital_website/
+準備完了前提
+
+client/public/logos/brand_logo_svg/ 内に各種ブランドロゴ（SVG）がアップロード済であること。
+
+前回までの「About」「Hero」「Capabilities」「Services」「Contact」「SplashScreen」等の各セクション実装が完了していること。
+
+Tailwind CSS、Framer Motion、React（Vite or Next.js）環境が正常にセットアップされていること。
+
+1. Tech Partners セクションの刷新
+1.1 ブランドロゴ一覧の確認とマッピング
+まず、client/public/logos/brand_logo_svg/ フォルダ内を以下のようにリストアップし、本来サイトに表示すべきロゴを厳密に選定してください。用途に関係の薄いものは表示から削除するか、もしくは「今後検討」のコメントをつけて優先度を下げます。
+
+AI プラットフォーム系
+
+openai-svgrepo-com.svg
+
+anthropic_Logo.svg
+
+huggingfacelogo.svg
+
+機械学習／ディープラーニング系
+
+tensorflow-svgrepo-com.svg
+
+pytorch-svgrepo-com.svg
+
+クラウド／インフラ系
+
+aws-svgrepo-com.svg
+
+google-cloud-svgrepo-com.svg
+
+azure-icon-svgrepo-com.svg
+
+supabase-logo-icon.svg
+
+vercel-svgrepo-com.svg
+
+コンテナ／オーケストレーション系
+
+docker-svgrepo-com.svg
+
+kubernetes-svgrepo-com.svg
+
+CI/CD・コード管理系
+
+github-svgrepo-com.svg
+
+デザイン／コラボレーション系
+
+figma-svgrepo-com.svg
+
+notion.svg
+
+slack.svg
+
+エディタ／AI支援系
+
+cursor.svg
+
+その他開発ツール系
+
+docker-svgrepo-com.svg（重複していた場合は一つにまとめる）
+
+flutter-svgrepo-com.svg（今現在使用しないなら外すかコメントで「検討中」）
+
+zoom-svgrepo-com.svg（Zoom API/ビデオ連携がない場合は優先度を下げる）
+
+stripe-svgrepo-com.svg（Stripe APIを使わないなら「今後検討」）
+
+（必要であれば）その他
+
+huggingfacelogo.svg（正確には “Hugging Face” と表記）
+
+※ フォルダ内に存在するが今回のAI特化サイトで使用しないロゴについては、TechPartnersSection.jsx の配列定義から外し、「// TODO: 今後の検討」のようにコメントを残すこと。
+※ 「今後検討」と判断したものは、Git commit コメントに「Removed <ロゴ名> from Tech Partners (pending)」などと記録し、将来の追加時に活用できるようにする。
+
+1.2 TechPartnersSection.jsx の実装
+src/components/TechPartnersSection.jsx を以下のコードで上書きまたは新規追加してください。余白やレスポンシブ指定まで含め、世界一厳しい基準で書いています。
+
+jsx
+コピーする
+編集する
+// src/components/TechPartnersSection.jsx
+
+import React from 'react';
+import Image from 'next/image'; // Next.js を使用している場合は Image コンポーネントを使う。Vite/CRA なら <img> でOK。
+
+export default function TechPartnersSection() {
+  // 使用するロゴのみをマッピングする（使用しないものはコメントアウト）
+  const partners = [
+    {
+      href: 'https://openai.com/',
+      src: '/logos/brand_logo_svg/openai-svgrepo-com.svg',
+      alt: 'OpenAI',
+      ariaLabel: 'Powered by OpenAI',
+    },
+    {
+      href: 'https://www.anthropic.com/',
+      src: '/logos/brand_logo_svg/anthropic_Logo.svg',
+      alt: 'Anthropic',
+      ariaLabel: 'Powered by Anthropic',
+    },
+    {
+      href: 'https://huggingface.co/',
+      src: '/logos/brand_logo_svg/huggingfacelogo.svg',
+      alt: 'Hugging Face',
+      ariaLabel: 'Powered by Hugging Face',
+    },
+    {
+      href: 'https://www.tensorflow.org/',
+      src: '/logos/brand_logo_svg/tensorflow-svgrepo-com.svg',
+      alt: 'TensorFlow',
+      ariaLabel: 'Powered by TensorFlow',
+    },
+    {
+      href: 'https://pytorch.org/',
+      src: '/logos/brand_logo_svg/pytorch-svgrepo-com.svg',
+      alt: 'PyTorch',
+      ariaLabel: 'Powered by PyTorch',
+    },
+    {
+      href: 'https://aws.amazon.com/',
+      src: '/logos/brand_logo_svg/aws-svgrepo-com.svg',
+      alt: 'AWS',
+      ariaLabel: 'Hosted on AWS',
+    },
+    {
+      href: 'https://cloud.google.com/',
+      src: '/logos/brand_logo_svg/google-cloud-svgrepo-com.svg',
+      alt: 'Google Cloud',
+      ariaLabel: 'Hosted on Google Cloud',
+    },
+    {
+      href: 'https://azure.microsoft.com/',
+      src: '/logos/brand_logo_svg/azure-icon-svgrepo-com.svg',
+      alt: 'Azure',
+      ariaLabel: 'Hosted on Microsoft Azure',
+    },
+    {
+      href: 'https://supabase.com/',
+      src: '/logos/brand_logo_svg/supabase-logo-icon.svg',
+      alt: 'Supabase',
+      ariaLabel: 'Powered by Supabase',
+    },
+    {
+      href: 'https://vercel.com/',
+      src: '/logos/brand_logo_svg/vercel-svgrepo-com.svg',
+      alt: 'Vercel',
+      ariaLabel: 'Deployed on Vercel',
+    },
+    {
+      href: 'https://www.docker.com/',
+      src: '/logos/brand_logo_svg/docker-svgrepo-com.svg',
+      alt: 'Docker',
+      ariaLabel: 'Containerized with Docker',
+    },
+    {
+      href: 'https://kubernetes.io/',
+      src: '/logos/brand_logo_svg/kubernetes-svgrepo-com.svg',
+      alt: 'Kubernetes',
+      ariaLabel: 'Orchestrated with Kubernetes',
+    },
+    {
+      href: 'https://github.com/',
+      src: '/logos/brand_logo_svg/github-svgrepo-com.svg',
+      alt: 'GitHub',
+      ariaLabel: 'Source Code on GitHub',
+    },
+    {
+      href: 'https://www.figma.com/',
+      src: '/logos/brand_logo_svg/figma-svgrepo-com.svg',
+      alt: 'Figma',
+      ariaLabel: 'Designed in Figma',
+    },
+    {
+      href: 'https://www.notion.so/',
+      src: '/logos/brand_logo_svg/notion.svg',
+      alt: 'Notion',
+      ariaLabel: 'Collaborate with Notion',
+    },
+    {
+      href: 'https://slack.com/',
+      src: '/logos/brand_logo_svg/slack.svg',
+      alt: 'Slack',
+      ariaLabel: 'Communicate via Slack',
+    },
+    {
+      href: 'https://usecursor.com/',
+      src: '/logos/brand_logo_svg/cursor.svg',
+      alt: 'Cursor',
+      ariaLabel: 'IDE Support by Cursor',
+    },
+    // 以下は今後検討中のロゴ（現時点では表示しない）
+    // { href: 'https://zoom.us/', src: '/logos/brand_logo_svg/zoom-svgrepo-com.svg', alt: 'Zoom', ariaLabel: 'Meeting with Zoom' },
+    // { href: 'https://flutter.dev/', src: '/logos/brand_logo_svg/flutter-svgrepo-com.svg', alt: 'Flutter', ariaLabel: 'Built with Flutter' },
+    // { href: 'https://stripe.com/', src: '/logos/brand_logo_svg/stripe-svgrepo-com.svg', alt: 'Stripe', ariaLabel: 'Payments by Stripe' },
+  ];
+
+  return (
+    <section className="py-24 bg-[#0F0F0F] text-white" id="tech-partners">
+      <div className="max-w-3xl mx-auto text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-semibold mb-4">Technology Partners</h2>
+        <p className="text-gray-400 text-base md:text-lg">
+          Leveraging industry-leading platforms to power our AI solutions.
+        </p>
+      </div>
+      <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-8 items-center justify-items-center px-6 sm:px-8 md:px-12">
+        {partners.map(({ href, src, alt, ariaLabel }) => (
+          <a
+            key={alt}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={ariaLabel}
+            className="block group w-full"
+          >
+            {/* Next.js 環境の場合は <Image> を利用する：
+                <Image
+                  src={src}
+                  alt={alt}
+                  width={160}
+                  height={80}
+                  className="h-10 sm:h-12 md:h-14 lg:h-16 object-contain mx-auto filter grayscale group-hover:filter-none group-hover:scale-105 transition-all duration-200"
+                  loading="lazy"
+                /> */}
+            <img
+              src={src}
+              alt={alt}
+              loading="lazy"
+              className="h-10 sm:h-12 md:h-14 lg:h-16 object-contain mx-auto filter grayscale hover:filter-none hover:scale-105 transition-all duration-200"
+            />
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}
+解説ポイント（必ず守ること）
+レスポンシブ列数
+
+grid-cols-2（スマホ最小：2列）→ sm:grid-cols-3 → md:grid-cols-4 → lg:grid-cols-6 → xl:grid-cols-8
+
+これにより、画面幅に応じて 2～8列でロゴを配置し、常に十分な余白と潰れないサイズを維持。
+
+余白設定
+
+セクション全体のパディング：py-24 → px-6 sm:px-8 md:px-12 を wrapper に入れ、左右の余白を十分に確保。
+
+gap-8 でロゴ同士の隙間を 2rem（32px） 確保。
+
+ホバーエフェクト
+
+filter grayscale を付与しておき、hover:filter-none でカラー化。
+
+hover:scale-105 transition-all duration-200 で微妙に拡大。
+
+マウスオーバー時にのみ動作するように、group を使わずとも hover: で完結。
+
+アクセシビリティ
+
+<a> タグに aria-label を明記。視覚的テキストがない場合でもスクリーンリーダーが読み上げられるようにする。
+
+rel="noopener noreferrer" を付与してセキュリティを担保。
+
+画像読み込み最適化
+
+<img loading="lazy"> あるいは Next.js の <Image loading="lazy"> を使い、初期ロードを軽量化。
+
+ID属性
+
+セクションに id="tech-partners" を入れておくことで、ナビリンクや「トップへ戻る」などのアンカー移動が可能。
+
+1.3 pages/index.jsx への組み込み
+src/pages/index.jsx（または App.jsx／Home.jsx）を以下の順序で更新し、TechPartnersSection を挿入してください。各インポート文と呼び出しを正確に追加します。
+
+jsx
+コピーする
+編集する
+// src/pages/index.jsx
+
+import React from 'react';
+import HeroSection from '../components/HeroSection';
+import AboutSection from '../components/AboutSection';
+import TechPartnersSection from '../components/TechPartnersSection';
+import CapabilitiesSection from '../components/CapabilitiesSection';
+import ServicesSection from '../components/ServicesSection';
+import UseCasesSection from '../components/UseCasesSection'; // 既に追加済みであればOK
+import TechStackSection from '../components/TechStackSection';
+import FAQSection from '../components/FAQSection';
+import ContactSection from '../components/ContactSection';
+import Footer from '../components/Footer';
+
+export default function Home() {
+  return (
+    <div className="bg-[#0F0F0F] text-white overflow-x-hidden">
+      <HeroSection />
+      <CapabilitiesSection />
+      <UseCasesSection />
+      <TechStackSection />
+      <AboutSection />
+      <TechPartnersSection />  {/* 追加部分 */}
+      <ServicesSection />
+      <FAQSection />
+      <ContactSection />
+      <Footer />
+    </div>
+  );
+}
+重要ポイント
+呼び出し順序
+
+「Hero → Capabilities → Use Cases → Tech Stack → About → Tech Partners → Services → FAQ → Contact → Footer」の順序を厳守。
+
+「TechPartnersSection」は About の直後に必ず配置。
+
+CSS クラスの統一
+
+ページ全体の div は必ず bg-[#0F0F0F] text-white overflow-x-hidden を付与し、背景色とテキスト色を統一しつつ、横スクロール発生を抑制。
+
+各セクションの最上位要素には py-24 を入れてセクション間の余白を統一。
+
+Header / Footer との連携
+
+Navbar や Footer に「Tech Partners」へのアンカーリンク（例：<a href="#tech-partners">Tech Partners</a>）を追加し、インタラクティブに飛べるようにする。
+
+2. サイト全体の世界一厳しいチェックリスト
+以下、Tech Partners を含めた新たなセクション追加後の「サイト全体」でチェックすべき項目を、可能な限り網羅しています。「済」「未」「要修正」を厳密に記録しながら順次潰してください。
+
+2.1 HTML 構造＆セマンティックス
+<header> / <nav>
+
+<nav> 要素は必ず <header> 内にあるか、上部にランドマークとして明示。
+
+ロゴは <a href="/"> で囲み、aria-label="Go to Homepage" を追加。
+
+ナビリンクは <ul><li><a></a></li></ul> 形式で構築し、リストを使った構造化を行う。
+
+各セクションは <main> 直下
+
+<main> のみ一つ。HeroSection, CapabilitiesSection, UseCasesSection, TechStackSection, AboutSection, TechPartnersSection, ServicesSection, FAQSection, ContactSection はすべて直接 <main> 配下。
+
+ランドマークの付与
+
+<main> の前に <a href="#main" className="sr-only focus:not-sr-only">Skip to main</a> を追加。
+
+各セクションには role="region" と aria-labelledby="セクションID" を付与し、スクリーンリーダーで把握しやすく。
+
+例：
+
+html
+コピーする
+編集する
+<section id="capabilities" role="region" aria-labelledby="capabilities-heading">
+  <h2 id="capabilities-heading">Core Capabilities</h2>
+  <!-- 内容 -->
+</section>
+Semantic HTML
+
+ボタンには <button> 要素を使用。見た目を変えたい場合は Tailwind CSS のユーティリティクラスで実現。
+
+リンクは必ず <a>。リンク先が外部なら rel="noopener noreferrer" を付与。
+
+フォームは <form> → <fieldset> → <legend> → <label> → <input> / <textarea> という流れで構築。
+
+2.2 レスポンシブ＆レイアウト
+全体コンテナの幅管理
+
+統一して container mx-auto を使わず、独自に max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 などで制御。
+
+画面幅ごとに左右余白が崩れていないかチェック（特に md, lg, xl）。
+
+フォントサイズ
+
+h1: text-5xl md:text-6xl lg:text-7xl
+
+h2: text-3xl md:text-4xl
+
+h3: text-2xl md:text-3xl
+
+本文：text-base md:text-lg
+
+モバイルフォントはビューポート幅に依存させない（vw 検討不可）。すべて Tailwind の text-* で明示的に指定。
+
+グリッドレイアウト
+
+すべてのグリッドは少なくとも gap-6 〜 gap-8 を使用し、要素が潰れないように調整。
+
+テーブル系（About セクション）のスマホ縦スクロール時に崩れないよう、<div className="overflow-x-auto"> で囲むこと。
+
+画像・動画のアスペクト比保持
+
+object-contain をすべての <img> や <video> に付与。
+
+ロゴやアイコンには必ず高さを h-10 sm:h-12 md:h-14 lg:h-16 のように段階指定し、幅は自動（w-auto）か max-w-full とする。
+
+2.3 カラーパレット＆タイポグラフィ
+背景色
+
+ページ全体の背景：bg-[#0F0F0F]
+
+セクション区切り：border-t border-gray-800
+
+フッター背景：bg-[#0B0B0B] よりさらに一段暗い黒を使用
+
+テキスト色
+
+本文：text-gray-300 (コントラスト比 4.5:1 以上)
+
+見出し (h1, h2, h3)：text-white
+
+リンク：text-[#1F4ED8] hover:underline
+
+CTAボタンテキスト：
+
+Primary：text-black on bg-white
+
+Secondary：text-white on bg-transparent border border-white
+
+フォント設定
+
+全プロジェクト (tailwind.config.js) にて:
+
+js
+コピーする
+編集する
+module.exports = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+      },
+    },
+  },
+};
+すべてのテキスト要素は Tailwind の font-sans → Inter を利用。
+
+絶対に他のフォントを読み込んだり、Google Fonts を埋め込んだりしない。サイト軽量化と一貫性を重視。
+
+2.4 ナビゲーション（Navbar）＆フッター（Footer）
+Navbar.jsx
+
+背景透過 → スクロールで bg-[#0F0F0F]/90 shadow-md に変わる実装を確認。
+
+<header> 内に <nav role="navigation" aria-label="Main Navigation"> を必ず配置。
+
+ロゴ <a href="/" aria-label="Go to Homepage"><img src="/logo.svg" alt="Venator Capital Logo" ... /></a>
+
+メニュー構成：
+
+jsx
+コピーする
+編集する
+<ul className="flex space-x-8 lg:space-x-12">
+  <li><a href="#capabilities" className="hover:text-[#1F4ED8]">Capabilities</a></li>
+  <li><a href="#use-cases" className="hover:text-[#1F4ED8]">Use Cases</a></li>
+  <li><a href="#tech-stack" className="hover:text-[#1F4ED8]">Tech Stack</a></li>
+  <li><a href="#about" className="hover:text-[#1F4ED8]">About</a></li>
+  <li><a href="#tech-partners" className="hover:text-[#1F4ED8]">Partners</a></li>
+  <li><a href="#services" className="hover:text-[#1F4ED8]">Services</a></li>
+  <li><a href="#faq" className="hover:text-[#1F4ED8]">FAQ</a></li>
+  <li><a href="#contact" className="hover:text-[#1F4ED8]">Contact</a></li>
+</ul>
+レスポンシブ：lg:flex を基本に、md:hidden → ハンバーガーメニュー展開 → onClick で isOpen 状態を管理。
+
+ARIA：ハンバーガーメニュー <button aria-label="Toggle navigation menu" aria-expanded={isOpen}>
+
+フォーカススタイル：focus:outline-none focus:ring-2 focus:ring-accentBlue をリンクとボタンに付与。
+
+Footer.jsx
+
+<footer role="contentinfo" className="bg-[#0B0B0B] text-gray-400 py-8">
+
+3カラム構成：
+
+左：ロゴ＋会社名
+
+中央：簡易ナビ（Capabilities, Use Cases, Tech Partners, Services, FAQ, Contact）
+
+右：SNS アイコンリンク（Twitter, LinkedIn, GitHub）
+
+モバイル：flex flex-col items-center space-y-4
+
+デスクトップ：flex flex-row justify-between items-start
+
+2.5 Hero Section の最終チェック
+Headline
+
+Turning AI Into Advantage など一行で収まる長さ。
+
+テキストは <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white text-center leading-tight mb-6">
+
+Subtext
+
+<p className="text-base md:text-lg text-gray-300 text-center max-w-3xl mx-auto mb-8">We architect cutting-edge AI solutions — from machine learning applications to automation frameworks.</p>
+
+CTA Buttons
+
+Primary:
+
+jsx
+コピーする
+編集する
+<button className="
+  inline-block px-8 py-3 bg-white text-black font-semibold rounded-full
+  hover:bg-[#e5e5e5] hover:shadow-lg
+  focus:outline-none focus:ring-2 focus:ring-[#1F4ED8] focus:ring-offset-2
+  transition-all duration-200
+">
+  Discover Our AI Solutions
+</button>
+Secondary:
+
+jsx
+コピーする
+編集する
+<button className="
+  inline-block px-8 py-3 border-2 border-white text-white font-semibold rounded-full
+  hover:bg-white hover:text-black hover:shadow-lg
+  focus:outline-none focus:ring-2 focus:ring-[#1F4ED8] focus:ring-offset-2
+  transition-all duration-200
+">
+  Contact Our Team
+</button>
+モバイルでは flex flex-col items-center space-y-4 w-full、タップ領域を広く (w-full sm:w-auto)。
+
+SplashScreen
+
+透明背景版動画 (splash-transparent.mp4) が表示される際、背景色 bg-[#0F0F0F] と完全に一致し、動画の透過部分がサイト背景と融合しているか再確認。
+
+<video> のクラスは
+
+ini
+コピーする
+編集する
+className="
+  max-w-full
+  w-[300px] sm:w-[400px] md:w-[600px] lg:w-[800px] xl:w-[960px]
+  h-auto object-contain bg-transparent
+"
+などでサイズバリエーションを持たせ、どのデバイスでも動画のクオリティが維持されるか確認。
+
+2.6 Capabilities / Use Cases / Tech Stack / Services / FAQ / Contact セクション
+すでに実装済みである前提で、以下のチェックリストに従い、各セクションをさらにブラッシュアップしてください。
+
+CapabilitiesSection.jsx
+<section id="capabilities" role="region" aria-labelledby="capabilities-heading"> を必ず使い、見出しは <h2 id="capabilities-heading">。
+
+グリッド列数：
+
+grid-cols-1 sm:grid-cols-2 md:grid-cols-4
+
+各カードは p-6 bg-[#1A1A1A] rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 を使用し、カード内テキストは text-gray-300。
+
+アイコン画像は透明 PNG または SVG で提供済みか各自確認。
+
+UseCasesSection.jsx
+<section id="use-cases" role="region" aria-labelledby="use-cases-heading"> + <h2 id="use-cases-heading">Use Cases</h2>
+
+各カードは：
+
+jsx
+コピーする
+編集する
+<div className="p-6 bg-[#1A1A1A] rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 flex flex-col h-full">
+  <img src="/icons/..." alt="Use Case Icon" className="h-12 mb-4 mx-auto" />
+  <h3 className="text-xl font-semibold mb-2 text-white">Use Case Title</h3>
+  <p className="text-gray-300 flex-grow">Short description of how AI solves a business problem.</p>
+  <span className="mt-4 text-sm font-medium text-[#1F4ED8]">Key Technology: GPT-4</span>
+</div>
+グリッド：grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto px-6 sm:px-8
+
+TechStackSection.jsx
+<section id="tech-stack" role="region" aria-labelledby="tech-stack-heading">
+
+見出し <h2 id="tech-stack-heading">Our Technology Stack</h2>
+
+各技術ロゴを一覧表示（上記 Tech Partners と重複しないものも可）。
+
+グリッド：grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 items-center justify-items-center max-w-5xl mx-auto px-6 sm:px-8
+
+ServicesSection.jsx
+<section id="services" role="region" aria-labelledby="services-heading">
+
+<h2 id="services-heading">Services</h2>
+
+各サービス項目はアイコン＋タイトル＋説明を縦一列、モバイルは grid-cols-1、タブレット sm:grid-cols-2 で並べる。
+
+例：
+
+jsx
+コピーする
+編集する
+<div className="flex flex-col p-6 bg-[#1A1A1A] rounded-lg shadow-lg hover:shadow-xl transition-all duration-200">
+  <img src="/icons/ai-ml-service.svg" alt="" className="h-12 mb-4" />
+  <h3 className="text-xl font-semibold mb-2 text-white">AI & ML Application Development</h3>
+  <p className="text-gray-300 flex-grow">Planning, development, distribution, and support of AI-driven software leveraging state-of-the-art frameworks like TensorFlow and PyTorch.</p>
+</div>
+配列データにまとめ、.map() で出力し、コード重複を避ける。
+
+FAQSection.jsx
+<section id="faq" role="region" aria-labelledby="faq-heading">
+
+<h2 id="faq-heading">Frequently Asked Questions</h2>
+
+Headless UI の Accordion を利用し、各 <Disclosure> の中に <Disclosure.Button> と <Disclosure.Panel> を構築。
+
+例：
+
+jsx
+コピーする
+編集する
+<Disclosure>
+  {({ open }) => (
+    <>
+      <Disclosure.Button className="w-full flex justify-between items-center p-4 bg-[#1A1A1A] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1F4ED8] transition-all duration-200">
+        <span className="text-left text-lg font-medium text-white">What is your pricing model?</span>
+        <ChevronDownIcon className={`w-6 h-6 text-gray-400 transform ${open ? 'rotate-180' : 'rotate-0'} transition-transform duration-200`} />
+      </Disclosure.Button>
+      <Disclosure.Panel className="p-4 text-gray-300 bg-[#0F0F0F]">
+        We offer flexible subscription tiers based on usage and volume. Contact us for a custom quote.
+      </Disclosure.Panel>
+    </>
+  )}
+</Disclosure>
+アコーディオンの初期状態はすべて閉じ、open 状態でアイコンの回転を制御。
+
+ContactSection.jsx
+<section id="contact" role="region" aria-labelledby="contact-heading">
+
+<h2 id="contact-heading">Contact Us</h2>
+
+<form> 構造：
+
+jsx
+コピーする
+編集する
+<form 
+  onSubmit={handleSubmit} 
+  className="grid grid-cols-1 gap-6 max-w-2xl mx-auto px-6 sm:px-8"
+>
+  <label htmlFor="name" className="block text-white">Name</label>
+  <input 
+    id="name" 
+    name="name" 
+    type="text" 
+    required 
+    className="w-full p-3 bg-[#1A1A1A] text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1F4ED8]" 
+  />
+  <label htmlFor="email" className="block text-white">Email</label>
+  <input 
+    id="email" 
+    name="email" 
+    type="email" 
+    required 
+    className="w-full p-3 bg-[#1A1A1A] text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1F4ED8]" 
+  />
+  <label htmlFor="message" className="block text-white">Message</label>
+  <textarea 
+    id="message" 
+    name="message" 
+    rows="5" 
+    required 
+    minLength="20"
+    className="w-full p-3 bg-[#1A1A1A] text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1F4ED8]" 
+  />
+  <button 
+    type="submit" 
+    className="
+      inline-block w-full text-center px-8 py-3 bg-[#1F4ED8] text-white font-semibold rounded-full
+      hover:bg-[#2563EB] hover:shadow-lg
+      focus:outline-none focus:ring-2 focus:ring-[#1F4ED8] focus:ring-offset-2
+      transition-all duration-200
+    "
+  >
+    Send Message
+  </button>
+  {success && <p className="text-green-400 mt-4">Thank you! Your message has been sent.</p>}
+  {error && <p className="text-red-500 mt-4">{error}</p>}
+</form>
+バリデーション：
+
+required / minLength 属性を確実に定義。
+
+JavaScript での追加バリデーション（例：メールアドレス形式、message の文字数）を handleSubmit 内でチェック。
+
+送信後フィードバック：送信成功時・失敗時のメッセージを表示し、フォームはリセット（成功時のみ）。
+
+2.7 SEO & メタデータ
+<head> の最適化
+
+Next.js 利用時は pages/_document.js、あるいは pages/_app.js 内で <Head> を正しく配置。
+
+各ページ（単一ページなので index.jsx 内）に以下を追加：
+
+jsx
+コピーする
+編集する
+import Head from 'next/head';
+
+function Home() {
+  return (
+    <>
+      <Head>
+        <title>Venator Capital LLC | AI & Machine Learning Solutions</title>
+        <meta name="description" content="Venator Capital LLC is an AI-focused startup specializing in machine learning application development, data analytics, and enterprise AI integration." />
+        <meta name="keywords" content="AI, Machine Learning, Data Analytics, Automation, AI Startup, Venator Capital" />
+        <meta property="og:title" content="Venator Capital LLC | AI & Machine Learning Solutions" />
+        <meta property="og:description" content="Transforming advanced technologies into operational excellence. Explore our AI solutions powered by OpenAI, TensorFlow, PyTorch and more." />
+        <meta property="og:image" content="https://yourdomain.com/ogp_main.png" />
+        <meta property="og:url" content="https://venator.capital/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://venator.capital/" />
+      </Head>
+      {/* 以降のコンポーネント呼び出し */}
+    </>
+  );
+}
+構造化データ（JSON-LD）
+
+pages/_document.js の <Head> 内、もしくは index.jsx の一番上に以下スクリプトを追加：
+
+jsx
+コピーする
+編集する
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Venator Capital LLC",
+      "url": "https://venator.capital/",
+      "logo": "https://venator.capital/logo.svg",
+      "description": "AI-focused startup specializing in machine learning application development and data analytics.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "66 Bentencho",
+        "addressLocality": "Shinjuku-ku",
+        "addressRegion": "Tokyo",
+        "postalCode": "〒160-0000",
+        "addressCountry": "JP"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/venator-capital",
+        "https://twitter.com/venatorcapital",
+        "https://github.com/venatorcapital"
+      ]
+    }),
+  }}
+/>
+2.8 パフォーマンス & 最適化
+画像最適化
+
+各ロゴは SVG 形式だが、もしアイコン画像やモックアップ PNG／JPEG を追加する場合は必ず WebP も用意し、<picture> タグで配分。
+
+例：
+
+jsx
+コピーする
+編集する
+<picture>
+  <source srcSet="/images/mockup.webp" type="image/webp" />
+  <img src="/images/mockup.png" alt="Mockup" loading="lazy" className="object-contain" />
+</picture>
+コード分割 & レイジーロード
+
+大きめのセクション（FAQ, Use Cases, Tech Stack など）は React.lazy + Suspense で遅延読み込み。
+
+例：
+
+jsx
+コピーする
+編集する
+import React, { Suspense, lazy } from 'react';
+const FAQSection = lazy(() => import('../components/FAQSection'));
+
+export default function Home() {
+  return (
+    <>
+      <HeroSection />
+      {/* 省略 */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <FAQSection />
+      </Suspense>
+      {/* 省略 */}
+    </>
+  );
+}
+Tailwind CSS の JIT モード & Purge 設定
+
+tailwind.config.js を必ず以下のように設定し、未使用クラスを削除：
+
+js
+コピーする
+編集する
+module.exports = {
+  mode: 'jit',
+  purge: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    './public/index.html',
+  ],
+  darkMode: false,
+  theme: {
+    extend: {
+      colors: {
+        primary: '#1F4ED8',  // Accent Blue
+        secondary: '#FFD54F' // Accent Gold
+      },
+    },
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [],
+};
+ビルドサイズの確認
+
+npm run build → next build → ビルドログにて「コアパッケージサイズ」「初期ロードバイト数」をレビュー。
+
+もし Next.js 利用なら next analyze などでバンドル解析を行い、「巨大なライブラリを動的 import に切り分ける」など調整。
+
+キャッシュ戦略
+
+静的アセット（SVG, WebP, CSS, JS）は Cache-Control: public, max-age=31536000, immutable を適用。Replit では自動的にキャッシュされるが、必要であれば .replit 設定または vercel.json で明示。
+
+2.9 アクセシビリティ強化
+Skip Link
+
+<body> の直下に
+
+html
+コピーする
+編集する
+<a href="#main" className="sr-only focus:not-sr-only bg-[#1F4ED8] text-white px-4 py-2">Skip to main content</a>
+ARIA ランドマーク
+
+<header role="banner">, <nav role="navigation">, <main role="main" id="main">, <footer role="contentinfo"> を確実に付与。
+
+各セクションも role="region" aria-labelledby="～" を付与。
+
+フォーム
+
+<label> と <input id="..."> による紐付けを必須とし、aria-required="true" を入力必須フィールドに付与。
+
+送信時にエラーがある場合は、該当フィールドに aria-invalid="true" かつ role="alert" でエラーを読み上げさせる。
+
+キーボードナビ
+
+すべてのボタン／リンクは :focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary を持つ。
+
+ハンバーガーメニューはキーボードで開閉できる（Enter/Space キーを使う）。
+
+FAQ の Accordion は、キーボードで開閉できるように tabIndex="0" と aria-expanded の更新を行う。
+
+コントラスト比チェック
+
+テキスト(白, グレー) vs 背景(#0F0F0F, #1A1A1A) のコントラスト比は最低 4.5:1 以上。
+
+Lighthouse の「Accessibility」セクションで 100 点を目指す。
+
+2.10 レンダリングとテスト
+ブラウザ互換性チェック
+
+最新バージョンの Chrome, Firefox, Safari, Edge でサイトを動作確認し、レイアウト崩れやホバーエフェクトが同一かをチェック。
+
+モバイル実機（iOS Safari, iPhone 挙動、Android Chrome）でも自動再生・レイアウト・フォーム挙動を細かく確認。
+
+Lighthouse スコア
+
+Lighthouse で「Performance」「Accessibility」「Best Practices」「SEO」のすべてを 90 点以上に調整。
+
+必要であれば、next/image の priority と layout="responsive" を使用し、LCP（Largest Contentful Paint）を改善。
+
+Visual Regression Testing
+
+Chromatic または Percy で「Tech Partners セクション」「Heroセクション」「フォーム」など主要パーツのスナップショットを作成。
+
+CI 実行時に自動チェックを行い、差分が出た場合は Slack やメールでレポート。
+
+アクセシビリティ自動テスト
+
+axe-core を Jest + Puppeteer などで組み込み、自動テストに合格しないとマージできないルールを設定。
+
+3. まとめ：実装スケジュールの例
+以下はあくまで参考ですが、1週間以内に下記のタスクを順に潰し込み、レビューを行うスケジュールとしてご活用ください。
+
+タスク	所要時間の目安	備考
+1. フォルダ内ロゴの最終チェック	1h	不要なロゴをコメントアウト
+2. TechPartnersSection.jsx 実装	2h	レスポンシブ & アクセシビリティ設定
+3. ページへのインポート調整	1h	index.jsx に挿入、IDの付与
+4. Hero / Navbar / Footer 調整	2h	スクロールアニメ & レイアウト微調整
+5. 各セクション（Capabilities, UseCases, TechStack, Services, FAQ, Contact）の最終チェック & 修正	5h	レスポンシブ, アクセシビリティ, コード重複解消
+6. SEO（メタデータ, JSON-LD）設定	1h	描画順序と Head の整理
+7. パフォーマンス最適化	3h	画像最適化, コード分割, Lighthouse チェック
+8. テスト & ビルドデプロイ	2h	Replitで最終確認, カスタムドメイン設定
+
+最後に
+この超詳細修正指示書に沿って実装すれば、Tech Partners セクションを含むすべてのコンテンツがAI特化企業としての信頼感・先進性・整合性を最大化したものになります。すべての変更を丁寧にコミットし、コミットメッセージには「何を」「なぜ」修正したのかを必ず記載してください。
+
+問題発生時や不明点があれば、該当箇所を細かくスクリーンショットを添えて、再度問い合わせてください。以上、完璧実装を目指し、着実に進めましょう。
+
+
+
+
+
+
