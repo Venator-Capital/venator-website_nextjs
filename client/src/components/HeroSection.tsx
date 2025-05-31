@@ -137,7 +137,7 @@ export default function HeroSection() {
           <motion.img 
             src="/Cropped_black_logo-removebg-preview.png" 
             alt="Venator Capital Logo"
-            className="w-64 h-64 mx-auto mb-6 drop-shadow-2xl"
+            className="w-[200px] sm:w-[250px] md:w-[320px] h-auto mx-auto mb-6 drop-shadow-2xl"
             animate={controls}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -150,7 +150,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-5xl md:text-7xl font-bold mb-8 leading-tight hero-text-shadow"
+          className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 leading-tight hero-text-shadow"
         >
           Turning AI Into Advantage
         </motion.h1>
@@ -160,7 +160,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-xl md:text-2xl text-white/80 mb-12 leading-relaxed max-w-3xl mx-auto"
+          className="text-base md:text-lg text-gray-300 mb-12 leading-relaxed max-w-3xl mx-auto"
         >
           We architect cutting-edge AI solutions — from machine learning applications to automation frameworks.
         </motion.p>
@@ -170,11 +170,11 @@ export default function HeroSection() {
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-6 justify-center"
+          className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <motion.button
             onClick={() => scrollToSection('capabilities')}
-            className="px-10 py-4 bg-white text-black rounded-full font-semibold text-lg hover:bg-accent-blue hover:text-white transition-all duration-200 transform hover:scale-105 hover:shadow-lg shadow-2xl hover:shadow-accent-blue/20"
+            className="inline-block px-8 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-blue"
             whileTap={{ scale: 0.95 }}
             aria-label="Discover our AI solutions"
           >
@@ -182,7 +182,7 @@ export default function HeroSection() {
           </motion.button>
           <motion.button
             onClick={() => scrollToSection('contact')}
-            className="px-10 py-4 border-2 border-accent-gold text-accent-gold rounded-full font-semibold text-lg hover:bg-accent-gold hover:text-black transition-all duration-200 transform hover:scale-105 hover:shadow-lg shadow-2xl hover:shadow-accent-gold/20"
+            className="inline-block px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-black hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white"
             whileTap={{ scale: 0.95 }}
             aria-label="Contact our team"
           >

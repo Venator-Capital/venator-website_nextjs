@@ -27,8 +27,8 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-24 md:py-32 bg-primary-black">
-      <div className="max-w-4xl mx-auto px-6">
+    <section id="about" className="py-24 md:py-32 bg-primary-black border-t border-gray-800">
+      <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -38,7 +38,7 @@ export default function AboutSection() {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-6xl font-bold mb-12"
+            className="text-3xl md:text-4xl font-semibold mb-12 leading-snug"
           >
             About <span className="text-accent-gold">Venator Capital</span>
           </motion.h2>
@@ -47,20 +47,22 @@ export default function AboutSection() {
             variants={itemVariants}
             className="mb-12"
           >
-            <table className="w-full table-auto border-collapse border border-gray-700 mb-8">
-              <tbody>
-                {companyData.map(([label, value]) => (
-                  <tr key={label} className="border border-gray-700">
-                    <th className="px-6 py-4 text-left font-medium bg-deep-charcoal text-white border-r border-gray-700">
-                      {label}
-                    </th>
-                    <td className="px-6 py-4 bg-primary-black text-white">
-                      {value}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[320px] table-auto border-collapse border border-gray-700 mb-8">
+                <tbody>
+                  {companyData.map(([label, value]) => (
+                    <tr key={label} className="border border-gray-700">
+                      <th className="px-4 md:px-6 py-4 text-left font-medium bg-deep-charcoal text-white border-r border-gray-700">
+                        {label}
+                      </th>
+                      <td className="px-4 md:px-6 py-4 bg-primary-black text-gray-300">
+                        {value}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </motion.div>
           
           <motion.div
