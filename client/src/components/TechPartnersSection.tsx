@@ -1,47 +1,7 @@
 import { motion } from "framer-motion";
 
 export default function TechPartnersSection() {
-  // Core technology stack - frameworks and languages we use directly
-  const coreTechStack = [
-    {
-      href: 'https://www.tensorflow.org/',
-      src: '/logos/brand_logo_svg/tensorflow-svgrepo-com.svg',
-      alt: 'TensorFlow',
-      ariaLabel: 'Built with TensorFlow',
-    },
-    {
-      href: 'https://pytorch.org/',
-      src: '/logos/brand_logo_svg/pytorch-svgrepo-com.svg',
-      alt: 'PyTorch',
-      ariaLabel: 'Built with PyTorch',
-    },
-    {
-      href: 'https://www.docker.com/',
-      src: '/logos/brand_logo_svg/docker-svgrepo-com.svg',
-      alt: 'Docker',
-      ariaLabel: 'Containerized with Docker',
-    },
-    {
-      href: 'https://kubernetes.io/',
-      src: '/logos/brand_logo_svg/kubernetes-svgrepo-com.svg',
-      alt: 'Kubernetes',
-      ariaLabel: 'Orchestrated with Kubernetes',
-    },
-    {
-      href: 'https://github.com/',
-      src: '/logos/brand_logo_svg/github-svgrepo-com.svg',
-      alt: 'GitHub',
-      ariaLabel: 'Source Code on GitHub',
-    },
-    {
-      href: 'https://www.figma.com/',
-      src: '/logos/brand_logo_svg/figma-svgrepo-com.svg',
-      alt: 'Figma',
-      ariaLabel: 'Designed in Figma',
-    },
-  ];
-
-  // Technology partners - external services and platforms we integrate with
+  // All technology partners and platforms we use
   const partners = [
     {
       href: 'https://openai.com/',
@@ -62,6 +22,18 @@ export default function TechPartnersSection() {
       ariaLabel: 'Powered by Hugging Face',
     },
     {
+      href: 'https://www.tensorflow.org/',
+      src: '/logos/brand_logo_svg/tensorflow-svgrepo-com.svg',
+      alt: 'TensorFlow',
+      ariaLabel: 'Built with TensorFlow',
+    },
+    {
+      href: 'https://pytorch.org/',
+      src: '/logos/brand_logo_svg/pytorch-svgrepo-com.svg',
+      alt: 'PyTorch',
+      ariaLabel: 'Built with PyTorch',
+    },
+    {
       href: 'https://aws.amazon.com/',
       src: '/logos/brand_logo_svg/aws-svgrepo-com.svg',
       alt: 'AWS',
@@ -80,6 +52,18 @@ export default function TechPartnersSection() {
       ariaLabel: 'Hosted on Microsoft Azure',
     },
     {
+      href: 'https://www.docker.com/',
+      src: '/logos/brand_logo_svg/docker-svgrepo-com.svg',
+      alt: 'Docker',
+      ariaLabel: 'Containerized with Docker',
+    },
+    {
+      href: 'https://kubernetes.io/',
+      src: '/logos/brand_logo_svg/kubernetes-svgrepo-com.svg',
+      alt: 'Kubernetes',
+      ariaLabel: 'Orchestrated with Kubernetes',
+    },
+    {
       href: 'https://supabase.com/',
       src: '/logos/brand_logo_svg/supabase-logo-icon.svg',
       alt: 'Supabase',
@@ -90,6 +74,18 @@ export default function TechPartnersSection() {
       src: '/logos/brand_logo_svg/vercel-svgrepo-com.svg',
       alt: 'Vercel',
       ariaLabel: 'Deployed on Vercel',
+    },
+    {
+      href: 'https://github.com/',
+      src: '/logos/brand_logo_svg/github-svgrepo-com.svg',
+      alt: 'GitHub',
+      ariaLabel: 'Source Code on GitHub',
+    },
+    {
+      href: 'https://www.figma.com/',
+      src: '/logos/brand_logo_svg/figma-svgrepo-com.svg',
+      alt: 'Figma',
+      ariaLabel: 'Designed in Figma',
     },
     {
       href: 'https://www.notion.so/',
@@ -135,74 +131,40 @@ export default function TechPartnersSection() {
           className="text-center mb-20"
         >
           <h2 className="text-3xl md:text-4xl font-semibold mb-6 leading-snug">
-            Technology <span className="text-accent-gold">Ecosystem</span>
+            Technology <span className="text-accent-gold">Partners</span>
           </h2>
           <p className="text-base md:text-lg font-normal leading-relaxed text-gray-300 max-w-3xl mx-auto">
-            Our Core Tech Stack & Industry Partners
+            Leveraging industry-leading platforms and frameworks to deliver robust AI solutions
           </p>
         </motion.div>
 
-        {/* Core Tech Stack Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          className="mb-16"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-6"
         >
-          <h3 className="text-2xl md:text-3xl font-medium mb-8 text-white">Core Tech Stack</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
-            {coreTechStack.map(({ href, src, alt, ariaLabel }) => (
-              <motion.a
-                key={alt}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={ariaLabel}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="group block bg-gray-800/50 rounded-xl p-4 hover:bg-gray-700/50 transition-all duration-200"
-              >
-                <img
-                  src={src}
-                  alt={alt}
-                  loading="lazy"
-                  className="h-12 md:h-14 w-auto object-contain mx-auto opacity-80 group-hover:opacity-100 transition-opacity duration-200"
-                />
-              </motion.a>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Technology Partners Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-2xl md:text-3xl font-medium mb-8 text-white">Technology Partners</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
-            {partners.map(({ href, src, alt, ariaLabel }) => (
-              <motion.a
-                key={alt}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={ariaLabel}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="group block bg-gray-800/50 rounded-xl p-4 hover:bg-gray-700/50 transition-all duration-200"
-              >
-                <img
-                  src={src}
-                  alt={alt}
-                  loading="lazy"
-                  className="h-12 md:h-14 w-auto object-contain mx-auto opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-200"
-                />
-              </motion.a>
-            ))}
-          </div>
+          {partners.map(({ href, src, alt, ariaLabel }) => (
+            <motion.a
+              key={alt}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={ariaLabel}
+              variants={itemVariants}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="group block bg-gray-800/50 rounded-xl p-4 hover:bg-gray-700/50 transition-all duration-200"
+            >
+              <img
+                src={src}
+                alt={alt}
+                loading="lazy"
+                className="h-12 md:h-14 w-auto object-contain mx-auto opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-200"
+              />
+            </motion.a>
+          ))}
         </motion.div>
       </div>
     </section>
