@@ -126,7 +126,7 @@ export default function TechPartnersSection() {
   };
 
   return (
-    <section id="tech-partners" className="py-24 bg-primary-black border-t border-gray-800">
+    <section id="tech-partners" className="py-24 section-primary">
       <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

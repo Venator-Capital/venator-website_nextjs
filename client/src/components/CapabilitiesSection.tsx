@@ -77,7 +77,7 @@ export default function CapabilitiesSection() {
                 boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="project-card rounded-2xl p-4 md:p-6 cursor-pointer relative overflow-hidden group"
+              className="card-enhanced rounded-2xl p-4 md:p-6 cursor-pointer relative overflow-hidden group tech-gradient"
             >
               {/* Animated gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/5 to-accent-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
