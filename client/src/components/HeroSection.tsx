@@ -1,6 +1,8 @@
 import { motion, useAnimation } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function HeroSection() {
+  const { t } = useLanguage();
   const controls = useAnimation();
 
   const scrollToSection = (sectionId: string) => {
@@ -152,7 +154,7 @@ export default function HeroSection() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 leading-tight hero-text-shadow"
         >
-          Turning AI Into Advantage
+          {t('hero.title')}
         </motion.h1>
 
         {/* Subheadline */}
@@ -162,7 +164,7 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-base md:text-lg text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto"
         >
-          We architect cutting-edge AI solutions — from machine learning applications to automation frameworks.
+          {t('hero.subtitle')}
         </motion.p>
 
         {/* CTA Description */}
@@ -172,8 +174,7 @@ export default function HeroSection() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="text-sm text-gray-400 mb-8 max-w-2xl mx-auto"
         >
-          No matter where you are in your AI journey, we'll guide you from roadmap to production. 
-          Our AI specialists will reach out within 24 hours.
+          {t('hero.description')}
         </motion.p>
 
         {/* CTA Buttons */}
@@ -187,17 +188,17 @@ export default function HeroSection() {
             onClick={() => scrollToSection('capabilities')}
             className="inline-block px-8 py-4 bg-accent-gold text-primary-black font-bold rounded-lg hover:bg-[#e6c600] hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-gold focus:ring-offset-2 focus:ring-offset-black"
             whileTap={{ scale: 0.95 }}
-            aria-label="See our AI use case portfolio"
+            aria-label="Explore our capabilities"
           >
-            See Our AI Use Case Portfolio
+            {t('hero.cta.capabilities')}
           </motion.button>
           <motion.button
             onClick={() => scrollToSection('contact')}
             className="inline-block px-8 py-4 border-2 border-accent-gold text-accent-gold font-bold rounded-lg hover:bg-accent-gold hover:text-primary-black hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-gold focus:ring-offset-2 focus:ring-offset-black"
             whileTap={{ scale: 0.95 }}
-            aria-label="Request a free AI feasibility assessment"
+            aria-label="Start your AI journey"
           >
-            Request Free AI Consultation
+            {t('hero.cta.contact')}
           </motion.button>
         </motion.div>
       </div>

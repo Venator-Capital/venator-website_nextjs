@@ -58,14 +58,14 @@ export default function Navbar() {
             className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
             aria-label="Navigate to Capabilities section"
           >
-            Capabilities
+            {t('nav.capabilities')}
           </button>
           <button
             onClick={() => scrollToSection('use-cases')}
             className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
             aria-label="Navigate to Use Cases section"
           >
-            Use Cases
+            {t('nav.useCases')}
           </button>
 
           <button
@@ -73,29 +73,32 @@ export default function Navbar() {
             className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
             aria-label="Navigate to Technology Ecosystem section"
           >
-            Technology
+            {t('nav.technology')}
           </button>
           <button
             onClick={() => scrollToSection('faq')}
             className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
             aria-label="Navigate to FAQ section"
           >
-            FAQ
+            {t('nav.faq')}
           </button>
           <button
             onClick={() => scrollToSection('about')}
             className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
             aria-label="Navigate to About section"
           >
-            About
+            {t('nav.about')}
           </button>
           <button
             onClick={() => scrollToSection('contact')}
             className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
             aria-label="Navigate to Contact section"
           >
-            Contact
+            {t('nav.contact')}
           </button>
+          
+          {/* Language Toggle */}
+          <LanguageToggle />
         </div>
 
         {/* Mobile Menu Button */}
@@ -143,39 +146,44 @@ export default function Navbar() {
               onClick={() => scrollToSection('capabilities')}
               className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
             >
-              Capabilities
+              {t('nav.capabilities')}
             </button>
             <button
               onClick={() => scrollToSection('use-cases')}
               className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
             >
-              Use Cases
+              {t('nav.useCases')}
             </button>
 
             <button
               onClick={() => scrollToSection('tech-partners')}
               className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
             >
-              Technology
+              {t('nav.technology')}
             </button>
             <button
               onClick={() => scrollToSection('faq')}
               className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
             >
-              FAQ
+              {t('nav.faq')}
             </button>
             <button
               onClick={() => scrollToSection('about')}
               className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
             >
-              About
+              {t('nav.about')}
             </button>
             <button
               onClick={() => scrollToSection('contact')}
               className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
             >
-              Contact
+              {t('nav.contact')}
             </button>
+            
+            {/* Mobile Language Toggle */}
+            <div className="pt-4 border-t border-white/10">
+              <LanguageToggle />
+            </div>
           </div>
         </motion.div>
       )}
