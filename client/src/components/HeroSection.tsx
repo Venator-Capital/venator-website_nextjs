@@ -123,13 +123,13 @@ export default function HeroSection() {
         ))}
       </div>
 
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
+      <div className="relative z-10 text-center max-w-5xl mx-auto px-8 sm:px-12 lg:px-16">
         {/* Company Logo */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="mb-16 mt-16"
+          className="mb-12 mt-8"
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           onHoverStart={() => controls.set({ rotate: 0 })}
@@ -160,9 +160,20 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-base md:text-lg text-gray-300 mb-12 leading-relaxed max-w-3xl mx-auto"
+          className="text-base md:text-lg text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto"
         >
           We architect cutting-edge AI solutions — from machine learning applications to automation frameworks.
+        </motion.p>
+
+        {/* CTA Description */}
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="text-sm text-gray-400 mb-8 max-w-2xl mx-auto"
+        >
+          No matter where you are in your AI journey, we'll guide you from roadmap to production. 
+          Our AI specialists will reach out within 24 hours.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -174,19 +185,19 @@ export default function HeroSection() {
         >
           <motion.button
             onClick={() => scrollToSection('capabilities')}
-            className="inline-block px-8 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-blue"
+            className="inline-block px-8 py-4 bg-accent-gold text-primary-black font-bold rounded-lg hover:bg-[#e6c600] hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-gold focus:ring-offset-2 focus:ring-offset-black"
             whileTap={{ scale: 0.95 }}
-            aria-label="Discover our AI solutions"
+            aria-label="See our AI use case portfolio"
           >
-            Discover Our AI Solutions
+            See Our AI Use Case Portfolio
           </motion.button>
           <motion.button
             onClick={() => scrollToSection('contact')}
-            className="inline-block px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-black hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white"
+            className="inline-block px-8 py-4 border-2 border-accent-gold text-accent-gold font-bold rounded-lg hover:bg-accent-gold hover:text-primary-black hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-gold focus:ring-offset-2 focus:ring-offset-black"
             whileTap={{ scale: 0.95 }}
-            aria-label="Contact our team"
+            aria-label="Request a free AI feasibility assessment"
           >
-            Contact Our Team
+            Request Free AI Consultation
           </motion.button>
         </motion.div>
       </div>

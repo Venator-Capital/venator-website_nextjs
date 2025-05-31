@@ -1,26 +1,28 @@
+import React from "react";
 import { motion } from "framer-motion";
+import { Brain, BarChart3, Globe, Building2 } from "lucide-react";
 
 export default function CapabilitiesSection() {
   const capabilities = [
     {
       title: 'AI & Machine Learning Solutions',
       description: 'Design, develop, and deploy custom AI/ML applications tailored to your business needs.',
-      icon: '🤖',
+      icon: Brain,
     },
     {
       title: 'Data Analytics & Automation',
       description: 'Collect, analyze, and automate data workflows using advanced analytics and AI-driven processes.',
-      icon: '📊',
+      icon: BarChart3,
     },
     {
       title: 'Digital Media & Web Platforms',
       description: 'Create and manage scalable web and media platforms enhanced with AI functionalities.',
-      icon: '💻',
+      icon: Globe,
     },
     {
       title: 'Enterprise AI Integration & Consulting',
       description: 'Architect and implement enterprise-grade AI systems, and provide strategic consulting.',
-      icon: '🏗️',
+      icon: Building2,
     },
   ];
 
@@ -83,11 +85,13 @@ export default function CapabilitiesSection() {
               <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/5 to-accent-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               
               <div className="relative z-10 text-center">
-                <div className="text-5xl mb-6">{capability.icon}</div>
-                <h3 className="text-2xl font-bold mb-4 text-white">
+                <div className="mb-6 flex justify-center">
+                  {React.createElement(capability.icon, { className: "w-12 h-12 text-accent-gold" })}
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">
                   {capability.title}
                 </h3>
-                <p className="text-white/70 leading-relaxed text-lg">
+                <p className="text-white/70 leading-relaxed text-base">
                   {capability.description}
                 </p>
               </div>
