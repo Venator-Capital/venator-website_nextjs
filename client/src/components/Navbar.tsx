@@ -136,19 +136,37 @@ export default function Navbar() {
           <div className="px-6 py-4 space-y-4">
             <button
               onClick={() => scrollToSection('capabilities')}
-              className="block text-silver-gray hover:text-white transition-colors"
+              className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
             >
               Capabilities
             </button>
             <button
+              onClick={() => scrollToSection('use-cases')}
+              className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
+            >
+              Use Cases
+            </button>
+            <button
+              onClick={() => scrollToSection('tech-stack')}
+              className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
+            >
+              Tech Stack
+            </button>
+            <button
               onClick={() => scrollToSection('about')}
-              className="block text-silver-gray hover:text-white transition-colors"
+              className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
             >
               About
             </button>
             <button
+              onClick={() => scrollToSection('faq')}
+              className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
+            >
+              FAQ
+            </button>
+            <button
               onClick={() => scrollToSection('contact')}
-              className="block text-silver-gray hover:text-white transition-colors"
+              className="block text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
             >
               Contact
             </button>

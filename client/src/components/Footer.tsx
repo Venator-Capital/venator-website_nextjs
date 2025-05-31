@@ -29,7 +29,7 @@ export default function Footer() {
           </div>
 
           {/* Footer Navigation */}
-          <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
+          <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 text-sm">
             <button
               onClick={() => scrollToSection('capabilities')}
               className="text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
@@ -37,10 +37,28 @@ export default function Footer() {
               Capabilities
             </button>
             <button
+              onClick={() => scrollToSection('use-cases')}
+              className="text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
+            >
+              Use Cases
+            </button>
+            <button
+              onClick={() => scrollToSection('tech-stack')}
+              className="text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
+            >
+              Tech Stack
+            </button>
+            <button
               onClick={() => scrollToSection('about')}
               className="text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
             >
               About
+            </button>
+            <button
+              onClick={() => scrollToSection('faq')}
+              className="text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
+            >
+              FAQ
             </button>
             <button
               onClick={() => scrollToSection('contact')}
