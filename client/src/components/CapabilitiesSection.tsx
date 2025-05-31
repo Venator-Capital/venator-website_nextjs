@@ -44,8 +44,8 @@ export default function CapabilitiesSection() {
   };
 
   return (
-    <section id="capabilities" role="main" className="py-24 md:py-32 bg-deep-charcoal">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="capabilities" role="main" className="py-24 md:py-32 bg-primary-black">
+      <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,10 +53,10 @@ export default function CapabilitiesSection() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-6 leading-snug">
             Core <span className="text-accent-gold">Capabilities</span>
           </h2>
-          <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto">
+          <p className="text-base md:text-lg font-normal leading-relaxed text-gray-300 max-w-3xl mx-auto">
             Four AI-focused domains that drive our <span className="text-accent-blue">technological excellence</span>
           </p>
         </motion.div>
@@ -66,7 +66,7 @@ export default function CapabilitiesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
         >
           {capabilities.map((capability, index) => (
             <motion.div
@@ -77,7 +77,7 @@ export default function CapabilitiesSection() {
                 boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="project-card rounded-2xl p-8 cursor-pointer relative overflow-hidden group"
+              className="project-card rounded-2xl p-4 md:p-6 cursor-pointer relative overflow-hidden group"
             >
               {/* Animated gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/5 to-accent-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

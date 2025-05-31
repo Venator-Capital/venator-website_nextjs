@@ -12,14 +12,14 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-deep-charcoal">
-      <div className="max-w-4xl mx-auto px-6 text-center">
+    <section id="contact" className="py-24 md:py-32 bg-primary-black border-t border-gray-800">
+      <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-6xl font-bold mb-12"
+          className="text-3xl md:text-4xl font-semibold mb-12 leading-snug"
         >
           Get in <span className="text-accent-gold">Touch</span>
         </motion.h2>
@@ -29,7 +29,7 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-xl md:text-2xl text-white/90 mb-16 leading-relaxed"
+          className="text-base md:text-lg font-normal leading-relaxed text-gray-300 mb-16"
         >
           We're currently exploring new <span className="text-accent-blue font-semibold">partnerships, collaborators, and joint ventures</span>.
           <br />
