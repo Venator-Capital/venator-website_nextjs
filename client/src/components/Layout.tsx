@@ -15,7 +15,7 @@ export default function Layout({ children }: LayoutProps) {
   ) : (
     <div className="min-h-screen bg-primary-black text-white">
       <Navbar />
-      <main>{children}</main>
+      <main id="main" role="main">{children}</main>
       <Footer />
     </div>
   );
