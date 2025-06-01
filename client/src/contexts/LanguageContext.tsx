@@ -72,8 +72,10 @@ const translations = {
     'about.partnership': 'Venator Capital LLC is dedicated to becoming your long-term AI partner.',
 
     // Contact Section
-    'contact.title': 'Contact',
-    'contact.subtitle': 'Ready to transform your business with AI? Let\'s start the conversation.',
+    'contact.title': 'Get in Touch',
+    'contact.subtitle': 'We\'re currently exploring new partnerships, collaborators, and joint ventures. Feel free to reach out — our operations are always in motion.',
+    'contact.sendEmail': 'Send Email',
+    'contact.openForm': 'Open Contact Form',
 
     // Common
     'common.getInTouch': 'Get in Touch',
@@ -141,7 +143,9 @@ const translations = {
 
     // Contact Section
     'contact.title': 'お問い合わせ',
-    'contact.subtitle': 'AIでビジネスを変革する準備はできていますか？会話を始めましょう。',
+    'contact.subtitle': '現在、新しいパートナーシップ、コラボレーター、ジョイントベンチャーを模索しています。お気軽にお声がけください。私たちの事業は常に動いています。',
+    'contact.sendEmail': 'メールを送信',
+    'contact.openForm': 'お問い合わせフォーム',
 
     // Common
     'common.getInTouch': 'お問い合わせ',

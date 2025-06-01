@@ -1,0 +1,330 @@
+Instruction Document: Configure “Send Email” and “Open Contact Form” Links
+Below is a detailed set of instructions you can give to the AI (or developer) to implement in the Replit/Next.js codebase. It ensures that:
+
+The “Send Email” link opens the user’s email client addressed to info@venator-capital.net.
+
+The “Open Contact Form” link opens the Google Form at https://forms.gle/iBogvoWnzHyXYQ2X8.
+
+Both links appear in the appropriate places (header, footer, and Contact section) and function correctly.
+
+Use this document as a single deliverable to hand off to your AI assistant or front-end developer.
+
+1. Overview of Required Changes
+“Send Email” Link
+
+Wherever the site currently displays “Send Email,” update the anchor to use mailto:info@venator-capital.net.
+
+Ensure it opens the user’s default email client in a new tab (or window).
+
+“Open Contact Form” Link
+
+Wherever the site currently has a “Contact” button or link that should open the form, point it to the Google Form URL:
+
+arduino
+コピーする
+編集する
+https://forms.gle/iBogvoWnzHyXYQ2X8
+Ensure it opens in a new tab (target=_blank + rel="noopener noreferrer").
+
+Placement
+
+In the header (if there is a “Contact” menu item), change that link to open the Google Form.
+
+In the footer, add two distinct links/buttons:
+
+“Send Email” → mailto:info@venator-capital.net
+
+“Open Contact Form” → Google Form URL
+
+In any dedicated Contact section on the homepage (e.g., a “Get in Touch” CTA button), update or add two buttons:
+
+Send Email (mailto)
+
+Open Contact Form (Google Form)
+
+2. Code Locations & Example Snippets
+Below are the typical file paths and code snippets to change. Adjust paths if your project structure differs.
+
+2.1 Header Component
+File path (example):
+
+css
+コピーする
+編集する
+/client/src/components/Header.jsx
+Current (example) JSX:
+
+jsx
+コピーする
+編集する
+<nav className="flex items-center justify-between px-6 py-4">
+  <Link href="/">
+    <a className="text-2xl font-bold text-white">Venator Capital</a>
+  </Link>
+  <div className="hidden md:flex space-x-8">
+    <Link href="/use-cases"><a className="text-gray-300 hover:text-white">Use Cases</a></Link>
+    <Link href="/capabilities"><a className="text-gray-300 hover:text-white">Capabilities</a></Link>
+    <Link href="/technology"><a className="text-gray-300 hover:text-white">Technology</a></Link>
+    <Link href="/about"><a className="text-gray-300 hover:text-white">About</a></Link>
+    <Link href="/contact"><a className="text-gray-300 hover:text-white">Contact</a></Link>
+  </div>
+  {/* ...mobile menu toggle code... */}
+</nav>
+Changes to make:
+
+Remove or rename any internal /contact page link—it should open the Google Form instead.
+
+Replace:
+
+jsx
+コピーする
+編集する
+<Link href="/contact">
+  <a className="text-gray-300 hover:text-white">Contact</a>
+</Link>
+with:
+
+jsx
+コピーする
+編集する
+<a
+  href="https://forms.gle/iBogvoWnzHyXYQ2X8"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-gray-300 hover:text-white"
+>
+  Contact (Form)
+</a>
+If you want to keep a separate “Send Email” icon/link in the header, add:
+
+jsx
+コピーする
+編集する
+<a
+  href="mailto:info@venator-capital.net"
+  className="ml-6 text-gray-300 hover:text-white"
+  aria-label="Send us an email"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
+    viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+      d="M16 12H8m0 0l4-4m-4 4l4 4" />
+  </svg>
+</a>
+– Or simply:
+
+jsx
+コピーする
+編集する
+<a
+  href="mailto:info@venator-capital.net"
+  className="text-gray-300 hover:text-white"
+>
+  Send Email
+</a>
+2.2 Footer Component
+File path (example):
+
+css
+コピーする
+編集する
+/client/src/components/Footer.jsx
+Current (example) JSX:
+
+jsx
+コピーする
+編集する
+<footer className="bg-[#0F0F0F] text-gray-400 py-12">
+  <div className="max-w-6xl mx-auto px-6 grid grid-cols-3 gap-8">
+    <div>
+      <!-- Company Info... -->
+    </div>
+    <div>
+      <!-- Quick Links... -->
+    </div>
+    <div>
+      <!-- Social icons... -->
+    </div>
+  </div>
+  <div className="mt-8 text-center text-gray-500 text-sm">
+    &copy; {new Date().getFullYear()} Venator Capital LLC. All Rights Reserved.
+  </div>
+</footer>
+Changes to make:
+
+Inside the third column (or wherever you prefer), add two buttons or links:
+
+jsx
+コピーする
+編集する
+<div className="mt-4 space-y-2">
+  <a
+    href="mailto:info@venator-capital.net"
+    className="inline-block bg-[#FFD600] text-[#0F0F0F] px-4 py-2 rounded-lg font-semibold hover:bg-[#e6c600] transition-colors duration-150"
+  >
+    Send Email
+  </a>
+  <br />
+  <a
+    href="https://forms.gle/iBogvoWnzHyXYQ2X8"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block bg-[#FFD600] text-[#0F0F0F] px-4 py-2 rounded-lg font-semibold hover:bg-[#e6c600] transition-colors duration-150"
+  >
+    Open Contact Form
+  </a>
+</div>
+Ensure both are visually distinct and styled consistently with your design system (Tailwind CSS classes above are examples).
+
+2.3 Dedicated “Contact” Section (Homepage or Contact Page)
+If the site has a specific section on the homepage or a Contact page with CTA buttons, update those as follows.
+
+File path (example):
+
+swift
+コピーする
+編集する
+/client/src/pages/index.jsx      (if homepage)
+OR
+/client/src/components/ContactSection.jsx
+Current (example) JSX:
+
+jsx
+コピーする
+編集する
+<section id="contact" className="py-16 bg-[#1A1A1A] text-gray-300">
+  <div className="max-w-4xl mx-auto px-6 text-center">
+    <h2 className="text-3xl font-semibold text-white mb-4">Get in Touch</h2>
+    <p className="mb-8">
+      Questions? Comments? Send us an email or fill out our contact form.
+    </p>
+    <div className="space-x-4">
+      <button className="bg-[#FFD600] text-[#0F0F0F] px-6 py-3 rounded-lg font-semibold hover:bg-[#e6c600]">Send Email</button>
+      <button className="bg-[#FFD600] text-[#0F0F0F] px-6 py-3 rounded-lg font-semibold hover:bg-[#e6c600]">Contact Form</button>
+    </div>
+  </div>
+</section>
+Changes to make:
+
+Replace the “Send Email” button so it becomes a link:
+
+jsx
+コピーする
+編集する
+<a
+  href="mailto:info@venator-capital.net"
+  className="inline-block bg-[#FFD600] text-[#0F0F0F] px-6 py-3 rounded-lg font-semibold hover:bg-[#e6c600] transition-colors duration-150"
+>
+  Send Email
+</a>
+Replace the “Contact Form” button so it opens the Google Form:
+
+jsx
+コピーする
+編集する
+<a
+  href="https://forms.gle/iBogvoWnzHyXYQ2X8"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block bg-[#FFD600] text-[#0F0F0F] px-6 py-3 rounded-lg font-semibold hover:bg-[#e6c600] transition-colors duration-150"
+>
+  Open Contact Form
+</a>
+Final JSX for the Contact section:
+
+jsx
+コピーする
+編集する
+<section id="contact" className="py-16 bg-[#1A1A1A] text-gray-300">
+  <div className="max-w-4xl mx-auto px-6 text-center">
+    <h2 className="text-3xl font-semibold text-white mb-4">Get in Touch</h2>
+    <p className="mb-8">
+      Questions? Comments? Send us an email or fill out our contact form.
+    </p>
+    <div className="space-x-4 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0">
+      <a
+        href="mailto:info@venator-capital.net"
+        className="inline-block bg-[#FFD600] text-[#0F0F0F] px-6 py-3 rounded-lg font-semibold hover:bg-[#e6c600] transition-colors duration-150"
+      >
+        Send Email
+      </a>
+      <a
+        href="https://forms.gle/iBogvoWnzHyXYQ2X8"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block bg-[#FFD600] text-[#0F0F0F] px-6 py-3 rounded-lg font-semibold hover:bg-[#e6c600] transition-colors duration-150"
+      >
+        Open Contact Form
+      </a>
+    </div>
+  </div>
+</section>
+3. Accessibility & Best Practices
+rel="noopener noreferrer" on External Links
+
+Always include rel="noopener noreferrer" whenever target="_blank" is used to prevent potential security issues and improve performance.
+
+aria-label for Icons
+
+If you use an icon (e.g., envelope icon) instead of text for “Send Email,” add aria-label="Send email to info@venator-capital.net" so screen readers can announce it.
+
+Focus States
+
+Ensure that both “Send Email” and “Open Contact Form” links/buttons show a visible focus outline for keyboard navigation:
+
+css
+コピーする
+編集する
+:focus {
+  outline: 2px solid #FFD600;
+  outline-offset: 2px;
+}
+In Tailwind, you can use focus:outline-none focus:ring-2 focus:ring-[#FFD600] classes on <a> or <button>.
+
+Consistent Styling
+
+Use the same Tailwind utility classes for all buttons/links to maintain consistent hover, active, and focus styles throughout the site.
+
+4. Testing & Verification
+Manual Verification (Before Deploying)
+
+Click each “Send Email” link/button:
+
+A new email compose window should open with “To:” set to info@venator-capital.net.
+
+Click each “Open Contact Form” link/button:
+
+A new browser tab should open to https://forms.gle/iBogvoWnzHyXYQ2X8.
+
+Verify on both desktop and mobile viewports that clicking behaves correctly (e.g., does not try to navigate within the SPA).
+
+Test keyboard navigation: Tab through to the links/buttons and confirm you see a focus outline.
+
+Cross-Browser Testing
+
+Chrome, Firefox, Safari (macOS), Edge: ensure both links function identically.
+
+Safari on iOS / Chrome on Android: confirm “Send Email” opens the mail app, and “Open Contact Form” opens the Google Form in the device browser.
+
+Accessibility Check
+
+Use a screen reader (VoiceOver on macOS/iOS or NVDA on Windows) to confirm the link labels (“Send Email,” “Open Contact Form”) are read aloud properly.
+
+Ensure contrast ratio of button text vs. background is ≥ 4.5:1.
+
+Lighthouse or Axe Review
+
+Run an accessibility audit in Chrome DevTools (Audit → Accessibility) to catch any missing aria- attributes or focus issues.
+
+Run a performance/SEO audit to ensure no new issues were introduced.
+
+5. Summary for the AI Assistant
+When you hand this document to your AI (or developer), it should be able to:
+
+Locate every instance of “Send Email” text or icon in the codebase and replace it with an <a href="mailto:info@venator-capital.net">Send Email</a> link.
+
+Locate every “Contact” button/link (header, footer, Contact section) and update it to point to https://forms.gle/iBogvoWnzHyXYQ2X8, opening in a new tab.
+
+Ensure consistency of styling (Tailwind classes) and accessibility (aria-label, keyboard focus, contrast).
+
+Test everything manually after implementing.

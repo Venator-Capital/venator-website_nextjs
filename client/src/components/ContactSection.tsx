@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function ContactSection() {
+  const { t } = useLanguage();
   const handleEmailClick = () => {
-    window.location.href = "mailto:contact@venator.capital";
+    window.location.href = "mailto:info@venator-capital.net";
   };
 
   const handleContactFormClick = () => {
-    // This would open an external contact form (Notion or Google Form)
-    // For now, it's a placeholder
-    alert("Contact form functionality will be implemented with external service integration.");
+    window.open("https://forms.gle/iBogvoWnzHyXYQ2X8", "_blank", "noopener,noreferrer");
   };
 
   return (

@@ -89,13 +89,15 @@ export default function Navbar() {
           >
             {t('nav.about')}
           </button>
-          <button
-            onClick={() => scrollToSection('contact')}
+          <a
+            href="https://forms.gle/iBogvoWnzHyXYQ2X8"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-silver-gray hover:text-white hover:underline transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
-            aria-label="Navigate to Contact section"
+            aria-label="Open contact form"
           >
             {t('nav.contact')}
-          </button>
+          </a>
           
           {/* Language Toggle */}
           <LanguageToggle />
@@ -155,8 +157,7 @@ export default function Navbar() {
                 { key: 'nav.useCases', section: 'use-cases' },
                 { key: 'nav.technology', section: 'tech-partners' },
                 { key: 'nav.faq', section: 'faq' },
-                { key: 'nav.about', section: 'about' },
-                { key: 'nav.contact', section: 'contact' }
+                { key: 'nav.about', section: 'about' }
               ].map((item) => (
                 <button
                   key={item.key}
@@ -169,6 +170,17 @@ export default function Navbar() {
                   {t(item.key)}
                 </button>
               ))}
+              
+              {/* Contact Form Link for Mobile */}
+              <a
+                href="https://forms.gle/iBogvoWnzHyXYQ2X8"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="w-full text-left px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-gold block"
+              >
+                {t('nav.contact')}
+              </a>
             </div>
             
             {/* Mobile Language Toggle */}
