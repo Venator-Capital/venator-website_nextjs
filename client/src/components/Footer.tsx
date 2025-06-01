@@ -28,49 +28,32 @@ export default function Footer() {
             <span className="text-white/70 text-lg">© 2025 Venator Capital LLC. All rights reserved.</span>
           </div>
 
-          {/* Footer Navigation and Contact Links */}
-          <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 text-sm">
-            {/* Navigation Links */}
-            <div className="flex flex-wrap justify-center md:justify-end items-center space-x-4">
-              <button
-                onClick={() => scrollToSection('capabilities')}
-                className="text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
-              >
-                Capabilities
-              </button>
-              <button
-                onClick={() => scrollToSection('use-cases')}
-                className="text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
-              >
-                Use Cases
-              </button>
-              <button
-                onClick={() => scrollToSection('about')}
-                className="text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
-              >
-                About
-              </button>
-            </div>
-            
-            {/* Contact Actions */}
-            <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-3">
-              <a
-                href="mailto:info@venator-capital.net"
-                className="inline-block bg-accent-gold text-primary-black px-4 py-2 rounded-lg font-semibold hover:bg-accent-gold/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent-gold text-sm"
-                aria-label="Send email to info@venator-capital.net"
-              >
-                Send Email
-              </a>
-              <a
-                href="https://forms.gle/iBogvoWnzHyXYQ2X8"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block border border-accent-gold text-accent-gold px-4 py-2 rounded-lg font-semibold hover:bg-accent-gold hover:text-primary-black transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent-gold text-sm"
-                aria-label="Open contact form in new tab"
-              >
-                Contact Form
-              </a>
-            </div>
+          {/* Footer Navigation */}
+          <div className="flex flex-wrap justify-center md:justify-end items-center space-x-6 text-sm">
+            <button
+              onClick={() => scrollToSection('capabilities')}
+              className="text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
+            >
+              Capabilities
+            </button>
+            <button
+              onClick={() => scrollToSection('use-cases')}
+              className="text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
+            >
+              Use Cases
+            </button>
+            <button
+              onClick={() => scrollToSection('about')}
+              className="text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
+            >
+              About
+            </button>
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="text-silver-gray hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white py-2"
+            >
+              Contact
+            </button>
           </div>
         </motion.div>
       </div>
