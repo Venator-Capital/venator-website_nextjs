@@ -1,41 +1,38 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ShoppingCart, Factory, MessageSquare, Zap, TrendingUp } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { Brain, Database, Workflow, TrendingUp, Settings } from "lucide-react";
 
 export default function UseCasesSection() {
-  const { t } = useLanguage();
-  
   const useCases = [
     {
-      titleKey: "useCases.retail.title",
-      descriptionKey: "useCases.retail.description",
-      technology: "TensorFlow + BigQuery + Looker",
-      icon: ShoppingCart,
+      title: "Custom AI System Design",
+      description: "Design and develop custom AI systems tailored to solve enterprise-specific challenges from requirements to production deployment.",
+      technology: "Python + TensorFlow + AWS SageMaker",
+      icon: Brain,
     },
     {
-      titleKey: "useCases.manufacturing.title",
-      descriptionKey: "useCases.manufacturing.description",
-      technology: "OpenCV + EdgeTPU + Cloud Vision",
-      icon: Factory,
+      title: "AI Integration into Legacy Systems",
+      description: "Seamlessly integrate AI models into existing on-premise and cloud systems to enhance business processes.",
+      technology: "Docker + AWS EKS + Oracle DB",
+      icon: Database,
     },
     {
-      titleKey: "useCases.support.title",
-      descriptionKey: "useCases.support.description",
-      technology: "BERT + Elasticsearch + Slack API",
-      icon: MessageSquare,
+      title: "AI-Driven Automated Workflows",
+      description: "Build intelligent automation workflows using n8n and Zapier with AI inference to streamline business operations.",
+      technology: "n8n + Google Cloud Functions + Python",
+      icon: Workflow,
     },
     {
-      titleKey: "useCases.energy.title",
-      descriptionKey: "useCases.energy.description",
-      technology: "Prophet + InfluxDB + Grafana",
-      icon: Zap,
-    },
-    {
-      titleKey: "useCases.finance.title",
-      descriptionKey: "useCases.finance.description",
-      technology: "MLflow + Kubernetes + PostgreSQL",
+      title: "Predictive Analytics & Forecasting",
+      description: "Implement time-series forecasting models for demand prediction and failure detection to support strategic decisions.",
+      technology: "LSTM + Grafana + Prometheus",
       icon: TrendingUp,
+    },
+    {
+      title: "MLOps & Model Deployment",
+      description: "Build robust MLOps pipelines for continuous model deployment, monitoring, and lifecycle management.",
+      technology: "GitHub Actions + Kubernetes + Argo CD",
+      icon: Settings,
     },
   ];
 
@@ -69,10 +66,10 @@ export default function UseCasesSection() {
           className="text-center mb-20"
         >
           <h2 className="text-3xl md:text-4xl font-semibold mb-6 leading-snug">
-            {t('useCases.title')}
+            Use <span className="text-accent-gold">Cases</span>
           </h2>
           <p className="text-base md:text-lg font-normal leading-relaxed text-gray-300 max-w-3xl mx-auto">
-            {t('useCases.subtitle')}
+            Real-world applications demonstrating how our AI solutions solve complex business challenges
           </p>
         </motion.div>
 
@@ -85,7 +82,7 @@ export default function UseCasesSection() {
         >
           {useCases.map((useCase, index) => (
             <motion.div
-              key={useCase.titleKey}
+              key={useCase.title}
               variants={itemVariants}
               whileHover={{ 
                 scale: 1.03,
@@ -94,7 +91,7 @@ export default function UseCasesSection() {
               whileTap={{ scale: 0.95 }}
               className="bg-deep-charcoal rounded-2xl p-6 cursor-pointer relative overflow-hidden group border border-gray-800 w-full max-w-xs"
               onClick={() => {
-                if (useCase.titleKey === "useCases.support.title") {
+                if (useCase.title === "AI-Driven Automated Workflows") {
                   window.location.href = "/ai-workflows";
                 }
               }}
@@ -109,10 +106,10 @@ export default function UseCasesSection() {
                   </div>
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-white">
-                  {t(useCase.titleKey)}
+                  {useCase.title}
                 </h3>
                 <p className="text-gray-300 leading-relaxed mb-4 text-sm">
-                  {t(useCase.descriptionKey)}
+                  {useCase.description}
                 </p>
                 <div className="inline-block px-3 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-xs font-medium">
                   {useCase.technology}
