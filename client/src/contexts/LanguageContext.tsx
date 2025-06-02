@@ -172,11 +172,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ja')) {
       setLanguage(savedLanguage);
     } else {
-      // Auto-detect browser language
-      const browserLang = navigator.language.toLowerCase();
-      if (browserLang.startsWith('ja')) {
-        setLanguage('ja');
-      }
+      // Default to English for international visitors
+      setLanguage('en');
     }
   }, []);
 

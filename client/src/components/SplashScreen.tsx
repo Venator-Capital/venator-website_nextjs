@@ -12,180 +12,140 @@ export default function SplashScreen({ onFinish }: SplashScreenProps) {
   const [useStaticLogo, setUseStaticLogo] = useState(false);
 
   useEffect(() => {
-    // Check if we're on mobile
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    
-    if (isMobile) {
-      // On mobile, try video first but fallback quickly
-      const video = videoRef.current;
-      if (!video) {
-        setUseStaticLogo(true);
-        return;
-      }
-
-      const playVideo = async () => {
-        try {
-          video.currentTime = 0;
-          await video.play();
-          setVideoPlaying(true);
-          setShowTapPrompt(false);
-        } catch (error) {
-          console.log('Video autoplay blocked on mobile, showing tap prompt');
-          setShowTapPrompt(true);
-        }
-      };
-
-      playVideo();
-
-      // Quick fallback to static logo on mobile if video doesn't work
-      const mobileTimer = setTimeout(() => {
-        if (!videoPlaying) {
-          setShowTapPrompt(true);
-        }
-      }, 800);
-
-      const fallbackTimer = setTimeout(() => {
-        if (!videoPlaying) {
-          setUseStaticLogo(true);
-          setShowVideo(false);
-          setTimeout(onFinish, 2500);
-        }
-      }, 3000);
-
-      return () => {
-        clearTimeout(mobileTimer);
-        clearTimeout(fallbackTimer);
-      };
-    } else {
-      // Desktop - try video normally
-      const video = videoRef.current;
-      if (!video) return;
-
-      const playVideo = async () => {
-        try {
-          video.currentTime = 0;
-          await video.play();
-          setVideoPlaying(true);
-        } catch (error) {
-          console.log('Video autoplay failed on desktop');
-          setUseStaticLogo(true);
-          setShowVideo(false);
-        }
-      };
-
-      playVideo();
-
-      const fallbackTimer = setTimeout(onFinish, 4000);
-      return () => clearTimeout(fallbackTimer);
-    }
-  }, [onFinish, videoPlaying]);
-
-  const handleUserInteraction = async (e: React.MouseEvent | React.TouchEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    
     const video = videoRef.current;
-    if (video && !videoPlaying) {
+    
+    if (!video) {
+      // Fallback to static logo if video element not available
+      setUseStaticLogo(true);
+      setTimeout(onFinish, 2000);
+      return;
+    }
+
+    const handleCanPlay = () => {
+      playVideo();
+    };
+
+    const handleEnded = () => {
+      setShowVideo(false);
+      setTimeout(onFinish, 500);
+    };
+
+    const handleError = () => {
+      console.log("Video load failed, using static logo");
+      setUseStaticLogo(true);
+      setTimeout(onFinish, 2000);
+    };
+
+    const playVideo = async () => {
       try {
-        // Force load the video first
-        video.load();
         video.currentTime = 0;
-        
-        // Wait a bit for the video to be ready
-        await new Promise(resolve => setTimeout(resolve, 100));
-        
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-          await playPromise;
-          setVideoPlaying(true);
-          setShowTapPrompt(false);
-          console.log('Video started playing after user interaction');
-        }
-      } catch (error) {
-        console.log('Manual play failed:', error);
-        // Instead of going to main site, try alternative approach
+        await video.play();
+        setVideoPlaying(true);
         setShowTapPrompt(false);
-        // Show static logo animation instead
+      } catch (error) {
+        console.log('Video autoplay blocked, showing tap prompt');
+        setShowTapPrompt(true);
+      }
+    };
+
+    // Add event listeners
+    video.addEventListener('canplay', handleCanPlay);
+    video.addEventListener('ended', handleEnded);
+    video.addEventListener('error', handleError);
+
+    // Load video
+    video.load();
+
+    // Fallback timer - if video doesn't start within 3 seconds
+    const fallbackTimer = setTimeout(() => {
+      if (!videoPlaying) {
+        setUseStaticLogo(true);
         setTimeout(onFinish, 2000);
       }
-    } else if (showTapPrompt) {
-      // If prompt is showing but video is supposed to be playing, just dismiss
+    }, 3000);
+
+    return () => {
+      video.removeEventListener('canplay', handleCanPlay);
+      video.removeEventListener('ended', handleEnded);
+      video.removeEventListener('error', handleError);
+      clearTimeout(fallbackTimer);
+    };
+  }, [onFinish, videoPlaying]);
+
+  const handleTapToPlay = async () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    try {
+      await video.play();
+      setVideoPlaying(true);
+      setShowTapPrompt(false);
+    } catch (error) {
+      // If still can't play, use static logo
+      setUseStaticLogo(true);
       setShowTapPrompt(false);
       setTimeout(onFinish, 2000);
     }
   };
 
-  // Static logo animation as fallback for mobile
+  const handleSkip = () => {
+    setShowTapPrompt(false);
+    onFinish();
+  };
+
   if (useStaticLogo) {
     return (
-      <div className="fixed inset-0 bg-black flex items-center justify-center z-[9999]">
-        <div className="text-center">
-          <div className="w-32 h-32 mx-auto mb-8 relative">
-            <div className="absolute inset-0 border-4 border-accent-gold rounded-full animate-spin opacity-20"></div>
-            <div className="absolute inset-2 border-2 border-accent-blue rounded-full animate-pulse"></div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-accent-gold to-accent-blue rounded-lg animate-pulse"></div>
-            </div>
-          </div>
-          <h1 className="text-2xl md:text-3xl font-bold text-white mb-2 animate-fade-in">
-            Venator Capital
-          </h1>
-          <p className="text-gray-400 animate-fade-in-delay">AI Solutions</p>
+      <div className="fixed inset-0 bg-primary-black flex items-center justify-center z-50">
+        <div className="flex flex-col items-center">
+          <img 
+            src="/Cropped_black_logo-removebg-preview.png" 
+            alt="Venator Capital Logo"
+            className="w-64 h-64 object-contain animate-pulse"
+          />
+          <div className="mt-8 w-16 h-1 bg-accent-gold animate-pulse"></div>
         </div>
       </div>
     );
   }
 
   return (
-    <div 
-      className="fixed inset-0 bg-black flex items-center justify-center z-[9999] cursor-pointer" 
-      onClick={handleUserInteraction}
-      onTouchStart={handleUserInteraction}
-    >
-      <div className="relative">
-        {showVideo && (
-          <video
-            ref={videoRef}
-            src="/splash.mp4"
-            poster="/splash-poster.png"
-            preload="auto"
-            autoPlay
-            muted
-            playsInline
-            controls={false}
-            webkit-playsinline="true"
-            x5-playsinline="true"
-            x-webkit-airplay="allow"
-            className="
-              max-w-full
-              w-[480px] sm:w-[640px] md:w-[800px] lg:w-[960px]
-              h-auto object-contain
-            "
-            onEnded={onFinish}
-            onPlay={() => setVideoPlaying(true)}
-            onLoadedData={() => {
-              const video = videoRef.current;
-              if (video) {
-                video.play().catch(() => setShowTapPrompt(true));
-              }
-            }}
-          >
-            <source src="/splash.webm" type="video/webm" />
-            <source src="/splash.mp4" type="video/mp4" />
-            Your browser does not support HTML5 video.
-          </video>
-        )}
-        
-        {showTapPrompt && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-            <div className="text-center text-white p-8 rounded-lg bg-white/10">
-              <div className="text-4xl mb-4 animate-pulse">👆</div>
-              <p className="text-lg font-medium mb-2">Tap to start</p>
-              <p className="text-sm opacity-75">Touch anywhere to begin the experience</p>
-            </div>
+    <div className="fixed inset-0 bg-primary-black flex items-center justify-center z-50">
+      {showVideo && (
+        <video
+          ref={videoRef}
+          className="w-full h-full object-cover"
+          muted
+          playsInline
+          preload="auto"
+        >
+          <source src="/logo-animation.mp4" type="video/mp4" />
+        </video>
+      )}
+
+      {showTapPrompt && (
+        <div className="absolute inset-0 flex items-center justify-center bg-primary-black/80">
+          <div className="text-center">
+            <img 
+              src="/Cropped_black_logo-removebg-preview.png" 
+              alt="Venator Capital Logo"
+              className="w-32 h-32 mx-auto mb-8 object-contain"
+            />
+            <button
+              onClick={handleTapToPlay}
+              className="bg-accent-gold text-primary-black px-8 py-3 rounded-lg font-semibold mb-4 hover:bg-accent-gold/90 transition-colors"
+            >
+              Tap to Play
+            </button>
+            <br />
+            <button
+              onClick={handleSkip}
+              className="text-white/70 hover:text-white text-sm underline"
+            >
+              Skip Animation
+            </button>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
