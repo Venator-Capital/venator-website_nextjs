@@ -118,7 +118,7 @@ export default function SplashScreen({ onFinish }: SplashScreenProps) {
           playsInline
           preload="auto"
         >
-          <source src="/logo-animation.mp4" type="video/mp4" />
+          <source src="/splash.mp4" type="video/mp4" />
         </video>
       )}
 
