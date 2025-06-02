@@ -243,3 +243,15 @@
 .animate-fade-in-delay {
   animation: fadeIn 1.5s ease-in-out 0.5s both;
 }
+
+/* Splash Screen Animations */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

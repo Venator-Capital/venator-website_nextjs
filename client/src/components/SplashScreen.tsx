@@ -6,45 +6,60 @@ interface SplashScreenProps {
 
 export default function SplashScreen({ onFinish }: SplashScreenProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [phase, setPhase] = useState<'entrance' | 'video' | 'fallback'>('entrance');
+  const [phase, setPhase] = useState<'entrance' | 'video' | 'animation' | 'fallback'>('entrance');
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoFailed, setVideoFailed] = useState(false);
 
-  // Preload video when component mounts
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
+    let timeoutId: NodeJS.Timeout;
+
     const handleCanPlay = () => {
       setVideoLoaded(true);
+      clearTimeout(timeoutId);
     };
 
     const handleError = () => {
-      console.log("Video load failed");
-      setPhase('fallback');
-      setTimeout(onFinish, 2000);
+      console.log("Video load failed, will use CSS animation");
+      setVideoFailed(true);
+      clearTimeout(timeoutId);
     };
 
     video.addEventListener('canplaythrough', handleCanPlay);
     video.addEventListener('error', handleError);
+    
+    // Load video with timeout
     video.load();
+    
+    // If video doesn't load within 3 seconds, use CSS animation
+    timeoutId = setTimeout(() => {
+      if (!videoLoaded) {
+        console.log("Video loading timeout, using CSS animation");
+        setVideoFailed(true);
+      }
+    }, 3000);
 
     return () => {
       video.removeEventListener('canplaythrough', handleCanPlay);
       video.removeEventListener('error', handleError);
+      clearTimeout(timeoutId);
     };
-  }, [onFinish]);
+  }, [videoLoaded]);
 
   const handleEnterSite = async () => {
-    if (!videoLoaded) {
-      setPhase('fallback');
-      setTimeout(onFinish, 2000);
+    if (videoFailed || !videoLoaded) {
+      // Use CSS animation instead
+      setPhase('animation');
+      setTimeout(onFinish, 3000); // 3 second CSS animation
       return;
     }
 
     const video = videoRef.current;
     if (!video) {
-      setPhase('fallback');
-      setTimeout(onFinish, 2000);
+      setPhase('animation');
+      setTimeout(onFinish, 3000);
       return;
     }
 
@@ -54,26 +69,25 @@ export default function SplashScreen({ onFinish }: SplashScreenProps) {
       video.currentTime = 0;
       await video.play();
       
-      // Auto-finish after video ends or timeout
       const handleEnded = () => {
         setTimeout(onFinish, 500);
       };
       
       video.addEventListener('ended', handleEnded, { once: true });
       
-      // Backup timeout in case video doesn't end properly
+      // Backup timeout
       setTimeout(() => {
         onFinish();
-      }, 5000);
+      }, 8000);
       
     } catch (error) {
-      console.log('Video play failed after user interaction');
-      setPhase('fallback');
-      setTimeout(onFinish, 2000);
+      console.log('Video play failed, using CSS animation');
+      setPhase('animation');
+      setTimeout(onFinish, 3000);
     }
   };
 
-  // Entrance screen - always shown first
+  // Entrance screen
   if (phase === 'entrance') {
     return (
       <div className="fixed inset-0 bg-primary-black flex items-center justify-center z-50">
@@ -94,20 +108,22 @@ export default function SplashScreen({ onFinish }: SplashScreenProps) {
           </button>
           
           <p className="text-white/50 text-xs mt-4">
-            {videoLoaded ? 'Ready' : 'Loading...'}
+            {videoFailed ? 'Ready' : videoLoaded ? 'Ready' : 'Loading...'}
           </p>
         </div>
         
         {/* Hidden video for preloading */}
-        <video
-          ref={videoRef}
-          className="hidden"
-          muted
-          playsInline
-          preload="auto"
-        >
-          <source src="/splash.mp4" type="video/mp4" />
-        </video>
+        {!videoFailed && (
+          <video
+            ref={videoRef}
+            className="hidden"
+            muted
+            playsInline
+            preload="metadata"
+          >
+            <source src="/splash.mp4" type="video/mp4" />
+          </video>
+        )}
       </div>
     );
   }
@@ -124,6 +140,38 @@ export default function SplashScreen({ onFinish }: SplashScreenProps) {
         >
           <source src="/splash.mp4" type="video/mp4" />
         </video>
+      </div>
+    );
+  }
+
+  // CSS Animation phase
+  if (phase === 'animation') {
+    return (
+      <div className="fixed inset-0 bg-primary-black flex items-center justify-center z-50">
+        <div className="flex flex-col items-center">
+          <div className="relative">
+            <img 
+              src="/Cropped_black_logo-removebg-preview.png" 
+              alt="Venator Capital Logo"
+              className="w-48 h-48 object-contain opacity-0 animate-[fadeInScale_1.5s_ease-out_0.5s_forwards]"
+            />
+            
+            {/* Animated rings */}
+            <div className="absolute inset-0 rounded-full border-2 border-accent-gold/30 animate-[ping_2s_infinite]"></div>
+            <div className="absolute inset-4 rounded-full border border-accent-gold/20 animate-[ping_2s_infinite_0.5s]"></div>
+          </div>
+          
+          <div className="mt-8 space-y-2">
+            <h1 className="text-white text-2xl font-light opacity-0 animate-[fadeInUp_1s_ease-out_1.5s_forwards]">
+              Venator Capital
+            </h1>
+            <p className="text-accent-gold text-sm opacity-0 animate-[fadeInUp_1s_ease-out_2s_forwards]">
+              AI Solutions
+            </p>
+          </div>
+          
+          <div className="mt-8 w-32 h-1 bg-gradient-to-r from-transparent via-accent-gold to-transparent opacity-0 animate-[fadeIn_1s_ease-out_2.5s_forwards]"></div>
+        </div>
       </div>
     );
   }
