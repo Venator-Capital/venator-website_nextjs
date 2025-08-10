@@ -10,6 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://venator-capital.net"),
   title: "Venator Capital LLC - Turning AI Into Advantage",
   description: "We architect cutting-edge AI solutions — from machine learning applications to automation frameworks. No matter where you are in your AI journey, we'll guide you from roadmap to production.",
   keywords: ["AI", "Machine Learning", "Automation", "Consulting", "Enterprise AI", "MLOps", "Data Analytics"],
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     alternateLocale: ["ja_JP"],
-    url: "https://venator-capital.com",
+    url: "https://venator-capital.net",
     siteName: "Venator Capital LLC",
     title: "Venator Capital LLC - Turning AI Into Advantage",
     description: "We architect cutting-edge AI solutions — from machine learning applications to automation frameworks. No matter where you are in your AI journey, we'll guide you from roadmap to production.",
