@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "framework": "nextjs",
+  "installCommand": "npm ci --legacy-peer-deps",
+  "buildCommand": "next build",
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.venator-capital.net" }],
+      "destination": "https://venator-capital.net/$1",
+      "permanent": true
+    }
+  ]
+}

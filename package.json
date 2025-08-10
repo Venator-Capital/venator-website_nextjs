@@ -6,7 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "NEXTJS_BUNDLE_ANALYZER=1 next build",
+    "lhci:mobile": "lhci autorun --config=.lighthouserc.json --upload=filesystem",
+    "lhci:userflow": "node scripts/userflows.mjs",
+    "axe": "playwright test tests/a11y/*.spec.ts --project=chromium",
+    "pa11y": "pa11y-ci",
+    "cov:css": "node scripts/coverage-css.mjs",
+    "cov:js": "node scripts/coverage-js.mjs",
+    "perf:trace": "node scripts/perf-trace.mjs",
+    "depcheck": "depcheck",
+    "sizelimit": "size-limit",
+    "typecheck": "tsc -p . --noEmit"
   },
   "dependencies": {
     "@blueprintjs/core": "^6.1.0",
@@ -69,12 +80,20 @@
     "zod": "^4.0.5"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
     "@eslint/eslintrc": "^3",
+    "@lhci/cli": "^0.14.0",
+    "@next/bundle-analyzer": "^14.2.31",
+    "@playwright/test": "^1.54.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "depcheck": "^1.4.7",
     "eslint": "^9",
     "eslint-config-next": "15.4.2",
+    "pa11y-ci": "^3.1.0",
+    "size-limit": "^11.2.0",
+    "source-map-explorer": "^2.5.3",
     "typescript": "^5"
   }
 }

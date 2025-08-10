@@ -1,0 +1,12 @@
+{
+  "defaults": {
+    "standard": "WCAG2.2",
+    "screenCapture": "reports/pa11y/screenshot.png",
+    "timeout": 60000,
+    "viewport": "360x640"
+  },
+  "urls": [
+    "https://venator-website-nextjs.vercel.app/",
+    "https://venator-website-nextjs.vercel.app/ai-workflows"
+  ]
+}
