@@ -2,8 +2,11 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function TechPartnersSection() {
+  const { t } = useLanguage();
+  
   // All technology partners and platforms we use
   const partners = [
     {
@@ -149,7 +152,7 @@ export default function TechPartnersSection() {
             Technology <span className="text-accent-gold">Partners</span>
           </h2>
           <p className="text-base md:text-lg font-normal leading-relaxed text-gray-300 max-w-3xl mx-auto">
-            Leveraging industry-leading platforms and frameworks to deliver robust AI solutions
+            {t('techPartners.subtitle')}
           </p>
         </motion.div>
 

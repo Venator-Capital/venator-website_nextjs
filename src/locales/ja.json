@@ -1,0 +1,182 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "capabilities": "サービス内容",
+    "useCases": "導入事例",
+    "technology": "技術スタック",
+    "faq": "よくあるご質問",
+    "about": "会社概要",
+    "contact": "お問い合わせ",
+    "privacyPolicy": "プライバシーポリシー",
+    "termsOfService": "利用規約",
+    "enterpriseContact": "法人お問い合わせ"
+  },
+  "hero": {
+    "badge": "AIソリューションプラットフォーム",
+    "title": "AIを競争優位に変える",
+    "subtitle": "機械学習から自動化まで、最先端のAIソリューションを設計・構築します。",
+    "cta": {
+      "capabilities": "サービス内容を見る",
+      "contact": "AI導入を始める"
+    }
+  },
+  "capabilities": {
+    "title": "コア・ケイパビリティ",
+    "subtitle": "当社の技術的優位性を支える4つのAI重点ドメイン",
+    "cards": {
+      "aiMl": {
+        "title": "AI・機械学習ソリューション",
+        "description": "お客様のビジネスニーズに合わせて設計・開発・展開するカスタムAI/MLアプリケーション。"
+      },
+      "dataAnalytics": {
+        "title": "データ分析・自動化",
+        "description": "高度な分析とAI駆動プロセスを使用して、データワークフローを収集・分析・自動化。"
+      },
+      "digitalMedia": {
+        "title": "デジタルメディア・Webプラットフォーム",
+        "description": "AI機能で強化されたスケーラブルなWebおよびメディアプラットフォームの作成・管理。"
+      },
+      "enterprise": {
+        "title": "エンタープライズAI統合・コンサルティング",
+        "description": "エンタープライズグレードのAIシステムの設計・実装、および戦略コンサルティングの提供。"
+      }
+    }
+  },
+  "useCases": {
+    "title": "ユースケース",
+    "subtitle": "AIソリューションが複雑なビジネス課題を解決する実際の応用例を紹介",
+    "cards": {
+      "customAI": {
+        "title": "カスタムAIシステム設計",
+        "description": "要件から本番展開まで、企業固有の課題を解決するためにカスタマイズされたAIシステムの設計・開発。",
+        "technology": "Python + TensorFlow + AWS SageMaker"
+      },
+      "integration": {
+        "title": "レガシーシステムへのAI統合",
+        "description": "既存のオンプレミスおよびクラウドシステムにAIモデルをシームレスに統合し、ビジネスプロセスを強化。",
+        "technology": "Docker + AWS EKS + Oracle DB"
+      },
+      "automation": {
+        "title": "AI駆動型自動化ワークフロー",
+        "description": "n8nとZapierを使用してAI推論によるインテリジェント自動化ワークフローを構築し、業務を効率化。",
+        "technology": "n8n + Google Cloud Functions + Python"
+      },
+      "predictive": {
+        "title": "予測分析・予測",
+        "description": "需要予測と故障検知のための時系列予測モデルを実装し、戦略的意思決定をサポート。",
+        "technology": "LSTM + Grafana + Prometheus"
+      },
+      "mlops": {
+        "title": "MLOps・モデル展開",
+        "description": "継続的なモデル展開、監視、ライフサイクル管理のための堅牢なMLOpsパイプラインの構築。",
+        "technology": "GitHub Actions + Kubernetes + Argo CD"
+      }
+    }
+  },
+  "techPartners": {
+    "title": "テクノロジーパートナー",
+    "subtitle": "業界をリードするプラットフォームとフレームワークを活用して堅牢なAIソリューションを提供"
+  },
+  "faq": {
+    "title": "よくあるご質問",
+    "subtitle": "当社のAIソリューション・サービスに関するよくある質問への回答",
+    "questions": {
+      "q1": {
+        "question": "どのようなタイプのAIソリューションを専門としていますか？",
+        "answer": "機械学習アプリケーション、データ分析プラットフォーム、自動化フレームワーク、エンタープライズAI統合に焦点を当てています。自然言語処理、コンピュータビジョン、予測分析、インテリジェント文書処理における専門知識を有しています。"
+      },
+      "q2": {
+        "question": "カスタムAIソリューションの開発には通常どのくらいの時間がかかりますか？",
+        "answer": "プロジェクトのタイムラインは複雑性と範囲によって異なります。シンプルな自動化ソリューションは4〜6週間で提供可能ですが、包括的なAIプラットフォームは3〜6ヶ月かかる場合があります。初期相談段階で、お客様と協力して現実的なタイムラインを設定します。"
+      },
+      "q3": {
+        "question": "継続的なサポートとメンテナンスは提供されますか？",
+        "answer": "はい、システム監視、パフォーマンス最適化、モデル再トレーニング、機能更新を含む包括的なサポートパッケージを提供しています。当社のサポートにより、お客様のビジネスが発展するにつれて、AIソリューションが価値を提供し続けることを保証します。"
+      },
+      "q4": {
+        "question": "AIソリューションを既存のビジネスシステムと統合できますか？",
+        "answer": "もちろんです。既存のエンタープライズシステム、データベース、ワークフローとのシームレスな統合を専門としています。当社のソリューションは、確立されたプロセスを中断することなく、現在の業務を強化するよう設計されています。"
+      },
+      "q5": {
+        "question": "どのような業界にサービスを提供していますか？",
+        "answer": "金融、医療、小売、製造、専門サービスなど、様々な業界で働いています。当社のAIソリューションは、異なるビジネス環境と規制要件に適応可能です。"
+      }
+    }
+  },
+  "about": {
+    "title": "Venator Capitalについて",
+    "companyOverview": {
+      "title": "会社概要",
+      "companyName": "会社名",
+      "companyNameValue": "Venator Capital LLC",
+      "headOffice": "本社所在地",
+      "headOfficeValue": "東京都新宿区弁天町66番地",
+      "capital": "資本金",
+      "capitalValue": "¥1,000,000",
+      "clientsServed": "サービス提供実績",
+      "clientsServedValue": "100社以上（法人・個人）",
+      "coreFocus": "中核事業領域",
+      "coreFocusValue": "AI・自動化ソリューション"
+    },
+    "mission": {
+      "title": "当社のミッション",
+      "description1": "最先端のAIと自動化を通じて企業の成長を支援するという明確なミッションを掲げて設立されたVenator Capital LLCは、業務変革を求める組織にとって信頼できるパートナーとして急速に確立されました。",
+      "description2": "まだ若い会社ではありますが、当社のチームは戦略コンサルティングとシステム設計から開発、展開、継続的なメンテナンスまで、AIライフサイクル全体にわたる深い専門知識を培っています。"
+    },
+    "coreValues": {
+      "title": "当社のコアバリュー",
+      "clientFirst": {
+        "title": "クライアント第一のアプローチ",
+        "description": "すべてのエンゲージメントはお客様固有の目標に合わせてカスタマイズされます—「万能」ソリューションはありません。"
+      },
+      "endToEnd": {
+        "title": "エンドツーエンドの専門知識",
+        "description": "初期スコーピングから長期サポートまで、AI価値チェーン全体を処理するため、お客様はビジネスに集中できます。"
+      },
+      "transparency": {
+        "title": "透明性とコラボレーション",
+        "description": "すべてのステップで明確なコミュニケーションを維持し、定期的な更新、ドキュメンテーション、社内チームへの実践的なトレーニングを提供します。"
+      },
+      "quality": {
+        "title": "品質と誠実性",
+        "description": "厳格な精度、セキュリティ、コンプライアンス基準を満たす結果の提供に取り組んでいます—ショートカットはありません。"
+      }
+    },
+    "servicesOverview": {
+      "description1": "過去1年間で、国内外の法人・個人を含む100社以上のお客様と協力し、カスタマイズされたAIコンサルティング、カスタムシステム設計、実践的なサポートを提供してきました。当社のエンゲージメントは幅広い業界にわたります：レガシーシステムに機械学習モデルの統合を検討している大企業から、手作業ワークフローをインテリジェント自動化に置き換えたい小規模チームまで。",
+      "description2": "Venator Capital LLCは、お客様の長期的なAIパートナーになることに専念しています。"
+    }
+  },
+  "contact": {
+    "title": "素晴らしいものを一緒に作りましょう",
+    "subtitle": "AIでビジネスを変革する準備はできていますか？私たちがお手伝いします。",
+    "form": {
+      "title": "お問い合わせ",
+      "description": "以下のフォームにご記入いただければ、24時間以内にご連絡いたします。",
+      "cta": "コンサルテーションを予約"
+    },
+    "directContact": {
+      "title": "直接お問い合わせ",
+      "email": "メール",
+      "emailAddress": "info@venator-capital.com",
+      "location": "所在地",
+      "locationAddress": "東京、日本",
+      "availability": "営業時間",
+      "availabilityHours": "月〜金、9:00-18:00 JST"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 Venator Capital LLC. All rights reserved."
+  },
+  "404": {
+    "title": "ページが見つかりません",
+    "description": "お探しのページは存在しないか、移動されました。",
+    "subtitle": "当社のAIソリューションで軌道修正しましょう。",
+    "returnHome": "ホームに戻る",
+    "goBack": "戻る"
+  },
+  "language": {
+    "en": "English",
+    "ja": "日本語"
+  }
+}

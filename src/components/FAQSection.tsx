@@ -3,30 +3,32 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { t } = useLanguage();
 
   const faqs = [
     {
-      question: "What types of AI solutions do you specialize in?",
-      answer: "We focus on machine learning applications, data analytics platforms, automation frameworks, and enterprise AI integration. Our expertise spans natural language processing, computer vision, predictive analytics, and intelligent document processing."
+      question: t('faq.questions.q1.question'),
+      answer: t('faq.questions.q1.answer')
     },
     {
-      question: "How long does it typically take to develop a custom AI solution?",
-      answer: "Project timelines vary based on complexity and scope. Simple automation solutions can be delivered in 4-6 weeks, while comprehensive AI platforms may take 3-6 months. We work closely with clients to establish realistic timelines during the initial consultation phase."
+      question: t('faq.questions.q2.question'),
+      answer: t('faq.questions.q2.answer')
     },
     {
-      question: "Do you provide ongoing support and maintenance?",
-      answer: "Yes, we offer comprehensive support packages including system monitoring, performance optimization, model retraining, and feature updates. Our support ensures your AI solutions continue to deliver value as your business evolves."
+      question: t('faq.questions.q3.question'),
+      answer: t('faq.questions.q3.answer')
     },
     {
-      question: "Can you integrate AI solutions with existing business systems?",
-      answer: "Absolutely. We specialize in seamless integration with existing enterprise systems, databases, and workflows. Our solutions are designed to enhance your current operations without disrupting established processes."
+      question: t('faq.questions.q4.question'),
+      answer: t('faq.questions.q4.answer')
     },
     {
-      question: "What industries do you serve?",
-      answer: "We work across various industries including finance, healthcare, retail, manufacturing, and professional services. Our AI solutions are adaptable to different business contexts and regulatory requirements."
+      question: t('faq.questions.q5.question'),
+      answer: t('faq.questions.q5.answer')
     }
   ];
 
@@ -67,7 +69,7 @@ export default function FAQSection() {
             Frequently Asked <span className="text-accent-gold">Questions</span>
           </h2>
           <p className="text-base md:text-lg font-normal leading-relaxed text-gray-300 max-w-3xl mx-auto">
-            Get answers to common questions about our AI solutions and services
+            {t('faq.subtitle')}
           </p>
         </motion.div>
 

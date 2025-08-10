@@ -1,0 +1,182 @@
+{
+  "nav": {
+    "home": "Home",
+    "capabilities": "Capabilities",
+    "useCases": "Use Cases",
+    "technology": "Technology",
+    "faq": "FAQ",
+    "about": "About",
+    "contact": "Contact",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "enterpriseContact": "Enterprise Contact"
+  },
+  "hero": {
+    "badge": "AI Solutions Platform",
+    "title": "Turning AI Into Advantage",
+    "subtitle": "We architect cutting-edge AI solutions — from machine learning to automation.",
+    "cta": {
+      "capabilities": "Explore Our Capabilities",
+      "contact": "Start Your AI Journey"
+    }
+  },
+  "capabilities": {
+    "title": "Core Capabilities",
+    "subtitle": "Four AI-focused domains that drive our technological excellence",
+    "cards": {
+      "aiMl": {
+        "title": "AI & Machine Learning Solutions",
+        "description": "Design, develop, and deploy custom AI/ML applications tailored to your business needs."
+      },
+      "dataAnalytics": {
+        "title": "Data Analytics & Automation",
+        "description": "Collect, analyze, and automate data workflows using advanced analytics and AI-driven processes."
+      },
+      "digitalMedia": {
+        "title": "Digital Media & Web Platforms",
+        "description": "Create and manage scalable web and media platforms enhanced with AI functionalities."
+      },
+      "enterprise": {
+        "title": "Enterprise AI Integration & Consulting",
+        "description": "Architect and implement enterprise-grade AI systems, and provide strategic consulting."
+      }
+    }
+  },
+  "useCases": {
+    "title": "Use Cases",
+    "subtitle": "Real-world applications demonstrating how our AI solutions solve complex business challenges",
+    "cards": {
+      "customAI": {
+        "title": "Custom AI System Design",
+        "description": "Design and develop custom AI systems tailored to solve enterprise-specific challenges from requirements to production deployment.",
+        "technology": "Python + TensorFlow + AWS SageMaker"
+      },
+      "integration": {
+        "title": "AI Integration into Legacy Systems",
+        "description": "Seamlessly integrate AI models into existing on-premise and cloud systems to enhance business processes.",
+        "technology": "Docker + AWS EKS + Oracle DB"
+      },
+      "automation": {
+        "title": "AI-Driven Automated Workflows",
+        "description": "Build intelligent automation workflows using n8n and Zapier with AI inference to streamline business operations.",
+        "technology": "n8n + Google Cloud Functions + Python"
+      },
+      "predictive": {
+        "title": "Predictive Analytics & Forecasting",
+        "description": "Implement time-series forecasting models for demand prediction and failure detection to support strategic decisions.",
+        "technology": "LSTM + Grafana + Prometheus"
+      },
+      "mlops": {
+        "title": "MLOps & Model Deployment",
+        "description": "Build robust MLOps pipelines for continuous model deployment, monitoring, and lifecycle management.",
+        "technology": "GitHub Actions + Kubernetes + Argo CD"
+      }
+    }
+  },
+  "techPartners": {
+    "title": "Technology Partners",
+    "subtitle": "Leveraging industry-leading platforms and frameworks to deliver robust AI solutions"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Get answers to common questions about our AI solutions and services",
+    "questions": {
+      "q1": {
+        "question": "What types of AI solutions do you specialize in?",
+        "answer": "We focus on machine learning applications, data analytics platforms, automation frameworks, and enterprise AI integration. Our expertise spans natural language processing, computer vision, predictive analytics, and intelligent document processing."
+      },
+      "q2": {
+        "question": "How long does it typically take to develop a custom AI solution?",
+        "answer": "Project timelines vary based on complexity and scope. Simple automation solutions can be delivered in 4-6 weeks, while comprehensive AI platforms may take 3-6 months. We work closely with clients to establish realistic timelines during the initial consultation phase."
+      },
+      "q3": {
+        "question": "Do you provide ongoing support and maintenance?",
+        "answer": "Yes, we offer comprehensive support packages including system monitoring, performance optimization, model retraining, and feature updates. Our support ensures your AI solutions continue to deliver value as your business evolves."
+      },
+      "q4": {
+        "question": "Can you integrate AI solutions with existing business systems?",
+        "answer": "Absolutely. We specialize in seamless integration with existing enterprise systems, databases, and workflows. Our solutions are designed to enhance your current operations without disrupting established processes."
+      },
+      "q5": {
+        "question": "What industries do you serve?",
+        "answer": "We work across various industries including finance, healthcare, retail, manufacturing, and professional services. Our AI solutions are adaptable to different business contexts and regulatory requirements."
+      }
+    }
+  },
+  "about": {
+    "title": "About Venator Capital",
+    "companyOverview": {
+      "title": "Company Overview",
+      "companyName": "Company Name",
+      "companyNameValue": "Venator Capital LLC",
+      "headOffice": "Head Office",
+      "headOfficeValue": "66 Bentencho, Shinjuku-ku, Tokyo, Japan",
+      "capital": "Capital",
+      "capitalValue": "¥1,000,000",
+      "clientsServed": "Clients Served",
+      "clientsServedValue": "100+ (Corporate & Individual)",
+      "coreFocus": "Core Focus",
+      "coreFocusValue": "AI & Automation Solutions"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description1": "Founded with a clear mission to empower businesses through cutting-edge AI and automation, Venator Capital LLC has rapidly established itself as a trusted partner for organizations seeking to transform their operations.",
+      "description2": "Although still a young company, our team has cultivated deep expertise across the entire AI lifecycle—from strategic consulting and system design to development, deployment, and ongoing maintenance."
+    },
+    "coreValues": {
+      "title": "Our Core Values",
+      "clientFirst": {
+        "title": "Client-First Approach",
+        "description": "Every engagement is tailored to your unique goals—no 'one-size-fits-all' solutions."
+      },
+      "endToEnd": {
+        "title": "End-to-End Expertise",
+        "description": "From initial scoping to long-term support, we handle the full AI value chain so you can focus on your business."
+      },
+      "transparency": {
+        "title": "Transparency & Collaboration",
+        "description": "We maintain clear communication at every step, providing regular updates, documentation, and hands-on training for in-house teams."
+      },
+      "quality": {
+        "title": "Quality & Integrity",
+        "description": "We're committed to delivering results that meet rigorous accuracy, security, and compliance standards—no shortcuts."
+      }
+    },
+    "servicesOverview": {
+      "description1": "Over the past year, we have worked with more than 100 clients—both corporate and individual, domestic and overseas—providing tailored AI consulting, custom system design, and hands-on support. Our engagements span a wide range of industries: from large enterprises looking to integrate machine-learning models into legacy systems, to small teams seeking to replace manual workflows with intelligent automation.",
+      "description2": "Venator Capital LLC is dedicated to becoming your long-term AI partner."
+    }
+  },
+  "contact": {
+    "title": "Let's Build Something Amazing",
+    "subtitle": "Ready to transform your business with AI? We're here to help.",
+    "form": {
+      "title": "Get in Touch",
+      "description": "Fill out the form below and we'll get back to you within 24 hours.",
+      "cta": "Schedule a Consultation"
+    },
+    "directContact": {
+      "title": "Direct Contact",
+      "email": "Email",
+      "emailAddress": "info@venator-capital.com",
+      "location": "Location",
+      "locationAddress": "Tokyo, Japan",
+      "availability": "Availability",
+      "availabilityHours": "Mon-Fri, 9:00-18:00 JST"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 Venator Capital LLC. All rights reserved."
+  },
+  "404": {
+    "title": "Page Not Found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "subtitle": "Let's get you back on track with our AI solutions.",
+    "returnHome": "Return Home",
+    "goBack": "Go Back"
+  },
+  "language": {
+    "en": "English",
+    "ja": "日本語"
+  }
+}

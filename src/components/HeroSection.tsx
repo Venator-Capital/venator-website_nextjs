@@ -1,243 +1,413 @@
 'use client';
 
-import { motion, useAnimation } from "framer-motion";
-import Image from "next/image";
-import { useLanguage } from "@/contexts/LanguageContext";
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { Button } from '@/components/blueprint';
+import { ArrowRight, Brain, ChevronDown } from 'lucide-react';
 
 export default function HeroSection() {
   const { t } = useLanguage();
-  const controls = useAnimation();
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 500], [0, 150]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Vanishing Point Dotfield Effect
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animationId: number;
+    let time = 0;
+
+    const resizeCanvas = () => {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * window.devicePixelRatio;
+      canvas.height = rect.height * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      canvas.style.width = rect.width + 'px';
+      canvas.style.height = rect.height + 'px';
+    };
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Dotfield parameters
+    const DOTS_COUNT = 800;
+    const DEPTH_LAYERS = 50;
+    const CENTER_X = canvas.width / (2 * window.devicePixelRatio);
+    const CENTER_Y = canvas.height / (2 * window.devicePixelRatio);
+    const MAX_RADIUS = Math.max(canvas.width, canvas.height) / window.devicePixelRatio;
+
+    interface Dot {
+      x: number;
+      y: number;
+      z: number;
+      baseX: number;
+      baseY: number;
+      speed: number;
+      size: number;
+      brightness: number;
+    }
+
+    // Initialize dots
+    const dots: Dot[] = [];
+    for (let i = 0; i < DOTS_COUNT; i++) {
+      // Create dots in a radial distribution
+      const angle = Math.random() * Math.PI * 2;
+      const radius = Math.random() * MAX_RADIUS * 2;
+      const baseX = CENTER_X + Math.cos(angle) * radius;
+      const baseY = CENTER_Y + Math.sin(angle) * radius;
+      
+      dots.push({
+        x: baseX,
+        y: baseY,
+        z: Math.random() * DEPTH_LAYERS + 1,
+        baseX,
+        baseY,
+        speed: 0.5 + Math.random() * 1.5,
+        size: Math.random() * 2 + 0.5,
+        brightness: Math.random() * 0.8 + 0.2
+      });
+    }
+
+    const animate = () => {
+      time += 0.016; // ~60fps
+      
+      // Clear canvas with deep space background
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width / window.devicePixelRatio, canvas.height / window.devicePixelRatio);
+
+      // Mouse influence
+      const mouseInfluenceX = (mousePosition.x - 0.5) * 50;
+      const mouseInfluenceY = (mousePosition.y - 0.5) * 50;
+
+      dots.forEach((dot) => {
+        // Move dots towards center (vanishing point effect)
+        const directionX = CENTER_X - dot.baseX;
+        const directionY = CENTER_Y - dot.baseY;
+        const distance = Math.sqrt(directionX * directionX + directionY * directionY);
+        
+        if (distance > 5) {
+          dot.x = dot.baseX + (directionX / distance) * (time * dot.speed * 20);
+          dot.y = dot.baseY + (directionY / distance) * (time * dot.speed * 20);
+        }
+
+        // Add mouse interaction
+        dot.x += mouseInfluenceX * (dot.z / DEPTH_LAYERS) * 0.1;
+        dot.y += mouseInfluenceY * (dot.z / DEPTH_LAYERS) * 0.1;
+
+        // Z-depth movement (zoom effect)
+        dot.z -= dot.speed * 0.5;
+        
+        // Reset dot if it goes too far
+        if (dot.z <= 0 || distance < 10) {
+          const angle = Math.random() * Math.PI * 2;
+          const radius = Math.random() * MAX_RADIUS * 1.5 + MAX_RADIUS * 0.5;
+          dot.baseX = CENTER_X + Math.cos(angle) * radius;
+          dot.baseY = CENTER_Y + Math.sin(angle) * radius;
+          dot.x = dot.baseX;
+          dot.y = dot.baseY;
+          dot.z = DEPTH_LAYERS;
+          dot.speed = 0.5 + Math.random() * 1.5;
+        }
+
+        // Calculate perspective and rendering
+        const perspective = 300;
+        const scale = perspective / (perspective + dot.z);
+        const screenX = dot.x;
+        const screenY = dot.y;
+        
+        // Color based on depth and proximity to center
+        const centerDistance = Math.sqrt(
+          Math.pow(screenX - CENTER_X, 2) + Math.pow(screenY - CENTER_Y, 2)
+        );
+        const maxDistance = Math.max(CENTER_X, CENTER_Y);
+        const proximityToCenter = 1 - Math.min(centerDistance / maxDistance, 1);
+        
+        // Dynamic color mixing
+        const depthFactor = (DEPTH_LAYERS - dot.z) / DEPTH_LAYERS;
+        let r, g, b, alpha;
+        
+        if (proximityToCenter > 0.7) {
+          // Near center: Golden
+          r = Math.floor(255 * depthFactor * dot.brightness);
+          g = Math.floor(215 * depthFactor * dot.brightness);
+          b = Math.floor(0 * depthFactor * dot.brightness);
+          alpha = depthFactor * dot.brightness * (proximityToCenter * 2);
+        } else if (proximityToCenter > 0.3) {
+          // Mid range: Blue to Gold transition
+          const transition = (proximityToCenter - 0.3) / 0.4;
+          r = Math.floor((13 + (255 - 13) * transition) * depthFactor * dot.brightness);
+          g = Math.floor((71 + (215 - 71) * transition) * depthFactor * dot.brightness);
+          b = Math.floor((161 + (0 - 161) * transition) * depthFactor * dot.brightness);
+          alpha = depthFactor * dot.brightness * 0.8;
+        } else {
+          // Outer: Blue
+          r = Math.floor(13 * depthFactor * dot.brightness);
+          g = Math.floor(71 * depthFactor * dot.brightness);
+          b = Math.floor(161 * depthFactor * dot.brightness);
+          alpha = depthFactor * dot.brightness * 0.6;
+        }
+
+        // Render dot
+        const dotSize = dot.size * scale * (0.5 + depthFactor * 0.5);
+        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        
+        ctx.beginPath();
+        ctx.arc(screenX, screenY, dotSize, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Add glow for closer dots
+        if (depthFactor > 0.8 && proximityToCenter > 0.5) {
+          ctx.shadowColor = `rgba(${r}, ${g}, ${b}, ${alpha * 0.5})`;
+          ctx.shadowBlur = dotSize * 2;
+          ctx.beginPath();
+          ctx.arc(screenX, screenY, dotSize * 0.5, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+      });
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    // Start animation after component mount
+    setTimeout(() => {
+      setIsLoaded(true);
+      animate();
+    }, 100);
+
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+  }, [mousePosition]);
+
+  // Mouse tracking
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: (e.clientX - rect.left) / rect.width,
+          y: (e.clientY - rect.top) / rect.height
+        });
+      }
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('mousemove', handleMouseMove);
+      return () => container.removeEventListener('mousemove', handleMouseMove);
+    }
+  }, []);
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.3
+      }
     }
   };
 
-  const handleLogoHover = () => {
-    controls.start({ 
-      rotateY: 10,
-      scale: 1.05,
-      transition: { duration: 0.3, ease: "easeOut" }
+  const itemVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 30,
+      filter: 'blur(10px)'
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      filter: 'blur(0px)',
+      transition: {
+        duration: 1.2,
+        ease: [0.19, 1, 0.22, 1] // easeOutExpo
+      }
+    }
+  };
+
+  const handleScrollToCapabilities = () => {
+    document.getElementById('capabilities')?.scrollIntoView({ 
+      behavior: 'smooth' 
     });
   };
 
-  const handleLogoLeave = () => {
-    controls.start({ 
-      rotateY: 0,
-      scale: 1,
-      transition: { duration: 0.3, ease: "easeOut" }
+  const handleScrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ 
+      behavior: 'smooth' 
     });
   };
 
   return (
-    <section
-      id="hero"
-      role="banner"
-      className="relative min-h-screen flex items-center justify-center hero-gradient animated-background overflow-hidden"
+    <motion.section 
+      ref={containerRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black"
+      style={{ y, opacity }}
     >
-      {/* Enhanced animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Network lines */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 2 }}
-          className="absolute inset-0"
+      {/* Vanishing Point Dotfield Background */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full"
+        style={{ zIndex: 1 }}
+      />
+
+      {/* Radial Gradient Overlay */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.8) 100%)`,
+          zIndex: 2
+        }}
+      />
+
+      {/* Content */}
+      <motion.div
+        className="relative z-10 text-center px-8 max-w-6xl mx-auto"
+        variants={containerVariants}
+        initial="hidden"
+        animate={isLoaded ? "visible" : "hidden"}
+      >
+        {/* Main Headline */}
+        <motion.h1 
+          className="text-5xl md:text-7xl lg:text-8xl font-extralight text-white mb-8 tracking-wider"
+          variants={itemVariants}
+          style={{
+            fontFamily: 'Montserrat, -apple-system, BlinkMacSystemFont, sans-serif',
+            textShadow: '0 0 40px rgba(255, 255, 255, 0.1)'
+          }}
         >
-          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <motion.path
-              d="M0,400 Q200,200 400,400 T800,400"
-              stroke="url(#gradient1)"
-              strokeWidth="1"
-              fill="none"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
-            />
-            <motion.path
-              d="M800,200 Q600,400 400,200 T0,200"
-              stroke="url(#gradient2)"
-              strokeWidth="1"
-              fill="none"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", delay: 1 }}
-            />
-            <defs>
-              <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#3B82F6" stopOpacity="0" />
-                <stop offset="50%" stopColor="#3B82F6" stopOpacity="0.4" />
-                <stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
-              </linearGradient>
-              <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#FFD700" stopOpacity="0" />
-                <stop offset="50%" stopColor="#FFD700" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#FFD700" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </motion.div>
-
-        {/* Floating orbs with light effects */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 0.6, scale: 1 }}
-          transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-          className="absolute top-1/4 left-1/4 w-64 h-64 border border-accent-blue/20 rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%)',
-            boxShadow: '0 0 60px rgba(59, 130, 246, 0.2)',
-          }}
-        />
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 0.4, y: 0 }}
-          transition={{ duration: 3, repeat: Infinity, repeatType: "reverse", delay: 1 }}
-          className="absolute bottom-1/4 right-1/4 w-32 h-32 border border-accent-gold/20 rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(255, 215, 0, 0.08) 0%, transparent 70%)',
-            boxShadow: '0 0 40px rgba(255, 215, 0, 0.15)',
-          }}
-        />
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 0.3, scale: 1.1 }}
-          transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", delay: 2 }}
-          className="absolute top-1/2 right-1/3 w-48 h-48 border border-white/10 rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%)',
-            boxShadow: '0 0 50px rgba(255, 255, 255, 0.1)',
-          }}
-        />
-
-        {/* Particle effects */}
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-accent-blue/40 rounded-full"
+          <span className="inline-block">AI</span>{' '}
+          <span className="inline-block">Into</span>{' '}
+          <span 
+            className="inline-block bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              textShadow: '0 0 30px rgba(255, 215, 0, 0.3)'
             }}
-            animate={{
-              y: [0, -20, 0],
-              opacity: [0.2, 0.8, 0.2],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="relative z-10 text-center max-w-5xl mx-auto px-8 sm:px-12 lg:px-16">
-        {/* Company Logo */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 mt-8"
-        >
-          <motion.div 
-            className="w-[200px] sm:w-[250px] md:w-[320px] h-auto mx-auto mb-6 drop-shadow-2xl cursor-pointer"
-            animate={controls}
-            onMouseEnter={handleLogoHover}
-            onMouseLeave={handleLogoLeave}
-            whileTap={{ scale: 0.95 }}
-            style={{ perspective: "600px" }}
           >
-            <Image 
-              src="/Cropped_black_logo-removebg-preview.png" 
-              alt="Venator Capital Logo"
-              width={320}
-              height={320}
-              className="w-full h-auto"
-              priority
+            Advantage
+          </span>
+        </motion.h1>
+
+        {/* Subheadline */}
+        <motion.p 
+          className="text-xl md:text-2xl lg:text-3xl font-light text-blue-200 mb-12 leading-relaxed tracking-wide max-w-4xl mx-auto"
+          variants={itemVariants}
+          style={{
+            fontFamily: 'Open Sans, -apple-system, BlinkMacSystemFont, sans-serif',
+            textShadow: '0 0 20px rgba(144, 202, 249, 0.2)'
+          }}
+        >
+          Where artificial intelligence meets enterprise innovation and infinite possibilities unfold
+        </motion.p>
+
+        {/* Call to Action Buttons */}
+        <motion.div
+          className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
+          variants={itemVariants}
+        >
+          <motion.div
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: '0 20px 40px rgba(255, 215, 0, 0.3)'
+            }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Button
+              text={t('hero.cta.capabilities')}
+              intent="primary"
+              size="large"
+              rightIcon={Brain}
+              onClick={handleScrollToCapabilities}
+              className="min-w-[250px] text-lg py-4 px-8 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-300 hover:to-yellow-400 text-black font-medium border-0 shadow-lg"
+              style={{
+                fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
+                boxShadow: '0 10px 30px rgba(255, 215, 0, 0.2)'
+              }}
+            />
+          </motion.div>
+
+          <motion.div
+            whileHover={{ 
+              scale: 1.02,
+            }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <Button
+              text={t('hero.cta.contact')}
+              intent="none"
+              minimal={true}
+              size="large"
+              rightIcon={ArrowRight}
+              onClick={handleScrollToContact}
+              className="min-w-[250px] text-lg py-4 px-8 text-white border border-white/30 hover:border-white/60 hover:bg-white/5 backdrop-blur-sm"
+              style={{
+                fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif'
+              }}
             />
           </motion.div>
         </motion.div>
 
-        {/* Main Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 leading-tight hero-text-shadow"
+        {/* Footer Tagline */}
+        <motion.p 
+          className="text-sm md:text-base font-light text-blue-300 uppercase tracking-widest mb-12"
+          variants={itemVariants}
+          style={{
+            fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif'
+          }}
         >
-          {t('hero.title')}
-        </motion.h1>
-
-        {/* Subheadline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-base md:text-lg text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto"
-        >
-          {t('hero.subtitle')}
+          Transform your business today
         </motion.p>
 
-        {/* CTA Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-sm text-gray-400 mb-8 max-w-2xl mx-auto"
-        >
-          {t('hero.description')}
-        </motion.p>
-
-        {/* CTA Buttons */}
+        {/* Scroll Indicator */}
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          variants={itemVariants}
+          animate={{
+            y: [0, 10, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
         >
-          <motion.button
-            onClick={() => scrollToSection('capabilities')}
-            className="inline-block px-8 py-4 bg-accent-gold text-primary-black font-bold rounded-lg hover:bg-[#e6c600] hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-gold focus:ring-offset-2 focus:ring-offset-black"
-            whileTap={{ scale: 0.95 }}
-            aria-label="Explore our capabilities"
+          <motion.div
+            className="w-12 h-12 rounded-full border-2 border-blue-300 flex items-center justify-center cursor-pointer hover:border-yellow-400 transition-colors duration-300"
+            onClick={handleScrollToCapabilities}
+            whileHover={{
+              scale: 1.1,
+              boxShadow: '0 0 20px rgba(144, 202, 249, 0.4)'
+            }}
+            style={{
+              background: 'rgba(144, 202, 249, 0.1)',
+              backdropFilter: 'blur(10px)'
+            }}
           >
-            {t('hero.cta.capabilities')}
-          </motion.button>
-          <motion.button
-            onClick={() => scrollToSection('contact')}
-            className="inline-block px-8 py-4 border-2 border-accent-gold text-accent-gold font-bold rounded-lg hover:bg-accent-gold hover:text-primary-black hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-gold focus:ring-offset-2 focus:ring-offset-black"
-            whileTap={{ scale: 0.95 }}
-            aria-label="Start your AI journey"
-          >
-            {t('hero.cta.contact')}
-          </motion.button>
+            <ChevronDown className="w-6 h-6 text-blue-300" />
+          </motion.div>
         </motion.div>
-      </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <svg
-          className="w-6 h-6 text-white/60"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-          />
-        </svg>
       </motion.div>
-    </section>
+
+      {/* CSS for font loading */}
+      <style jsx>{`
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+      `}</style>
+    </motion.section>
   );
 }
