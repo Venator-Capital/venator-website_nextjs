@@ -48,7 +48,7 @@ export function Beams({
           return (
             <span
               key={i}
-              className="absolute top-[-10%] rounded-full opacity-60 animate-[beam-move_linear_infinite]"
+              className="absolute top-[-10%] rounded-full opacity-60 animate-beam"
               style={{
                 left: `${left}%`,
                 width: `${beamWidth}rem`,
@@ -74,12 +74,7 @@ export function Beams({
         <rect width="100%" height="100%" filter="url(#noiseFilter)" opacity="0.35" />
       </svg>
 
-      <style jsx global>{`
-        @keyframes beam-move {
-          0% { transform: translateY(-120%); }
-          100% { transform: translateY(140%); }
-        }
-      `}</style>
+      {/* keyframes defined in globals.css */}
     </div>
   );
 }
