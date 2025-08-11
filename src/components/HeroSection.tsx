@@ -404,10 +404,7 @@ export default function HeroSection() {
         </motion.div>
       </motion.div>
 
-      {/* CSS for font loading */}
-      <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
-      `}</style>
+      {/* External font @import removed to avoid duplicate blocking CSS; fonts defined in globals.css */}
     </motion.section>
   );
 }
