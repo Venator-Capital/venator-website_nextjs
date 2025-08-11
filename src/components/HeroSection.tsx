@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import Beams from '@/components/backgrounds/Beams';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/blueprint';
 import { ArrowRight, Brain, ChevronDown } from 'lucide-react';
@@ -260,11 +261,17 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black"
       style={{ y, opacity }}
     >
-      {/* Vanishing Point Dotfield Background */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full"
-        style={{ zIndex: 1 }}
+      {/* Beams Background */}
+      <Beams 
+        color={'oklch(from var(--accent-gold) l c h)'}
+        beamWidth={1.5}
+        beamHeight={25}
+        beamCount={32}
+        speed={8.7}
+        noiseIntensity={1.4}
+        noiseScale={0.25}
+        rotation={30}
+        className="z-0"
       />
 
       {/* Radial Gradient Overlay */}
