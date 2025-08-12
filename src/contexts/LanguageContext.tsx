@@ -9,7 +9,7 @@ type Language = 'en' | 'ja';
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (key: string) => string;
+  t: (key: string) => any;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -20,22 +20,27 @@ const translations = {
 };
 
 // Helper function to safely get nested object values
-function getNestedValue(obj: any, path: string): string {
-  return path.split('.').reduce((current, key) => current?.[key], obj) || path;
+function getNestedValue(obj: any, path: string): any {
+  const keys = path.split('.');
+  let current = obj;
+  
+  for (const key of keys) {
+    if (current && typeof current === 'object' && key in current) {
+      current = current[key];
+    } else {
+      console.warn(`Translation key not found: ${path} at ${key}`);
+      return path; // Return the key if not found
+    }
+  }
+  
+  return current;
 }
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<Language>('en');
-  const [isClient, setIsClient] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  useEffect(() => {
-    // Only run on client side
-    if (!isClient) return;
-
     // Check localStorage first (simpler and more reliable)
     const savedLanguage = localStorage.getItem('language') as Language;
     if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ja')) {
@@ -49,7 +54,10 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       localStorage.setItem('language', defaultLang);
       document.documentElement.lang = defaultLang;
     }
-  }, [isClient]);
+    
+    // Mark as hydrated after all language logic
+    setIsHydrated(true);
+  }, []);
 
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);
@@ -62,7 +70,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     window.dispatchEvent(new Event('languagechange'));
   };
 
-  const t = (key: string): string => {
+  const t = (key: string): any => {
     const translationData = translations[language];
     const value = getNestedValue(translationData, key);
     
@@ -71,13 +79,23 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       console.warn(`Missing translation for key: ${key} in language: ${language}`);
     }
     
+    // Debug logging only for missing translations
+    if (process.env.NODE_ENV === 'development' && value === key) {
+      console.log(`Debug - Translation key: ${key}, value:`, value, `type:`, typeof value);
+    }
+    
     return value;
   };
 
   // Prevent hydration issues by returning consistent content during SSR
-  if (!isClient) {
+  if (!isHydrated) {
+    const serverT = (key: string): any => {
+      const translationData = translations['en']; // Default to English on server
+      return getNestedValue(translationData, key);
+    };
+    
     return (
-      <LanguageContext.Provider value={{ language: 'en', setLanguage: () => {}, t: (key) => key }}>
+      <LanguageContext.Provider value={{ language: 'en', setLanguage: () => {}, t: serverT }}>
         {children}
       </LanguageContext.Provider>
     );

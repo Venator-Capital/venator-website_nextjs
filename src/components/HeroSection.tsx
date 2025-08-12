@@ -1,413 +1,202 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Button } from '@/components/blueprint';
-import { ArrowRight, Brain, ChevronDown } from 'lucide-react';
+import { useScrollAnimationWithDelay } from '@/hooks/useScrollAnimation';
 
 export default function HeroSection() {
   const { t } = useLanguage();
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
-  const [isLoaded, setIsLoaded] = useState(false);
   
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 500], [0, 150]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
-
-  // Vanishing Point Dotfield Effect
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let animationId: number;
-    let time = 0;
-
-    const resizeCanvas = () => {
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * window.devicePixelRatio;
-      canvas.height = rect.height * window.devicePixelRatio;
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-      canvas.style.width = rect.width + 'px';
-      canvas.style.height = rect.height + 'px';
-    };
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    // Dotfield parameters
-    const DOTS_COUNT = 800;
-    const DEPTH_LAYERS = 50;
-    const CENTER_X = canvas.width / (2 * window.devicePixelRatio);
-    const CENTER_Y = canvas.height / (2 * window.devicePixelRatio);
-    const MAX_RADIUS = Math.max(canvas.width, canvas.height) / window.devicePixelRatio;
-
-    interface Dot {
-      x: number;
-      y: number;
-      z: number;
-      baseX: number;
-      baseY: number;
-      speed: number;
-      size: number;
-      brightness: number;
-    }
-
-    // Initialize dots
-    const dots: Dot[] = [];
-    for (let i = 0; i < DOTS_COUNT; i++) {
-      // Create dots in a radial distribution
-      const angle = Math.random() * Math.PI * 2;
-      const radius = Math.random() * MAX_RADIUS * 2;
-      const baseX = CENTER_X + Math.cos(angle) * radius;
-      const baseY = CENTER_Y + Math.sin(angle) * radius;
-      
-      dots.push({
-        x: baseX,
-        y: baseY,
-        z: Math.random() * DEPTH_LAYERS + 1,
-        baseX,
-        baseY,
-        speed: 0.5 + Math.random() * 1.5,
-        size: Math.random() * 2 + 0.5,
-        brightness: Math.random() * 0.8 + 0.2
-      });
-    }
-
-    const animate = () => {
-      time += 0.016; // ~60fps
-      
-      // Clear canvas with deep space background
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-      ctx.fillRect(0, 0, canvas.width / window.devicePixelRatio, canvas.height / window.devicePixelRatio);
-
-      // Mouse influence
-      const mouseInfluenceX = (mousePosition.x - 0.5) * 50;
-      const mouseInfluenceY = (mousePosition.y - 0.5) * 50;
-
-      dots.forEach((dot) => {
-        // Move dots towards center (vanishing point effect)
-        const directionX = CENTER_X - dot.baseX;
-        const directionY = CENTER_Y - dot.baseY;
-        const distance = Math.sqrt(directionX * directionX + directionY * directionY);
-        
-        if (distance > 5) {
-          dot.x = dot.baseX + (directionX / distance) * (time * dot.speed * 20);
-          dot.y = dot.baseY + (directionY / distance) * (time * dot.speed * 20);
-        }
-
-        // Add mouse interaction
-        dot.x += mouseInfluenceX * (dot.z / DEPTH_LAYERS) * 0.1;
-        dot.y += mouseInfluenceY * (dot.z / DEPTH_LAYERS) * 0.1;
-
-        // Z-depth movement (zoom effect)
-        dot.z -= dot.speed * 0.5;
-        
-        // Reset dot if it goes too far
-        if (dot.z <= 0 || distance < 10) {
-          const angle = Math.random() * Math.PI * 2;
-          const radius = Math.random() * MAX_RADIUS * 1.5 + MAX_RADIUS * 0.5;
-          dot.baseX = CENTER_X + Math.cos(angle) * radius;
-          dot.baseY = CENTER_Y + Math.sin(angle) * radius;
-          dot.x = dot.baseX;
-          dot.y = dot.baseY;
-          dot.z = DEPTH_LAYERS;
-          dot.speed = 0.5 + Math.random() * 1.5;
-        }
-
-        // Calculate perspective and rendering
-        const perspective = 300;
-        const scale = perspective / (perspective + dot.z);
-        const screenX = dot.x;
-        const screenY = dot.y;
-        
-        // Color based on depth and proximity to center
-        const centerDistance = Math.sqrt(
-          Math.pow(screenX - CENTER_X, 2) + Math.pow(screenY - CENTER_Y, 2)
-        );
-        const maxDistance = Math.max(CENTER_X, CENTER_Y);
-        const proximityToCenter = 1 - Math.min(centerDistance / maxDistance, 1);
-        
-        // Dynamic color mixing
-        const depthFactor = (DEPTH_LAYERS - dot.z) / DEPTH_LAYERS;
-        let r, g, b, alpha;
-        
-        if (proximityToCenter > 0.7) {
-          // Near center: Golden
-          r = Math.floor(255 * depthFactor * dot.brightness);
-          g = Math.floor(215 * depthFactor * dot.brightness);
-          b = Math.floor(0 * depthFactor * dot.brightness);
-          alpha = depthFactor * dot.brightness * (proximityToCenter * 2);
-        } else if (proximityToCenter > 0.3) {
-          // Mid range: Blue to Gold transition
-          const transition = (proximityToCenter - 0.3) / 0.4;
-          r = Math.floor((13 + (255 - 13) * transition) * depthFactor * dot.brightness);
-          g = Math.floor((71 + (215 - 71) * transition) * depthFactor * dot.brightness);
-          b = Math.floor((161 + (0 - 161) * transition) * depthFactor * dot.brightness);
-          alpha = depthFactor * dot.brightness * 0.8;
-        } else {
-          // Outer: Blue
-          r = Math.floor(13 * depthFactor * dot.brightness);
-          g = Math.floor(71 * depthFactor * dot.brightness);
-          b = Math.floor(161 * depthFactor * dot.brightness);
-          alpha = depthFactor * dot.brightness * 0.6;
-        }
-
-        // Render dot
-        const dotSize = dot.size * scale * (0.5 + depthFactor * 0.5);
-        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
-        
-        ctx.beginPath();
-        ctx.arc(screenX, screenY, dotSize, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Add glow for closer dots
-        if (depthFactor > 0.8 && proximityToCenter > 0.5) {
-          ctx.shadowColor = `rgba(${r}, ${g}, ${b}, ${alpha * 0.5})`;
-          ctx.shadowBlur = dotSize * 2;
-          ctx.beginPath();
-          ctx.arc(screenX, screenY, dotSize * 0.5, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.shadowBlur = 0;
-        }
-      });
-
-      animationId = requestAnimationFrame(animate);
-    };
-
-    // Start animation after component mount
-    setTimeout(() => {
-      setIsLoaded(true);
-      animate();
-    }, 100);
-
-    return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
-    };
-  }, [mousePosition]);
-
-  // Mouse tracking
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: (e.clientX - rect.left) / rect.width,
-          y: (e.clientY - rect.top) / rect.height
-        });
-      }
-    };
-
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener('mousemove', handleMouseMove);
-      return () => container.removeEventListener('mousemove', handleMouseMove);
-    }
-  }, []);
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.3
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30,
-      filter: 'blur(10px)'
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      filter: 'blur(0px)',
-      transition: {
-        duration: 1.2,
-        ease: [0.19, 1, 0.22, 1] // easeOutExpo
-      }
-    }
-  };
-
-  const handleScrollToCapabilities = () => {
-    document.getElementById('capabilities')?.scrollIntoView({ 
-      behavior: 'smooth' 
-    });
-  };
-
-  const handleScrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ 
-      behavior: 'smooth' 
-    });
-  };
+  const { ref: badgeRef, shouldAnimate: badgeAnimate } = useScrollAnimationWithDelay(0);
+  const { ref: titleRef, shouldAnimate: titleAnimate } = useScrollAnimationWithDelay(100);
+  const { ref: subtitleRef, shouldAnimate: subtitleAnimate } = useScrollAnimationWithDelay(200);
+  const { ref: buttonsRef, shouldAnimate: buttonsAnimate } = useScrollAnimationWithDelay(300);
+  const { ref: statsRef, shouldAnimate: statsAnimate } = useScrollAnimationWithDelay(400);
+  const { ref: partnersRef, shouldAnimate: partnersAnimate } = useScrollAnimationWithDelay(500);
 
   return (
-    <motion.section 
-      ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black"
-      style={{ y, opacity }}
-    >
-      {/* Vanishing Point Dotfield Background */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full"
-        style={{ zIndex: 1 }}
-      />
+    <section id="home" className="relative overflow-hidden pt-24 sm:pt-28 pb-16">
+      {/* CSS-based animated background (temporary replacement for 3D) */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-teal-900/20">
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 via-transparent to-teal-500/10 animate-pulse"></div>
+        </div>
+      </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div>
+            {/* Badge */}
+            <p 
+              ref={badgeRef}
+              className={`text-sm font-medium uppercase tracking-wider text-teal-300/90 transition-all duration-600 ${
+                badgeAnimate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
+            >
+              {t('hero.badge')}
+            </p>
 
-      {/* Radial Gradient Overlay */}
-      <div 
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.8) 100%)`,
-          zIndex: 2
-        }}
-      />
+            {/* Title */}
+            <h1 
+              ref={titleRef}
+              className={`mt-4 text-4xl sm:text-5xl lg:text-6xl leading-tight font-medium tracking-tight transition-all duration-600 ${
+                titleAnimate ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
+              }`}
+              style={{ fontFamily: 'Plus Jakarta Sans, Inter, sans-serif' }}
+            >
+              {t('hero.title')}
+            </h1>
 
-      {/* Content */}
-      <motion.div
-        className="relative z-10 text-center px-8 max-w-6xl mx-auto"
-        variants={containerVariants}
-        initial="hidden"
-        animate={isLoaded ? "visible" : "hidden"}
-      >
-        {/* Main Headline */}
-        <motion.h1 
-          className="text-5xl md:text-7xl lg:text-8xl font-extralight text-white mb-8 tracking-wider"
-          variants={itemVariants}
-          style={{
-            fontFamily: 'Montserrat, -apple-system, BlinkMacSystemFont, sans-serif',
-            textShadow: '0 0 40px rgba(255, 255, 255, 0.1)'
-          }}
+            {/* Subtitle */}
+            <p 
+              ref={subtitleRef}
+              className={`mt-6 text-lg text-gray-300 max-w-xl transition-all duration-600 ${
+                subtitleAnimate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
+            >
+              {t('hero.subtitle')}
+            </p>
+
+            {/* Buttons */}
+            <div 
+              ref={buttonsRef}
+              className={`mt-8 flex flex-col sm:flex-row gap-3 transition-all duration-600 ${
+                buttonsAnimate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
+            >
+              <a
+                href="#work"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-medium bg-teal-400 text-black hover:bg-teal-300 transition-all hover:scale-[1.02]"
+              >
+                {t('hero.exploreButton')}
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </a>
+              <a
+                href="#about"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-medium bg-white/10 text-gray-100 hover:bg-white/15 border border-white/10 transition-all hover:scale-[1.02]"
+              >
+                {t('hero.contactButton')}
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                  <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path>
+                </svg>
+              </a>
+            </div>
+
+            {/* Stats */}
+            <div 
+              ref={statsRef}
+              className={`mt-8 flex items-center gap-6 transition-all duration-600 ${
+                statsAnimate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
+            >
+              <div className="flex -space-x-2">
+                <img src="https://images.unsplash.com/photo-1500649297466-74794c70acfc?w=320&q=80" alt="Avatar" className="w-9 h-9 rounded-full border-2 border-black object-cover" />
+                <img src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/bcaefeee-31cd-4c69-9a33-39ee0ad78c30_320w.jpg" alt="Avatar" className="w-9 h-9 rounded-full border-2 border-black object-cover" />
+                <img src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/468105fe-8942-4e2b-a1a3-7023da9fd488_320w.jpg" alt="Avatar" className="w-9 h-9 rounded-full border-2 border-black object-cover" />
+                <div className="w-9 h-9 rounded-full border-2 border-black bg-teal-400 flex items-center justify-center text-black text-xs font-medium">50+</div>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-gray-100">Trusted by 50+ companies</p>
+                <p className="text-sm text-gray-400">From startups to enterprises</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right side - Image/Stats */}
+          <div className="relative">
+            <div
+              className={`relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-gray-900/40 transition-all duration-600 ${
+                titleAnimate ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
+              }`}
+            >
+              <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/ff6e51d4-782c-4d82-bd46-0c123b22c9e4_1600w.jpg" alt="Design workspace" className="w-full h-[460px] object-cover" />
+              
+              {/* Stat Badges */}
+              <div className="absolute top-4 right-4 backdrop-blur-sm rounded-xl p-4 shadow-lg bg-black/80 border border-white/10">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 flex bg-gray-800 rounded-full items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-gray-200">
+                      <path d="M16 7h6v6"></path>
+                      <path d="m22 7-8.5 8.5-5-5L2 17"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-300">Conversion Rate</p>
+                    <p className="text-lg font-semibold text-white">+147%</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="absolute bottom-4 left-4 backdrop-blur-sm rounded-xl p-4 shadow-lg bg-black/80 border border-white/10">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 flex bg-gray-800 rounded-full items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-gray-300">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                      <path d="M16 3.128a4 4 0 0 1 0 7.744"></path>
+                      <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-300">Engagement</p>
+                    <p className="text-lg font-semibold text-white">+89%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Partners */}
+        <div
+          ref={partnersRef}
+          className={`mt-12 border-t border-white/10 pt-8 transition-all duration-600 ${
+            partnersAnimate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}
         >
-          <span className="inline-block">AI</span>{' '}
-          <span className="inline-block">Into</span>{' '}
-          <span 
-            className="inline-block bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent"
-            style={{
-              textShadow: '0 0 30px rgba(255, 215, 0, 0.3)'
-            }}
-          >
-            Advantage
-          </span>
-        </motion.h1>
-
-        {/* Subheadline */}
-        <motion.p 
-          className="text-xl md:text-2xl lg:text-3xl font-light text-blue-200 mb-12 leading-relaxed tracking-wide max-w-4xl mx-auto"
-          variants={itemVariants}
-          style={{
-            fontFamily: 'Open Sans, -apple-system, BlinkMacSystemFont, sans-serif',
-            textShadow: '0 0 20px rgba(144, 202, 249, 0.2)'
-          }}
-        >
-          Where artificial intelligence meets enterprise innovation and infinite possibilities unfold
-        </motion.p>
-
-        {/* Call to Action Buttons */}
-        <motion.div
-          className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
-          variants={itemVariants}
-        >
-          <motion.div
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: '0 20px 40px rgba(255, 215, 0, 0.3)'
-            }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button
-              text={t('hero.cta.capabilities')}
-              intent="primary"
-              size="large"
-              rightIcon={Brain}
-              onClick={handleScrollToCapabilities}
-              className="min-w-[250px] text-lg py-4 px-8 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-300 hover:to-yellow-400 text-black font-medium border-0 shadow-lg"
-              style={{
-                fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
-                boxShadow: '0 10px 30px rgba(255, 215, 0, 0.2)'
-              }}
-            />
-          </motion.div>
-
-          <motion.div
-            whileHover={{ 
-              scale: 1.02,
-            }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <Button
-              text={t('hero.cta.contact')}
-              intent="none"
-              minimal={true}
-              size="large"
-              rightIcon={ArrowRight}
-              onClick={handleScrollToContact}
-              className="min-w-[250px] text-lg py-4 px-8 text-white border border-white/30 hover:border-white/60 hover:bg-white/5 backdrop-blur-sm"
-              style={{
-                fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif'
-              }}
-            />
-          </motion.div>
-        </motion.div>
-
-        {/* Footer Tagline */}
-        <motion.p 
-          className="text-sm md:text-base font-light text-blue-300 uppercase tracking-widest mb-12"
-          variants={itemVariants}
-          style={{
-            fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif'
-          }}
-        >
-          Transform your business today
-        </motion.p>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          variants={itemVariants}
-          animate={{
-            y: [0, 10, 0],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        >
-          <motion.div
-            className="w-12 h-12 rounded-full border-2 border-blue-300 flex items-center justify-center cursor-pointer hover:border-yellow-400 transition-colors duration-300"
-            onClick={handleScrollToCapabilities}
-            whileHover={{
-              scale: 1.1,
-              boxShadow: '0 0 20px rgba(144, 202, 249, 0.4)'
-            }}
-            style={{
-              background: 'rgba(144, 202, 249, 0.1)',
-              backdropFilter: 'blur(10px)'
-            }}
-          >
-            <ChevronDown className="w-6 h-6 text-blue-300" />
-          </motion.div>
-        </motion.div>
-      </motion.div>
-
-      {/* CSS for font loading */}
-      <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
-      `}</style>
-    </motion.section>
+          <p className="text-center text-sm text-gray-400 mb-6">Trusted by leading brands</p>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 items-center">
+            {[
+              { name: 'Nexus Labs', icon: 'zap' },
+              { name: 'Velocity', icon: 'rocket' },
+              { name: 'Fortress', icon: 'shield' },
+              { name: 'Orbit', icon: 'globe' },
+              { name: 'Prism', icon: 'diamond' }
+            ].map((partner, index) => (
+              <div
+                key={partner.name}
+                className="flex items-center justify-center gap-2 text-gray-400 hover:text-teal-300 transition-colors"
+                style={{ transitionDelay: `${index * 50}ms` }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                  {partner.icon === 'zap' && <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1 .86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path>}
+                  {partner.icon === 'rocket' && (
+                    <>
+                      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+                      <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+                      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
+                      <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+                    </>
+                  )}
+                  {partner.icon === 'shield' && <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>}
+                  {partner.icon === 'globe' && (
+                    <>
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                      <path d="M2 12h20"></path>
+                    </>
+                  )}
+                  {partner.icon === 'diamond' && <path d="M2.7 10.3a2.41 2.41 0 0 0 0 3.41l7.59 7.59a2.41 2.41 0 0 0 3.41 0l7.59-7.59a2.41 2.41 0 0 0 0-3.41l-7.59-7.59a2.41 2.41 0 0 0-3.41 0Z"></path>}
+                </svg>
+                <span className="text-sm">{partner.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

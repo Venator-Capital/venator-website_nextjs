@@ -1,87 +1,98 @@
 'use client';
 
-import { motion } from "framer-motion";
+import { IconCloud } from "@/components/ui/interactive-icon-cloud";
+
+// Venator Capital のテックスタック
+const techStackSlugs = [
+  // AI/ML Technologies
+  "python",
+  "pytorch",
+  "tensorflow", 
+  "huggingface",
+  "openai",
+  
+  // Cloud Platforms
+  "amazonaws",
+  "googlecloud", 
+  "microsoft",
+  
+  // Development & Frameworks  
+  "typescript",
+  "javascript",
+  "react",
+  "nextdotjs",
+  "nodejs",
+  "fastapi",
+  
+  // Databases & Storage
+  "postgresql",
+  "mongodb",
+  "redis",
+  "supabase",
+  
+  // DevOps & Infrastructure
+  "docker",
+  "kubernetes", 
+  "nginx",
+  "vercel",
+  "github",
+  
+  // Design & Collaboration
+  "figma",
+  "notion",
+  "slack",
+  
+  // Additional Tools
+  "stripe",
+  "anthropic", // これはカスタムで追加が必要かもしれません
+];
 
 export default function TechStackSection() {
-  const technologies = [
-    { name: "React", icon: "⚛️" },
-    { name: "TypeScript", icon: "📘" },
-    { name: "Python", icon: "🐍" },
-    { name: "TensorFlow", icon: "🧠" },
-    { name: "PyTorch", icon: "🔥" },
-    { name: "OpenAI", icon: "🤖" },
-    { name: "Node.js", icon: "🟢" },
-    { name: "Docker", icon: "🐳" },
-    { name: "Kubernetes", icon: "☸️" },
-    { name: "AWS", icon: "☁️" },
-    { name: "PostgreSQL", icon: "🐘" },
-    { name: "Redis", icon: "🔴" },
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.3 },
-    },
-  };
-
   return (
-    <section id="tech-stack" className="py-24 md:py-32 section-primary">
-      <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
-        >
-          <h2 className="text-3xl md:text-4xl font-semibold mb-6 leading-snug">
-            Our Technology <span className="text-accent-gold">Stack</span>
-          </h2>
-          <p className="text-base md:text-lg font-normal leading-relaxed text-gray-300 max-w-3xl mx-auto">
-            Cutting-edge tools and frameworks that power our AI solutions
-          </p>
-        </motion.div>
-
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 items-center justify-items-center"
-        >
-          {technologies.map((tech) => (
-            <motion.div
-              key={tech.name}
-              variants={itemVariants}
-              whileHover={{ 
-                scale: 1.1,
-                y: -5,
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="flex flex-col items-center justify-center p-4 bg-deep-charcoal rounded-xl border border-gray-800 hover:border-accent-blue/50 transition-all duration-200 cursor-pointer group"
-            >
-              <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-200">
-                {tech.icon}
+    <section id="tech-stack" className="relative z-10 py-20 bg-black">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <p className="text-sm font-medium uppercase tracking-wider text-teal-300/90">Our Technology Stack</p>
+            <h2 className="mt-3 text-3xl lg:text-4xl tracking-tight font-medium text-white" style={{ fontFamily: 'Plus Jakarta Sans, Inter, sans-serif' }}>
+              Powered by cutting-edge technology
+            </h2>
+            <p className="mt-6 text-gray-400 text-lg">
+              We leverage the most advanced AI frameworks, cloud platforms, and development tools to deliver enterprise-grade solutions that scale with your business needs.
+            </p>
+            <div className="mt-8 grid sm:grid-cols-2 gap-6">
+              <div className="p-4 rounded-xl border border-white/10 bg-gray-900/40">
+                <div className="w-10 h-10 rounded-lg bg-teal-500/10 flex items-center justify-center mb-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-teal-400">
+                    <path d="M20 7h-9"></path>
+                    <path d="M14 17H5"></path>
+                    <circle cx="17" cy="17" r="3"></circle>
+                    <circle cx="7" cy="7" r="3"></circle>
+                  </svg>
+                </div>
+                <h3 className="text-white font-semibold mb-2">AI/ML Frameworks</h3>
+                <p className="text-sm text-gray-400">PyTorch, TensorFlow, Hugging Face for model development and deployment</p>
               </div>
-              <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors duration-200">
-                {tech.name}
-              </span>
-            </motion.div>
-          ))}
-        </motion.div>
+              <div className="p-4 rounded-xl border border-white/10 bg-gray-900/40">
+                <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center mb-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-purple-400">
+                    <path d="M4 11a9 9 0 0 1 9 9"></path>
+                    <path d="M4 4a16 16 0 0 1 16 16"></path>
+                    <circle cx="5" cy="19" r="1"></circle>
+                  </svg>
+                </div>
+                <h3 className="text-white font-semibold mb-2">Cloud Infrastructure</h3>
+                <p className="text-sm text-gray-400">AWS, Google Cloud, Azure for scalable and secure deployments</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="flex justify-center">
+            <div className="relative">
+              <IconCloud iconSlugs={techStackSlugs} />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

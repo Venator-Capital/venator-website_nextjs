@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Providers } from "@/components/providers";
+import { LanguageProvider } from "@/contexts/LanguageContext";
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     description: "We architect cutting-edge AI solutions — from machine learning applications to automation frameworks. No matter where you are in your AI journey, we'll guide you from roadmap to production.",
     images: [
       {
-        url: "/logos/Cropped_black_logo-removebg-preview.png",
+        url: "/Cropped_black_logo-removebg-preview.png",
         width: 1200,
         height: 630,
         alt: "Venator Capital LLC Logo",
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Venator Capital LLC - Turning AI Into Advantage",
     description: "We architect cutting-edge AI solutions — from machine learning applications to automation frameworks. No matter where you are in your AI journey, we'll guide you from roadmap to production.",
-    images: ["/logos/Cropped_black_logo-removebg-preview.png"],
+    images: ["/Cropped_black_logo-removebg-preview.png"],
   },
   robots: {
     index: true,
@@ -70,13 +71,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body
-        className={`${inter.variable} font-sans antialiased bg-black text-white overflow-x-hidden`}
+        className={`${inter.variable} font-sans antialiased text-white overflow-x-hidden`}
         suppressHydrationWarning
       >
-        <Providers>
-          {children}
-        </Providers>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

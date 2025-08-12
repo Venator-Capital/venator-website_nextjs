@@ -1,117 +1,43 @@
 'use client';
 
-import { motion } from "framer-motion";
-import { AlertCircle, Home, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function NotFound() {
   const { t } = useLanguage();
   
   return (
-    <div className="min-h-screen w-full flex items-center justify-center hero-gradient animated-background">
-      {/* Background effects */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 0.6, scale: 1 }}
-          transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-          className="absolute top-1/4 left-1/4 w-64 h-64 border border-accent-blue/20 rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%)',
-            boxShadow: '0 0 60px rgba(59, 130, 246, 0.2)',
-          }}
-        />
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 0.4, y: 0 }}
-          transition={{ duration: 3, repeat: Infinity, repeatType: "reverse", delay: 1 }}
-          className="absolute bottom-1/4 right-1/4 w-32 h-32 border border-accent-gold/20 rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(255, 215, 0, 0.08) 0%, transparent 70%)',
-            boxShadow: '0 0 40px rgba(255, 215, 0, 0.15)',
-          }}
-        />
-      </div>
-
-      <div className="relative z-10 max-w-2xl mx-auto px-8 sm:px-12 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <Card className="card-enhanced border-gray-800/50 bg-deep-charcoal/90 backdrop-blur-sm">
-            <CardContent className="pt-8 pb-8">
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="flex justify-center mb-6"
-              >
-                <div className="w-20 h-20 bg-accent-gold/10 rounded-full flex items-center justify-center">
-                  <AlertCircle className="h-10 w-10 text-accent-gold" />
-                </div>
-              </motion.div>
-
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="text-4xl md:text-5xl font-bold mb-6 text-white"
-              >
-                404
-              </motion.h1>
-
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="text-xl md:text-2xl font-semibold mb-4 text-accent-gold"
-              >
-                {t('404.title')}
-              </motion.h2>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="text-base md:text-lg text-gray-300 mb-8 leading-relaxed"
-              >
-                {t('404.description')}
-                <br />
-                {t('404.subtitle')}
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center"
-              >
-                <Link href="/">
-                  <motion.button
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-accent-gold text-primary-black font-bold rounded-lg hover:bg-[#e6c600] hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-gold focus:ring-offset-2 focus:ring-offset-deep-charcoal"
-                    whileTap={{ scale: 0.95 }}
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    <Home className="w-4 h-4" />
-                    {t('404.returnHome')}
-                  </motion.button>
-                </Link>
-                <motion.button
-                  onClick={() => window.history.back()}
-                  className="inline-flex items-center gap-2 px-6 py-3 border-2 border-accent-gold text-accent-gold font-bold rounded-lg hover:bg-accent-gold hover:text-primary-black hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-gold focus:ring-offset-2 focus:ring-offset-deep-charcoal"
-                  whileTap={{ scale: 0.95 }}
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <ArrowLeft className="w-4 h-4" />
-                  {t('404.goBack')}
-                </motion.button>
-              </motion.div>
-            </CardContent>
-          </Card>
-        </motion.div>
+    <div className="min-h-screen flex items-center justify-center bg-black text-white">
+      <div className="text-center px-4">
+        <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-teal-400/10 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-teal-400">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="m9 9 6 6"></path>
+            <path d="m15 9-6 6"></path>
+          </svg>
+        </div>
+        <h1 className="text-6xl font-bold mb-4 text-white">404</h1>
+        <h2 className="text-2xl font-semibold mb-4 text-teal-400">{t('404.title')}</h2>
+        <p className="text-gray-400 mb-8 max-w-md mx-auto">{t('404.description')}</p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link href="/" className="inline-flex items-center gap-2 px-6 py-3 bg-teal-400 text-black font-medium rounded-full hover:bg-teal-300 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9,22 9,12 15,12 15,22"></polyline>
+            </svg>
+            {t('404.returnHome')}
+          </Link>
+          <button
+            onClick={() => window.history.back()}
+            className="inline-flex items-center gap-2 px-6 py-3 border border-white/10 text-gray-100 font-medium rounded-full hover:bg-white/5 transition-all"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+              <path d="m12 19-7-7 7-7"></path>
+              <path d="M19 12H5"></path>
+            </svg>
+            {t('404.goBack')}
+          </button>
+        </div>
       </div>
     </div>
   );

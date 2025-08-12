@@ -1,131 +1,219 @@
 'use client';
 
-import { motion } from "framer-motion";
-import { useLanguage } from "@/contexts/LanguageContext";
+import React, { useState } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { useScrollAnimationWithDelay } from '@/hooks/useScrollAnimation';
 
 export default function ContactSection() {
   const { t } = useLanguage();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    budget: '',
+    message: '',
+    nda: false
+  });
   
-  const handleEmailClick = () => {
-    window.location.href = "mailto:info@venator-capital.net";
+  const { ref: badgeRef, shouldAnimate: badgeAnimate } = useScrollAnimationWithDelay(0);
+  const { ref: titleRef, shouldAnimate: titleAnimate } = useScrollAnimationWithDelay(100);
+  const { ref: subtitleRef, shouldAnimate: subtitleAnimate } = useScrollAnimationWithDelay(200);
+  const { ref: infoRef, shouldAnimate: infoAnimate } = useScrollAnimationWithDelay(300);
+  const { ref: formRef, shouldAnimate: formAnimate } = useScrollAnimationWithDelay(400);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
+    }));
   };
 
-  const handleContactFormClick = () => {
-    window.open("https://forms.gle/iBogvoWnzHyXYQ2X8", "_blank", "noopener,noreferrer");
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // フォーム送信処理
+    console.log('Form submitted:', formData);
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 section-primary">
-      <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12 text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-semibold mb-12 leading-snug"
-        >
-          {t('contact.title').split(' ').map((word, index, array) => 
-            index === array.length - 1 ? (
-              <span key={index} className="text-accent-gold">{word}</span>
-            ) : (
-              <span key={index}>{word} </span>
-            )
-          )}
-        </motion.h2>
-        
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="text-base md:text-lg font-normal leading-relaxed text-gray-300 mb-16"
-        >
-          {t('contact.subtitle')}
-        </motion.p>
-
-        {/* Contact Options */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="flex flex-col sm:flex-row gap-6 justify-center"
-        >
-          <motion.button
-            onClick={handleEmailClick}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 bg-white text-black rounded-full font-semibold text-lg hover:bg-accent-blue hover:text-white transition-all duration-300 flex items-center justify-center shadow-2xl hover:shadow-white/20"
-          >
-            <svg
-              className="w-6 h-6 mr-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+    <section id="contact" className="py-20 bg-black">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-10">
+          <div>
+            {/* Badge */}
+            <p 
+              ref={badgeRef}
+              className={`text-sm font-medium uppercase tracking-wider text-teal-300/90 transition-all duration-600 ${
+                badgeAnimate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-              />
-            </svg>
-            {t('contact.sendEmail')}
-          </motion.button>
-          
-          <motion.button
-            onClick={handleContactFormClick}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 border-2 border-accent-gold text-accent-gold rounded-full font-semibold text-lg hover:bg-accent-gold hover:text-black transition-all duration-300 flex items-center justify-center shadow-2xl hover:shadow-accent-gold/20"
-          >
-            <svg
-              className="w-6 h-6 mr-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-              />
-            </svg>
-            {t('contact.openForm')}
-          </motion.button>
-        </motion.div>
+              {t('contact.badge')}
+            </p>
 
-        {/* Additional Contact Info */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="mt-16"
-        >
-          <div className="flex flex-col md:flex-row gap-8 justify-center items-center text-silver-gray">
-            <div className="flex items-center">
-              <svg className="w-5 h-5 mr-2 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <span>Tokyo, Japan</span>
-            </div>
-            <div className="flex items-center">
-              <svg className="w-5 h-5 mr-2 text-accent-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>JST Business Hours</span>
-            </div>
-            <div className="flex items-center">
-              <svg className="w-5 h-5 mr-2 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>Global Operations</span>
+            {/* Title */}
+            <h2 
+              ref={titleRef}
+              className={`mt-3 text-3xl lg:text-4xl tracking-tight font-medium text-white transition-all duration-600 ${
+                titleAnimate ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
+              }`}
+              style={{ fontFamily: 'Plus Jakarta Sans, Inter, sans-serif' }}
+            >
+              {t('contact.title')}
+            </h2>
+
+            {/* Subtitle */}
+            <p 
+              ref={subtitleRef}
+              className={`mt-4 text-gray-400 transition-all duration-600 ${
+                subtitleAnimate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
+            >
+              {t('contact.subtitle')}
+            </p>
+
+            {/* Info Cards */}
+            <div 
+              ref={infoRef}
+              className={`mt-8 grid sm:grid-cols-2 gap-4 transition-all duration-600 ${
+                infoAnimate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
+            >
+              <div className="p-5 rounded-xl border border-white/10 bg-black/40">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-gray-300">
+                      <path d="M12 6v6l4 2"></path>
+                      <circle cx="12" cy="12" r="10"></circle>
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-base font-medium text-white">{t('contact.info.kickoff')}</p>
+                    <p className="text-sm text-gray-400">{t('contact.info.kickoffValue')}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="p-5 rounded-xl border border-white/10 bg-black/40">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-gray-300">
+                      <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+                      <path d="m9 12 2 2 4-4"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-base font-medium text-white">{t('contact.info.nda')}</p>
+                    <p className="text-sm text-gray-400">{t('contact.info.ndaValue')}</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </motion.div>
+
+          {/* Contact Form */}
+          <form 
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className={`p-6 rounded-2xl border border-white/10 bg-gradient-to-b from-gray-950 to-black transition-all duration-600 ${
+              formAnimate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="name" className="block text-sm text-gray-300 mb-1">
+                  {t('contact.form.name')}
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2.5 rounded-lg bg-black/60 border border-white/10 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  placeholder="Alex Doe"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm text-gray-300 mb-1">
+                  {t('contact.form.email')}
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2.5 rounded-lg bg-black/60 border border-white/10 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  placeholder="alex@company.com"
+                />
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <label htmlFor="budget" className="block text-sm text-gray-300 mb-1">
+                {t('contact.form.budget')}
+              </label>
+              <select
+                id="budget"
+                name="budget"
+                value={formData.budget}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2.5 rounded-lg bg-black/60 border border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500"
+              >
+                <option value="">{t('contact.form.budgetOptions.placeholder')}</option>
+                <option value="$10k – $25k">{t('contact.form.budgetOptions.option1')}</option>
+                <option value="$25k – $50k">{t('contact.form.budgetOptions.option2')}</option>
+                <option value="$50k – $100k">{t('contact.form.budgetOptions.option3')}</option>
+                <option value="$100k+">{t('contact.form.budgetOptions.option4')}</option>
+              </select>
+            </div>
+
+            <div className="mt-4">
+              <label htmlFor="message" className="block text-sm text-gray-300 mb-1">
+                {t('contact.form.message')}
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                value={formData.message}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2.5 rounded-lg bg-black/60 border border-white/10 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                placeholder={t('contact.form.messagePlaceholder')}
+              />
+            </div>
+
+            <div className="mt-6 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-2">
+                <input
+                  id="nda"
+                  name="nda"
+                  type="checkbox"
+                  checked={formData.nda}
+                  onChange={handleInputChange}
+                  className="w-4 h-4 rounded border-white/20 bg-black/60 text-teal-500 focus:ring-teal-500"
+                />
+                <label htmlFor="nda" className="text-sm text-gray-400">
+                  {t('contact.form.ndaCheckbox')}
+                </label>
+              </div>
+              <button
+                type="submit"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-medium bg-teal-400 text-black hover:bg-teal-300 transition-all hover:scale-[1.02]"
+              >
+                {t('contact.form.submit')}
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                  <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path>
+                  <path d="m21.854 2.147-10.94 10.939"></path>
+                </svg>
+              </button>
+            </div>
+
+            <p className="mt-3 text-xs text-gray-500">
+              {t('contact.form.hint')}
+            </p>
+          </form>
+        </div>
       </div>
     </section>
   );

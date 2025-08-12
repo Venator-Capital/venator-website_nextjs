@@ -1,148 +1,79 @@
 'use client';
 
-import { motion } from "framer-motion";
-import { useLanguage } from "@/contexts/LanguageContext";
-import {
-  IconHome,
-  IconSettings,
-  IconBriefcase,
-  IconCpu,
-  IconHelpCircle,
-  IconInfoCircle,
-  IconMail,
-  IconFileText,
-  IconScale,
-  IconBuildingSkyscraper,
-} from "@tabler/icons-react";
+import React from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Footer() {
   const { t } = useLanguage();
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
-  const dockItems = [
-    {
-      title: t('nav.home'),
-      icon: <IconHome className="h-5 w-5" />,
-      onClick: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
-    },
-    {
-      title: t('nav.capabilities'),
-      icon: <IconSettings className="h-5 w-5" />,
-      onClick: () => scrollToSection('capabilities'),
-    },
-    {
-      title: t('nav.useCases'),
-      icon: <IconBriefcase className="h-5 w-5" />,
-      onClick: () => scrollToSection('use-cases'),
-    },
-    {
-      title: t('nav.technology'),
-      icon: <IconCpu className="h-5 w-5" />,
-      onClick: () => scrollToSection('tech-partners'),
-    },
-    {
-      title: t('nav.faq'),
-      icon: <IconHelpCircle className="h-5 w-5" />,
-      onClick: () => scrollToSection('faq'),
-    },
-    {
-      title: t('nav.about'),
-      icon: <IconInfoCircle className="h-5 w-5" />,
-      onClick: () => scrollToSection('about'),
-    },
-    {
-      title: t('nav.contact'),
-      icon: <IconMail className="h-5 w-5" />,
-      onClick: () => scrollToSection('contact'),
-    },
-    {
-      title: t('nav.privacyPolicy'),
-      icon: <IconFileText className="h-5 w-5" />,
-      href: "/privacy",
-    },
-    {
-      title: t('nav.termsOfService'),
-      icon: <IconScale className="h-5 w-5" />,
-      href: "/terms",
-    },
-    {
-      title: t('nav.enterpriseContact'),
-      icon: <IconBuildingSkyscraper className="h-5 w-5" />,
-      href: "https://forms.gle/iBogvoWnzHyXYQ2X8",
-    },
-  ];
 
   return (
-    <footer className="bg-primary-black border-t border-white/10 py-8">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="flex justify-center"
-        >
-          {/* Dock Navigation */}
-          <nav 
-            aria-label="Main Navigation" 
-            className="backdrop-blur-md border border-neutral-700/50 rounded-full p-3 shadow-2xl"
-            style={{
-              background: 'linear-gradient(to top, #0f0f0f, #1a1a1a)',
-              boxShadow: '0 0 20px rgba(255,255,255,0.15), 0 8px 32px rgba(0,0,0,0.5)',
-            }}
-          >
-            <div className="flex items-center gap-3 overflow-x-auto scrollbar-hide max-w-[90vw] md:max-w-none">
-              {dockItems.map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                  viewport={{ once: true }}
-                >
-                  {item.href ? (
-                    <a
-                      href={item.href}
-                      target={item.href.startsWith('http') ? '_blank' : undefined}
-                      rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="group relative flex h-12 w-12 items-center justify-center rounded-full bg-zinc-950/80 backdrop-blur-sm shadow-lg hover:shadow-xl hover:shadow-yellow-400/20 ring-1 ring-white/10 border border-white/5 transform-gpu origin-center hover:scale-[1.15] hover:bg-white/10 transition-all duration-200 ease-in-out"
-                      aria-label={item.title}
-                      title={item.title}
-                    >
-                      <div className="text-white/80 group-hover:text-yellow-400 transition-colors duration-200">
-                        {item.icon}
-                      </div>
-                      {/* Tooltip */}
-                      <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-zinc-950/95 backdrop-blur-md text-white text-xs px-2 py-1 rounded-lg shadow-xl ring-1 ring-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50">
-                        {item.title}
-                      </div>
-                    </a>
-                  ) : (
-                    <button
-                      onClick={item.onClick}
-                      className="group relative flex h-12 w-12 items-center justify-center rounded-full bg-zinc-950/80 backdrop-blur-sm shadow-lg hover:shadow-xl hover:shadow-yellow-400/20 ring-1 ring-white/10 border border-white/5 transform-gpu origin-center hover:scale-[1.15] hover:bg-white/10 transition-all duration-200 ease-in-out"
-                      aria-label={item.title}
-                      title={item.title}
-                    >
-                      <div className="text-white/80 group-hover:text-yellow-400 transition-colors duration-200">
-                        {item.icon}
-                      </div>
-                      {/* Tooltip */}
-                      <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-zinc-950/95 backdrop-blur-md text-white text-xs px-2 py-1 rounded-lg shadow-xl ring-1 ring-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50">
-                        {item.title}
-                      </div>
-                    </button>
-                  )}
-                </motion.div>
-              ))}
+    <footer className="border-t border-white/10 bg-gray-950">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="grid md:grid-cols-4 gap-8">
+          <div className="md:col-span-2">
+            {/* Brand */}
+            <a href="#home" className="inline-flex items-center gap-2">
+              <div className="h-6 w-6 rounded-md bg-gradient-to-br from-teal-500 to-cyan-400"></div>
+              <span className="text-lg font-medium" style={{ fontFamily: 'Plus Jakarta Sans, Inter, sans-serif' }}>
+                Venator Capital
+              </span>
+            </a>
+            
+            {/* Description */}
+            <p className="mt-3 text-sm text-gray-400 max-w-md">
+              {t('footer.description')}
+            </p>
+            
+            {/* Contact Info */}
+            <div className="mt-4 flex items-center gap-3">
+              <a href="mailto:hello@venator.capital" className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-gray-200">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                  <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
+                  <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                </svg>
+                {t('footer.contact')}
+              </a>
+              <span className="text-gray-700">•</span>
+              <a href="#contact" className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-gray-200">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                  <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                {t('footer.location')}
+              </a>
             </div>
-          </nav>
-        </motion.div>
+          </div>
+
+          {/* Navigation */}
+          <div>
+            <p className="text-sm font-medium text-gray-300">{t('footer.navigate')}</p>
+            <ul className="mt-3 space-y-2 text-sm text-gray-400">
+              <li><a href="#about" className="hover:text-teal-300">{t('nav.about')}</a></li>
+              <li><a href="#services" className="hover:text-teal-300">{t('nav.services')}</a></li>
+              <li><a href="#work" className="hover:text-teal-300">{t('nav.work')}</a></li>
+              <li><a href="#contact" className="hover:text-teal-300">{t('nav.contact')}</a></li>
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <p className="text-sm font-medium text-gray-300">{t('footer.legal')}</p>
+            <ul className="mt-3 space-y-2 text-sm text-gray-400">
+              <li><a href="#" className="hover:text-teal-300">{t('footer.privacy')}</a></li>
+              <li><a href="#" className="hover:text-teal-300">{t('footer.terms')}</a></li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Section */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
+          <p>{t('footer.copyright')}</p>
+          <div className="flex items-center gap-3">
+            <a href="#" className="hover:text-teal-300">{t('footer.social.twitter')}</a>
+            <a href="#" className="hover:text-teal-300">{t('footer.social.dribbble')}</a>
+            <a href="#" className="hover:text-teal-300">{t('footer.social.github')}</a>
+          </div>
+        </div>
       </div>
     </footer>
   );
