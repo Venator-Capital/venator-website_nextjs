@@ -4,37 +4,38 @@ import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useScrollAnimationWithDelay } from '@/hooks/useScrollAnimation';
 import ServiceCard from './ServiceCard';
+import { Compass, PenTool, Code2, BarChart3 } from 'lucide-react';
 
 export default function ServicesSection() {
   const { t } = useLanguage();
   
-  const { ref: badgeRef, shouldAnimate: badgeAnimate } = useScrollAnimationWithDelay(0);
-  const { ref: titleRef, shouldAnimate: titleAnimate } = useScrollAnimationWithDelay(100);
-  const { ref: ctaRef, shouldAnimate: ctaAnimate } = useScrollAnimationWithDelay(100);
-  const { ref: cardsRef, shouldAnimate: cardsAnimate } = useScrollAnimationWithDelay(100);
+  const { ref: badgeRef, shouldAnimate: badgeAnimate } = useScrollAnimationWithDelay<HTMLParagraphElement>(0);
+  const { ref: titleRef, shouldAnimate: titleAnimate } = useScrollAnimationWithDelay<HTMLHeadingElement>(100);
+  const { ref: ctaRef, shouldAnimate: ctaAnimate } = useScrollAnimationWithDelay<HTMLAnchorElement>(100);
+  const { ref: cardsRef, shouldAnimate: cardsAnimate } = useScrollAnimationWithDelay<HTMLDivElement>(100);
 
   const services = [
     {
       key: 'strategy',
-      icon: 'compass' as const,
+      icon: Compass,
       color: 'teal' as const,
       delay: 100
     },
     {
       key: 'design',
-      icon: 'pen-tool' as const,
+      icon: PenTool,
       color: 'cyan' as const,
       delay: 150
     },
     {
       key: 'engineering',
-      icon: 'code-2' as const,
+      icon: Code2,
       color: 'emerald' as const,
       delay: 200
     },
     {
       key: 'analytics',
-      icon: 'bar-chart-3' as const,
+      icon: BarChart3,
       color: 'fuchsia' as const,
       delay: 250
     }
@@ -101,9 +102,6 @@ export default function ServicesSection() {
                 description={t(`services.items.${service.key}.description`)}
                 features={safeFeatures}
                 icon={service.icon}
-                color={service.color}
-                delay={service.delay}
-                shouldAnimate={cardsAnimate}
               />
             );
           })}

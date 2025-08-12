@@ -14,11 +14,11 @@ export default function ContactSection() {
     nda: false
   });
   
-  const { ref: badgeRef, shouldAnimate: badgeAnimate } = useScrollAnimationWithDelay(0);
-  const { ref: titleRef, shouldAnimate: titleAnimate } = useScrollAnimationWithDelay(100);
-  const { ref: subtitleRef, shouldAnimate: subtitleAnimate } = useScrollAnimationWithDelay(200);
-  const { ref: infoRef, shouldAnimate: infoAnimate } = useScrollAnimationWithDelay(300);
-  const { ref: formRef, shouldAnimate: formAnimate } = useScrollAnimationWithDelay(400);
+  const { ref: badgeRef, shouldAnimate: badgeAnimate } = useScrollAnimationWithDelay<HTMLParagraphElement>(0);
+  const { ref: titleRef, shouldAnimate: titleAnimate } = useScrollAnimationWithDelay<HTMLHeadingElement>(100);
+  const { ref: subtitleRef, shouldAnimate: subtitleAnimate } = useScrollAnimationWithDelay<HTMLParagraphElement>(200);
+  const { ref: infoRef, shouldAnimate: infoAnimate } = useScrollAnimationWithDelay<HTMLDivElement>(300);
+  const { ref: formRef, shouldAnimate: formAnimate } = useScrollAnimationWithDelay<HTMLFormElement>(400);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;

@@ -1,13 +1,12 @@
 'use client';
 
-import { useLanguage } from '@/contexts/LanguageContext';
+
 import InteractiveElements from '@/components/InteractiveElements';
 import LoadingScreen from '@/components/LoadingScreen';
 import TechStackSection from '@/components/TechStackSection';
 import { useState } from 'react';
 
 export default function Home() {
-  const { t } = useLanguage();
   const [showLoading, setShowLoading] = useState(true);
 
   return (
@@ -59,7 +58,7 @@ export default function Home() {
             {/* Actions */}
             <div className="flex items-center gap-3">
               <a href="#contact" className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-black hover:bg-gray-200 transition-all hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-teal-500">
-                Let's Talk
+                Let&apos;s Talk
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
                   <path d="M5 12h14"></path>
                   <path d="m12 5 7 7-7 7"></path>
@@ -159,7 +158,7 @@ export default function Home() {
                 Where artificial intelligence meets enterprise innovation and infinite possibilities unfold
               </h1>
               <p className="mt-6 text-lg text-gray-300 max-w-xl">
-                We architect cutting-edge AI solutions — from machine learning applications to automation frameworks. No matter where you are in your AI journey, we'll guide you from roadmap to production.
+                We architect cutting-edge AI solutions — from machine learning applications to automation frameworks. No matter where you are in your AI journey, we&apos;ll guide you from roadmap to production.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <a href="#work" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-medium bg-teal-400 text-black hover:bg-teal-300 transition-all hover:scale-[1.02]">
@@ -237,7 +236,7 @@ export default function Home() {
             <div>
               <p className="text-sm font-medium uppercase tracking-wider text-teal-300/90">About Us</p>
               <h2 className="mt-3 text-3xl lg:text-4xl tracking-tight font-medium text-white" style={{ fontFamily: 'Plus Jakarta Sans, Inter, sans-serif' }}>
-                We don't just design—<br/>we engineer outcomes
+                We don&apos;t just design—<br/>we engineer outcomes
               </h2>
               <p className="mt-6 text-gray-400 text-lg">
                 Founded in 2019, Venator Capital partners with enterprise teams to launch AI-powered solutions. Research-driven, results-minded, and innovation-obsessed.
@@ -541,9 +540,9 @@ export default function Home() {
             <div>
               <p className="text-sm font-medium uppercase tracking-wider text-teal-300/90">Contact</p>
               <h2 className="mt-3 text-3xl lg:text-4xl tracking-tight font-medium text-white" style={{ fontFamily: 'Plus Jakarta Sans, Inter, sans-serif' }}>
-                Let's build AI solutions that drive results
+                Let&apos;s build AI solutions that drive results
               </h2>
-              <p className="mt-4 text-gray-400">Tell us about your AI goals. We'll follow up within 24 hours.</p>
+              <p className="mt-4 text-gray-400">Tell us about your AI goals. We&apos;ll follow up within 24 hours.</p>
 
               <div className="mt-8 grid sm:grid-cols-2 gap-4">
                 <div className="p-5 rounded-xl border border-white/10 bg-black/40">

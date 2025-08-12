@@ -80,7 +80,7 @@ export function IconCloud({ iconSlugs }: DynamicCloudProps) {
   }, [data, theme])
 
   return (
-    // @ts-ignore
+    // @ts-expect-error - Cloud component type mismatch with react-icon-cloud
     <Cloud {...cloudProps}>
       <>{renderedIcons}</>
     </Cloud>

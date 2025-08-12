@@ -1,4 +1,7 @@
 {
+  "/api/contact/route": "app/api/contact/route.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/ai-workflows/page": "app/ai-workflows/page.js",
   "/page": "app/page.js"
 }

@@ -19,10 +19,10 @@ export interface UseCase {
 export default function WorkSection() {
   const { t } = useLanguage();
   
-  const { ref: badgeRef, shouldAnimate: badgeAnimate } = useScrollAnimationWithDelay(0);
-  const { ref: titleRef, shouldAnimate: titleAnimate } = useScrollAnimationWithDelay(100);
-  const { ref: ctaRef, shouldAnimate: ctaAnimate } = useScrollAnimationWithDelay(100);
-  const { ref: projectsRef, shouldAnimate: projectsAnimate } = useScrollAnimationWithDelay(100);
+  const { ref: badgeRef, shouldAnimate: badgeAnimate } = useScrollAnimationWithDelay<HTMLParagraphElement>(0);
+  const { ref: titleRef, shouldAnimate: titleAnimate } = useScrollAnimationWithDelay<HTMLHeadingElement>(100);
+  const { ref: ctaRef, shouldAnimate: ctaAnimate } = useScrollAnimationWithDelay<HTMLAnchorElement>(100);
+  const { ref: projectsRef, shouldAnimate: projectsAnimate } = useScrollAnimationWithDelay<HTMLDivElement>(100);
 
   const useCases: UseCase[] = [
     {

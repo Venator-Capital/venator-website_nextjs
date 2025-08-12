@@ -7,12 +7,12 @@ import { useScrollAnimationWithDelay } from '@/hooks/useScrollAnimation';
 export default function HeroSection() {
   const { t } = useLanguage();
   
-  const { ref: badgeRef, shouldAnimate: badgeAnimate } = useScrollAnimationWithDelay(0);
-  const { ref: titleRef, shouldAnimate: titleAnimate } = useScrollAnimationWithDelay(100);
-  const { ref: subtitleRef, shouldAnimate: subtitleAnimate } = useScrollAnimationWithDelay(200);
-  const { ref: buttonsRef, shouldAnimate: buttonsAnimate } = useScrollAnimationWithDelay(300);
-  const { ref: statsRef, shouldAnimate: statsAnimate } = useScrollAnimationWithDelay(400);
-  const { ref: partnersRef, shouldAnimate: partnersAnimate } = useScrollAnimationWithDelay(500);
+  const { ref: badgeRef, shouldAnimate: badgeAnimate } = useScrollAnimationWithDelay<HTMLParagraphElement>(0);
+  const { ref: titleRef, shouldAnimate: titleAnimate } = useScrollAnimationWithDelay<HTMLHeadingElement>(100);
+  const { ref: subtitleRef, shouldAnimate: subtitleAnimate } = useScrollAnimationWithDelay<HTMLParagraphElement>(200);
+  const { ref: buttonsRef, shouldAnimate: buttonsAnimate } = useScrollAnimationWithDelay<HTMLDivElement>(300);
+  const { ref: statsRef, shouldAnimate: statsAnimate } = useScrollAnimationWithDelay<HTMLDivElement>(400);
+  const { ref: partnersRef, shouldAnimate: partnersAnimate } = useScrollAnimationWithDelay<HTMLDivElement>(500);
 
   return (
     <section id="home" className="relative overflow-hidden pt-24 sm:pt-28 pb-16">

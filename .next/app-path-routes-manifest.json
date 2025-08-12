@@ -1,0 +1,7 @@
+{
+  "/api/contact/route": "/api/contact",
+  "/favicon.ico/route": "/favicon.ico",
+  "/_not-found/page": "/_not-found",
+  "/ai-workflows/page": "/ai-workflows",
+  "/page": "/"
+}

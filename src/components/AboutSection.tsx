@@ -7,12 +7,12 @@ import { useScrollAnimationWithDelay } from '@/hooks/useScrollAnimation';
 export default function AboutSection() {
   const { t } = useLanguage();
   
-  const { ref: badgeRef, shouldAnimate: badgeAnimate } = useScrollAnimationWithDelay(0);
-  const { ref: titleRef, shouldAnimate: titleAnimate } = useScrollAnimationWithDelay(100);
-  const { ref: subtitleRef, shouldAnimate: subtitleAnimate } = useScrollAnimationWithDelay(200);
-  const { ref: statsRef, shouldAnimate: statsAnimate } = useScrollAnimationWithDelay(300);
-  const { ref: ctaRef, shouldAnimate: ctaAnimate } = useScrollAnimationWithDelay(350);
-  const { ref: imagesRef, shouldAnimate: imagesAnimate } = useScrollAnimationWithDelay(50);
+  const { ref: badgeRef, shouldAnimate: badgeAnimate } = useScrollAnimationWithDelay<HTMLParagraphElement>(0);
+  const { ref: titleRef, shouldAnimate: titleAnimate } = useScrollAnimationWithDelay<HTMLHeadingElement>(100);
+  const { ref: subtitleRef, shouldAnimate: subtitleAnimate } = useScrollAnimationWithDelay<HTMLParagraphElement>(200);
+  const { ref: statsRef, shouldAnimate: statsAnimate } = useScrollAnimationWithDelay<HTMLDivElement>(300);
+  const { ref: ctaRef, shouldAnimate: ctaAnimate } = useScrollAnimationWithDelay<HTMLDivElement>(350);
+  const { ref: imagesRef, shouldAnimate: imagesAnimate } = useScrollAnimationWithDelay<HTMLDivElement>(50);
 
   return (
     <section id="about" className="py-20 bg-gray-950">
