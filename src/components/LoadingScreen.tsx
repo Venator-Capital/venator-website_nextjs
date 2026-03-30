@@ -1,6 +1,7 @@
 'use client';
 
 import { DotLoader } from "@/components/ui/dot-loader";
+import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect, useState } from 'react';
 
 const loadingAnimation = [
@@ -27,6 +28,7 @@ interface LoadingScreenProps {
 }
 
 export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
+  const { t } = useLanguage();
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -47,14 +49,14 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
         <div className="flex items-center gap-3">
           <img 
             src="/hexagon-logo.png" 
-            alt="Venator Capital Logo" 
+            alt="" 
             className="h-12 w-12 object-contain brightness-0 invert" 
           />
           <span 
             className="text-2xl font-bold text-white tracking-tight" 
             style={{ fontFamily: 'Plus Jakarta Sans, Inter, sans-serif' }}
           >
-            Venator Capital
+            {t('nav.brand')}
           </span>
         </div>
         
