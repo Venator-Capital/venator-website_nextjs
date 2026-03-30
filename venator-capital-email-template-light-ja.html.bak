@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venator Capital - エンタープライズ要件でAI導入を加速</title>
+  <meta name="description" content="2週間で実働プロトタイプ。48時間で初回提案。SOC 2／ISO 27001前提のAI導入アセスメント">
+  <!-- iOS reformat off / detectors off -->
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
+
+  <style type="text/css">
+    body, table, td, p, a, li, blockquote { -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
+    img { -ms-interpolation-mode:bicubic; border:0; height:auto; line-height:100%; outline:none; text-decoration:none; }
+    body{
+      margin:0 !important; padding:0 !important; background:#F8FAFC !important;
+      font-family:'Noto Sans JP','Hiragino Sans','Yu Gothic',Arial,sans-serif !important;
+      font-size:16px; line-height:1.7; color:#1A1A1A;
+    }
+    a[x-apple-data-detectors]{ color:inherit !important; text-decoration:none !important; }
+    .email-container{ max-width:600px; margin:0 auto; background:#FFFFFF; }
+    .header{ background:#FFFFFF; padding:48px 24px; text-align:center; border-bottom:3px solid #E5E7EB; }
+    .logo-image{ width:120px; height:auto; margin-bottom:20px; display:block; }
+    .company-name{ font-size:28px; font-weight:800; margin:0; letter-spacing:.02em; color:#1F2937; }
+    .tagline{ font-size:16px; color:#6B7280; margin:12px 0 0 0; font-weight:500; }
+    .hero{ background:#FFFFFF; padding:64px 24px 56px; text-align:center; border-bottom:1px solid #E5E7EB; }
+    .badge{ display:inline-block; background:#1D4ED8; color:#FFFFFF; padding:12px 20px; border-radius:24px; font-size:13px; font-weight:700; letter-spacing:.08em; border:none; text-transform:uppercase; }
+    .hero-title{ font-size:32px; font-weight:800; margin:20px 0 16px; line-height:1.3; letter-spacing:.01em; color:#1F2937; }
+    .hero-sub{ font-size:18px; color:#374151; max-width:540px; margin:0 auto 24px; line-height:1.6; }
+
+    .meta-note{ font-size:14px; color:#6B7280; margin-top:16px; }
+    .stats{ background:#F8FAFC; padding:40px 24px; text-align:center; border-bottom:1px solid #E5E7EB; }
+
+    .section{ padding:64px 24px; background:#FFFFFF; }
+    .section.alt{ background:#F8FAFC; border-bottom:1px solid #E5E7EB; }
+    .title{ font-size:26px; font-weight:800; text-align:center; margin:0 0 48px; color:#1F2937; line-height:1.3; }
+    .card{ background:#FFFFFF; border:1px solid #E5E7EB; border-radius:16px; }
+    .card .inner{ padding:24px 20px; color:#1A1A1A; }
+    .card h4{ font-size:18px; margin:0 0 8px; font-weight:700; color:#1F2937; }
+    .card p{ font-size:15px; color:#374151; margin:0; line-height:1.6; }
+
+    .footer{ background:#F1F5F9; padding:48px 24px; border-top:1px solid #E5E7EB; }
+    .footer p{ font-size:16px; color:#374151; text-align:center; margin:0 0 24px; line-height:1.6; }
+    @media only screen and (max-width:600px){
+      .stack{ display:block !important; width:100% !important; }
+      .hero-title{ font-size:26px !important; }
+      .hero-sub{ font-size:16px !important; }
+      .section{ padding:48px 20px !important; }
+      .card .inner{ padding:20px 16px !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Preheader -->
+  <div style="display:none;max-height:0;overflow:hidden;color:#0B0B0B;line-height:1px;font-size:1px;">
+    AI導入アセスメント｜48時間で初回提案。2週間で実働プロトタイプ。
+    &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
+  </div>
+
+  <div class="email-container">
+    <!-- Browser View Link (table-based) -->
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#F3F4F6;border-bottom:1px solid #E5E7EB;">
+      <tr>
+        <td align="center" style="padding:10px 12px;">
+          <a href="{{view_in_browser_url}}" style="color:#6B7280;font-size:12px;text-decoration:none;">ブラウザで見る</a>
+        </td>
+      </tr>
+    </table>
+    <!-- Header -->
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+              <td class="header" style="background:#FFFFFF;padding:48px 24px;text-align:center;border-bottom:3px solid #E5E7EB;">
+                <img src="https://venator-capital.net/Cropped_black_logo-removebg-preview.png" alt="Venator Capital ロゴ" class="logo-image" width="120" height="36" style="border:0;outline:0;height:auto;">
+                <h1 class="company-name">Venator Capital</h1>
+                <p class="tagline">AIで競争優位をつくる</p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Hero -->
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+              <td class="hero" style="background:#FFFFFF;padding:64px 24px 56px;text-align:center;border-bottom:1px solid #E5E7EB;">
+                <span class="badge" style="display:inline-block;background:#1D4ED8;color:#FFFFFF;padding:12px 20px;border-radius:24px;font-size:13px;font-weight:700;letter-spacing:.08em;border:none;text-transform:uppercase;">業務効率化 と コンプライアンス対応</span>
+                <h2 class="hero-title">48時間で投資判断、2週間で検証可能な成果物。既存システムを活用した段階的な導入を進めます。</h2>
+                <p class="hero-sub">顧客対応の自動化、レポート作成の効率化、異常検知の自動化を2週間で実現。SOC 2／ISO 27001対応でリスクを軽減し、既存投資の再活用を最優先します。</p>
+
+                <!--[if mso]>
+                  <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="https://venator-capital.net/assessment?utm_source=email&utm_medium=outreach&utm_campaign=vc_pitch"
+                    style="height:48px;v-text-anchor:middle;width:360px;" arcsize="50%" stroke="f" fillcolor="#1D4ED8">
+                    <w:anchorlock/>
+                    <center style="mso-padding-alt:0 24px 0 24px;color:#FFFFFF;font-family:Segoe UI, Arial, sans-serif;font-size:16px;font-weight:bold;">
+                      初回診断（無償・48時間SLA）
+                    </center>
+                  </v:roundrect>
+                <![endif]-->
+                <!--[if !mso]><!-->
+                  <a href="https://venator-capital.net/assessment?utm_source=email&utm_medium=outreach&utm_campaign=vc_pitch"
+                     style="display:inline-block;background:#1D4ED8;color:#ffffff;text-decoration:none;font-weight:700;
+                            font-size:16px;line-height:48px;height:48px;padding:0 24px;border-radius:24px;">
+                    初回診断（無償・48時間SLA）
+                  </a>
+                <!--<![endif]-->
+
+                <!-- 提供価値の明示 -->
+                <div style="background:#F8FAFC;padding:24px;margin:24px 0;border-radius:12px;border:1px solid #E5E7EB;">
+                  <h3 style="font-size:18px;font-weight:700;color:#1F2937;margin:0 0 16px;text-align:center;">
+                    お支払いいただく価値
+                  </h3>
+                  <ul style="color:#374151;font-size:15px;line-height:1.6;margin:0;padding-left:20px;">
+                    <li style="margin-bottom:8px;">48時間以内の初回提案（無償）</li>
+                    <li style="margin-bottom:8px;">2週間で決裁に必要な検証成果の提示</li>
+                    <li style="margin-bottom:8px;">SOC 2／ISO 27001対応のセキュリティ設計</li>
+                    <li style="margin-bottom:8px;">既存システムを前提にした段階的導入計画</li>
+                  </ul>
+                </div>
+
+                <div class="meta-note">
+                  メールでもご相談いただけます：
+                  <a href="mailto:info@venator-capital.net?subject=%E5%88%9D%E5%9B%9E%E8%A8%BA%E6%96%AD%E3%81%AE%E4%BE%9D%E9%A0%BC&body=%E4%BC%81%E6%A5%AD%E5%90%8D%3A%0A%E9%83%A8%E7%BD%B2%3A%0A%E5%AF%BE%E8%B1%A1%E6%A5%AD%E5%8B%99%3A%0A%E6%83%85%E5%A0%B1%E7%B3%BB%E7%B5%B1%E5%90%8C%E5%BA%A7%3A%E6%9C%89%E3%83%BB%E7%84%A1%0A%E7%8F%BE%E7%8A%B6%E3%81%AE%E8%AA%B2%E9%A1%8C%3A" style="color:#1D4ED8; text-decoration:none; font-weight:500;">info@venator-capital.net</a>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Stats (table-based, no calc / inline-block) -->
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+              <td class="stats" style="background:#F8FAFC; padding:40px 24px; text-align:center; border-bottom:1px solid #E5E7EB;">
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:400px;margin:0 auto;">
+                  <tr>
+                    <td class="stack" width="50%" align="center" style="padding:12px;">
+                      <div style="font-size:36px; font-weight:800; color:#1D4ED8; line-height:1;">2</div>
+                      <div style="font-size:12px; color:#6B7280; letter-spacing:.06em;">実働プロトタイプまで2週間</div>
+                    </td>
+                    <td class="stack" width="50%" align="center" style="padding:12px;">
+                      <div style="font-size:36px; font-weight:800; color:#1D4ED8; line-height:1;">48時間</div>
+                      <div style="font-size:12px; color:#6B7280; letter-spacing:.06em;">初回提案は受領後48時間以内</div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Services -->
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+              <td class="section" style="padding:64px 24px;background:#FFFFFF;">
+                <table role="presentation" width="60" align="center" cellpadding="0" cellspacing="0" style="height:3px;background:#1D4ED8;border-radius:2px;margin-bottom:32px;"><tr><td style="font-size:0;line-height:0;">&nbsp;</td></tr></table>
+                <h3 class="title" style="font-size:26px;font-weight:800;text-align:center;margin:0 0 48px;color:#1F2937;line-height:1.3;">提供サービス</h3>
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:560px;margin:0 auto;">
+                  <tr>
+                    <td width="50%" valign="top" style="padding:12px;">
+                                  <table role="presentation" width="100%" style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:16px;"><tr><td style="padding:24px 20px;color:#1A1A1A;">
+              <h4>業務効率化</h4>
+              <p>既存システムを活用した自動化・効率化で、短期間で動作する成果物を構築します。</p>
+            </td></tr></table>
+                    </td>
+                    <td width="50%" valign="top" style="padding:12px;">
+                                  <table role="presentation" width="100%" style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:16px;"><tr><td style="padding:24px 20px;color:#1A1A1A;">
+              <h4>コンプライアンス対応</h4>
+              <p>データ分類、権限分離、監査ログを初期段階から組み込み、SOC 2／ISO 27001対応を実現します。</p>
+            </td></tr></table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="50%" valign="top" style="padding:12px;">
+                                  <table role="presentation" width="100%" style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:16px;"><tr><td style="padding:24px 20px;color:#1A1A1A;">
+              <h4>段階的改善</h4>
+                             <p>業務フローに沿った検証可能な成果物を2週間で構築し、投資継続の可否を判断する材料を揃えます。</p>
+            </td></tr></table>
+                    </td>
+                    <td width="50%" valign="top" style="padding:12px;">
+                                  <table role="presentation" width="100%" style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:16px;"><tr><td style="padding:24px 20px;color:#1A1A1A;">
+              <h4>既存投資活用</h4>
+                             <p>監視・監査ログ・通知・権限棚卸までを標準構成として提供し、既存システムと無理なく統合できる構成案を提示します。</p>
+            </td></tr></table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Process -->
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+              <td class="section alt" style="padding:64px 24px;background:#F8FAFC;border-bottom:1px solid #E5E7EB;">
+                <table role="presentation" width="60" align="center" cellpadding="0" cellspacing="0" style="height:3px;background:#1D4ED8;border-radius:2px;margin-bottom:32px;"><tr><td style="font-size:0;line-height:0;">&nbsp;</td></tr></table>
+                <h3 class="title" style="font-size:26px;font-weight:800;text-align:center;margin:0 0 48px;color:#1F2937;line-height:1.3;">段階的改善プロセス（4段階の進め方）</h3>
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;margin:0 auto;">
+                  <tr>
+                    <td width="50%" valign="top" style="padding:12px;">
+                                  <table role="presentation" width="100%" style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:16px;"><tr><td style="padding:24px 20px;color:#1A1A1A;text-align:center;">
+              <!-- Bulletproof number badge -->
+              <!--[if mso]>
+                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" fillcolor="#1D4ED8" stroke="f"
+                             arcsize="50%" style="width:48px;height:48px;v-text-anchor:middle;">
+                  <center style="color:#FFFFFF;font-family:Segoe UI, Arial, sans-serif;font-size:16px;font-weight:bold;">
+                    01
+                  </center>
+                </v:roundrect>
+              <![endif]-->
+              <!--[if !mso]><!-->
+                <div style="width:48px;height:48px;border-radius:50%;background:#1D4ED8;color:#FFFFFF;
+                            font-size:18px;font-weight:700;line-height:48px;text-align:center;margin:0 auto 16px;">
+                  01
+                </div>
+              <!--<![endif]-->
+              <h4>要件・リスク分析</h4>
+              <p>データ分類、権限、ログ方針を先に確定し、手戻りを抑止。</p>
+            </td></tr></table>
+                    </td>
+                    <td width="50%" valign="top" style="padding:12px;">
+                      <table role="presentation" width="100%" class="card"><tr><td class="inner" style="text-align:center;">
+                        <!-- Bulletproof number badge -->
+                        <!--[if mso]>
+                          <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" fillcolor="#1D4ED8" stroke="f"
+                                       arcsize="50%" style="width:48px;height:48px;v-text-anchor:middle;">
+                            <center style="color:#FFFFFF;font-family:Segoe UI, Arial, sans-serif;font-size:16px;font-weight:bold;">
+                              02
+                            </center>
+                          </v:roundrect>
+                        <![endif]-->
+                        <!--[if !mso]><!-->
+                          <div style="width:48px;height:48px;border-radius:50%;background:#1D4ED8;color:#FFFFFF;
+                                      font-size:18px;font-weight:700;line-height:48px;text-align:center;margin:0 auto 16px;">
+                            02
+                          </div>
+                        <!--<![endif]-->
+                                      <h4>実働プロトタイプ（2週間）</h4>
+              <p>業務フローに沿って2週間で実働プロトタイプを構築。迅速にレビュー可能です。</p>
+                      </td></tr></table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="50%" valign="top" style="padding:12px;">
+                      <table role="presentation" width="100%" class="card"><tr><td class="inner" style="text-align:center;">
+                        <!-- Bulletproof number badge -->
+                        <!--[if mso]>
+                          <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" fillcolor="#1D4ED8" stroke="f"
+                                       arcsize="50%" style="width:48px;height:48px;v-text-anchor:middle;">
+                            <center style="color:#FFFFFF;font-family:Segoe UI, Arial, sans-serif;font-size:16px;font-weight:bold;">
+                              03
+                            </center>
+                          </v:roundrect>
+                        <![endif]-->
+                        <!--[if !mso]><!-->
+                          <div style="width:48px;height:48px;border-radius:50%;background:#1D4ED8;color:#FFFFFF;
+                                      font-size:18px;font-weight:700;line-height:48px;text-align:center;margin:0 auto 16px;">
+                            03
+                          </div>
+                        <!--<![endif]-->
+                                      <h4>セキュリティ統合</h4>
+              <p>脆弱性スキャン、監査ログ、権限分離を初日から実装。</p>
+                      </td></tr></table>
+                    </td>
+                    <td width="50%" valign="top" style="padding:12px;">
+                      <table role="presentation" width="100%" class="card"><tr><td class="inner" style="text-align:center;">
+                        <!-- Bulletproof number badge -->
+                        <!--[if mso]>
+                          <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" fillcolor="#1D4ED8" stroke="f"
+                                       arcsize="50%" style="width:48px;height:48px;v-text-anchor:middle;">
+                            <center style="color:#FFFFFF;font-family:Segoe UI, Arial, sans-serif;font-size:16px;font-weight:bold;">
+                              04
+                            </center>
+                          </v:roundrect>
+                        <![endif]-->
+                        <!--[if !mso]><!-->
+                          <div style="width:48px;height:48px;border-radius:50%;background:#1D4ED8;color:#FFFFFF;
+                                      font-size:18px;font-weight:700;line-height:48px;text-align:center;margin:0 auto 16px;">
+                            04
+                          </div>
+                        <!--<![endif]-->
+                                      <h4>本番運用</h4>
+              <p>監視、権限棚卸、引き継ぎまで。安心して本番へ。</p>
+                      </td></tr></table>
+                    </td>
+                  </tr>
+                                  </table>
+                  <p style="color:#6B7280;font-size:12px;margin-top:8px;text-align:center;">
+                    ※注意：期間・適用条件は要件の複雑さやデータ準備状況により異なります。詳細はご依頼時にご案内します。
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+    <!-- Security -->
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+              <td class="section" style="padding:64px 24px;background:#FFFFFF;">
+                <table role="presentation" width="60" align="center" cellpadding="0" cellspacing="0" style="height:3px;background:#1D4ED8;border-radius:2px;margin-bottom:32px;"><tr><td style="font-size:0;line-height:0;">&nbsp;</td></tr></table>
+                <h3 class="title" style="font-size:26px;font-weight:800;text-align:center;margin:0 0 48px;color:#1F2937;line-height:1.3;">既存システムとの統合とセキュリティ</h3>
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;margin:0 auto;">
+                  <tr>
+                    <td width="33%" valign="top" style="padding:12px;">
+                      <table role="presentation" width="100%" class="card"><tr><td class="inner" style="text-align:center;">
+                                      <h4>コンプライアンス要件を前提に設計</h4>
+              <p>SOC 2／ISO 27001の要件を前提に設計。手戻りを抑制します。</p>
+                      </td></tr></table>
+                    </td>
+                    <td width="33%" valign="top" style="padding:12px;">
+                      <table role="presentation" width="100%" class="card"><tr><td class="inner" style="text-align:center;">
+                                      <h4>継続的な脆弱性スキャン</h4>
+              <p>CI/CDに統合した継続的な脆弱性検査。</p>
+                      </td></tr></table>
+                    </td>
+                    <td width="33%" valign="top" style="padding:12px;">
+                      <table role="presentation" width="100%" class="card"><tr><td class="inner" style="text-align:center;">
+                                      <h4>運用基盤</h4>
+              <p>監視／監査ログ／通知を標準で備えています。</p>
+                      </td></tr></table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Risk -->
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+              <td class="section alt" style="padding:64px 24px;background:#F8FAFC;border-bottom:1px solid #E5E7EB;">
+                <table role="presentation" width="60" align="center" cellpadding="0" cellspacing="0" style="height:3px;background:#1D4ED8;border-radius:2px;margin-bottom:32px;"><tr><td style="font-size:0;line-height:0;">&nbsp;</td></tr></table>
+                <h3 class="title" style="font-size:26px;font-weight:800;text-align:center;margin:0 0 48px;color:#1F2937;line-height:1.3;">リスク低減に関する評価と保証</h3>
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;margin:0 auto;">
+                  <tr>
+                    <td width="50%" valign="top" style="padding:12px;">
+                      <table role="presentation" width="100%" class="card"><tr><td class="inner" style="text-align:center;">
+                                      <h4>14日間のPoC期間保証</h4>
+              <p>2週間で実働プロトタイプを提示できない場合、PoC費用はいただきません。</p>
+                      </td></tr></table>
+                    </td>
+                    <td width="50%" valign="top" style="padding:12px;">
+                      <table role="presentation" width="100%" class="card"><tr><td class="inner" style="text-align:center;">
+                                      <h4>48時間アセスメントSLA</h4>
+              <p>初回診断は、受領後48時間以内に初回提案をご提示します。</p>
+                      </td></tr></table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Objections (FAQ) -->
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+              <td class="section" style="padding:64px 24px;background:#FFFFFF;border-top:1px solid #E5E7EB;">
+                <table role="presentation" width="60" align="center" cellpadding="0" cellspacing="0" style="height:3px;background:#1D4ED8;border-radius:2px;margin-bottom:32px;"><tr><td style="font-size:0;line-height:0;">&nbsp;</td></tr></table>
+                <h3 class="title" style="font-size:26px;font-weight:800;text-align:center;margin:0 0 32px;color:#1F2937;line-height:1.3;">よくある懸念への回答</h3>
+
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;margin:0 auto;">
+                  <tr>
+                    <td style="padding:12px;">
+                      <table role="presentation" width="100%" style="background:#F8FAFC;border:1px solid #E5E7EB;border-radius:12px;">
+                        <tr><td style="padding:16px 20px;">
+                          <p style="margin:0 0 6px;color:#111827;font-weight:700;">Q. 既存システムに手を入れたくない</p>
+                          <p style="margin:0;color:#374151;">A. 既存資産の再活用を前提に構成。必要に応じて<strong>疎結合の接続</strong>（API・バッチ）で段階導入します。</p>
+                        </td></tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:12px;">
+                      <table role="presentation" width="100%" style="background:#F8FAFC;border:1px solid #E5E7EB;border-radius:12px;">
+                        <tr><td style="padding:16px 20px;">
+                          <p style="margin:0 0 6px;color:#111827;font-weight:700;">Q. セキュリティ・監査が心配</p>
+                          <p style="margin:0;color:#374151;">A. SOC 2／ISO 27001の要件を前提に<strong>データ分類・権限分離・監査ログ</strong>を初期から設計します。</p>
+                        </td></tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:12px;">
+                      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;margin:0 auto;">
+                        <tr>
+                          <td style="padding:12px;">
+                            <table role="presentation" width="100%" style="background:#F8FAFC;border:1px solid #E5E7EB;border-radius:12px;">
+                              <tr><td style="padding:16px 20px;">
+                                <p style="margin:0 0 6px;color:#111827;font-weight:700;">Q. ROIが見えないと稟議が通らない</p>
+                                <p style="margin:0;color:#374151;">A. 2週間で<strong>検証結果と運用コスト見込み</strong>を提示し、投資継続の可否判断に必要な資料を揃えます。</p>
+                              </td></tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="padding:12px;">
+                            <table role="presentation" width="100%" style="background:#F8FAFC;border:1px solid #E5E7EB;border-radius:12px;">
+                              <tr><td style="padding:16px 20px;">
+                                <p style="margin:0 0 6px;color:#111827;font-weight:700;">Q. 現場の負担が増えるのでは？</p>
+                                <p style="margin:0;color:#374151;">A. 初期は<strong>小さく始める自動化</strong>に限定。現場のレビュー時間は最小限に抑えます。</p>
+                              </td></tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Contact -->
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+              <td class="section" style="padding:64px 24px;background:#FFFFFF;">
+                <table role="presentation" width="60" align="center" cellpadding="0" cellspacing="0" style="height:3px;background:#1D4ED8;border-radius:2px;margin-bottom:32px;"><tr><td style="font-size:0;line-height:0;">&nbsp;</td></tr></table>
+                <h3 class="title" style="font-size:26px;font-weight:800;text-align:center;margin:0 0 48px;color:#1F2937;line-height:1.3;">まずは初回診断から</h3>
+                <p style="color:#6B7280;font-size:12px;text-align:center;margin:8px 0 0;">
+                  不採用のご判断となった場合でも、提示資料は社内共有にご活用いただけます。
+                </p>
+                <p style="color:#374151; font-size:16px; text-align:center; max-width:560px; margin:0 auto 32px; line-height:1.6;">
+                  AI駆動アプローチが御社のプロジェクトをどこまで前進させられるか。48時間で初期提案までお返しします。
+                </p>
+
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;margin:0 auto;">
+                  <tr>
+                    <td width="33%" valign="top" style="padding:12px;">
+                      <table role="presentation" width="100%" class="card"><tr><td class="inner" style="text-align:center;">
+                        <h4>メール</h4>
+                        <p>info@venator-capital.net</p>
+                      </td></tr></table>
+                    </td>
+                    <td width="33%" valign="top" style="padding:12px;">
+                      <table role="presentation" width="100%" class="card"><tr><td class="inner" style="text-align:center;">
+                        <h4>オフィス</h4>
+                        <p>東京都新宿区弁天町66</p>
+                      </td></tr></table>
+                    </td>
+                    <td width="33%" valign="top" style="padding:12px;">
+                      <table role="presentation" width="100%" class="card"><tr><td class="inner" style="text-align:center;">
+                                      <h4>対応速度</h4>
+              <p>初回診断は48時間以内</p>
+                      </td></tr></table>
+                    </td>
+                  </tr>
+                </table>
+
+                <!--[if mso]>
+                  <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="https://venator-capital.net/assessment?utm_source=email&utm_medium=outreach&utm_campaign=vc_pitch"
+                    style="height:48px;v-text-anchor:middle;width:360px;" arcsize="50%" stroke="f" fillcolor="#1D4ED8">
+                    <w:anchorlock/>
+                    <center style="mso-padding-alt:0 24px 0 24px;color:#FFFFFF;font-family:Segoe UI, Arial, sans-serif;font-size:16px;font-weight:bold;">
+                      初回診断（無償・48時間SLA）
+                    </center>
+                  </v:roundrect>
+                <![endif]-->
+                <!--[if !mso]><!-->
+                  <div style="text-align:center; margin-top:16px;">
+                    <a href="https://venator-capital.net/assessment?utm_source=email&utm_medium=outreach&utm_campaign=vc_pitch"
+                       style="display:inline-block;background:#1D4ED8;color:#ffffff;text-decoration:none;font-weight:700;
+                              font-size:16px;line-height:48px;height:48px;padding:0 24px;border-radius:24px;">
+                      初回診断（無償・48時間SLA）
+                    </a>
+                  </div>
+                <!--<![endif]-->
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Footer -->
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+              <td class="footer">
+                <p>既存システムを活用した業務効率化とコンプライアンス対応で、短期間で本番移行を見据えた成果物と意思決定に必要な資料をご提供します。</p>
+                <div style="padding:24px;text-align:center;border-top:1px solid #E5E7EB;color:#6B7280;font-size:12px;line-height:1.7;">
+                  © 2025 Venator Capital LLC. All rights reserved.<br>
+                  <a href="https://venator-capital.net/privacy" style="color:#6B7280;text-decoration:none;">プライバシーポリシー</a> |
+                  <a href="https://venator-capital.net/terms" style="color:#6B7280;text-decoration:none;">利用規約</a> |
+                  <a href="https://venator-capital.net/unsubscribe?email={{email}}" style="color:#6B7280;text-decoration:underline;">配信停止（One-Click対応）</a>
+                </div>
+                <div style="font-size:12px;color:#9CA3AF;margin-top:8px;text-align:center;">
+                  お問い合わせは <a href="mailto:info@venator-capital.net" style="color:#1D4ED8;text-decoration:none;font-weight:500;">info@venator-capital.net</a> までお願いいたします。
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!--
+    ESP header suggestions:
+    List-Unsubscribe: <https://venator-capital.net/unsubscribe?email={{email}}>, <mailto:unsubscribe@venator-capital.net?subject=unsubscribe>
+    List-Unsubscribe-Post: List-Unsubscribe=One-Click
+  -->
+</body>
+</html>

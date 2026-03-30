@@ -8,7 +8,7 @@ interface UseScrollAnimationOptions {
   triggerOnce?: boolean;
 }
 
-export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
+export function useScrollAnimation<T extends HTMLElement = HTMLElement>(options: UseScrollAnimationOptions = {}) {
   const {
     threshold = 0.2,
     rootMargin = '-20% 0px -20% 0px',
@@ -18,7 +18,7 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
   const [isVisible, setIsVisible] = useState(false);
   const [hasTriggered, setHasTriggered] = useState(false);
   const [isHydrated, setIsHydrated] = useState(false);
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<T>(null);
 
   useEffect(() => {
     setIsHydrated(true);
@@ -55,9 +55,9 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
   return { ref, isVisible: isHydrated ? (hasTriggered ? true : isVisible) : false };
 }
 
-export function useScrollAnimationWithDelay(delay: number = 0) {
+export function useScrollAnimationWithDelay<T extends HTMLElement = HTMLElement>(delay: number = 0) {
   const [shouldAnimate, setShouldAnimate] = useState(false);
-  const { ref, isVisible } = useScrollAnimation();
+  const { ref, isVisible } = useScrollAnimation<T>();
 
   useEffect(() => {
     if (isVisible) {

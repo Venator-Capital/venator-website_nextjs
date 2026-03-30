@@ -47,9 +47,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       setLanguage(savedLanguage);
       document.documentElement.lang = savedLanguage;
     } else {
-      // Check browser language
-      const browserLang = navigator.language.toLowerCase();
-      const defaultLang = browserLang.startsWith('ja') ? 'ja' : 'en';
+      // Always default to English
+      const defaultLang: Language = 'en';
       setLanguage(defaultLang);
       localStorage.setItem('language', defaultLang);
       document.documentElement.lang = defaultLang;

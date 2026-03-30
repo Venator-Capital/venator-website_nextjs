@@ -8,10 +8,10 @@ import ServiceCard from './ServiceCard';
 export default function ServicesSection() {
   const { t } = useLanguage();
   
-  const { ref: badgeRef, shouldAnimate: badgeAnimate } = useScrollAnimationWithDelay(0);
-  const { ref: titleRef, shouldAnimate: titleAnimate } = useScrollAnimationWithDelay(100);
-  const { ref: ctaRef, shouldAnimate: ctaAnimate } = useScrollAnimationWithDelay(100);
-  const { ref: cardsRef, shouldAnimate: cardsAnimate } = useScrollAnimationWithDelay(100);
+  const { ref: badgeRef, shouldAnimate: badgeAnimate } = useScrollAnimationWithDelay<HTMLParagraphElement>(0);
+  const { ref: titleRef, shouldAnimate: titleAnimate } = useScrollAnimationWithDelay<HTMLHeadingElement>(100);
+  const { ref: ctaRef, shouldAnimate: ctaAnimate } = useScrollAnimationWithDelay<HTMLAnchorElement>(100);
+  const { ref: cardsRef, shouldAnimate: cardsAnimate } = useScrollAnimationWithDelay<HTMLDivElement>(100);
 
   const services = [
     {
@@ -56,15 +56,21 @@ export default function ServicesSection() {
             </p>
 
             {/* Title */}
-            <h2 
+            <h2
               ref={titleRef}
-              className={`mt-3 text-3xl lg:text-4xl tracking-tight font-medium text-white transition-all duration-600 ${
+              className={`hero-title mt-3 text-3xl lg:text-4xl tracking-tight font-medium text-white transition-all duration-600 ${
                 titleAnimate ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
               }`}
               style={{ fontFamily: 'Plus Jakarta Sans, Inter, sans-serif' }}
             >
               {t('services.title')}
             </h2>
+            {/* Subtitle */}
+            {t('services.subtitle') && (
+              <p className="mt-4 text-base lg:text-lg text-gray-400 max-w-3xl">
+                {t('services.subtitle')}
+              </p>
+            )}
           </div>
 
           {/* CTA */}

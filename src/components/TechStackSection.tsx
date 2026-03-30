@@ -1,64 +1,67 @@
 'use client';
 
 import { IconCloud } from "@/components/ui/interactive-icon-cloud";
+import { useLanguage } from '@/contexts/LanguageContext';
 
 // Venator Capital のテックスタック
 const techStackSlugs = [
   // AI/ML Technologies
   "python",
   "pytorch",
-  "tensorflow", 
+  "tensorflow",
   "huggingface",
   "openai",
-  
+
   // Cloud Platforms
   "amazonaws",
-  "googlecloud", 
+  "googlecloud",
   "microsoft",
-  
-  // Development & Frameworks  
+
+  // Development & Frameworks
   "typescript",
   "javascript",
   "react",
   "nextdotjs",
   "nodejs",
   "fastapi",
-  
+
   // Databases & Storage
   "postgresql",
   "mongodb",
   "redis",
   "supabase",
-  
+
   // DevOps & Infrastructure
   "docker",
-  "kubernetes", 
+  "kubernetes",
   "nginx",
   "vercel",
   "github",
-  
+
   // Design & Collaboration
   "figma",
   "notion",
   "slack",
-  
+
   // Additional Tools
   "stripe",
   "anthropic", // これはカスタムで追加が必要かもしれません
 ];
 
 export default function TechStackSection() {
+  const { t } = useLanguage();
+
   return (
     <section id="tech-stack" className="relative z-10 py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <p className="text-sm font-medium uppercase tracking-wider text-teal-300/90">Our Technology Stack</p>
-            <h2 className="mt-3 text-3xl lg:text-4xl tracking-tight font-medium text-white" style={{ fontFamily: 'Plus Jakarta Sans, Inter, sans-serif' }}>
-              Powered by cutting-edge technology
+            <p className="text-sm font-medium uppercase tracking-wider text-teal-300/90">{t('techStack.badge')}</p>
+            <h2 className="hero-title mt-3 text-3xl lg:text-4xl tracking-tight font-medium text-white break-keep" style={{ fontFamily: 'Plus Jakarta Sans, Inter, sans-serif' }}>
+              {t('techStack.title')}
             </h2>
-            <p className="mt-6 text-gray-400 text-lg">
-              We leverage the most advanced AI frameworks, cloud platforms, and development tools to deliver enterprise-grade solutions that scale with your business needs.
+            <p className="description mt-6 text-gray-400 text-lg break-keep leading-relaxed">
+              {t('techStack.subtitle')}
             </p>
             <div className="mt-8 grid sm:grid-cols-2 gap-6">
               <div className="p-4 rounded-xl border border-white/10 bg-gray-900/40">
@@ -70,8 +73,8 @@ export default function TechStackSection() {
                     <circle cx="7" cy="7" r="3"></circle>
                   </svg>
                 </div>
-                <h3 className="text-white font-semibold mb-2">AI/ML Frameworks</h3>
-                <p className="text-sm text-gray-400">PyTorch, TensorFlow, Hugging Face for model development and deployment</p>
+                <h3 className="text-white font-semibold mb-2">{t('techStack.frameworks.title')}</h3>
+                <p className="text-sm text-gray-400 leading-relaxed">{t('techStack.frameworks.description')}</p>
               </div>
               <div className="p-4 rounded-xl border border-white/10 bg-gray-900/40">
                 <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center mb-3">
@@ -81,12 +84,12 @@ export default function TechStackSection() {
                     <circle cx="5" cy="19" r="1"></circle>
                   </svg>
                 </div>
-                <h3 className="text-white font-semibold mb-2">Cloud Infrastructure</h3>
-                <p className="text-sm text-gray-400">AWS, Google Cloud, Azure for scalable and secure deployments</p>
+                <h3 className="text-white font-semibold mb-2">{t('techStack.cloud.title')}</h3>
+                <p className="text-sm text-gray-400 leading-relaxed">{t('techStack.cloud.description')}</p>
               </div>
             </div>
           </div>
-          
+
           <div className="flex justify-center">
             <div className="relative">
               <IconCloud iconSlugs={techStackSlugs} />

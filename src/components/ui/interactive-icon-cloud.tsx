@@ -28,12 +28,15 @@ export const cloudProps: Omit<ICloud, "children"> = {
     activeCursor: "default",
     tooltip: "native",
     initial: [0.1, -0.1],
-    clickToFront: 500,
+    clickToFront: false,
     tooltipDelay: 0,
     outlineColour: "#0000",
-    maxSpeed: 0.04,
+    maxSpeed: 0.02,
     minSpeed: 0.02,
-    // dragControl: false,
+    dragControl: false,
+    dragThreshold: 0,
+    noMouse: true,
+    noSelect: true,
   },
 }
 
@@ -52,7 +55,10 @@ export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
       href: undefined,
       target: undefined,
       rel: undefined,
-      onClick: (e: any) => e.preventDefault(),
+      onClick: (e: unknown) => {
+        const event = e as { preventDefault?: () => void };
+        event.preventDefault?.();
+      },
     },
   })
 }
@@ -80,7 +86,7 @@ export function IconCloud({ iconSlugs }: DynamicCloudProps) {
   }, [data, theme])
 
   return (
-    // @ts-ignore
+    // @ts-expect-error react-icon-cloud types mismatch for options
     <Cloud {...cloudProps}>
       <>{renderedIcons}</>
     </Cloud>

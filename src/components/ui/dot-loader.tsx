@@ -26,7 +26,7 @@ export const DotLoader = ({
     const gridRef = useRef<HTMLDivElement>(null);
     const currentIndex = useRef(0);
     const repeats = useRef(0);
-    const interval = useRef<NodeJS.Timeout>(null);
+    const interval = useRef<ReturnType<typeof setInterval> | null>(null);
 
     const applyFrameToDots = useCallback(
         (dots: HTMLDivElement[], frameIndex: number) => {
@@ -57,7 +57,7 @@ export const DotLoader = ({
                 applyFrameToDots(dots, currentIndex.current);
                 if (currentIndex.current + 1 >= frames.length) {
                     if (repeatCount != -1 && repeats.current + 1 >= repeatCount) {
-                        clearInterval(interval.current!);
+                        if (interval.current) clearInterval(interval.current);
                         onComplete?.();
                     }
                     repeats.current++;

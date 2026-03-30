@@ -82,10 +82,15 @@ export default {
             height: "0",
           },
         },
+        dash: {
+          '0%': { strokeDasharray: '0 120' },
+          '100%': { strokeDasharray: '120 0' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        dash: "dash 2s ease-in-out infinite",
       },
     },
   },

@@ -1,0 +1,108 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "work": "Use Cases",
+    "contact": "Contact",
+    "cta": "Contact"
+  },
+  "hero": {
+    "badge": "Turning AI Into Advantage",
+    "title": "Where artificial intelligence meets enterprise innovation and infinite possibilities unfold",
+    "subtitle": "We architect cutting-edge AI solutions — from machine learning applications to automation frameworks. No matter where you are in your AI journey, we'll guide you from roadmap to production.",
+    "exploreButton": "View Our Services",
+    "contactButton": "Start AI Journey",
+    "scrollText": "Transform Your Business Today"
+  },
+  "about": {
+    "badge": "About Venator Capital",
+    "title": "We don't just consult—we build AI solutions that transform",
+    "subtitle": "Founded in Tokyo, Venator Capital LLC specializes in enterprise AI solutions. We bring deep technical expertise in machine learning, automation, and system integration to help organizations unlock the transformative power of artificial intelligence.",
+    "stats": {
+      "projects": "Multiple",
+      "projectsLabel": "Enterprise Clients",
+      "satisfaction": "4",
+      "satisfactionLabel": "Core AI Domains"
+    },
+    "cta": "Learn About Our Approach"
+  },
+  "services": {
+    "badge": "Core Capabilities",
+    "title": "Four AI domains powering our technical superiority",
+    "cta": "Discuss Your Project",
+    "items": {
+      "strategy": {
+        "title": "AI/ML Solutions",
+        "description": "Custom AI/ML applications designed, developed and deployed to match your business needs.",
+        "features": ["Machine Learning", "Deep Learning", "Neural Networks"]
+      },
+      "design": {
+        "title": "Data Analytics & Automation",
+        "description": "Collect, analyze and automate data workflows using advanced analytics and AI-driven processes.",
+        "features": ["Business Intelligence", "Predictive Analytics", "Process Automation"]
+      },
+      "engineering": {
+        "title": "Digital Platform",
+        "description": "Create and manage scalable web and media platforms enhanced with AI capabilities.",
+        "features": ["Web Platforms", "Content Management", "Media Processing"]
+      },
+      "analytics": {
+        "title": "Enterprise AI Integration",
+        "description": "Design and implement enterprise-grade AI systems with strategic consulting services.",
+        "features": ["System Integration", "Compliance", "Strategic Consulting"]
+      }
+    }
+  },
+  "work": {
+    "badge": "Use Cases",
+    "title": "Real-world applications where AI solutions solve complex business challenges",
+    "cta": "Implement Your Use Case"
+  },
+  "contact": {
+    "badge": "Ready to Transform with AI?",
+    "title": "Let's architect your AI advantage together",
+    "subtitle": "Our enterprise-grade solutions deliver measurable results with industry-leading security and compliance. Tell us about your challenge.",
+    "info": {
+      "kickoff": "Initial consultation",
+      "kickoffValue": "Within 1 week",
+      "nda": "Enterprise ready",
+      "ndaValue": "Full compliance"
+    },
+    "cta": {
+      "title": "Start Your AI Journey",
+      "description": "Share your project details through our inquiry form or reach out directly for general inquiries.",
+      "googleForm": "Fill Project Inquiry Form",
+      "email": "Email: info@venator-capital.net",
+      "or": "or",
+      "hint": "We'll review your inquiry and respond within 1-2 business days."
+    }
+  },
+  "footer": {
+    "description": "We architect cutting-edge AI solutions to help ambitious enterprises transform their operations and unlock new possibilities.",
+    "contact": "info@venator-capital.net",
+    "location": "Tokyo, Japan",
+    "navigate": "Navigate",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service", 
+    "social": {
+      "twitter": "Twitter",
+      "dribbble": "Dribbble",
+      "github": "GitHub"
+    },
+    "copyright": "© 2025 Venator Capital LLC. All rights reserved."
+  },
+  "language": {
+    "en": "English",
+    "ja": "日本語"
+  },
+  "404": {
+    "title": "Page not found",
+    "subtitle": "The page you're looking for doesn't exist or has been moved.",
+    "backHome": "Back to home",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "returnHome": "Return Home",
+    "goBack": "Go Back"
+  }
+}

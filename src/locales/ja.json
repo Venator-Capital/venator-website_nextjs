@@ -1,117 +1,162 @@
 {
   "nav": {
+    "brand": "Venator",
     "home": "ホーム",
-    "about": "会社概要",
-    "services": "サービス内容",
-    "work": "導入事例",
+    "about": "企業情報",
+    "services": "サービス",
     "contact": "お問い合わせ",
-    "cta": "AI導入を始める"
+    "cta": "お問い合わせ"
   },
   "hero": {
-    "badge": "AI Into Advantage",
-    "title": "人工知能が企業革新と出会い、無限の可能性が展開される場所",
-    "subtitle": "機械学習アプリケーションから自動化フレームワークまで、最先端のAIソリューションを設計します。AIジャーニーのどの段階にいても、ロードマップから本番展開まで導きます。",
-    "exploreButton": "サービス内容を見る",
-    "contactButton": "AI導入を始める",
-    "scrollText": "今すぐビジネスを変革"
+    "badge": "AI実装",
+    "title": "AIの力で組織を変える",
+    "subtitle": "Venator(ベネター)は緻密なコンサルティングを通じて、AIエージェント構築による業務効率化から社内AI人材育成まで、AIと共に成長する企業をサポートします。",
+    "exploreButton": "サービスを見る",
+    "contactButton": "お問い合わせ",
+    "scrollText": "実績事例"
   },
   "about": {
-    "badge": "Venator Capitalについて",
-    "title": "コンサルティングだけでなく、変革をもたらすAIソリューションを構築",
-    "subtitle": "東京で設立されたVenator Capital LLCは、エンタープライズAIソリューションを専門としています。機械学習、自動化、システム統合における深い技術的専門知識で、組織が人工知能の変革的な力を解き放つお手伝いをします。",
-    "stats": {
-      "projects": "100社+",
-      "projectsLabel": "サービス提供実績",
-      "satisfaction": "4つ",
-      "satisfactionLabel": "AI中核領域"
-    },
-    "cta": "当社のアプローチを学ぶ"
-  },
-  "services": {
-    "badge": "中核事業領域",
-    "title": "当社の技術的優位性を支える4つのAI重点ドメイン",
-    "cta": "プロジェクトについて相談",
-    "items": {
-      "strategy": {
-        "title": "AI・機械学習ソリューション",
-        "description": "お客様のビジネスニーズに合わせて設計・開発・展開するカスタムAI/MLアプリケーション。",
-        "features": ["機械学習", "深層学習", "ニューラルネットワーク"]
+    "badge": "基本方針",
+    "title": "最適化されたAIソリューション",
+    "subtitle": "各組織の力を最大限に引き出す。AIソリューションを柔軟に設計いたします。",
+    "cta": "サービス詳細",
+    "features": {
+      "rapidDeployment": {
+        "title": "迅速なデプロイ",
+        "description": "POCから本番運用まで数週間で実現"
       },
-      "design": {
-        "title": "データ分析・自動化",
-        "description": "高度な分析とAI駆動プロセスを使用して、データワークフローを収集・分析・自動化。",
-        "features": ["ビジネスインテリジェンス", "予測分析", "プロセス自動化"]
+      "fullStackAI": {
+        "title": "フルスタックAI",
+        "description": "データからデプロイまで一貫した　　ソリューション"
       },
-      "engineering": {
-        "title": "デジタルプラットフォーム",
-        "description": "AI機能で強化されたスケーラブルなWebおよびメディアプラットフォームの作成・管理。",
-        "features": ["Webプラットフォーム", "コンテンツ管理", "メディア処理"]
+      "customSolutions": {
+        "title": "カスタムソリューション",
+        "description": "独自の課題に合わせた　　　　　AIアーキテクチャ"
       },
-      "analytics": {
-        "title": "エンタープライズAI統合",
-        "description": "エンタープライズグレードのAIシステムの設計・実装、および戦略コンサルティングの提供。",
-        "features": ["システム統合", "コンプライアンス", "戦略コンサルティング"]
+      "roiFocused": {
+        "title": "ROIの徹底追求",
+        "description": "測定可能なビジネスインパクトと　　コスト効率"
       }
     }
   },
-  "work": {
-    "badge": "導入事例",
-    "title": "AIソリューションが複雑なビジネス課題を解決する実際の応用例",
-    "cta": "導入事例を実装"
+  "services": {
+    "badge": "サービス",
+    "title": "定型業務をAIで自動化",
+    "subtitle": "経理・庶務・定型作業のAI化で、コア業務に集中できる組織へ。",
+    "cta": "サービス詳細",
+    "items": {
+      "strategy": {
+        "title": "AIモデル開発・実装",
+        "description": "PyTorch、TensorFlow　　を用いたAIモデル開発。要件定義からデプロイまでサポート",
+        "features": ["カスタムモデル開発", "機械学習モデル構築", "本番環境デプロイ"]
+      },
+      "design": {
+        "title": "AIエージェント構築",
+        "description": "社内業務の完全自動化を実現する　　　AIエージェントシステムの構築。非属人運営による業務効率化を支援。",
+        "features": ["n8n・Zapier・Make連携", "既存システム対応可"]
+      },
+      "engineering": {
+        "title": "Webアプリケーション開発",
+        "description": "React、Next.jsを使った　　　Webアプリケーション開発。UI/UX設計から実装まで",
+        "features": ["フロントエンド開発", "レスポンシブデザイン", "API連携"]
+      },
+      "analytics": {
+        "title": "コンサルティング・技術支援",
+        "description": "技術選定からシステム設計、実装方針の策定までサポート",
+        "features": ["技術選定支援", "アーキテクチャ設計", "開発プロセス最適化"]
+      }
+    }
+  },
+  "techStack": {
+    "badge": "技術スタック",
+    "title": "使用技術",
+    "subtitle": "PyTorch、TensorFlow、React、Next.js、AWS、Google Cloud等、実績のある技術スタックで安定した開発を行います。",
+    "frameworks": {
+      "title": "技術スタック",
+      "description": "基本的な技術スタックだけでなく、クライアント様の要望によりあらゆる技術スタックに対応致します"
+    },
+    "cloud": {
+      "title": "開発方針",
+      "description": "2週間でPOC、3ヶ月で本番運用。セキュアでスケーラブルなAIシステムを迅速に構築します。"
+    }
   },
   "contact": {
-    "badge": "AIで変革する準備はできましたか？",
-    "title": "共にAIアドバンテージを構築しましょう",
-    "subtitle": "当社のエンタープライズグレードソリューションは、業界最高水準のセキュリティとコンプライアンスで測定可能な結果を提供します。課題をお聞かせください。",
-    "info": {
-      "kickoff": "初回相談",
-      "kickoffValue": "1週間以内",
-      "nda": "エンタープライズ対応",
-      "ndaValue": "完全コンプライアンス"
+    "badge": "コンタクト",
+    "title": "お問い合わせ",
+    "subtitle": {
+      "part1": "プロジェクトのご相談や技術的なご質問について、お問い合わせください。",
+      "part2": "プロダクトやサービスの理解を最大限深めた上でプロジェクトに臨むために、<span class=\"whitespace-nowrap\">Google Form</span>による事前のヒアリングにご協力いただけますと幸いです。"
     },
-    "form": {
-      "name": "お名前",
-      "email": "メールアドレス",
-      "budget": "プロジェクト種別",
-      "budgetOptions": {
-        "placeholder": "プロジェクト種別を選択",
-        "option1": "AI/ML開発",
-        "option2": "システム統合",
-        "option3": "プロセス自動化",
-        "option4": "エンタープライズコンサルティング"
-      },
-      "message": "AIの課題について教えてください",
-      "messagePlaceholder": "AIで解決したいビジネス課題は何ですか？",
-      "ndaCheckbox": "先にNDAを送信",
-      "submit": "AIジャーニーを開始",
-      "hint": "送信により、プライバシーポリシーに同意したものとします。"
+    "info": {
+      "kickoff": "ご相談方法",
+      "kickoffValue": "オンライン・対面",
+      "nda": "セキュリティ",
+      "ndaValue": "ISO27001準拠・暗号化通信"
+    },
+    "cta": {
+      "title": "お問い合わせフォーム",
+      "description": "プロジェクトのご相談は専用フォームから、技術的なご質問はメールで承っております。",
+      "googleForm": "相談フォームを開く",
+      "email": "お問い合わせ: info@venator-capital.net",
+      "or": "または",
+      "hint": "通常2営業日以内にご返信いたします"
     }
   },
   "footer": {
-    "description": "最先端のAIソリューションを設計し、野心的な企業が業務を変革し新たな可能性を解き放つお手伝いをします。",
-    "contact": "contact.sendEmail",
-    "location": "東京都新宿区弁天町66番地",
+    "description": "AIの力で組織を変える",
+    "contact": "info@venator-capital.net",
+    "location": "Tokyo Shinjuku",
     "navigate": "ナビゲーション",
-    "legal": "法的情報",
-    "privacy": "プライバシーポリシー",
-    "terms": "利用規約",
-    "social": {
-      "twitter": "Twitter",
-      "dribbble": "Dribbble",
-      "github": "GitHub"
-    },
+    "company": "企業情報",
+    "companyLink": "会社概要",
     "copyright": "© 2025 Venator Capital LLC. All rights reserved."
   },
   "language": {
     "en": "English",
-    "ja": "日本語"
+    "ja": "JP"
   },
   "404": {
-    "title": "ページが見つかりません",
+    "title": "404 - ページが見つかりません",
     "subtitle": "お探しのページは存在しないか、移動された可能性があります。",
-    "backHome": "ホームに戻る",
-    "description": "お探しのページは存在しないか、移動された可能性があります。",
-    "returnHome": "ホームに戻る",
-    "goBack": "戻る"
+    "backHome": "トップページへ",
+    "description": "URLをご確認いただくか、トップページにお戻りください。",
+    "returnHome": "ホームへ戻る",
+    "goBack": "前のページへ"
+  },
+  "company": {
+    "title": "企業情報",
+    "subtitle": "Venator Capital LLCの法人情報",
+    "info": {
+      "companyName": "合同会社Venator Capital",
+      "representative": "代表社員 山田創太",
+      "address": "本店所在地 東京都新宿区弁天町66",
+      "capital": "資本金 1,000,000円",
+      "established": "設立年月日 2025年1月8日",
+      "corporateNumber": "法人番号 011103015401",
+      "invoice": "インボイス登録事業者 登録番号 T4011103015401",
+      "basicInfo": {
+        "title": "基本情報",
+        "companyName": "会社名",
+        "representative": "代表者",
+        "address": "所在地",
+        "capital": "資本金",
+        "established": "設立",
+        "corporateNumber": "法人番号",
+        "invoice": "インボイス登録"
+      },
+      "businessPurpose": {
+        "title": "事業内容",
+        "items": [
+          "AI・機械学習を活用したソフトウェア開発およびコンサルティング",
+          "ウェブアプリケーション開発およびシステム構築",
+          "クラウドインフラ構築および運用支援",
+          "技術コンサルティングおよびシステム導入支援"
+        ]
+      }
+    },
+    "contact": {
+      "title": "お問い合わせ",
+      "email": "Email"
+    }
   }
 }

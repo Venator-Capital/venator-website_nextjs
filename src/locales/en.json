@@ -1,117 +1,162 @@
 {
   "nav": {
+    "brand": "Venator",
     "home": "Home",
     "about": "About",
     "services": "Services",
-    "work": "Use Cases",
     "contact": "Contact",
-    "cta": "Get Started"
+    "cta": "Contact Us"
   },
   "hero": {
-    "badge": "Turning AI Into Advantage",
-    "title": "Where artificial intelligence meets enterprise innovation and infinite possibilities unfold",
-    "subtitle": "We architect cutting-edge AI solutions — from machine learning applications to automation frameworks. No matter where you are in your AI journey, we'll guide you from roadmap to production.",
-    "exploreButton": "View Our Services",
-    "contactButton": "Start AI Journey",
-    "scrollText": "Transform Your Business Today"
+    "badge": "AI Implementation",
+    "title": "Transform Your Organization with AI",
+    "subtitle": "From AI agent development for operational efficiency to internal AI talent cultivation, we provide comprehensive support for companies growing with AI.",
+    "exploreButton": "View Services",
+    "contactButton": "Contact Us",
+    "scrollText": "Case Studies"
   },
   "about": {
-    "badge": "About Venator Capital",
-    "title": "We don't just consult—we build AI solutions that transform",
-    "subtitle": "Founded in Tokyo, Venator Capital LLC specializes in enterprise AI solutions. We bring deep technical expertise in machine learning, automation, and system integration to help organizations unlock the transformative power of artificial intelligence.",
-    "stats": {
-      "projects": "100+",
-      "projectsLabel": "Clients Served",
-      "satisfaction": "4",
-      "satisfactionLabel": "Core AI Domains"
-    },
-    "cta": "Learn About Our Approach"
-  },
-  "services": {
-    "badge": "Core Capabilities",
-    "title": "Four AI domains powering our technical superiority",
-    "cta": "Discuss Your Project",
-    "items": {
-      "strategy": {
-        "title": "AI/ML Solutions",
-        "description": "Custom AI/ML applications designed, developed and deployed to match your business needs.",
-        "features": ["Machine Learning", "Deep Learning", "Neural Networks"]
+    "badge": "Our Approach",
+    "title": "Optimized AI Solutions",
+    "subtitle": "Maximize your organization's existing strengths. We design flexible AI solutions tailored to your needs.",
+    "cta": "Service Details",
+    "features": {
+      "rapidDeployment": {
+        "title": "Rapid Deployment",
+        "description": "From POC to production in weeks, not months"
       },
-      "design": {
-        "title": "Data Analytics & Automation",
-        "description": "Collect, analyze and automate data workflows using advanced analytics and AI-driven processes.",
-        "features": ["Business Intelligence", "Predictive Analytics", "Process Automation"]
+      "fullStackAI": {
+        "title": "Full-Stack AI",
+        "description": "End-to-end solutions from data to deployment"
       },
-      "engineering": {
-        "title": "Digital Platform",
-        "description": "Create and manage scalable web and media platforms enhanced with AI capabilities.",
-        "features": ["Web Platforms", "Content Management", "Media Processing"]
+      "customSolutions": {
+        "title": "Custom Solutions",
+        "description": "Tailored AI architectures for your unique challenges"
       },
-      "analytics": {
-        "title": "Enterprise AI Integration",
-        "description": "Design and implement enterprise-grade AI systems with strategic consulting services.",
-        "features": ["System Integration", "Compliance", "Strategic Consulting"]
+      "roiFocused": {
+        "title": "ROI Focused",
+        "description": "Measurable business impact and cost efficiency"
       }
     }
   },
-  "work": {
-    "badge": "Use Cases",
-    "title": "Real-world applications where AI solutions solve complex business challenges",
-    "cta": "Implement Your Use Case"
+  "services": {
+    "badge": "Services",
+    "title": "Automate Routine Tasks with AI",
+    "subtitle": "Automate accounting, admin, and routine work to focus on core business.",
+    "cta": "Service Details",
+    "items": {
+      "strategy": {
+        "title": "AI Model Development & Implementation",
+        "description": "AI model development using PyTorch and TensorFlow. Comprehensive support from requirements definition through implementation and deployment.",
+        "features": ["Custom Model Development", "Machine Learning Implementation", "Production Deployment"]
+      },
+      "design": {
+        "title": "AI Agent Development",
+        "description": "Build AI agent systems that fully automate internal operations. Support business efficiency through non-human-dependent operations.",
+        "features": ["n8n・Zapier・Make Integration", "Legacy System Compatibility"]
+      },
+      "engineering": {
+        "title": "Web Application Development",
+        "description": "Web application development using React and Next.js. From UI/UX design to implementation.",
+        "features": ["Frontend Development", "Responsive Design", "API Integration"]
+      },
+      "analytics": {
+        "title": "Consulting & Technical Support",
+        "description": "Support from technology selection to system design and implementation strategy.",
+        "features": ["Technology Selection Support", "Architecture Design", "Development Process Optimization"]
+      }
+    }
+  },
+  "techStack": {
+    "badge": "Technology",
+    "title": "Technology Stack",
+    "subtitle": "PyTorch, TensorFlow, React, Next.js, AWS, Google Cloud and other proven technology stacks for stable development.",
+    "frameworks": {
+      "title": "Tech Stack",
+      "description": "AI: PyTorch, TensorFlow | Web: React, Next.js | Cloud: AWS, Google Cloud"
+    },
+    "cloud": {
+      "title": "Development Approach",
+      "description": "POC in 2 weeks, production in 3 months. Rapidly build secure and scalable AI systems."
+    }
   },
   "contact": {
-    "badge": "Ready to Transform with AI?",
-    "title": "Let's architect your AI advantage together",
-    "subtitle": "Our enterprise-grade solutions deliver measurable results with industry-leading security and compliance. Tell us about your challenge.",
-    "info": {
-      "kickoff": "Initial consultation",
-      "kickoffValue": "Within 1 week",
-      "nda": "Enterprise ready",
-      "ndaValue": "Full compliance"
+    "badge": "Contact",
+    "title": "Contact Us",
+    "subtitle": {
+      "part1": "Contact us for project consultations and technical questions.",
+      "part2": "To maximize our understanding of your products and services before starting the project, we would appreciate your cooperation with our <span class=\"whitespace-nowrap\">Google Form</span> pre-consultation."
     },
-    "form": {
-      "name": "Name",
-      "email": "Email",
-      "budget": "Project type",
-      "budgetOptions": {
-        "placeholder": "Select project type",
-        "option1": "AI/ML Development",
-        "option2": "System Integration", 
-        "option3": "Process Automation",
-        "option4": "Enterprise Consulting"
-      },
-      "message": "Tell us about your AI challenge",
-      "messagePlaceholder": "What business problem are you looking to solve with AI?",
-      "ndaCheckbox": "Send NDA first",
-      "submit": "Start AI Journey",
-      "hint": "By submitting, you agree to our privacy policy."
+    "info": {
+      "kickoff": "Consultation",
+      "kickoffValue": "Online or In-person",
+      "nda": "Security",
+      "ndaValue": "ISO27001 compliant & encrypted"
+    },
+    "cta": {
+      "title": "Contact Form",
+      "description": "Use our form for project inquiries, email for technical questions.",
+      "googleForm": "Open Inquiry Form",
+      "email": "Email: info@venator-capital.net",
+      "or": "or",
+      "hint": "We typically respond within 2 business days."
     }
   },
   "footer": {
-    "description": "We architect cutting-edge AI solutions to help ambitious enterprises transform their operations and unlock new possibilities.",
-    "contact": "contact.sendEmail",
-    "location": "Tokyo, Japan",
-    "navigate": "Navigate",
-    "legal": "Legal",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service", 
-    "social": {
-      "twitter": "Twitter",
-      "dribbble": "Dribbble",
-      "github": "GitHub"
-    },
+    "description": "Transform Your Organization with AI",
+    "contact": "info@venator-capital.net",
+    "location": "Tokyo Shinjuku",
+    "navigate": "Navigation",
+    "company": "Company Info",
+    "companyLink": "About Us",
     "copyright": "© 2025 Venator Capital LLC. All rights reserved."
   },
   "language": {
     "en": "English",
-    "ja": "日本語"
+    "ja": "JP"
   },
   "404": {
     "title": "Page not found",
     "subtitle": "The page you're looking for doesn't exist or has been moved.",
     "backHome": "Back to home",
-    "description": "The page you're looking for doesn't exist or has been moved.",
+    "description": "Please check the URL or return to the homepage.",
     "returnHome": "Return Home",
     "goBack": "Go Back"
+  },
+  "company": {
+    "title": "Company Information",
+    "subtitle": "Corporate details of Venator Capital LLC",
+    "info": {
+      "companyName": "Venator Capital LLC",
+      "representative": "Representative Member: Sota Yamada",
+      "address": "Head Office: 66 Benten-cho, Shinjuku-ku, Tokyo",
+      "capital": "Capital: ¥1,000,000",
+      "established": "Established: January 8, 2025",
+      "corporateNumber": "Corporate Number: 011103015401",
+      "invoice": "Invoice Registration: T4011103015401",
+      "basicInfo": {
+        "title": "Company Details",
+        "companyName": "Company Name",
+        "representative": "Representative",
+        "address": "Address",
+        "capital": "Capital",
+        "established": "Established",
+        "corporateNumber": "Corporate Number",
+        "invoice": "Invoice Registration"
+      },
+      "businessPurpose": {
+        "title": "Business Activities",
+        "items": [
+          "AI and machine learning software development and consulting",
+          "Web application development and system integration",
+          "Cloud infrastructure setup and operations support",
+          "Technical consulting and system implementation support"
+        ]
+      }
+    },
+    "contact": {
+      "title": "Contact",
+      "email": "Email"
+    }
   }
 }

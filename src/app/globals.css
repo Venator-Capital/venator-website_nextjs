@@ -1,9 +1,74 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;600;700&display=swap');
+/* Inter, Noto Sans JP, Plus Jakarta Sans: loaded in layout.tsx to avoid duplicate requests */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .bg-grid-pattern {
+    background-image: linear-gradient(to right, rgba(20, 184, 166, 0.1) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(20, 184, 166, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  .animate-spin-slow {
+    animation: spin 8s linear infinite;
+  }
+  
+  .animate-spin-reverse {
+    animation: spin 10s linear infinite reverse;
+  }
+  
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  .animate-typing {
+    opacity: 0;
+    animation: typing 2s ease-out forwards;
+  }
+  
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+  
+  .delay-700 {
+    animation-delay: 700ms;
+  }
+  
+  .delay-1000 {
+    animation-delay: 1000ms;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) rotate(45deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(45deg);
+    }
+  }
+  
+  @keyframes typing {
+    0% {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
 
 :root {
   --background: oklch(1 0 0);
@@ -526,6 +591,179 @@ html[lang="ja"] {
 html[lang="ja"] .mixed-content {
   word-break: keep-all;
   overflow-wrap: break-word;
+}
+
+/* ====== 基本：ブラウザ差の地ならし ====== */
+html {
+  /* iOSの自動拡大防止 */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+html[lang="ja"] body {
+  /* 日本語の禁則を強める */
+  line-break: strict;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  hyphens: none;
+}
+
+/* ====== 日本語全般の改行制御 ====== */
+html[lang="ja"] * {
+  word-break: keep-all !important;
+  overflow-wrap: anywhere !important;
+  line-break: strict !important;
+  hyphens: none !important;
+}
+
+/* ====== 見出しのバランス取り ====== */
+:where(h1,h2,h3,.hero-title,.section-title) {
+  /* 英文も含む見出しのバランス取り（対応ブラウザでは即有効） */
+  text-wrap: balance;
+  /* 次善の見栄え */
+  text-wrap: pretty;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  font-feature-settings: "kern" 1;
+}
+
+/* ====== CJK／英語の改行抑制 ====== */
+html[lang="ja"] :where(h1,h2,h3,.hero-title,.section-title) {
+  /* 日本語は基本"字間折りOK"だが、英単語までバラさない */
+  word-break: keep-all !important;
+  overflow-wrap: anywhere !important;
+  line-break: strict !important;
+  hyphens: none !important;
+}
+:where(h1,h2,h3,.hero-title,.section-title) :where(span:lang(en), em:lang(en), strong:lang(en)) {
+  /* 英単語は途中で折らない。どうしても溢れる場合のみハイフネーション */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* ====== ノーブレーク・ユニット（短語を守る） ====== */
+.nb { white-space: nowrap; }
+
+/* ====== ヒーロー用：行数・長さ・サイズ制御 ====== */
+.hero {
+  container-type: inline-size; /* コンテナクエリ用 */
+}
+.hero-title {
+  /* 日本語改行制御を強化 */
+  word-break: keep-all !important;
+  overflow-wrap: anywhere !important;
+  line-break: strict !important;
+  hyphens: none !important;
+  
+  /* 1〜2行で収める：標準化 line-clamp + 旧WebKit両対応 */
+  --hero-lines: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-clamp: var(--hero-lines);
+  -webkit-line-clamp: var(--hero-lines);
+
+  /* 行幅（measure）を制御：日本語は 12〜18字程度が目安 */
+  max-inline-size: 18ch;
+
+  /* 流体タイポ：24px〜48pxの間で可変 */
+  font-size: clamp(24px, 6vw, 48px);
+}
+
+/* 非対応環境（古いAndroid等）でも暴れにくくする最低限 */
+@supports not (text-wrap: balance) {
+  .hero-title { text-align: left; }
+}
+
+/* ====== コンテナ幅に応じた微調整（コンテナクエリ） ====== */
+@container (max-width: 360px) {
+  .hero-title {
+    /* さらに小さい端末では行数維持のためサイズを一段階下げる */
+    font-size: clamp(22px, 7vw, 36px);
+    max-inline-size: 17ch;
+  }
+}
+@container (min-width: 480px) {
+  .hero-title {
+    font-size: clamp(28px, 5vw, 56px);
+    max-inline-size: 20ch;
+  }
+}
+
+/* ====== 日本語フォント最適化（対応フォントのみ） ====== */
+html[lang="ja"] .hero-title {
+  /* プロポーショナル代替（palt）の有無はフォント依存 */
+  font-feature-settings: "palt" 1, "kern" 1;
+}
+
+/* ====== 日本語テキストの基本設定 ====== */
+html[lang="ja"] p,
+html[lang="ja"] .description,
+html[lang="ja"] .subtitle {
+  word-break: keep-all !important;
+  overflow-wrap: anywhere !important;
+  line-break: strict !important;
+  text-wrap: pretty;
+  hanging-punctuation: first last;
+  white-space: normal;
+  hyphens: none !important;
+}
+
+/* ====== スマートフォン専用の改行制御 ====== */
+@media (max-width: 768px) {
+  html[lang="ja"] * {
+    word-break: keep-all !important;
+    overflow-wrap: anywhere !important;
+    line-break: strict !important;
+    hyphens: none !important;
+  }
+  
+  html[lang="ja"] .hero-title,
+  html[lang="ja"] .section-title,
+  html[lang="ja"] h1,
+  html[lang="ja"] h2,
+  html[lang="ja"] h3 {
+    word-break: keep-all !important;
+    overflow-wrap: anywhere !important;
+    line-break: strict !important;
+    hyphens: none !important;
+    font-size: clamp(18px, 8vw, 32px) !important;
+    max-inline-size: 16ch !important;
+  }
+  
+  html[lang="ja"] .subtitle,
+  html[lang="ja"] .description {
+    word-break: keep-all !important;
+    overflow-wrap: anywhere !important;
+    line-break: strict !important;
+    hyphens: none !important;
+    font-size: clamp(14px, 4vw, 18px) !important;
+    max-inline-size: 20ch !important;
+  }
+}
+
+/* Prevent breaking of important terms */
+html[lang="ja"] .no-break {
+  white-space: nowrap;
+}
+
+/* Better responsive text for Japanese */
+@media (max-width: 768px) {
+  html[lang="ja"] h1,
+  html[lang="ja"] h2,
+  html[lang="ja"] h3 {
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    hyphens: none;
+  }
+
+  html[lang="ja"] p {
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    line-break: strict;
+  }
 }
 
 /* Language-specific button and form adjustments */

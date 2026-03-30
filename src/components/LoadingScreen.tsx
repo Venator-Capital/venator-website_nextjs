@@ -41,12 +41,12 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black">
       <div className="flex flex-col items-center gap-8">
         {/* Logo */}
         <div className="flex items-center gap-3">
           <img 
-            src="/Cropped_black_logo-removebg-preview.png" 
+            src="/hexagon-logo.png" 
             alt="Venator Capital Logo" 
             className="h-12 w-12 object-contain brightness-0 invert" 
           />

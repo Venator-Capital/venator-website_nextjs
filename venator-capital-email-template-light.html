@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venator Capital - AI Solutions for Enterprise</title>
+    <meta name="description" content="Enterprise AI solutions with 2-week prototypes and 48-hour assessment SLA">
+    
+    <!--[if mso]>
+    <noscript>
+        <xml>
+            <o:OfficeDocumentSettings>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+    </noscript>
+    <![endif]-->
+    
+    <style type="text/css">
+        /* Reset styles */
+        body, table, td, p, a, li, blockquote { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+        
+        /* Base styles */
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            background-color: #F7F7F9 !important;
+            font-family: 'Segoe UI', Arial, sans-serif !important;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #1A1A1A;
+        }
+        
+        /* Container */
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #FFFFFF;
+        }
+        
+        /* Header */
+        .header {
+            background: #FFFFFF;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 2px solid #E5E7EB;
+        }
+        
+        .logo-image {
+            width: 120px;
+            height: auto;
+            margin-bottom: 16px;
+        }
+        
+        .company-name {
+            font-size: 28px;
+            font-weight: 600;
+            color: #1A1A1A;
+            margin: 0;
+            letter-spacing: -0.02em;
+        }
+        
+        .tagline {
+            font-size: 16px;
+            color: #6B7280;
+            margin: 8px 0 0 0;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: #FFFFFF;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            color: #1D4ED8;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 24px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        
+        .hero-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin: 0 0 24px 0;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+            color: #4B5563;
+            margin: 0 0 32px 0;
+            line-height: 1.6;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: #F9FAFB;
+            padding: 40px 20px;
+        }
+        
+        .stats-grid {
+            text-align: center;
+        }
+        
+        .stat-item {
+            display: inline-block;
+            width: calc(50% - 20px);
+            margin: 0 10px;
+            box-sizing: border-box;
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1D4ED8;
+            margin: 0 0 8px 0;
+        }
+        
+        .stat-label {
+            font-size: 16px;
+            color: #6B7280;
+            margin: 0;
+            font-weight: 500;
+        }
+        
+        /* Services Section */
+        .services {
+            background: #FFFFFF;
+            padding: 60px 20px;
+        }
+        
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #1A1A1A;
+            text-align: center;
+            margin: 0 0 48px 0;
+            line-height: 1.3;
+        }
+        
+        /* Development Process Section */
+        .development-process {
+            background: #F9FAFB;
+            padding: 60px 20px;
+        }
+        
+        /* Security Section */
+        .security-section {
+            background: #FFFFFF;
+            padding: 60px 20px;
+        }
+        
+        /* Risk Reversal Section */
+        .risk-reversal {
+            background: #F9FAFB;
+            padding: 60px 20px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: #FFFFFF;
+            padding: 60px 20px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #F3F4F6;
+            padding: 40px 20px;
+        }
+        
+        .footer-text {
+            font-size: 16px;
+            color: #4B5563;
+            margin: 0 0 24px 0;
+            text-align: center;
+            line-height: 1.6;
+        }
+        
+        /* Responsive Design */
+        @media only screen and (max-width: 600px) {
+            .email-container {
+                width: 100% !important;
+            }
+            
+            .hero-title {
+                font-size: 24px !important;
+            }
+            
+            .hero-subtitle {
+                font-size: 16px !important;
+            }
+            
+            .stat-item {
+                display: block !important;
+                width: 100% !important;
+                margin-bottom: 20px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+        <!-- Preheader -->
+        <div style="display:none;max-height:0;overflow:hidden;color:#0B0B0B;line-height:1px;font-size:1px;">
+          Free AI Assessment | Initial proposal within 48 hours. Working prototype in 2 weeks.
+        </div>
+        
+    <div class="email-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <img src="https://venator-capital.net/Cropped_black_logo-removebg-preview.png" alt="Venator Capital Logo" class="logo-image">
+                <h1 class="company-name">Venator Capital</h1>
+                <p class="tagline">Turning AI Into Advantage</p>
+            </div>
+        </div>
+        
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-badge">AI-Powered Development + Enterprise Security</div>
+            <h2 class="hero-title">AI integration, securely delivered in 2 weeks — from requirements to working prototype</h2>
+            <p class="hero-subtitle">Requirements analysis → technology selection → prototype in standard 2 weeks. We balance speed and security with SOC2/ISO27001-ready processes, delivering working prototypes that stakeholders can validate immediately.</p>
+            
+            <!--[if mso]>
+              <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="https://venator-capital.net/assessment?utm_source=email&utm_medium=outreach&utm_campaign=vc_pitch"
+                style="height:44px;v-text-anchor:middle;width:360px;" arcsize="50%" stroke="f" fillcolor="#1D4ED8">
+                <w:anchorlock/>
+                <center style="color:#FFFFFF;font-family:Segoe UI, Arial, sans-serif;font-size:16px;font-weight:bold;">
+                  Get Free Assessment (48h SLA)
+                </center>
+              </v:roundrect>
+            <![endif]-->
+            <![if !mso]>
+              <a href="https://venator-capital.net/assessment?utm_source=email&utm_medium=outreach&utm_campaign=vc_pitch"
+                 style="display:inline-block;background:#1D4ED8;color:#FFFFFF;text-decoration:none;font-weight:700;font-size:16px;line-height:44px;height:44px;padding:0 20px;border-radius:24px;">
+                 Get Free Assessment (48h SLA)
+              </a>
+            <![endif]>
+            
+            <p style="margin:10px 0 0;font-size:14px;color:#6B7280;">
+              Or reply directly to discuss:
+              <a href="mailto:info@venator-capital.net?subject=Free%20AI%20Assessment&body=Company:%0ADepartment:%0ATarget%20Business:%0AIT%20Department%20Involvement:%20Yes%20%7C%20No%0ASpecific%20Pain%20Points:"
+                 style="color:#1D4ED8;">info@venator-capital.net</a>
+            </p>
+        </div>
+        
+        <!-- Stats Section -->
+        <div class="stats">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Weeks to Prototype</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">48h</div>
+                    <div class="stat-label">Assessment SLA</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Services Section -->
+        <div class="services">
+            <h3 class="section-title">Our core AI development services</h3>
+            
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:560px;margin:0 auto;">
+              <tr>
+                <td width="50%" valign="top" style="padding:8px;">
+                  <table role="presentation" width="100%" style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:12px;">
+                    <tr><td style="padding:16px;color:#1A1A1A;font-family:Arial, sans-serif;">
+                      <div style="font-weight:700;margin-bottom:6px;">AI Development Acceleration</div>
+                      <div style="color:#4B5563;font-size:14px;line-height:1.6;">Standardize coding/testing/deployment for rapid working prototypes.</div>
+                    </td></tr>
+                  </table>
+                </td>
+                <td width="50%" valign="top" style="padding:8px;">
+                  <table role="presentation" width="100%" style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:12px;">
+                    <tr><td style="padding:16px;color:#1A1A1A;font-family:Arial, sans-serif;">
+                      <div style="font-weight:700;margin-bottom:6px;">Security First</div>
+                      <div style="color:#4B5563;font-size:14px;line-height:1.6;">Data classification, permission separation, audit logs from day one.</div>
+                    </td></tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td width="50%" valign="top" style="padding:8px;">
+                  <table role="presentation" width="100%" style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:12px;">
+                    <tr><td style="padding:16px;color:#1A1A1A;font-family:Arial, sans-serif;">
+                      <div style="font-weight:700;margin-bottom:6px;">2-Week Prototype</div>
+                      <div style="color:#4B5563;font-size:14px;line-height:1.6;">Field flow-compliant prototype for early internal consensus.</div>
+                    </td></tr>
+                  </table>
+                </td>
+                <td width="50%" valign="top" style="padding:8px;">
+                  <table role="presentation" width="100%" style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:12px;">
+                    <tr><td style="padding:16px;color:#1A1A1A;font-family:Arial, sans-serif;">
+                      <div style="font-weight:700;margin-bottom:6px;">Production Operations</div>
+                      <div style="color:#4B5563;font-size:14px;line-height:1.6;">Smooth production with monitoring/logs/permission inventory.</div>
+                    </td></tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+        </div>
+        
+        <!-- Development Process Section -->
+        <div class="development-process">
+            <h3 class="section-title">Our proven 4-phase development methodology</h3>
+            
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;margin:0 auto;">
+              <tr>
+                <td width="50%" valign="top" style="padding:8px;">
+                  <table role="presentation" width="100%" style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:12px;">
+                    <tr><td style="padding:16px;color:#1A1A1A;font-family:Arial, sans-serif;text-align:center;">
+                      <div style="width:48px;height:48px;background:#1D4ED8;border-radius:50%;margin:0 auto 16px;color:#FFFFFF;font-size:18px;font-weight:700;line-height:48px;">01</div>
+                      <div style="font-weight:700;margin-bottom:8px;">Requirements & Risk Analysis</div>
+                      <div style="color:#4B5563;font-size:14px;line-height:1.6;">Data classification, permissions, and logging policies established upfront.</div>
+                    </td></tr>
+                  </table>
+                </td>
+                <td width="50%" valign="top" style="padding:8px;">
+                  <table role="presentation" width="100%" style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:12px;">
+                    <tr><td style="padding:16px;color:#1A1A1A;font-family:Arial, sans-serif;text-align:center;">
+                      <div style="width:48px;height:48px;background:#1D4ED8;border-radius:50%;margin:0 auto 16px;color:#FFFFFF;font-size:18px;font-weight:700;line-height:48px;">02</div>
+                      <div style="font-weight:700;margin-bottom:8px;">Working Prototype</div>
+                      <div style="color:#4B5563;font-size:14px;line-height:1.6;">Real business flow-aligned prototype delivered in 2 weeks.</div>
+                    </td></tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td width="50%" valign="top" style="padding:8px;">
+                  <table role="presentation" width="100%" style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:12px;">
+                    <tr><td style="padding:16px;color:#1A1A1A;font-family:Arial, sans-serif;text-align:center;">
+                      <div style="width:48px;height:48px;background:#1D4ED8;border-radius:50%;margin:0 auto 16px;color:#FFFFFF;font-size:18px;font-weight:700;line-height:48px;">03</div>
+                      <div style="font-weight:700;margin-bottom:8px;">Security Integration</div>
+                      <div style="color:#4B5563;font-size:14px;line-height:1.6;">Vulnerability scanning, audit logs, and permission separation built-in.</div>
+                    </td></tr>
+                  </table>
+                </td>
+                <td width="50%" valign="top" style="padding:8px;">
+                  <table role="presentation" width="100%" style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:12px;">
+                    <tr><td style="padding:16px;color:#1A1A1A;font-family:Arial, sans-serif;text-align:center;">
+                      <div style="width:48px;height:48px;background:#1D4ED8;border-radius:50%;margin:0 auto 16px;color:#FFFFFF;font-size:18px;font-weight:700;line-height:48px;">04</div>
+                      <div style="font-weight:700;margin-bottom:8px;">Production Operations</div>
+                      <div style="color:#4B5563;font-size:14px;line-height:1.6;">Monitoring, inventory, and handover included for smooth go-live.</div>
+                    </td></tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+        </div>
+        
+        <!-- Security Section -->
+        <div class="security-section">
+            <h3 class="section-title">Enterprise security that doesn't slow you down</h3>
+            
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;margin:0 auto;">
+              <tr>
+                <td width="33%" valign="top" style="padding:8px;">
+                  <table role="presentation" width="100%" style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:12px;">
+                    <tr><td style="padding:16px;color:#1A1A1A;font-family:Arial, sans-serif;text-align:center;">
+                      <div style="width:48px;height:48px;background:#1D4ED8;border-radius:12px;margin:0 auto 16px;color:#FFFFFF;font-size:24px;line-height:48px;">■</div>
+                      <div style="font-weight:700;margin-bottom:8px;">Built-in Compliance</div>
+                      <div style="color:#4B5563;font-size:14px;line-height:1.6;">SOC2/ISO27001 ready. No last-minute patches.</div>
+                    </td></tr>
+                  </table>
+                </td>
+                <td width="33%" valign="top" style="padding:8px;">
+                  <table role="presentation" width="100%" style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:12px;">
+                    <tr><td style="padding:16px;color:#1A1A1A;font-family:Arial, sans-serif;text-align:center;">
+                      <div style="width:48px;height:48px;background:#1D4ED8;border-radius:12px;margin:0 auto 16px;color:#FFFFFF;font-size:24px;line-height:48px;">✓</div>
+                      <div style="font-weight:700;margin-bottom:8px;">Automated Testing</div>
+                      <div style="color:#4B5563;font-size:14px;line-height:1.6;">Continuous security scanning throughout development.</div>
+                    </td></tr>
+                  </table>
+                </td>
+                <td width="33%" valign="top" style="padding:8px;">
+                  <table role="presentation" width="100%" style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:12px;">
+                    <tr><td style="padding:16px;color:#1A1A1A;font-family:Arial, sans-serif;text-align:center;">
+                      <div style="width:48px;height:48px;background:#1D4ED8;border-radius:12px;margin:0 auto 16px;color:#FFFFFF;font-size:24px;line-height:48px;">●</div>
+                      <div style="font-weight:700;margin-bottom:8px;">Enterprise Infrastructure</div>
+                      <div style="color:#4B5563;font-size:14px;line-height:1.6;">Monitoring, logging, and 24/7 support included.</div>
+                    </td></tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+        </div>
+        
+        <!-- Risk Reversal Section -->
+        <div class="risk-reversal">
+            <h3 class="section-title">Risk-free evaluation with our guarantees</h3>
+            
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;margin:0 auto;">
+              <tr>
+                <td width="50%" valign="top" style="padding:8px;">
+                  <table role="presentation" width="100%" style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:12px;">
+                    <tr><td style="padding:16px;color:#1A1A1A;font-family:Arial, sans-serif;text-align:center;">
+                      <div style="width:48px;height:48px;background:#1D4ED8;border-radius:12px;margin:0 auto 16px;color:#FFFFFF;font-size:24px;line-height:48px;">✓</div>
+                      <div style="font-weight:700;margin-bottom:8px;">14-Day PoC Guarantee</div>
+                      <div style="color:#4B5563;font-size:14px;line-height:1.6;">If we don't deliver a working prototype within 2 weeks, the PoC cost is <strong>¥0</strong>.</div>
+                    </td></tr>
+                  </table>
+                </td>
+                <td width="50%" valign="top" style="padding:8px;">
+                  <table role="presentation" width="100%" style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:12px;">
+                    <tr><td style="padding:16px;color:#1A1A1A;font-family:Arial, sans-serif;text-align:center;">
+                      <div style="width:48px;height:48px;background:#1D4ED8;border-radius:12px;margin:0 auto 16px;color:#FFFFFF;font-size:24px;line-height:48px;">●</div>
+                      <div style="font-weight:700;margin-bottom:8px;">48-Hour Assessment SLA</div>
+                      <div style="color:#4B5563;font-size:14px;line-height:1.6;">Free assessment includes initial proposal document within 48 hours.</div>
+                    </td></tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+        </div>
+        
+        <!-- Contact Section -->
+        <div class="contact">
+            <h3 class="section-title">Ready to experience 2-week development with enterprise security?</h3>
+            <p style="color: #4B5563; margin-bottom: 32px; font-size: 18px;">Get a free development assessment and see how our AI-powered approach can accelerate your project</p>
+            
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;margin:0 auto;">
+              <tr>
+                <td width="33%" valign="top" style="padding:8px;">
+                  <table role="presentation" width="100%" style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:12px;">
+                    <tr><td style="padding:16px;color:#1A1A1A;font-family:Arial, sans-serif;text-align:center;">
+                      <div style="width:48px;height:48px;background:#1D4ED8;border-radius:12px;margin:0 auto 16px;color:#FFFFFF;font-size:24px;line-height:48px;">✉</div>
+                      <div style="font-weight:700;margin-bottom:8px;">Email</div>
+                      <div style="color:#4B5563;font-size:14px;line-height:1.6;">info@venator-capital.net</div>
+                    </td></tr>
+                  </table>
+                </td>
+                <td width="33%" valign="top" style="padding:8px;">
+                  <table role="presentation" width="100%" style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:12px;">
+                    <tr><td style="padding:16px;color:#1A1A1A;font-family:Arial, sans-serif;text-align:center;">
+                      <div style="width:48px;height:48px;background:#1D4ED8;border-radius:12px;margin:0 auto 16px;color:#FFFFFF;font-size:24px;line-height:48px;">📍</div>
+                      <div style="font-weight:700;margin-bottom:8px;">Office</div>
+                      <div style="color:#4B5563;font-size:14px;line-height:1.6;">66 Bentencho, Shinjuku-ku, Tokyo</div>
+                    </td></tr>
+                  </table>
+                </td>
+                <td width="33%" valign="top" style="padding:8px;">
+                  <table role="presentation" width="100%" style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:12px;">
+                    <tr><td style="padding:16px;color:#1A1A1A;font-family:Arial, sans-serif;text-align:center;">
+                      <div style="width:48px;height:48px;background:#1D4ED8;border-radius:12px;margin:0 auto 16px;color:#FFFFFF;font-size:24px;line-height:48px;">⏰</div>
+                      <div style="font-weight:700;margin-bottom:8px;">Response Time</div>
+                      <div style="color:#4B5563;font-size:14px;line-height:1.6;">Free assessment within 48 hours</div>
+                    </td></tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            
+            <!--[if mso]>
+              <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="https://venator-capital.net/assessment?utm_source=email&utm_medium=outreach&utm_campaign=vc_pitch"
+                style="height:44px;v-text-anchor:middle;width:360px;" arcsize="50%" stroke="f" fillcolor="#1D4ED8">
+                <w:anchorlock/>
+                <center style="color:#FFFFFF;font-family:Segoe UI, Arial, sans-serif;font-size:16px;font-weight:bold;">
+                  Get Free Assessment (48h SLA)
+                </center>
+              </v:roundrect>
+            <![endif]-->
+            <![if !mso]>
+              <a href="https://venator-capital.net/assessment?utm_source=email&utm_medium=outreach&utm_campaign=vc_pitch"
+                 style="display:inline-block;background:#1D4ED8;color:#FFFFFF;text-decoration:none;font-weight:700;font-size:16px;line-height:44px;height:44px;padding:0 20px;border-radius:24px;">
+                 Get Free Assessment (48h SLA)
+              </a>
+            <![endif]>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p class="footer-text">We combine AI-powered development acceleration with enterprise-grade security to deliver production-ready solutions in 2 weeks, not months.</p>
+            
+            <div style="padding:24px;text-align:center;border-top:1px solid #E5E7EB;color:#6B7280;font-family:Arial, sans-serif;font-size:12px;line-height:1.7;">
+              © 2025 Venator Capital LLC. All rights reserved.<br>
+              <a href="https://venator-capital.net/privacy" style="color:#6B7280;text-decoration:none;">Privacy Policy</a> |
+              <a href="https://venator-capital.net/terms" style="color:#6B7280;text-decoration:none;">Terms</a> |
+              <a href="https://venator-capital.net/unsubscribe?email={{email}}" style="color:#6B7280;text-decoration:underline;">Unsubscribe</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
