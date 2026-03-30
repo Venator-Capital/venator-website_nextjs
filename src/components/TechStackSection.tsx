@@ -57,7 +57,10 @@ export default function TechStackSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <p className="text-sm font-medium uppercase tracking-wider text-teal-300/90">{t('techStack.badge')}</p>
-            <h2 className="hero-title mt-3 text-3xl lg:text-4xl tracking-tight font-medium text-white break-keep" style={{ fontFamily: 'Plus Jakarta Sans, Inter, sans-serif' }}>
+            <h2
+              className="section-title mt-3 text-3xl lg:text-4xl tracking-tight font-medium text-white break-keep leading-snug pb-0.5"
+              style={{ fontFamily: 'Plus Jakarta Sans, Inter, sans-serif' }}
+            >
               {t('techStack.title')}
             </h2>
             <p className="description mt-6 text-gray-400 text-lg break-keep leading-relaxed">
